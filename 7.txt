@@ -1,0 +1,2603 @@
+Public Function netshmame(sal As Integer, mah As Integer, rooz As Double, mbtool As Double, taqk As Double)
+Dim mabmarkazsh As Double
+mabmarkazsh = (((32 / 60) + 55) / 60) + 1
+Dim mabnet1 As Double
+mabnet1 = oujsh(sal, mah, rooz, mbtool)
+Dim mabnet2 As Double
+If mabnet1 + mabmarkazsh + 90 < 360 Then
+mabnet2 = mabnet1 + mabmarkazsh + 90
+Else
+mabnet2 = mabnet1 + mabmarkazsh + 90 - 360
+End If
+Dim mabnet3 As Double
+If mabnet1 + 180 < 360 Then
+mabnet3 = mabnet1 + 180
+Else
+mabnet3 = mabnet1 + 180 - 360
+End If
+Dim mabnet4 As Double
+If mabnet3 + (90 - mabmarkazsh) < 360 Then
+mabnet4 = mabnet3 + (90 - mabmarkazsh)
+Else
+mabnet4 = mabnet3 + (90 - mabmarkazsh) - 360
+End If
+If (mabnet1 < mabnet2 And taqk >= mabnet1 And taqk < mabnet2) Or (mabnet1 > mabnet2 And (taqk >= mabnet1 Or taqk < mabnet2)) Then
+netshmame = "netaq1"
+ElseIf (mabnet2 < mabnet3 And taqk >= mabnet2 And taqk < mabnet3) Or (mabnet2 > mabnet3 And (taqk >= mabnet2 Or taqk < mabnet3)) Then
+netshmame = "netaq2"
+ElseIf (mabnet3 < mabnet4 And taqk >= mabnet3 And taqk < mabnet4) Or (mabnet3 > mabnet4 And (taqk >= mabnet3 Or taqk < mabnet4)) Then
+netshmame = "netaq3"
+ElseIf (mabnet4 < mabnet1 And taqk >= mabnet4 And taqk < mabnet1) Or (mabnet4 > mabnet1 And (taqk >= mabnet4 Or taqk < mabnet1)) Then
+netshmame = "netaq4"
+End If
+End Function
+Public Function netshbame(sal As Integer, mah As Integer, rooz As Double, mbtool As Double, taqk As Double)
+Dim mabmarkazsh As Double
+mabmarkazsh = (((32 / 60) + 55) / 60) + 1
+Dim x As Double
+x = mabmarkazsh / 2
+Dim mabnet1 As Double
+mabnet1 = oujsh(sal, mah, rooz, mbtool)
+Dim mabnet2 As Double
+If mabnet1 + x + 90 < 360 Then
+mabnet2 = mabnet1 + x + 90
+Else
+mabnet2 = mabnet1 + x + 90 - 360
+End If
+Dim mabnet3 As Double
+If mabnet1 + 180 < 360 Then
+mabnet3 = mabnet1 + 180
+Else
+mabnet3 = mabnet1 + 180 - 360
+End If
+Dim mabnet4 As Double
+If mabnet3 + (90 - x) < 360 Then
+mabnet4 = mabnet3 + (90 - x)
+Else
+mabnet4 = mabnet3 + (90 - x) - 360
+End If
+If (mabnet1 < mabnet2 And taqk >= mabnet1 And taqk < mabnet2) Or (mabnet1 > mabnet2 And (taqk >= mabnet1 Or taqk < mabnet2)) Then
+netshbame = "netaq1"
+ElseIf (mabnet2 < mabnet3 And taqk >= mabnet2 And taqk < mabnet3) Or (mabnet2 > mabnet3 And (taqk >= mabnet2 Or taqk < mabnet3)) Then
+netshbame = "netaq2"
+ElseIf (mabnet3 < mabnet4 And taqk >= mabnet3 And taqk < mabnet4) Or (mabnet3 > mabnet4 And (taqk >= mabnet3 Or taqk < mabnet4)) Then
+netshbame = "netaq3"
+ElseIf (mabnet4 < mabnet1 And taqk >= mabnet4 And taqk < mabnet1) Or (mabnet4 > mabnet1 And (taqk >= mabnet4 Or taqk < mabnet1)) Then
+netshbame = "netaq4"
+End If
+End Function
+Public Function netqmame(sal As Integer, mah As Integer, rooz As Double, mbtool As Double)
+Dim y As Double
+y = wasat(sal, mah, rooz, mbtool)
+Dim w As Double
+w = wasatq(sal, mah, rooz, mbtool)
+Dim baqy As Double
+If w - y > 0 Then
+baqy = w - y
+Else
+baqy = w + 360 - y
+End If
+Dim oujqodama As Double
+If y - baqy > 0 Then
+oujqodama = y - baqy
+Else
+oujqodama = y + 360 - baqy
+End If
+Dim markazmotlaq As Double
+If w + oujqodama < 360 Then
+markazmotlaq = w + oujqodama
+Else
+markazmotlaq = w + oujqodama - 360
+End If
+Dim mabmarkaz As Double
+mabmarkaz = (((3 / 60) + 54) / 60) + 9
+Dim mabnet1 As Double
+mabnet1 = oujq(sal, mah, rooz, mbtool)
+Dim mabnet2 As Double
+If mabnet1 + mabmarkaz + 90 < 360 Then
+mabnet2 = mabnet1 + mabmarkaz + 90
+Else
+mabnet2 = mabnet1 + mabmarkaz + 90 - 360
+End If
+Dim mabnet3 As Double
+If mabnet1 + 180 < 360 Then
+mabnet3 = mabnet1 + 180
+Else
+mabnet3 = mabnet1 + 180 - 360
+End If
+Dim mabnet4 As Double
+If mabnet3 + (90 - mabmarkaz) < 360 Then
+mabnet4 = mabnet3 + (90 - mabmarkaz)
+Else
+mabnet4 = mabnet3 + (90 - mabmarkaz) - 360
+End If
+If (mabnet1 < mabnet2 And markazmotlaq >= mabnet1 And markazmotlaq < mabnet2) Or (mabnet1 > mabnet2 And (markazmotlaq >= mabnet1 Or markazmotlaq < mabnet2)) Then
+netqmame = "netaq1"
+ElseIf (mabnet2 < mabnet3 And markazmotlaq >= mabnet2 And markazmotlaq < mabnet3) Or (mabnet2 > mabnet3 And (markazmotlaq >= mabnet2 Or markazmotlaq < mabnet3)) Then
+netqmame = "netaq2"
+ElseIf (mabnet3 < mabnet4 And markazmotlaq >= mabnet3 And markazmotlaq < mabnet4) Or (mabnet3 > mabnet4 And (markazmotlaq >= mabnet3 Or markazmotlaq < mabnet4)) Then
+netqmame = "netaq3"
+ElseIf (mabnet4 < mabnet1 And markazmotlaq >= mabnet4 And markazmotlaq < mabnet1) Or (mabnet4 > mabnet1 And (markazmotlaq >= mabnet4 Or markazmotlaq < mabnet1)) Then
+netqmame = "netaq4"
+End If
+End Function
+Public Function netqbame(sal As Integer, mah As Integer, rooz As Double, mbtool As Double, taqk As Double)
+Dim mabmarkaz As Double
+mabmarkaz = (((32 / 60) + 55) / 60) + 1
+Dim x As Double
+x = mabmarkaz / 2
+Dim mabnet1 As Double
+mabnet1 = oujq(sal, mah, rooz, mbtool)
+Dim mabnet2 As Double
+If mabnet1 + x + 90 < 360 Then
+mabnet2 = mabnet1 + x + 90
+Else
+mabnet2 = mabnet1 + x + 90 - 360
+End If
+Dim mabnet3 As Double
+If mabnet1 + 180 < 360 Then
+mabnet3 = mabnet1 + 180
+Else
+mabnet3 = mabnet1 + 180 - 360
+End If
+Dim mabnet4 As Double
+If mabnet3 + (90 - x) < 360 Then
+mabnet4 = mabnet3 + (90 - x)
+Else
+mabnet4 = mabnet3 + (90 - x) - 360
+End If
+If (mabnet1 < mabnet2 And taqk >= mabnet1 And taqk < mabnet2) Or (mabnet1 > mabnet2 And (taqk >= mabnet1 Or taqk < mabnet2)) Then
+netqbame = "netaq1"
+ElseIf (mabnet2 < mabnet3 And taqk >= mabnet2 And taqk < mabnet3) Or (mabnet2 > mabnet3 And (taqk >= mabnet2 Or taqk < mabnet3)) Then
+netqbame = "netaq2"
+ElseIf (mabnet3 < mabnet4 And taqk >= mabnet3 And taqk < mabnet4) Or (mabnet3 > mabnet4 And (taqk >= mabnet3 Or taqk < mabnet4)) Then
+netqbame = "netaq3"
+ElseIf (mabnet4 < mabnet1 And taqk >= mabnet4 And taqk < mabnet1) Or (mabnet4 > mabnet1 And (taqk >= mabnet4 Or taqk < mabnet1)) Then
+netqbame = "netaq4"
+End If
+
+End Function
+Public Function netotmabame(sal As Integer, mah As Integer, rooz As Double, mbtool As Double)
+Dim p As Double
+p = oujsh(sal, mah, rooz, mbtool)
+Dim t As Double
+t = (((36 / 60) + 44) / 60) + 119
+Dim oujmodiry As Double
+If p + t < 360 Then
+oujmodiry = p + t
+Else
+oujmodiry = p + t - 360
+End If
+Dim r As Double
+r = (((14 / 60) + 3) / 60) + 2
+Dim s As Double
+s = wasat(sal, mah, rooz, mbtool)
+Dim wasatota As Double
+If s - r > 0 Then
+wasatota = s - r
+Else
+wasatota = s - r + 360
+End If
+Dim baqy As Double
+If wasatota - oujmodiry > 0 Then
+baqy = wasatota - oujmodiry
+Else
+baqy = wasatota - oujmodiry + 360
+End If
+Dim oujhamely As Double
+If oujmodiry - baqy > 0 Then
+oujhamely = oujmodiry - baqy
+Else
+oujhamely = oujmodiry - baqy + 360
+End If
+Dim markazmotlaq As Double
+If wasatota - oujhamely > 0 Then
+markazmotlaq = wasatota - oujhamely
+Else
+markazmotlaq = wasatota - oujhamely + 360
+End If
+Dim mabmarkaz As Double
+mabmarkaz = (((38 / 60) + 37) / 60) + 8
+Dim mabnet1 As Double
+mabnet1 = oujott(sal, mah, rooz, mbtool)
+Dim mabnet2 As Double
+If mabnet1 + mabmarkaz + 90 < 360 Then
+mabnet2 = mabnet1 + mabmarkaz + 90
+Else
+mabnet2 = mabnet1 + mabmarkaz + 90 - 360
+End If
+Dim mabnet3 As Double
+If mabnet1 + 180 < 360 Then
+mabnet3 = mabnet1 + 180
+Else
+mabnet3 = mabnet1 + 180 - 360
+End If
+Dim mabnet4 As Double
+If mabnet3 + (90 - mabmarkaz) < 360 Then
+mabnet4 = mabnet3 + (90 - mabmarkaz)
+Else
+mabnet4 = mabnet3 + (90 - mabmarkaz) - 360
+End If
+If (mabnet1 < mabnet2 And markazmotlaq >= mabnet1 And markazmotlaq < mabnet2) Or (mabnet1 > mabnet2 And (markazmotlaq >= mabnet1 Or markazmotlaq < mabnet2)) Then
+netotmabame = "netaq1"
+ElseIf (mabnet2 < mabnet3 And markazmotlaq >= mabnet2 And markazmotlaq < mabnet3) Or (mabnet2 > mabnet3 And (markazmotlaq >= mabnet2 Or markazmotlaq < mabnet3)) Then
+netotmabame = "netaq2"
+ElseIf (mabnet3 < mabnet4 And markazmotlaq >= mabnet3 And markazmotlaq < mabnet4) Or (mabnet3 > mabnet4 And (markazmotlaq >= mabnet3 Or markazmotlaq < mabnet4)) Then
+netotmabame = "netaq3"
+ElseIf (mabnet4 < mabnet1 And markazmotlaq >= mabnet4 And markazmotlaq < mabnet1) Or (mabnet4 > mabnet1 And (markazmotlaq >= mabnet4 Or markazmotlaq < mabnet1)) Then
+netotmabame = "netaq4"
+End If
+End Function
+Public Function netotbabame(sal As Integer, mah As Integer, rooz As Double, mbtool As Double, taqk As Double)
+Dim mabmarkaz As Double
+mabmarkaz = (((38 / 60) + 37) / 60) + 8
+Dim x As Double
+x = mabmarkaz / 2
+mabnet1 = oujott(sal, mah, rooz, mbtool)
+Dim mabnet2 As Double
+If mabnet1 + x + 90 < 360 Then
+mabnet2 = mabnet1 + x + 90
+Else
+mabnet2 = mabnet1 + x + 90 - 360
+End If
+Dim mabnet3 As Double
+If mabnet1 + 180 < 360 Then
+mabnet3 = mabnet1 + 180
+Else
+mabnet3 = mabnet1 + 180 - 360
+End If
+Dim mabnet4 As Double
+If mabnet3 + (90 - x) < 360 Then
+mabnet4 = mabnet3 + (90 - x)
+Else
+mabnet4 = mabnet3 + (90 - x) - 360
+End If
+If (mabnet1 < mabnet2 And taqk >= mabnet1 And taqk < mabnet2) Or (mabnet1 > mabnet2 And (taqk >= mabnet1 Or taqk < mabnet2)) Then
+netotbabame = "netaq1"
+ElseIf (mabnet2 < mabnet3 And taqk >= mabnet2 And taqk < mabnet3) Or (mabnet2 > mabnet3 And (taqk >= mabnet2 Or taqk < mabnet3)) Then
+netotbabame = "netaq2"
+ElseIf (mabnet3 < mabnet4 And taqk >= mabnet3 And taqk < mabnet4) Or (mabnet3 > mabnet4 And (taqk >= mabnet3 Or taqk < mabnet4)) Then
+netotbabame = "netaq3"
+ElseIf (mabnet4 < mabnet1 And taqk >= mabnet4 And taqk < mabnet1) Or (mabnet4 > mabnet1 And (taqk >= mabnet4 Or taqk < mabnet1)) Then
+netotbabame = "netaq4"
+End If
+
+End Function
+Public Function netotmosame(sal As Integer, mah As Integer, rooz As Double, mbtool As Double, taqk As Double)
+Dim mabmarkaz As Double
+mabmarkaz = (((20 / 60) + 44) / 60) + 5
+mabnet1 = oujott(sal, mah, rooz, mbtool)
+Dim mabnet2 As Double
+If mabnet1 + mabmarkaz + 90 < 360 Then
+mabnet2 = mabnet1 + mabmarkaz + 90
+Else
+mabnet2 = mabnet1 + mabmarkaz + 90 - 360
+End If
+Dim mabnet3 As Double
+If mabnet1 + 180 < 360 Then
+mabnet3 = mabnet1 + 180
+Else
+mabnet3 = mabnet1 + 180 - 360
+End If
+Dim mabnet4 As Double
+If mabnet3 + (90 - mabmarkaz) < 360 Then
+mabnet4 = mabnet3 + (90 - mabmarkaz)
+Else
+mabnet4 = mabnet3 + (90 - mabmarkaz) - 360
+End If
+If (mabnet1 < mabnet2 And taqk >= mabnet1 And taqk < mabnet2) Or (mabnet1 > mabnet2 And (taqk >= mabnet1 Or taqk < mabnet2)) Then
+netotmosame = "netaq1"
+ElseIf (mabnet2 < mabnet3 And taqk >= mabnet2 And taqk < mabnet3) Or (mabnet2 > mabnet3 And (taqk >= mabnet2 Or taqk < mabnet3)) Then
+netotmosame = "netaq2"
+ElseIf (mabnet3 < mabnet4 And taqk >= mabnet3 And taqk < mabnet4) Or (mabnet3 > mabnet4 And (taqk >= mabnet3 Or taqk < mabnet4)) Then
+netotmosame = "netaq3"
+ElseIf (mabnet4 < mabnet1 And taqk >= mabnet4 And taqk < mabnet1) Or (mabnet4 > mabnet1 And (taqk >= mabnet4 Or taqk < mabnet1)) Then
+netotmosame = "netaq4"
+End If
+
+
+End Function
+Public Function netotbosame(sal As Integer, mah As Integer, rooz As Double, mbtool As Double, taqk As Double)
+Dim mabmarkaz As Double
+mabmarkaz = (((20 / 60) + 44) / 60) + 5
+Dim x As Double
+x = mabmarkaz / 2
+mabnet1 = oujott(sal, mah, rooz, mbtool)
+Dim mabnet2 As Double
+If mabnet1 + x + 90 < 360 Then
+mabnet2 = mabnet1 + x + 90
+Else
+mabnet2 = mabnet1 + x + 90 - 360
+End If
+Dim mabnet3 As Double
+If mabnet1 + 180 < 360 Then
+mabnet3 = mabnet1 + 180
+Else
+mabnet3 = mabnet1 + 180 - 360
+End If
+Dim mabnet4 As Double
+If mabnet3 + (90 - x) < 360 Then
+mabnet4 = mabnet3 + (90 - x)
+Else
+mabnet4 = mabnet3 + (90 - x) - 360
+End If
+If (mabnet1 < mabnet2 And taqk >= mabnet1 And taqk < mabnet2) Or (mabnet1 > mabnet2 And (taqk >= mabnet1 Or taqk < mabnet2)) Then
+netotbosame = "netaq1"
+ElseIf (mabnet2 < mabnet3 And taqk >= mabnet2 And taqk < mabnet3) Or (mabnet2 > mabnet3 And (taqk >= mabnet2 Or taqk < mabnet3)) Then
+netotbosame = "netaq2"
+ElseIf (mabnet3 < mabnet4 And taqk >= mabnet3 And taqk < mabnet4) Or (mabnet3 > mabnet4 And (taqk >= mabnet3 Or taqk < mabnet4)) Then
+netotbosame = "netaq3"
+ElseIf (mabnet4 < mabnet1 And taqk >= mabnet4 And taqk < mabnet1) Or (mabnet4 > mabnet1 And (taqk >= mabnet4 Or taqk < mabnet1)) Then
+netotbosame = "netaq4"
+End If
+
+End Function
+Public Function netotmaqame(sal As Integer, mah As Integer, rooz As Double, mbtool As Double, taqk As Double)
+Dim mabmarkaz As Double
+mabmarkaz = (((58 / 60) + 51) / 60) + 2
+mabnet1 = oujott(sal, mah, rooz, mbtool)
+Dim mabnet2 As Double
+If mabnet1 + mabmarkaz + 90 < 360 Then
+mabnet2 = mabnet1 + mabmarkaz + 90
+Else
+mabnet2 = mabnet1 + mabmarkaz + 90 - 360
+End If
+Dim mabnet3 As Double
+If mabnet1 + 180 < 360 Then
+mabnet3 = mabnet1 + 180
+Else
+mabnet3 = mabnet1 + 180 - 360
+End If
+Dim mabnet4 As Double
+If mabnet3 + (90 - mabmarkaz) < 360 Then
+mabnet4 = mabnet3 + (90 - mabmarkaz)
+Else
+mabnet4 = mabnet3 + (90 - mabmarkaz) - 360
+End If
+If (mabnet1 < mabnet2 And taqk >= mabnet1 And taqk < mabnet2) Or (mabnet1 > mabnet2 And (taqk >= mabnet1 Or taqk < mabnet2)) Then
+netotmaqame = "netaq1"
+ElseIf (mabnet2 < mabnet3 And taqk >= mabnet2 And taqk < mabnet3) Or (mabnet2 > mabnet3 And (taqk >= mabnet2 Or taqk < mabnet3)) Then
+netotmaqame = "netaq2"
+ElseIf (mabnet3 < mabnet4 And taqk >= mabnet3 And taqk < mabnet4) Or (mabnet3 > mabnet4 And (taqk >= mabnet3 Or taqk < mabnet4)) Then
+netotmaqame = "netaq3"
+ElseIf (mabnet4 < mabnet1 And taqk >= mabnet4 And taqk < mabnet1) Or (mabnet4 > mabnet1 And (taqk >= mabnet4 Or taqk < mabnet1)) Then
+netotmaqame = "netaq4"
+End If
+
+End Function
+Public Function netotbaqame(sal As Integer, mah As Integer, rooz As Double, mbtool As Double, taqk As Double)
+Dim mabmarkaz As Double
+mabmarkaz = (((58 / 60) + 51) / 60) + 2
+Dim x As Double
+x = mabmarkaz / 2
+mabnet1 = oujott(sal, mah, rooz, mbtool)
+Dim mabnet2 As Double
+If mabnet1 + x + 90 < 360 Then
+mabnet2 = mabnet1 + x + 90
+Else
+mabnet2 = mabnet1 + x + 90 - 360
+End If
+Dim mabnet3 As Double
+If mabnet1 + 180 < 360 Then
+mabnet3 = mabnet1 + 180
+Else
+mabnet3 = mabnet1 + 180 - 360
+End If
+Dim mabnet4 As Double
+If mabnet3 + (90 - x) < 360 Then
+mabnet4 = mabnet3 + (90 - x)
+Else
+mabnet4 = mabnet3 + (90 - x) - 360
+End If
+If (mabnet1 < mabnet2 And taqk >= mabnet1 And taqk < mabnet2) Or (mabnet1 > mabnet2 And (taqk >= mabnet1 Or taqk < mabnet2)) Then
+netotbaqame = "netaq1"
+ElseIf (mabnet2 < mabnet3 And taqk >= mabnet2 And taqk < mabnet3) Or (mabnet2 > mabnet3 And (taqk >= mabnet2 Or taqk < mabnet3)) Then
+netotbaqame = "netaq2"
+ElseIf (mabnet3 < mabnet4 And taqk >= mabnet3 And taqk < mabnet4) Or (mabnet3 > mabnet4 And (taqk >= mabnet3 Or taqk < mabnet4)) Then
+netotbaqame = "netaq3"
+ElseIf (mabnet4 < mabnet1 And taqk >= mabnet4 And taqk < mabnet1) Or (mabnet4 > mabnet1 And (taqk >= mabnet4 Or taqk < mabnet1)) Then
+netotbaqame = "netaq4"
+End If
+
+End Function
+Public Function netzormame(sal As Integer, mah As Integer, rooz As Double, mbtool As Double)
+Dim z As Double
+z = wasat(sal, mah, rooz, mbtool)
+Dim b As Double
+b = (((37 / 60) + 18) / 60) + 12
+Dim markazmotlaq As Double
+If z + b < 360 Then
+markazmotlaq = z + b
+Else
+markazmotlaq = z + b - 360
+End If
+Dim mabmarkaz As Double
+mabmarkaz = (((20 / 60) + 57) / 60) + 0
+mabnet1 = oujzh(sal, mah, rooz, mbtool)
+Dim mabnet2 As Double
+If mabnet1 + mabmarkaz + 90 < 360 Then
+mabnet2 = mabnet1 + mabmarkaz + 90
+Else
+mabnet2 = mabnet1 + mabmarkaz + 90 - 360
+End If
+Dim mabnet3 As Double
+If mabnet1 + 180 < 360 Then
+mabnet3 = mabnet1 + 180
+Else
+mabnet3 = mabnet1 + 180 - 360
+End If
+Dim mabnet4 As Double
+If mabnet3 + (90 - mabmarkaz) < 360 Then
+mabnet4 = mabnet3 + (90 - mabmarkaz)
+Else
+mabnet4 = mabnet3 + (90 - mabmarkaz) - 360
+End If
+If (mabnet1 < mabnet2 And markazmotlaq >= mabnet1 And markazmotlaq < mabnet2) Or (mabnet1 > mabnet2 And (markazmotlaq >= mabnet1 Or markazmotlaq < mabnet2)) Then
+netzormame = "netaq1"
+ElseIf (mabnet2 < mabnet3 And markazmotlaq >= mabnet2 And markazmotlaq < mabnet3) Or (mabnet2 > mabnet3 And (markazmotlaq >= mabnet2 Or markazmotlaq < mabnet3)) Then
+netzormame = "netaq2"
+ElseIf (mabnet3 < mabnet4 And markazmotlaq >= mabnet3 And markazmotlaq < mabnet4) Or (mabnet3 > mabnet4 And (markazmotlaq >= mabnet3 Or markazmotlaq < mabnet4)) Then
+netzormame = "netaq3"
+ElseIf (mabnet4 < mabnet1 And markazmotlaq >= mabnet4 And markazmotlaq < mabnet1) Or (mabnet4 > mabnet1 And (markazmotlaq >= mabnet4 Or markazmotlaq < mabnet1)) Then
+netzormame = "netaq4"
+End If
+End Function
+Public Function netzorbame(sal As Integer, mah As Integer, rooz As Double, mbtool As Double, taqk As Double)
+Dim mabmarkaz As Double
+mabmarkaz = (((20 / 60) + 57) / 60) + 0
+Dim x As Double
+x = mabmarkaz / 2
+mabnet1 = oujzh(sal, mah, rooz, mbtool)
+Dim mabnet2 As Double
+If mabnet1 + x + 90 < 360 Then
+mabnet2 = mabnet1 + x + 90
+Else
+mabnet2 = mabnet1 + x + 90 - 360
+End If
+Dim mabnet3 As Double
+If mabnet1 + 180 < 360 Then
+mabnet3 = mabnet1 + 180
+Else
+mabnet3 = mabnet1 + 180 - 360
+End If
+Dim mabnet4 As Double
+If mabnet3 + (90 - x) < 360 Then
+mabnet4 = mabnet3 + (90 - x)
+Else
+mabnet4 = mabnet3 + (90 - x) - 360
+End If
+If (mabnet1 < mabnet2 And taqk >= mabnet1 And taqk < mabnet2) Or (mabnet1 > mabnet2 And (taqk >= mabnet1 Or taqk < mabnet2)) Then
+netzorbame = "netaq1"
+ElseIf (mabnet2 < mabnet3 And taqk >= mabnet2 And taqk < mabnet3) Or (mabnet2 > mabnet3 And (taqk >= mabnet2 Or taqk < mabnet3)) Then
+netzorbame = "netaq2"
+ElseIf (mabnet3 < mabnet4 And taqk >= mabnet3 And taqk < mabnet4) Or (mabnet3 > mabnet4 And (taqk >= mabnet3 Or taqk < mabnet4)) Then
+netzorbame = "netaq3"
+ElseIf (mabnet4 < mabnet1 And taqk >= mabnet4 And taqk < mabnet1) Or (mabnet4 > mabnet1 And (taqk >= mabnet4 Or taqk < mabnet1)) Then
+netzorbame = "netaq4"
+End If
+
+End Function
+Public Function netmermame(sal As Integer, mah As Integer, rooz As Double, mbtool As Double)
+Dim a As Double
+a = wasatmer(sal, mah, rooz, mbtool)
+Dim f As Double
+f = oujmer(sal, mah, rooz, mbtool)
+Dim markazmotlaq As Double
+If a - f > 0 Then
+markazmotlaq = a - f
+Else
+markazmotlaq = a + 360 - f
+End If
+Dim mabmarkaz As Double
+mabmarkaz = (((21 / 60) + 44) / 60) + 5
+mabnet1 = oujmer(sal, mah, rooz, mbtool)
+Dim mabnet2 As Double
+If mabnet1 + mabmarkaz + 90 < 360 Then
+mabnet2 = mabnet1 + mabmarkaz + 90
+Else
+mabnet2 = mabnet1 + mabmarkaz + 90 - 360
+End If
+Dim mabnet3 As Double
+If mabnet1 + 180 < 360 Then
+mabnet3 = mabnet1 + 180
+Else
+mabnet3 = mabnet1 + 180 - 360
+End If
+Dim mabnet4 As Double
+If mabnet3 + (90 - mabmarkaz) < 360 Then
+mabnet4 = mabnet3 + (90 - mabmarkaz)
+Else
+mabnet4 = mabnet3 + (90 - mabmarkaz) - 360
+End If
+If (mabnet1 < mabnet2 And markazmotlaq >= mabnet1 And markazmotlaq < mabnet2) Or (mabnet1 > mabnet2 And (markazmotlaq >= mabnet1 Or markazmotlaq < mabnet2)) Then
+netmermame = "netaq1"
+ElseIf (mabnet2 < mabnet3 And markazmotlaq >= mabnet2 And markazmotlaq < mabnet3) Or (mabnet2 > mabnet3 And (markazmotlaq >= mabnet2 Or markazmotlaq < mabnet3)) Then
+netmermame = "netaq2"
+ElseIf (mabnet3 < mabnet4 And markazmotlaq >= mabnet3 And markazmotlaq < mabnet4) Or (mabnet3 > mabnet4 And (markazmotlaq >= mabnet3 Or markazmotlaq < mabnet4)) Then
+netmermame = "netaq3"
+ElseIf (mabnet4 < mabnet1 And markazmotlaq >= mabnet4 And markazmotlaq < mabnet1) Or (mabnet4 > mabnet1 And (markazmotlaq >= mabnet4 Or markazmotlaq < mabnet1)) Then
+netmermame = "netaq4"
+End If
+
+End Function
+Public Function netmerbame(sal As Integer, mah As Integer, rooz As Double, mbtool As Double, taqk As Double)
+Dim mabmarkaz As Double
+mabmarkaz = (((21 / 60) + 44) / 60) + 5
+Dim x As Double
+x = mabmarkaz / 2
+mabnet1 = oujmer(sal, mah, rooz, mbtool)
+Dim mabnet2 As Double
+If mabnet1 + x + 90 < 360 Then
+mabnet2 = mabnet1 + x + 90
+Else
+mabnet2 = mabnet1 + x + 90 - 360
+End If
+Dim mabnet3 As Double
+If mabnet1 + 180 < 360 Then
+mabnet3 = mabnet1 + 180
+Else
+mabnet3 = mabnet1 + 180 - 360
+End If
+Dim mabnet4 As Double
+If mabnet3 + (90 - x) < 360 Then
+mabnet4 = mabnet3 + (90 - x)
+Else
+mabnet4 = mabnet3 + (90 - x) - 360
+End If
+If (mabnet1 < mabnet2 And taqk >= mabnet1 And taqk < mabnet2) Or (mabnet1 > mabnet2 And (taqk >= mabnet1 Or taqk < mabnet2)) Then
+netmerbame = "netaq1"
+ElseIf (mabnet2 < mabnet3 And taqk >= mabnet2 And taqk < mabnet3) Or (mabnet2 > mabnet3 And (taqk >= mabnet2 Or taqk < mabnet3)) Then
+netmerbame = "netaq2"
+ElseIf (mabnet3 < mabnet4 And taqk >= mabnet3 And taqk < mabnet4) Or (mabnet3 > mabnet4 And (taqk >= mabnet3 Or taqk < mabnet4)) Then
+netmerbame = "netaq3"
+ElseIf (mabnet4 < mabnet1 And taqk >= mabnet4 And taqk < mabnet1) Or (mabnet4 > mabnet1 And (taqk >= mabnet4 Or taqk < mabnet1)) Then
+netmerbame = "netaq4"
+End If
+
+End Function
+Public Function netmoshmame(sal As Integer, mah As Integer, rooz As Double, mbtool As Double)
+Dim a As Double
+a = wasatmosh(sal, mah, rooz, mbtool)
+Dim f As Double
+f = oujmosh(sal, mah, rooz, mbtool)
+Dim markazmotlaq As Double
+If a - f > 0 Then
+markazmotlaq = a - f
+Else
+markazmotlaq = a + 360 - f
+End If
+Dim mabmarkaz As Double
+mabmarkaz = (((48 / 60) + 33) / 60) + 2
+mabnet1 = oujmosh(sal, mah, rooz, mbtool)
+Dim mabnet2 As Double
+If mabnet1 + mabmarkaz + 90 < 360 Then
+mabnet2 = mabnet1 + mabmarkaz + 90
+Else
+mabnet2 = mabnet1 + mabmarkaz + 90 - 360
+End If
+Dim mabnet3 As Double
+If mabnet1 + 180 < 360 Then
+mabnet3 = mabnet1 + 180
+Else
+mabnet3 = mabnet1 + 180 - 360
+End If
+Dim mabnet4 As Double
+If mabnet3 + (90 - mabmarkaz) < 360 Then
+mabnet4 = mabnet3 + (90 - mabmarkaz)
+Else
+mabnet4 = mabnet3 + (90 - mabmarkaz) - 360
+End If
+If (mabnet1 < mabnet2 And markazmotlaq >= mabnet1 And markazmotlaq < mabnet2) Or (mabnet1 > mabnet2 And (markazmotlaq >= mabnet1 Or markazmotlaq < mabnet2)) Then
+netmoshmame = "netaq1"
+ElseIf (mabnet2 < mabnet3 And markazmotlaq >= mabnet2 And markazmotlaq < mabnet3) Or (mabnet2 > mabnet3 And (markazmotlaq >= mabnet2 Or markazmotlaq < mabnet3)) Then
+netmoshmame = "netaq2"
+ElseIf (mabnet3 < mabnet4 And markazmotlaq >= mabnet3 And markazmotlaq < mabnet4) Or (mabnet3 > mabnet4 And (markazmotlaq >= mabnet3 Or markazmotlaq < mabnet4)) Then
+netmoshmame = "netaq3"
+ElseIf (mabnet4 < mabnet1 And markazmotlaq >= mabnet4 And markazmotlaq < mabnet1) Or (mabnet4 > mabnet1 And (markazmotlaq >= mabnet4 Or markazmotlaq < mabnet1)) Then
+netmoshmame = "netaq4"
+End If
+
+End Function
+Public Function netmoshbame(sal As Integer, mah As Integer, rooz As Double, mbtool As Double, taqk As Double)
+Dim mabmarkaz As Double
+mabmarkaz = (((48 / 60) + 33) / 60) + 2
+Dim x As Double
+x = mabmarkaz / 2
+mabnet1 = oujmosh(sal, mah, rooz, mbtool)
+Dim mabnet2 As Double
+If mabnet1 + x + 90 < 360 Then
+mabnet2 = mabnet1 + x + 90
+Else
+mabnet2 = mabnet1 + x + 90 - 360
+End If
+Dim mabnet3 As Double
+If mabnet1 + 180 < 360 Then
+mabnet3 = mabnet1 + 180
+Else
+mabnet3 = mabnet1 + 180 - 360
+End If
+Dim mabnet4 As Double
+If mabnet3 + (90 - x) < 360 Then
+mabnet4 = mabnet3 + (90 - x)
+Else
+mabnet4 = mabnet3 + (90 - x) - 360
+End If
+If (mabnet1 < mabnet2 And taqk >= mabnet1 And taqk < mabnet2) Or (mabnet1 > mabnet2 And (taqk >= mabnet1 Or taqk < mabnet2)) Then
+netmoshbame = "netaq1"
+ElseIf (mabnet2 < mabnet3 And taqk >= mabnet2 And taqk < mabnet3) Or (mabnet2 > mabnet3 And (taqk >= mabnet2 Or taqk < mabnet3)) Then
+netmoshbame = "netaq2"
+ElseIf (mabnet3 < mabnet4 And taqk >= mabnet3 And taqk < mabnet4) Or (mabnet3 > mabnet4 And (taqk >= mabnet3 Or taqk < mabnet4)) Then
+netmoshbame = "netaq3"
+ElseIf (mabnet4 < mabnet1 And taqk >= mabnet4 And taqk < mabnet1) Or (mabnet4 > mabnet1 And (taqk >= mabnet4 Or taqk < mabnet1)) Then
+netmoshbame = "netaq4"
+End If
+
+End Function
+Public Function netzohmame(sal As Integer, mah As Integer, rooz As Double, mbtool As Double)
+Dim a As Double
+a = wasatzo(sal, mah, rooz, mbtool)
+Dim f As Double
+f = oujzo(sal, mah, rooz, mbtool)
+Dim markazmotlaq As Double
+If a - f > 0 Then
+markazmotlaq = a - f
+Else
+markazmotlaq = a + 360 - f
+End If
+Dim mabmarkaz As Double
+mabmarkaz = (((41 / 60) + 19) / 60) + 3
+mabnet1 = oujzo(sal, mah, rooz, mbtool)
+Dim mabnet2 As Double
+If mabnet1 + mabmarkaz + 90 < 360 Then
+mabnet2 = mabnet1 + mabmarkaz + 90
+Else
+mabnet2 = mabnet1 + mabmarkaz + 90 - 360
+End If
+Dim mabnet3 As Double
+If mabnet1 + 180 < 360 Then
+mabnet3 = mabnet1 + 180
+Else
+mabnet3 = mabnet1 + 180 - 360
+End If
+Dim mabnet4 As Double
+If mabnet3 + (90 - mabmarkaz) < 360 Then
+mabnet4 = mabnet3 + (90 - mabmarkaz)
+Else
+mabnet4 = mabnet3 + (90 - mabmarkaz) - 360
+End If
+If (mabnet1 < mabnet2 And markazmotlaq >= mabnet1 And markazmotlaq < mabnet2) Or (mabnet1 > mabnet2 And (markazmotlaq >= mabnet1 Or markazmotlaq < mabnet2)) Then
+netzohmame = "netaq1"
+ElseIf (mabnet2 < mabnet3 And markazmotlaq >= mabnet2 And markazmotlaq < mabnet3) Or (mabnet2 > mabnet3 And (markazmotlaq >= mabnet2 Or markazmotlaq < mabnet3)) Then
+netzohmame = "netaq2"
+ElseIf (mabnet3 < mabnet4 And markazmotlaq >= mabnet3 And markazmotlaq < mabnet4) Or (mabnet3 > mabnet4 And (markazmotlaq >= mabnet3 Or markazmotlaq < mabnet4)) Then
+netzohmame = "netaq3"
+ElseIf (mabnet4 < mabnet1 And markazmotlaq >= mabnet4 And markazmotlaq < mabnet1) Or (mabnet4 > mabnet1 And (markazmotlaq >= mabnet4 Or markazmotlaq < mabnet1)) Then
+netzohmame = "netaq4"
+End If
+
+End Function
+Public Function netzohbame(sal As Integer, mah As Integer, rooz As Double, mbtool As Double, taqk As Double)
+Dim mabmarkaz As Double
+mabmarkaz = (((41 / 60) + 19) / 60) + 3
+Dim x As Double
+x = mabmarkaz / 2
+mabnet1 = oujzo(sal, mah, rooz, mbtool)
+Dim mabnet2 As Double
+If mabnet1 + x + 90 < 360 Then
+mabnet2 = mabnet1 + x + 90
+Else
+mabnet2 = mabnet1 + x + 90 - 360
+End If
+Dim mabnet3 As Double
+If mabnet1 + 180 < 360 Then
+mabnet3 = mabnet1 + 180
+Else
+mabnet3 = mabnet1 + 180 - 360
+End If
+Dim mabnet4 As Double
+If mabnet3 + (90 - x) < 360 Then
+mabnet4 = mabnet3 + (90 - x)
+Else
+mabnet4 = mabnet3 + (90 - x) - 360
+End If
+If (mabnet1 < mabnet2 And taqk >= mabnet1 And taqk < mabnet2) Or (mabnet1 > mabnet2 And (taqk >= mabnet1 Or taqk < mabnet2)) Then
+netzohbame = "netaq1"
+ElseIf (mabnet2 < mabnet3 And taqk >= mabnet2 And taqk < mabnet3) Or (mabnet2 > mabnet3 And (taqk >= mabnet2 Or taqk < mabnet3)) Then
+netzohbame = "netaq2"
+ElseIf (mabnet3 < mabnet4 And taqk >= mabnet3 And taqk < mabnet4) Or (mabnet3 > mabnet4 And (taqk >= mabnet3 Or taqk < mabnet4)) Then
+netzohbame = "netaq3"
+ElseIf (mabnet4 < mabnet1 And taqk >= mabnet4 And taqk < mabnet1) Or (mabnet4 > mabnet1 And (taqk >= mabnet4 Or taqk < mabnet1)) Then
+netzohbame = "netaq4"
+End If
+
+End Function
+Public Function nettqmabame(sal As Integer, mah As Integer, rooz As Double, mbtool As Double)
+Dim a As Double
+a = wasatq(sal, mah, rooz, mbtool)
+Dim b As Double
+b = oujq(sal, mah, rooz, mbtool)
+Dim markaz As Double
+If a > b Then
+markaz = a - b
+Else
+markaz = a + 360 - b
+End If
+Dim aslkhase As Double
+aslkhase = (((((56 / 60) + 7) / 60) + 22) / 60) + 353
+Dim khaseq As Double
+If markaz + aslkhase < 360 Then
+khaseq = markaz + aslkhase
+Else
+khaseq = markaz + aslkhase - 360
+End If
+Dim markazosat As Double
+markazosat = khaseq + taqm1(markaz)
+Dim mabnet2 As Double
+mabnet2 = (((34 / 60) + 15) / 60) + 94
+Dim mabnet4 As Double
+mabnet4 = mabnet2 + 180
+Dim mabnet3 As Double
+mabnet3 = (mabnet2 + mabnet4) / 2
+Dim mabnet1 As Double
+mabnet1 = mabnet3 - 180
+If (mabnet1 < mabnet2 And markazosat >= mabnet1 And markazosat < mabnet2) Or (mabnet1 > mabnet2 And (markazosat >= mabnet1 Or markazosat < mabnet2)) Then
+nettqmabame = "netaq1"
+ElseIf (mabnet2 < mabnet3 And markazosat >= mabnet2 And markazosat < mabnet3) Or (mabnet2 > mabnet3 And (markazosat >= mabnet2 Or markazosat < mabnet3)) Then
+nettqmabame = "netaq2"
+ElseIf (mabnet3 < mabnet4 And markazosat >= mabnet3 And markazosat < mabnet4) Or (mabnet3 > mabnet4 And (markazosat >= mabnet3 Or markazosat < mabnet4)) Then
+nettqmabame = "netaq3"
+ElseIf (mabnet4 < mabnet1 And markazosat >= mabnet4 And markazosat < mabnet1) Or (mabnet4 > mabnet1 And (markazosat >= mabnet4 Or markazosat < mabnet1)) Then
+nettqmabame = "netaq4"
+End If
+
+
+End Function
+Public Function nettqmosame(sal As Integer, mah As Integer, rooz As Double, mbtool As Double)
+Dim a As Double
+a = wasatq(sal, mah, rooz, mbtool)
+Dim b As Double
+b = oujq(sal, mah, rooz, mbtool)
+Dim markaz As Double
+If a > b Then
+markaz = a - b
+Else
+markaz = a + 360 - b
+End If
+Dim aslkhase As Double
+aslkhase = (((((56 / 60) + 7) / 60) + 22) / 60) + 353
+Dim khaseq As Double
+If markaz + aslkhase < 360 Then
+khaseq = markaz + aslkhase
+Else
+khaseq = markaz + aslkhase - 360
+End If
+Dim markazosat As Double
+markazosat = khaseq + taqm1(markaz)
+Dim mabnet2 As Double
+mabnet2 = (((37 / 60) + 59) / 60) + 94
+Dim mabnet4 As Double
+mabnet4 = mabnet2 + 180
+Dim mabnet3 As Double
+mabnet3 = (mabnet2 + mabnet4) / 2
+Dim mabnet1 As Double
+mabnet1 = mabnet3 - 180
+If (mabnet1 < mabnet2 And markazosat >= mabnet1 And markazosat < mabnet2) Or (mabnet1 > mabnet2 And (markazosat >= mabnet1 Or markazosat < mabnet2)) Then
+nettqmosame = "netaq1"
+ElseIf (mabnet2 < mabnet3 And markazosat >= mabnet2 And markazosat < mabnet3) Or (mabnet2 > mabnet3 And (markazosat >= mabnet2 Or markazosat < mabnet3)) Then
+nettqmosame = "netaq2"
+ElseIf (mabnet3 < mabnet4 And markazosat >= mabnet3 And markazosat < mabnet4) Or (mabnet3 > mabnet4 And (markazosat >= mabnet3 Or markazosat < mabnet4)) Then
+nettqmosame = "netaq3"
+ElseIf (mabnet4 < mabnet1 And markazosat >= mabnet4 And markazosat < mabnet1) Or (mabnet4 > mabnet1 And (markazosat >= mabnet4 Or markazosat < mabnet1)) Then
+nettqmosame = "netaq4"
+End If
+End Function
+Public Function nettqmaqame(sal As Integer, mah As Integer, rooz As Double, mbtool As Double)
+Dim a As Double
+a = wasatq(sal, mah, rooz, mbtool)
+Dim b As Double
+b = oujq(sal, mah, rooz, mbtool)
+Dim markaz As Double
+If a > b Then
+markaz = a - b
+Else
+markaz = a + 360 - b
+End If
+Dim aslkhase As Double
+aslkhase = (((((56 / 60) + 7) / 60) + 22) / 60) + 353
+Dim khaseq As Double
+If markaz + aslkhase < 360 Then
+khaseq = markaz + aslkhase
+Else
+khaseq = markaz + aslkhase - 360
+End If
+Dim markazosat As Double
+markazosat = khaseq + taqm1(markaz)
+Dim mabnet2 As Double
+mabnet2 = (((1 / 60) + 2) / 60) + 96
+Dim mabnet4 As Double
+mabnet4 = mabnet2 + 180
+Dim mabnet3 As Double
+mabnet3 = (mabnet2 + mabnet4) / 2
+Dim mabnet1 As Double
+mabnet1 = mabnet3 - 180
+If (mabnet1 < mabnet2 And markazosat >= mabnet1 And markazosat < mabnet2) Or (mabnet1 > mabnet2 And (markazosat >= mabnet1 Or markazosat < mabnet2)) Then
+nettqmaqame = "netaq1"
+ElseIf (mabnet2 < mabnet3 And markazosat >= mabnet2 And markazosat < mabnet3) Or (mabnet2 > mabnet3 And (markazosat >= mabnet2 Or markazosat < mabnet3)) Then
+nettqmaqame = "netaq2"
+ElseIf (mabnet3 < mabnet4 And markazosat >= mabnet3 And markazosat < mabnet4) Or (mabnet3 > mabnet4 And (markazosat >= mabnet3 Or markazosat < mabnet4)) Then
+nettqmaqame = "netaq3"
+ElseIf (mabnet4 < mabnet1 And markazosat >= mabnet4 And markazosat < mabnet1) Or (mabnet4 > mabnet1 And (markazosat >= mabnet4 Or markazosat < mabnet1)) Then
+nettqmaqame = "netaq4"
+End If
+End Function
+Public Function nettqbabame(sal As Integer, mah As Integer, rooz As Double, mbtool As Double)
+Dim a As Double
+a = wasatq(sal, mah, rooz, mbtool)
+Dim b As Double
+b = oujq(sal, mah, rooz, mbtool)
+Dim markaz As Double
+If a > b Then
+markaz = a - b
+Else
+markaz = a + 360 - b
+End If
+Dim aslkhase As Double
+aslkhase = (((((56 / 60) + 7) / 60) + 22) / 60) + 353
+Dim khaseq As Double
+If markaz + aslkhase < 360 Then
+khaseq = markaz + aslkhase
+Else
+khaseq = markaz + aslkhase - 360
+End If
+Dim markazosat As Double
+markazosat = khaseq + taqm1(markaz)
+Dim d As Double
+d = (((34 / 60) + 15) / 60) + 94
+Dim mabnet2 As Double
+mabnet2 = ((d - 90) / 2) + 90
+Dim mabnet4 As Double
+mabnet4 = 360 - mabnet2
+Dim mabnet3 As Double
+mabnet3 = (mabnet2 + mabnet4) / 2
+Dim mabnet1 As Double
+mabnet1 = mabnet3 - 180
+If (mabnet1 < mabnet2 And markazosat >= mabnet1 And markazosat < mabnet2) Or (mabnet1 > mabnet2 And (markazosat >= mabnet1 Or markazosat < mabnet2)) Then
+nettqbabame = "netaq1"
+ElseIf (mabnet2 < mabnet3 And markazosat >= mabnet2 And markazosat < mabnet3) Or (mabnet2 > mabnet3 And (markazosat >= mabnet2 Or markazosat < mabnet3)) Then
+nettqbabame = "netaq2"
+ElseIf (mabnet3 < mabnet4 And markazosat >= mabnet3 And markazosat < mabnet4) Or (mabnet3 > mabnet4 And (markazosat >= mabnet3 Or markazosat < mabnet4)) Then
+nettqbabame = "netaq3"
+ElseIf (mabnet4 < mabnet1 And markazosat >= mabnet4 And markazosat < mabnet1) Or (mabnet4 > mabnet1 And (markazosat >= mabnet4 Or markazosat < mabnet1)) Then
+nettqbabame = "netaq4"
+End If
+End Function
+Public Function nettqbosame(sal As Integer, mah As Integer, rooz As Double, mbtool As Double)
+Dim a As Double
+a = wasatq(sal, mah, rooz, mbtool)
+Dim b As Double
+b = oujq(sal, mah, rooz, mbtool)
+Dim markaz As Double
+If a > b Then
+markaz = a - b
+Else
+markaz = a + 360 - b
+End If
+Dim aslkhase As Double
+aslkhase = (((((56 / 60) + 7) / 60) + 22) / 60) + 353
+Dim khaseq As Double
+If markaz + aslkhase < 360 Then
+khaseq = markaz + aslkhase
+Else
+khaseq = markaz + aslkhase - 360
+End If
+Dim markazosat As Double
+markazosat = khaseq + taqm1(markaz)
+Dim d As Double
+d = (((37 / 60) + 59) / 60) + 94
+Dim mabnet2 As Double
+mabnet2 = ((d - 90) / 2) + 90
+Dim mabnet4 As Double
+mabnet4 = 360 - mabnet2
+Dim mabnet3 As Double
+mabnet3 = (mabnet2 + mabnet4) / 2
+Dim mabnet1 As Double
+mabnet1 = mabnet3 - 180
+If (mabnet1 < mabnet2 And markazosat >= mabnet1 And markazosat < mabnet2) Or (mabnet1 > mabnet2 And (markazosat >= mabnet1 Or markazosat < mabnet2)) Then
+nettqbosame = "netaq1"
+ElseIf (mabnet2 < mabnet3 And markazosat >= mabnet2 And markazosat < mabnet3) Or (mabnet2 > mabnet3 And (markazosat >= mabnet2 Or markazosat < mabnet3)) Then
+nettqbosame = "netaq2"
+ElseIf (mabnet3 < mabnet4 And markazosat >= mabnet3 And markazosat < mabnet4) Or (mabnet3 > mabnet4 And (markazosat >= mabnet3 Or markazosat < mabnet4)) Then
+nettqbosame = "netaq3"
+ElseIf (mabnet4 < mabnet1 And markazosat >= mabnet4 And markazosat < mabnet1) Or (mabnet4 > mabnet1 And (markazosat >= mabnet4 Or markazosat < mabnet1)) Then
+nettqbosame = "netaq4"
+End If
+
+End Function
+Public Function nettqbaqame(sal As Integer, mah As Integer, rooz As Double, mbtool As Double)
+Dim a As Double
+a = wasatq(sal, mah, rooz, mbtool)
+Dim b As Double
+b = oujq(sal, mah, rooz, mbtool)
+Dim markaz As Double
+If a > b Then
+markaz = a - b
+Else
+markaz = a + 360 - b
+End If
+Dim aslkhase As Double
+aslkhase = (((((56 / 60) + 7) / 60) + 22) / 60) + 353
+Dim khaseq As Double
+If markaz + aslkhase < 360 Then
+khaseq = markaz + aslkhase
+Else
+khaseq = markaz + aslkhase - 360
+End If
+Dim markazosat As Double
+markazosat = khaseq + taqm1(markaz)
+Dim d As Double
+d = (((1 / 60) + 2) / 60) + 96
+Dim mabnet2 As Double
+mabnet2 = ((d - 90) / 2) + 90
+Dim mabnet4 As Double
+mabnet4 = 360 - mabnet2
+Dim mabnet3 As Double
+mabnet3 = (mabnet2 + mabnet4) / 2
+Dim mabnet1 As Double
+mabnet1 = mabnet3 - 180
+If (mabnet1 < mabnet2 And markazosat >= mabnet1 And markazosat < mabnet2) Or (mabnet1 > mabnet2 And (markazosat >= mabnet1 Or markazosat < mabnet2)) Then
+nettqbaqame = "netaq1"
+ElseIf (mabnet2 < mabnet3 And markazosat >= mabnet2 And markazosat < mabnet3) Or (mabnet2 > mabnet3 And (markazosat >= mabnet2 Or markazosat < mabnet3)) Then
+nettqbaqame = "netaq2"
+ElseIf (mabnet3 < mabnet4 And markazosat >= mabnet3 And markazosat < mabnet4) Or (mabnet3 > mabnet4 And (markazosat >= mabnet3 Or markazosat < mabnet4)) Then
+nettqbaqame = "netaq3"
+ElseIf (mabnet4 < mabnet1 And markazosat >= mabnet4 And markazosat < mabnet1) Or (mabnet4 > mabnet1 And (markazosat >= mabnet4 Or markazosat < mabnet1)) Then
+nettqbaqame = "netaq4"
+End If
+End Function
+Public Function nettzhmabame(sal As Integer, mah As Integer, rooz As Double, mbtool As Double)
+Dim a As Double
+a = wasat(sal, mah, rooz, mbtool)
+Dim b As Double
+b = wasatzo(sal, mah, rooz, mbtool)
+Dim c As Double
+c = oujzo(sal, mah, rooz, mbtool)
+Dim d As Double
+If b > c Then
+d = b - c
+Else
+d = b + 360 - c
+End If
+Dim markaz As Double
+If a > b Then
+markaz = a - b
+Else
+markaz = a + 360 - b
+End If
+Dim aslkhase As Double
+aslkhase = (((((47 / 60) + 1) / 60) + 19) / 60) + 207
+Dim khaseq As Double
+If markaz + aslkhase < 360 Then
+khaseq = markaz + aslkhase
+Else
+khaseq = markaz + aslkhase - 360
+End If
+Dim markazosat As Double
+markazosat = khaseq + tzohal1(markaz)
+Dim mabnet2 As Double
+mabnet2 = (((43 / 60) + 2) / 60) + 96
+Dim mabnet4 As Double
+mabnet4 = mabnet2 + 180
+Dim mabnet3 As Double
+mabnet3 = (mabnet2 + mabnet4) / 2
+Dim mabnet1 As Double
+mabnet1 = mabnet3 - 180
+If (mabnet1 < mabnet2 And markazosat >= mabnet1 And markazosat < mabnet2) Or (mabnet1 > mabnet2 And (markazosat >= mabnet1 Or markazosat < mabnet2)) Then
+nettzhmabame = "netaq1"
+ElseIf (mabnet2 < mabnet3 And markazosat >= mabnet2 And markazosat < mabnet3) Or (mabnet2 > mabnet3 And (markazosat >= mabnet2 Or markazosat < mabnet3)) Then
+nettzhmabame = "netaq2"
+ElseIf (mabnet3 < mabnet4 And markazosat >= mabnet3 And markazosat < mabnet4) Or (mabnet3 > mabnet4 And (markazosat >= mabnet3 Or markazosat < mabnet4)) Then
+nettzhmabame = "netaq3"
+ElseIf (mabnet4 < mabnet1 And markazosat >= mabnet4 And markazosat < mabnet1) Or (mabnet4 > mabnet1 And (markazosat >= mabnet4 Or markazosat < mabnet1)) Then
+nettzhmabame = "netaq4"
+End If
+End Function
+Public Function nettzhmosame(sal As Integer, mah As Integer, rooz As Double, mbtool As Double)
+Dim a As Double
+a = wasat(sal, mah, rooz, mbtool)
+Dim b As Double
+b = wasatzo(sal, mah, rooz, mbtool)
+Dim c As Double
+c = oujzo(sal, mah, rooz, mbtool)
+Dim d As Double
+If b > c Then
+d = b - c
+Else
+d = b + 360 - c
+End If
+Dim markaz As Double
+If a > b Then
+markaz = a - b
+Else
+markaz = a + 360 - b
+End If
+Dim aslkhase As Double
+aslkhase = (((((47 / 60) + 1) / 60) + 19) / 60) + 207
+Dim khaseq As Double
+If markaz + aslkhase < 360 Then
+khaseq = markaz + aslkhase
+Else
+khaseq = markaz + aslkhase - 360
+End If
+Dim markazosat As Double
+markazosat = khaseq + tzohal1(markaz)
+Dim mabnet2 As Double
+mabnet2 = (((39 / 60) + 13) / 60) + 96
+Dim mabnet4 As Double
+mabnet4 = mabnet2 + 180
+Dim mabnet3 As Double
+mabnet3 = (mabnet2 + mabnet4) / 2
+Dim mabnet1 As Double
+mabnet1 = mabnet3 - 180
+If (mabnet1 < mabnet2 And markazosat >= mabnet1 And markazosat < mabnet2) Or (mabnet1 > mabnet2 And (markazosat >= mabnet1 Or markazosat < mabnet2)) Then
+nettzhmosame = "netaq1"
+ElseIf (mabnet2 < mabnet3 And markazosat >= mabnet2 And markazosat < mabnet3) Or (mabnet2 > mabnet3 And (markazosat >= mabnet2 Or markazosat < mabnet3)) Then
+nettzhmosame = "netaq2"
+ElseIf (mabnet3 < mabnet4 And markazosat >= mabnet3 And markazosat < mabnet4) Or (mabnet3 > mabnet4 And (markazosat >= mabnet3 Or markazosat < mabnet4)) Then
+nettzhmosame = "netaq3"
+ElseIf (mabnet4 < mabnet1 And markazosat >= mabnet4 And markazosat < mabnet1) Or (mabnet4 > mabnet1 And (markazosat >= mabnet4 Or markazosat < mabnet1)) Then
+nettzhmosame = "ntaq4"
+End If
+End Function
+Public Function nettzhmaqame(sal As Integer, mah As Integer, rooz As Double, mbtool As Double)
+Dim a As Double
+a = wasat(sal, mah, rooz, mbtool)
+Dim b As Double
+b = wasatzo(sal, mah, rooz, mbtool)
+Dim c As Double
+c = oujzo(sal, mah, rooz, mbtool)
+Dim d As Double
+If b > c Then
+d = b - c
+Else
+d = b + 360 - c
+End If
+Dim markaz As Double
+If a > b Then
+markaz = a - b
+Else
+markaz = a + 360 - b
+End If
+Dim aslkhase As Double
+aslkhase = (((((47 / 60) + 1) / 60) + 19) / 60) + 207
+Dim khaseq As Double
+If markaz + aslkhase < 360 Then
+khaseq = markaz + aslkhase
+Else
+khaseq = markaz + aslkhase - 360
+End If
+Dim markazosat As Double
+markazosat = khaseq + tzohal1(markaz)
+Dim mabnet2 As Double
+mabnet2 = (((39 / 60) + 30) / 60) + 96
+Dim mabnet4 As Double
+mabnet4 = mabnet2 + 180
+Dim mabnet3 As Double
+mabnet3 = (mabnet2 + mabnet4) / 2
+Dim mabnet1 As Double
+mabnet1 = mabnet3 - 180
+If (mabnet1 < mabnet2 And markazosat >= mabnet1 And markazosat < mabnet2) Or (mabnet1 > mabnet2 And (markazosat >= mabnet1 Or markazosat < mabnet2)) Then
+nettzhmaqame = "netaq1"
+ElseIf (mabnet2 < mabnet3 And markazosat >= mabnet2 And markazosat < mabnet3) Or (mabnet2 > mabnet3 And (markazosat >= mabnet2 Or markazosat < mabnet3)) Then
+nettzhmaqame = "netaq2"
+ElseIf (mabnet3 < mabnet4 And markazosat >= mabnet3 And markazosat < mabnet4) Or (mabnet3 > mabnet4 And (markazosat >= mabnet3 Or markazosat < mabnet4)) Then
+nettzhmaqame = "netaq3"
+ElseIf (mabnet4 < mabnet1 And markazosat >= mabnet4 And markazosat < mabnet1) Or (mabnet4 > mabnet1 And (markazosat >= mabnet4 Or markazosat < mabnet1)) Then
+nettzhmaqame = "netaq4"
+End If
+
+End Function
+Public Function nettzhbabame(sal As Integer, mah As Integer, rooz As Double, mbtool As Double)
+Dim a As Double
+a = wasat(sal, mah, rooz, mbtool)
+Dim b As Double
+b = wasatzo(sal, mah, rooz, mbtool)
+Dim c As Double
+c = oujzo(sal, mah, rooz, mbtool)
+Dim d As Double
+If b > c Then
+d = b - c
+Else
+d = b + 360 - c
+End If
+Dim markaz As Double
+If a > b Then
+markaz = a - b
+Else
+markaz = a + 360 - b
+End If
+Dim aslkhase As Double
+aslkhase = (((((47 / 60) + 1) / 60) + 19) / 60) + 207
+Dim khaseq As Double
+If markaz + aslkhase < 360 Then
+khaseq = markaz + aslkhase
+Else
+khaseq = markaz + aslkhase - 360
+End If
+Dim markazosat As Double
+markazosat = khaseq + tzohal1(markaz)
+Dim d1 As Double
+d1 = (((43 / 60) + 2) / 60) + 96
+Dim mabnet2 As Double
+mabnet2 = ((d1 - 90) / 2) + 90
+Dim mabnet4 As Double
+mabnet4 = 360 - mabnet2
+Dim mabnet3 As Double
+mabnet3 = (mabnet2 + mabnet4) / 2
+Dim mabnet1 As Double
+mabnet1 = mabnet3 - 180
+If (mabnet1 < mabnet2 And markazosat >= mabnet1 And markazosat < mabnet2) Or (mabnet1 > mabnet2 And (markazosat >= mabnet1 Or markazosat < mabnet2)) Then
+nettzhbabame = "netaq1 "
+ElseIf (mabnet2 < mabnet3 And markazosat >= mabnet2 And markazosat < mabnet3) Or (mabnet2 > mabnet3 And (markazosat >= mabnet2 Or markazosat < mabnet3)) Then
+nettzhbabame = "netaq2"
+ElseIf (mabnet3 < mabnet4 And markazosat >= mabnet3 And markazosat < mabnet4) Or (mabnet3 > mabnet4 And (markazosat >= mabnet3 Or markazosat < mabnet4)) Then
+nettzhbabame = "netaq3"
+ElseIf (mabnet4 < mabnet1 And markazosat >= mabnet4 And markazosat < mabnet1) Or (mabnet4 > mabnet1 And (markazosat >= mabnet4 Or markazosat < mabnet1)) Then
+nettzhbabame = "netaq4"
+End If
+End Function
+Public Function nettzhbosame(sal As Integer, mah As Integer, rooz As Double, mbtool As Double)
+Dim a As Double
+a = wasat(sal, mah, rooz, mbtool)
+Dim b As Double
+b = wasatzo(sal, mah, rooz, mbtool)
+Dim c As Double
+c = oujzo(sal, mah, rooz, mbtool)
+Dim d As Double
+If b > c Then
+d = b - c
+Else
+d = b + 360 - c
+End If
+Dim markaz As Double
+If a > b Then
+markaz = a - b
+Else
+markaz = a + 360 - b
+End If
+Dim aslkhase As Double
+aslkhase = (((((47 / 60) + 1) / 60) + 19) / 60) + 207
+Dim khaseq As Double
+If markaz + aslkhase < 360 Then
+khaseq = markaz + aslkhase
+Else
+khaseq = markaz + aslkhase - 360
+End If
+Dim markazosat As Double
+markazosat = khaseq + tzohal1(markaz)
+Dim d1 As Double
+d1 = (((39 / 60) + 13) / 60) + 96
+Dim mabnet2 As Double
+mabnet2 = ((d1 - 90) / 2) + 90
+Dim mabnet4 As Double
+mabnet4 = 360 - mabnet2
+Dim mabnet3 As Double
+mabnet3 = (mabnet2 + mabnet4) / 2
+Dim mabnet1 As Double
+mabnet1 = mabnet3 - 180
+If (mabnet1 < mabnet2 And markazosat >= mabnet1 And markazosat < mabnet2) Or (mabnet1 > mabnet2 And (markazosat >= mabnet1 Or markazosat < mabnet2)) Then
+nettzhbosame = "netaq1"
+ElseIf (mabnet2 < mabnet3 And markazosat >= mabnet2 And markazosat < mabnet3) Or (mabnet2 > mabnet3 And (markazosat >= mabnet2 Or markazosat < mabnet3)) Then
+nettzhbosame = "netaq2"
+ElseIf (mabnet3 < mabnet4 And markazosat >= mabnet3 And markazosat < mabnet4) Or (mabnet3 > mabnet4 And (markazosat >= mabnet3 Or markazosat < mabnet4)) Then
+nettzhbosame = "netaq3"
+ElseIf (mabnet4 < mabnet1 And markazosat >= mabnet4 And markazosat < mabnet1) Or (mabnet4 > mabnet1 And (markazosat >= mabnet4 Or markazosat < mabnet1)) Then
+nettzhbosame = "netaq4"
+End If
+
+End Function
+Public Function nettzhbaqame(sal As Integer, mah As Integer, rooz As Double, mbtool As Double)
+Dim a As Double
+a = wasat(sal, mah, rooz, mbtool)
+Dim b As Double
+b = wasatzo(sal, mah, rooz, mbtool)
+Dim c As Double
+c = oujzo(sal, mah, rooz, mbtool)
+Dim d As Double
+If b > c Then
+d = b - c
+Else
+d = b + 360 - c
+End If
+Dim markaz As Double
+If a > b Then
+markaz = a - b
+Else
+markaz = a + 360 - b
+End If
+Dim aslkhase As Double
+aslkhase = (((((47 / 60) + 1) / 60) + 19) / 60) + 207
+Dim khaseq As Double
+If markaz + aslkhase < 360 Then
+khaseq = markaz + aslkhase
+Else
+khaseq = markaz + aslkhase - 360
+End If
+Dim markazosat As Double
+markazosat = khaseq + tzohal1(markaz)
+Dim d1 As Double
+d1 = (((39 / 60) + 30) / 60) + 96
+Dim mabnet2 As Double
+mabnet2 = ((d1 - 90) / 2) + 90
+Dim mabnet4 As Double
+mabnet4 = 360 - mabnet2
+Dim mabnet3 As Double
+mabnet3 = (mabnet2 + mabnet4) / 2
+Dim mabnet1 As Double
+mabnet1 = mabnet3 - 180
+If (mabnet1 < mabnet2 And markazosat >= mabnet1 And markazosat < mabnet2) Or (mabnet1 > mabnet2 And (markazosat >= mabnet1 Or markazosat < mabnet2)) Then
+nettzhbaqame = "netaq1"
+ElseIf (mabnet2 < mabnet3 And markazosat >= mabnet2 And markazosat < mabnet3) Or (mabnet2 > mabnet3 And (markazosat >= mabnet2 Or markazosat < mabnet3)) Then
+nettzhbaqame = "netaq2"
+ElseIf (mabnet3 < mabnet4 And markazosat >= mabnet3 And markazosat < mabnet4) Or (mabnet3 > mabnet4 And (markazosat >= mabnet3 Or markazosat < mabnet4)) Then
+nettzhbaqame = "netaq3"
+ElseIf (mabnet4 < mabnet1 And markazosat >= mabnet4 And markazosat < mabnet1) Or (mabnet4 > mabnet1 And (markazosat >= mabnet4 Or markazosat < mabnet1)) Then
+nettzhbaqame = "netaq4"
+End If
+
+End Function
+Public Function nettmoshmabame(sal As Integer, mah As Integer, rooz As Double, mbtool As Double)
+Dim a As Double
+a = wasat(sal, mah, rooz, mbtool)
+Dim b As Double
+b = wasatmosh(sal, mah, rooz, mbtool)
+Dim c As Double
+c = oujmosh(sal, mah, rooz, mbtool)
+Dim d As Double
+If b > c Then
+d = b - c
+Else
+d = b + 360 - c
+End If
+Dim markaz As Double
+If a > b Then
+markaz = a - b
+Else
+markaz = a + 360 - b
+End If
+Dim aslkhase As Double
+aslkhase = (((((10 / 60) + 11) / 60) + 19) / 60) + 327
+Dim khaseq As Double
+If markaz + aslkhase < 360 Then
+khaseq = markaz + aslkhase
+Else
+khaseq = markaz + aslkhase - 360
+End If
+Dim markazosat As Double
+markazosat = khaseq + tmosh1(markaz)
+Dim mabnet2 As Double
+mabnet2 = (((54 / 60) + 34) / 60) + 100
+Dim mabnet4 As Double
+mabnet4 = mabnet2 + 180
+Dim mabnet3 As Double
+mabnet3 = (mabnet2 + mabnet4) / 2
+Dim mabnet1 As Double
+mabnet1 = mabnet3 - 180
+If (mabnet1 < mabnet2 And markazosat >= mabnet1 And markazosat < mabnet2) Or (mabnet1 > mabnet2 And (markazosat >= mabnet1 Or markazosat < mabnet2)) Then
+nettmoshmabame = "netaq1"
+ElseIf (mabnet2 < mabnet3 And markazosat >= mabnet2 And markazosat < mabnet3) Or (mabnet2 > mabnet3 And (markazosat >= mabnet2 Or markazosat < mabnet3)) Then
+nettmoshmabame = "netaq2"
+ElseIf (mabnet3 < mabnet4 And markazosat >= mabnet3 And markazosat < mabnet4) Or (mabnet3 > mabnet4 And (markazosat >= mabnet3 Or markazosat < mabnet4)) Then
+nettmoshmabame = "netaq3"
+ElseIf (mabnet4 < mabnet1 And markazosat >= mabnet4 And markazosat < mabnet1) Or (mabnet4 > mabnet1 And (markazosat >= mabnet4 Or markazosat < mabnet1)) Then
+nettmoshmabame = "netaq4"
+End If
+End Function
+Public Function nettmoshmosame(sal As Integer, mah As Integer, rooz As Double, mbtool As Double)
+Dim a As Double
+a = wasat(sal, mah, rooz, mbtool)
+Dim b As Double
+b = wasatmosh(sal, mah, rooz, mbtool)
+Dim c As Double
+c = oujmosh(sal, mah, rooz, mbtool)
+Dim d As Double
+If b > c Then
+d = b - c
+Else
+d = b + 360 - c
+End If
+Dim markaz As Double
+If a > b Then
+markaz = a - b
+Else
+markaz = a + 360 - b
+End If
+Dim aslkhase As Double
+aslkhase = (((((10 / 60) + 11) / 60) + 19) / 60) + 327
+Dim khaseq As Double
+If markaz + aslkhase < 360 Then
+khaseq = markaz + aslkhase
+Else
+khaseq = markaz + aslkhase - 360
+End If
+Dim markazosat As Double
+markazosat = khaseq + tmosh1(markaz)
+Dim mabnet2 As Double
+mabnet2 = (((39 / 60) + 3) / 60) + 101
+Dim mabnet4 As Double
+mabnet4 = mabnet2 + 180
+Dim mabnet3 As Double
+mabnet3 = (mabnet2 + mabnet4) / 2
+Dim mabnet1 As Double
+mabnet1 = mabnet3 - 180
+If (mabnet1 < mabnet2 And markazosat >= mabnet1 And markazosat < mabnet2) Or (mabnet1 > mabnet2 And (markazosat >= mabnet1 Or markazosat < mabnet2)) Then
+nettmoshmosame = "netaq1"
+ElseIf (mabnet2 < mabnet3 And markazosat >= mabnet2 And markazosat < mabnet3) Or (mabnet2 > mabnet3 And (markazosat >= mabnet2 Or markazosat < mabnet3)) Then
+nettmoshmosame = "netaq2"
+ElseIf (mabnet3 < mabnet4 And markazosat >= mabnet3 And markazosat < mabnet4) Or (mabnet3 > mabnet4 And (markazosat >= mabnet3 Or markazosat < mabnet4)) Then
+nettmoshmosame = "netaq3"
+ElseIf (mabnet4 < mabnet1 And markazosat >= mabnet4 And markazosat < mabnet1) Or (mabnet4 > mabnet1 And (markazosat >= mabnet4 Or markazosat < mabnet1)) Then
+nettmoshmosame = "netaq4"
+End If
+End Function
+Public Function nettmoshmaqame(sal As Integer, mah As Integer, rooz As Double, mbtool As Double)
+Dim a As Double
+a = wasat(sal, mah, rooz, mbtool)
+Dim b As Double
+b = wasatmosh(sal, mah, rooz, mbtool)
+Dim c As Double
+c = oujmosh(sal, mah, rooz, mbtool)
+Dim d As Double
+If b > c Then
+d = b - c
+Else
+d = b + 360 - c
+End If
+Dim markaz As Double
+If a > b Then
+markaz = a - b
+Else
+markaz = a + 360 - b
+End If
+Dim aslkhase As Double
+aslkhase = (((((10 / 60) + 11) / 60) + 19) / 60) + 327
+Dim khaseq As Double
+If markaz + aslkhase < 360 Then
+khaseq = markaz + aslkhase
+Else
+khaseq = markaz + aslkhase - 360
+End If
+Dim markazosat As Double
+markazosat = khaseq + tmosh1(markaz)
+Dim mabnet2 As Double
+mabnet2 = (((6 / 60) + 35) / 60) + 101
+Dim mabnet4 As Double
+mabnet4 = mabnet2 + 180
+Dim mabnet3 As Double
+mabnet3 = (mabnet2 + mabnet4) / 2
+Dim mabnet1 As Double
+mabnet1 = mabnet3 - 180
+If (mabnet1 < mabnet2 And markazosat >= mabnet1 And markazosat < mabnet2) Or (mabnet1 > mabnet2 And (markazosat >= mabnet1 Or markazosat < mabnet2)) Then
+nettmoshmaqame = "netaq1"
+ElseIf (mabnet2 < mabnet3 And markazosat >= mabnet2 And markazosat < mabnet3) Or (mabnet2 > mabnet3 And (markazosat >= mabnet2 Or markazosat < mabnet3)) Then
+nettmoshmaqame = "netaq2"
+ElseIf (mabnet3 < mabnet4 And markazosat >= mabnet3 And markazosat < mabnet4) Or (mabnet3 > mabnet4 And (markazosat >= mabnet3 Or markazosat < mabnet4)) Then
+nettmoshmaqame = "netaq3"
+ElseIf (mabnet4 < mabnet1 And markazosat >= mabnet4 And markazosat < mabnet1) Or (mabnet4 > mabnet1 And (markazosat >= mabnet4 Or markazosat < mabnet1)) Then
+nettmoshmaqame = "netaq4"
+End If
+End Function
+Public Function nettmoshbabame(sal As Integer, mah As Integer, rooz As Double, mbtool As Double)
+Dim a As Double
+a = wasat(sal, mah, rooz, mbtool)
+Dim b As Double
+b = wasatmosh(sal, mah, rooz, mbtool)
+Dim c As Double
+c = oujmosh(sal, mah, rooz, mbtool)
+Dim d As Double
+If b > c Then
+d = b - c
+Else
+d = b + 360 - c
+End If
+Dim markaz As Double
+If a > b Then
+markaz = a - b
+Else
+markaz = a + 360 - b
+End If
+Dim aslkhase As Double
+aslkhase = (((((10 / 60) + 11) / 60) + 19) / 60) + 327
+Dim khaseq As Double
+If markaz + aslkhase < 360 Then
+khaseq = markaz + aslkhase
+Else
+khaseq = markaz + aslkhase - 360
+End If
+Dim markazosat As Double
+markazosat = khaseq + tmosh1(markaz)
+Dim d1 As Double
+d1 = (((54 / 60) + 34) / 60) + 100
+Dim mabnet2 As Double
+mabnet2 = ((d1 - 90) / 2) + 90
+Dim mabnet4 As Double
+mabnet4 = 360 - mabnet2
+Dim mabnet3 As Double
+mabnet3 = (mabnet2 + mabnet4) / 2
+Dim mabnet1 As Double
+mabnet1 = mabnet3 - 180
+If (mabnet1 < mabnet2 And markazosat >= mabnet1 And markazosat < mabnet2) Or (mabnet1 > mabnet2 And (markazosat >= mabnet1 Or markazosat < mabnet2)) Then
+nettmoshbabame = "netaq1"
+ElseIf (mabnet2 < mabnet3 And markazosat >= mabnet2 And markazosat < mabnet3) Or (mabnet2 > mabnet3 And (markazosat >= mabnet2 Or markazosat < mabnet3)) Then
+nettmoshbabame = "netaq2"
+ElseIf (mabnet3 < mabnet4 And markazosat >= mabnet3 And markazosat < mabnet4) Or (mabnet3 > mabnet4 And (markazosat >= mabnet3 Or markazosat < mabnet4)) Then
+nettmoshbabame = "netaq3"
+ElseIf (mabnet4 < mabnet1 And markazosat >= mabnet4 And markazosat < mabnet1) Or (mabnet4 > mabnet1 And (markazosat >= mabnet4 Or markazosat < mabnet1)) Then
+nettmoshbabame = "netaq4"
+End If
+
+End Function
+Public Function nettmoshbosame(sal As Integer, mah As Integer, rooz As Double, mbtool As Double)
+Dim a As Double
+a = wasat(sal, mah, rooz, mbtool)
+Dim b As Double
+b = wasatmosh(sal, mah, rooz, mbtool)
+Dim c As Double
+c = oujmosh(sal, mah, rooz, mbtool)
+Dim d As Double
+If b > c Then
+d = b - c
+Else
+d = b + 360 - c
+End If
+Dim markaz As Double
+If a > b Then
+markaz = a - b
+Else
+markaz = a + 360 - b
+End If
+Dim aslkhase As Double
+aslkhase = (((((10 / 60) + 11) / 60) + 19) / 60) + 327
+Dim khaseq As Double
+If markaz + aslkhase < 360 Then
+khaseq = markaz + aslkhase
+Else
+khaseq = markaz + aslkhase - 360
+End If
+Dim markazosat As Double
+markazosat = khaseq + tmosh1(markaz)
+Dim d1 As Double
+d1 = (((39 / 60) + 3) / 60) + 101
+Dim mabnet2 As Double
+mabnet2 = ((d1 - 90) / 2) + 90
+Dim mabnet4 As Double
+mabnet4 = 360 - mabnet2
+Dim mabnet3 As Double
+mabnet3 = (mabnet2 + mabnet4) / 2
+Dim mabnet1 As Double
+mabnet1 = mabnet3 - 180
+If (mabnet1 < mabnet2 And markazosat >= mabnet1 And markazosat < mabnet2) Or (mabnet1 > mabnet2 And (markazosat >= mabnet1 Or markazosat < mabnet2)) Then
+nettmoshbosame = "netaq1"
+ElseIf (mabnet2 < mabnet3 And markazosat >= mabnet2 And markazosat < mabnet3) Or (mabnet2 > mabnet3 And (markazosat >= mabnet2 Or markazosat < mabnet3)) Then
+nettmoshbosame = "netaq2"
+ElseIf (mabnet3 < mabnet4 And markazosat >= mabnet3 And markazosat < mabnet4) Or (mabnet3 > mabnet4 And (markazosat >= mabnet3 Or markazosat < mabnet4)) Then
+nettmoshbosame = "netaq3"
+ElseIf (mabnet4 < mabnet1 And markazosat >= mabnet4 And markazosat < mabnet1) Or (mabnet4 > mabnet1 And (markazosat >= mabnet4 Or markazosat < mabnet1)) Then
+ nettmoshbosame = "netaq4"
+End If
+End Function
+Public Function nettmoshbaqame(sal As Integer, mah As Integer, rooz As Double, mbtool As Double)
+Dim a As Double
+a = wasat(sal, mah, rooz, mbtool)
+Dim b As Double
+b = wasatmosh(sal, mah, rooz, mbtool)
+Dim c As Double
+c = oujmosh(sal, mah, rooz, mbtool)
+Dim d As Double
+If b > c Then
+d = b - c
+Else
+d = b + 360 - c
+End If
+Dim markaz As Double
+If a > b Then
+markaz = a - b
+Else
+markaz = a + 360 - b
+End If
+Dim aslkhase As Double
+aslkhase = (((((10 / 60) + 11) / 60) + 19) / 60) + 327
+Dim khaseq As Double
+If markaz + aslkhase < 360 Then
+khaseq = markaz + aslkhase
+Else
+khaseq = markaz + aslkhase - 360
+End If
+Dim markazosat As Double
+markazosat = khaseq + tmosh1(markaz)
+Dim d1 As Double
+d1 = (((6 / 60) + 35) / 60) + 101
+Dim mabnet2 As Double
+mabnet2 = ((d1 - 90) / 2) + 90
+Dim mabnet4 As Double
+mabnet4 = 360 - mabnet2
+Dim mabnet3 As Double
+mabnet3 = (mabnet2 + mabnet4) / 2
+Dim mabnet1 As Double
+mabnet1 = mabnet3 - 180
+If (mabnet1 < mabnet2 And markazosat >= mabnet1 And markazosat < mabnet2) Or (mabnet1 > mabnet2 And (markazosat >= mabnet1 Or markazosat < mabnet2)) Then
+nettmoshbaqame = "netaq1"
+ElseIf (mabnet2 < mabnet3 And markazosat >= mabnet2 And markazosat < mabnet3) Or (mabnet2 > mabnet3 And (markazosat >= mabnet2 Or markazosat < mabnet3)) Then
+nettmoshbaqame = "netaq2"
+ElseIf (mabnet3 < mabnet4 And markazosat >= mabnet3 And markazosat < mabnet4) Or (mabnet3 > mabnet4 And (markazosat >= mabnet3 Or markazosat < mabnet4)) Then
+nettmoshbaqame = "netaq3"
+ElseIf (mabnet4 < mabnet1 And markazosat >= mabnet4 And markazosat < mabnet1) Or (mabnet4 > mabnet1 And (markazosat >= mabnet4 Or markazosat < mabnet1)) Then
+nettmoshbaqame = "netaq4"
+End If
+End Function
+Public Function nettmermabame(sal As Integer, mah As Integer, rooz As Double, mbtool As Double)
+Dim a As Double
+a = wasat(sal, mah, rooz, mbtool)
+Dim b As Double
+b = wasatmer(sal, mah, rooz, mbtool)
+Dim c As Double
+c = oujmer(sal, mah, rooz, mbtool)
+Dim d As Double
+If b > c Then
+d = b - c
+Else
+d = b + 360 - c
+End If
+Dim markaz As Double
+If a > b Then
+markaz = a - b
+Else
+markaz = a + 360 - b
+End If
+Dim aslkhase As Double
+aslkhase = (((((27 / 60) + 50) / 60) + 51) / 60) + 253
+Dim khaseq As Double
+If markaz + aslkhase < 360 Then
+khaseq = markaz + aslkhase
+Else
+khaseq = markaz + aslkhase - 360
+End If
+Dim markazosat As Double
+markazosat = khaseq + tmer1(markaz)
+Dim mabnet2 As Double
+mabnet2 = (((4 / 60) + 46) / 60) + 126
+Dim mabnet4 As Double
+mabnet4 = mabnet2 + 180
+Dim mabnet3 As Double
+mabnet3 = (mabnet2 + mabnet4) / 2
+Dim mabnet1 As Double
+mabnet1 = mabnet3 - 180
+If (mabnet1 < mabnet2 And markazosat >= mabnet1 And markazosat < mabnet2) Or (mabnet1 > mabnet2 And (markazosat >= mabnet1 Or markazosat < mabnet2)) Then
+nettmermabame = "netaq1"
+ElseIf (mabnet2 < mabnet3 And markazosat >= mabnet2 And markazosat < mabnet3) Or (mabnet2 > mabnet3 And (markazosat >= mabnet2 Or markazosat < mabnet3)) Then
+nettmermabame = "netaq2"
+ElseIf (mabnet3 < mabnet4 And markazosat >= mabnet3 And markazosat < mabnet4) Or (mabnet3 > mabnet4 And (markazosat >= mabnet3 Or markazosat < mabnet4)) Then
+nettmermabame = "netaq3"
+ElseIf (mabnet4 < mabnet1 And markazosat >= mabnet4 And markazosat < mabnet1) Or (mabnet4 > mabnet1 And (markazosat >= mabnet4 Or markazosat < mabnet1)) Then
+nettmermabame = "netaq4"
+End If
+End Function
+Public Function nettmermosame(sal As Integer, mah As Integer, rooz As Double, mbtool As Double)
+Dim a As Double
+a = wasat(sal, mah, rooz, mbtool)
+Dim b As Double
+b = wasatmer(sal, mah, rooz, mbtool)
+Dim c As Double
+c = oujmer(sal, mah, rooz, mbtool)
+Dim d As Double
+If b > c Then
+d = b - c
+Else
+d = b + 360 - c
+End If
+Dim markaz As Double
+If a > b Then
+markaz = a - b
+Else
+markaz = a + 360 - b
+End If
+Dim aslkhase As Double
+aslkhase = (((((27 / 60) + 50) / 60) + 51) / 60) + 253
+Dim khaseq As Double
+If markaz + aslkhase < 360 Then
+khaseq = markaz + aslkhase
+Else
+khaseq = markaz + aslkhase - 360
+End If
+Dim markazosat As Double
+markazosat = khaseq + tmer1(markaz)
+Dim mabnet2 As Double
+mabnet2 = (((50 / 60) + 10) / 60) + 131
+Dim mabnet4 As Double
+mabnet4 = mabnet2 + 180
+Dim mabnet3 As Double
+mabnet3 = (mabnet2 + mabnet4) / 2
+Dim mabnet1 As Double
+mabnet1 = mabnet3 - 180
+If (mabnet1 < mabnet2 And markazosat >= mabnet1 And markazosat < mabnet2) Or (mabnet1 > mabnet2 And (markazosat >= mabnet1 Or markazosat < mabnet2)) Then
+nettmermosame = "netaq1"
+ElseIf (mabnet2 < mabnet3 And markazosat >= mabnet2 And markazosat < mabnet3) Or (mabnet2 > mabnet3 And (markazosat >= mabnet2 Or markazosat < mabnet3)) Then
+nettmermosame = "netaq2"
+ElseIf (mabnet3 < mabnet4 And markazosat >= mabnet3 And markazosat < mabnet4) Or (mabnet3 > mabnet4 And (markazosat >= mabnet3 Or markazosat < mabnet4)) Then
+nettmermosame = "netaq3"
+ElseIf (mabnet4 < mabnet1 And markazosat >= mabnet4 And markazosat < mabnet1) Or (mabnet4 > mabnet1 And (markazosat >= mabnet4 Or markazosat < mabnet1)) Then
+nettmermosame = "netaq4"
+End If
+
+End Function
+Public Function nettmermaqame(sal As Integer, mah As Integer, rooz As Double, mbtool As Double)
+Dim a As Double
+a = wasat(sal, mah, rooz, mbtool)
+Dim b As Double
+b = wasatmer(sal, mah, rooz, mbtool)
+Dim c As Double
+c = oujmer(sal, mah, rooz, mbtool)
+Dim d As Double
+If b > c Then
+d = b - c
+Else
+d = b + 360 - c
+End If
+Dim markaz As Double
+If a > b Then
+markaz = a - b
+Else
+markaz = a + 360 - b
+End If
+Dim aslkhase As Double
+aslkhase = (((((27 / 60) + 50) / 60) + 51) / 60) + 253
+Dim khaseq As Double
+If markaz + aslkhase < 360 Then
+khaseq = markaz + aslkhase
+Else
+khaseq = markaz + aslkhase - 360
+End If
+Dim markazosat As Double
+markazosat = khaseq + tmer1(markaz)
+Dim mabnet2 As Double
+mabnet2 = (((11 / 60) + 1) / 60) + 137
+Dim mabnet4 As Double
+mabnet4 = mabnet2 + 180
+Dim mabnet3 As Double
+mabnet3 = (mabnet2 + mabnet4) / 2
+Dim mabnet1 As Double
+mabnet1 = mabnet3 - 180
+If (mabnet1 < mabnet2 And markazosat >= mabnet1 And markazosat < mabnet2) Or (mabnet1 > mabnet2 And (markazosat >= mabnet1 Or markazosat < mabnet2)) Then
+nettmermaqame = "netaq1"
+ElseIf (mabnet2 < mabnet3 And markazosat >= mabnet2 And markazosat < mabnet3) Or (mabnet2 > mabnet3 And (markazosat >= mabnet2 Or markazosat < mabnet3)) Then
+nettmermaqame = "netaq2"
+ElseIf (mabnet3 < mabnet4 And markazosat >= mabnet3 And markazosat < mabnet4) Or (mabnet3 > mabnet4 And (markazosat >= mabnet3 Or markazosat < mabnet4)) Then
+nettmermaqame = "netaq3"
+ElseIf (mabnet4 < mabnet1 And markazosat >= mabnet4 And markazosat < mabnet1) Or (mabnet4 > mabnet1 And (markazosat >= mabnet4 Or markazosat < mabnet1)) Then
+nettmermaqame = "netaq4"
+End If
+
+End Function
+Public Function nettmerbabame(sal As Integer, mah As Integer, rooz As Double, mbtool As Double)
+Dim a As Double
+a = wasat(sal, mah, rooz, mbtool)
+Dim b As Double
+b = wasatmer(sal, mah, rooz, mbtool)
+Dim c As Double
+c = oujmer(sal, mah, rooz, mbtool)
+Dim d As Double
+If b > c Then
+d = b - c
+Else
+d = b + 360 - c
+End If
+Dim markaz As Double
+If a > b Then
+markaz = a - b
+Else
+markaz = a + 360 - b
+End If
+Dim aslkhase As Double
+aslkhase = (((((27 / 60) + 50) / 60) + 51) / 60) + 253
+Dim khaseq As Double
+If markaz + aslkhase < 360 Then
+khaseq = markaz + aslkhase
+Else
+khaseq = markaz + aslkhase - 360
+End If
+Dim markazosat As Double
+markazosat = khaseq + tmer1(markaz)
+Dim d1 As Double
+d1 = (((4 / 60) + 46) / 60) + 126
+Dim mabnet2 As Double
+mabnet2 = ((d1 - 90) / 2) + 90
+Dim mabnet4 As Double
+mabnet4 = 360 - mabnet2
+Dim mabnet3 As Double
+mabnet3 = (mabnet2 + mabnet4) / 2
+Dim mabnet1 As Double
+mabnet1 = mabnet3 - 180
+If (mabnet1 < mabnet2 And markazosat >= mabnet1 And markazosat < mabnet2) Or (mabnet1 > mabnet2 And (markazosat >= mabnet1 Or markazosat < mabnet2)) Then
+nettmerbabame = "netaq1"
+ElseIf (mabnet2 < mabnet3 And markazosat >= mabnet2 And markazosat < mabnet3) Or (mabnet2 > mabnet3 And (markazosat >= mabnet2 Or markazosat < mabnet3)) Then
+nettmerbabame = "netaq2"
+ElseIf (mabnet3 < mabnet4 And markazosat >= mabnet3 And markazosat < mabnet4) Or (mabnet3 > mabnet4 And (markazosat >= mabnet3 Or markazosat < mabnet4)) Then
+nettmerbabame = "netaq3"
+ElseIf (mabnet4 < mabnet1 And markazosat >= mabnet4 And markazosat < mabnet1) Or (mabnet4 > mabnet1 And (markazosat >= mabnet4 Or markazosat < mabnet1)) Then
+nettmerbabame = "netaq4"
+End If
+
+End Function
+Public Function nettmerbosame(sal As Integer, mah As Integer, rooz As Double, mbtool As Double)
+Dim a As Double
+a = wasat(sal, mah, rooz, mbtool)
+Dim b As Double
+b = wasatmer(sal, mah, rooz, mbtool)
+Dim c As Double
+c = oujmer(sal, mah, rooz, mbtool)
+Dim d As Double
+If b > c Then
+d = b - c
+Else
+d = b + 360 - c
+End If
+Dim markaz As Double
+If a > b Then
+markaz = a - b
+Else
+markaz = a + 360 - b
+End If
+Dim aslkhase As Double
+aslkhase = (((((27 / 60) + 50) / 60) + 51) / 60) + 253
+Dim khaseq As Double
+If markaz + aslkhase < 360 Then
+khaseq = markaz + aslkhase
+Else
+khaseq = markaz + aslkhase - 360
+End If
+Dim markazosat As Double
+markazosat = khaseq + tmer1(markaz)
+Dim d1 As Double
+d1 = (((50 / 60) + 10) / 60) + 131
+Dim mabnet2 As Double
+mabnet2 = ((d1 - 90) / 2) + 90
+Dim mabnet4 As Double
+mabnet4 = 360 - mabnet2
+Dim mabnet3 As Double
+mabnet3 = (mabnet2 + mabnet4) / 2
+Dim mabnet1 As Double
+mabnet1 = mabnet3 - 180
+If (mabnet1 < mabnet2 And markazosat >= mabnet1 And markazosat < mabnet2) Or (mabnet1 > mabnet2 And (markazosat >= mabnet1 Or markazosat < mabnet2)) Then
+nettmerbosame = "netaq1"
+ElseIf (mabnet2 < mabnet3 And markazosat >= mabnet2 And markazosat < mabnet3) Or (mabnet2 > mabnet3 And (markazosat >= mabnet2 Or markazosat < mabnet3)) Then
+nettmerbosame = "netaq2"
+ElseIf (mabnet3 < mabnet4 And markazosat >= mabnet3 And markazosat < mabnet4) Or (mabnet3 > mabnet4 And (markazosat >= mabnet3 Or markazosat < mabnet4)) Then
+nettmerbosame = "netaq3"
+ElseIf (mabnet4 < mabnet1 And markazosat >= mabnet4 And markazosat < mabnet1) Or (mabnet4 > mabnet1 And (markazosat >= mabnet4 Or markazosat < mabnet1)) Then
+nettmerbosame = "netaq4"
+End If
+End Function
+Public Function nettmerbaqame(sal As Integer, mah As Integer, rooz As Double, mbtool As Double)
+Dim a As Double
+a = wasat(sal, mah, rooz, mbtool)
+Dim b As Double
+b = wasatmer(sal, mah, rooz, mbtool)
+Dim c As Double
+c = oujmer(sal, mah, rooz, mbtool)
+Dim d As Double
+If b > c Then
+d = b - c
+Else
+d = b + 360 - c
+End If
+Dim markaz As Double
+If a > b Then
+markaz = a - b
+Else
+markaz = a + 360 - b
+End If
+Dim aslkhase As Double
+aslkhase = (((((27 / 60) + 50) / 60) + 51) / 60) + 253
+Dim khaseq As Double
+If markaz + aslkhase < 360 Then
+khaseq = markaz + aslkhase
+Else
+khaseq = markaz + aslkhase - 360
+End If
+Dim markazosat As Double
+markazosat = khaseq + tmer1(markaz)
+Dim d1 As Double
+d1 = (((11 / 60) + 1) / 60) + 137
+Dim mabnet2 As Double
+mabnet2 = ((d1 - 90) / 2) + 90
+Dim mabnet4 As Double
+mabnet4 = 360 - mabnet2
+Dim mabnet3 As Double
+mabnet3 = (mabnet2 + mabnet4) / 2
+Dim mabnet1 As Double
+mabnet1 = mabnet3 - 180
+If (mabnet1 < mabnet2 And markazosat >= mabnet1 And markazosat < mabnet2) Or (mabnet1 > mabnet2 And (markazosat >= mabnet1 Or markazosat < mabnet2)) Then
+nettmerbaqame = "netaq1"
+ElseIf (mabnet2 < mabnet3 And markazosat >= mabnet2 And markazosat < mabnet3) Or (mabnet2 > mabnet3 And (markazosat >= mabnet2 Or markazosat < mabnet3)) Then
+nettmerbaqame = "netaq2"
+ElseIf (mabnet3 < mabnet4 And markazosat >= mabnet3 And markazosat < mabnet4) Or (mabnet3 > mabnet4 And (markazosat >= mabnet3 Or markazosat < mabnet4)) Then
+nettmerbaqame = "netaq3"
+ElseIf (mabnet4 < mabnet1 And markazosat >= mabnet4 And markazosat < mabnet1) Or (mabnet4 > mabnet1 And (markazosat >= mabnet4 Or markazosat < mabnet1)) Then
+nettmerbaqame = "netaq4"
+End If
+
+End Function
+Public Function nettzrmabame(sal As Integer, mah As Integer, rooz As Double, mbtool As Double)
+Dim a As Double
+a = wasat(sal, mah, rooz, mbtool)
+Dim b As Double
+b = wasatzh(sal, mah, rooz, mbtool)
+Dim c As Double
+c = oujzh(sal, mah, rooz, mbtool)
+Dim d As Double
+If b > c Then
+d = b - c
+Else
+d = b + 360 - c
+End If
+Dim markaz As Double
+If a > b Then
+markaz = a - b
+Else
+markaz = a + 360 - b
+End If
+Dim aslkhase As Double
+aslkhase = (((((24 / 60) + 15) / 60) + 50) / 60) + 261
+Dim khaseq As Double
+If markaz + aslkhase < 360 Then
+khaseq = markaz + aslkhase
+Else
+khaseq = markaz + aslkhase - 360
+End If
+Dim markazosat As Double
+markazosat = khaseq + tzohre1(markaz)
+Dim mabnet2 As Double
+mabnet2 = (((59 / 60) + 15) / 60) + 135
+Dim mabnet4 As Double
+mabnet4 = mabnet2 + 180
+Dim mabnet3 As Double
+mabnet3 = (mabnet2 + mabnet4) / 2
+Dim mabnet1 As Double
+mabnet1 = mabnet3 - 180
+If (mabnet1 < mabnet2 And markazosat >= mabnet1 And markazosat < mabnet2) Or (mabnet1 > mabnet2 And (markazosat >= mabnet1 Or markazosat < mabnet2)) Then
+nettzrmabame = "netaq1"
+ElseIf (mabnet2 < mabnet3 And markazosat >= mabnet2 And markazosat < mabnet3) Or (mabnet2 > mabnet3 And (markazosat >= mabnet2 Or markazosat < mabnet3)) Then
+nettzrmabame = "netaq2"
+ElseIf (mabnet3 < mabnet4 And markazosat >= mabnet3 And markazosat < mabnet4) Or (mabnet3 > mabnet4 And (markazosat >= mabnet3 Or markazosat < mabnet4)) Then
+nettzrmabame = "netaq3"
+ElseIf (mabnet4 < mabnet1 And markazosat >= mabnet4 And markazosat < mabnet1) Or (mabnet4 > mabnet1 And (markazosat >= mabnet4 Or markazosat < mabnet1)) Then
+nettzrmabame = "netaq4"
+End If
+
+
+End Function
+Public Function nettzrmosame(sal As Integer, mah As Integer, rooz As Double, mbtool As Double)
+Dim a As Double
+a = wasat(sal, mah, rooz, mbtool)
+Dim b As Double
+b = wasatzh(sal, mah, rooz, mbtool)
+Dim c As Double
+c = oujzh(sal, mah, rooz, mbtool)
+Dim d As Double
+If b > c Then
+d = b - c
+Else
+d = b + 360 - c
+End If
+Dim markaz As Double
+If a > b Then
+markaz = a - b
+Else
+markaz = a + 360 - b
+End If
+Dim aslkhase As Double
+aslkhase = (((((24 / 60) + 15) / 60) + 50) / 60) + 261
+Dim khaseq As Double
+If markaz + aslkhase < 360 Then
+khaseq = markaz + aslkhase
+Else
+khaseq = markaz + aslkhase - 360
+End If
+Dim markazosat As Double
+markazosat = khaseq + tzohre1(markaz)
+Dim mabnet2 As Double
+mabnet2 = (((34 / 60) + 0) / 60) + 136
+Dim mabnet4 As Double
+mabnet4 = mabnet2 + 180
+Dim mabnet3 As Double
+mabnet3 = (mabnet2 + mabnet4) / 2
+Dim mabnet1 As Double
+mabnet1 = mabnet3 - 180
+If (mabnet1 < mabnet2 And markazosat >= mabnet1 And markazosat < mabnet2) Or (mabnet1 > mabnet2 And (markazosat >= mabnet1 Or markazosat < mabnet2)) Then
+nettzrmosame = "netaq1"
+ElseIf (mabnet2 < mabnet3 And markazosat >= mabnet2 And markazosat < mabnet3) Or (mabnet2 > mabnet3 And (markazosat >= mabnet2 Or markazosat < mabnet3)) Then
+nettzrmosame = "netaq2"
+ElseIf (mabnet3 < mabnet4 And markazosat >= mabnet3 And markazosat < mabnet4) Or (mabnet3 > mabnet4 And (markazosat >= mabnet3 Or markazosat < mabnet4)) Then
+nettzrmosame = "netaq3"
+ElseIf (mabnet4 < mabnet1 And markazosat >= mabnet4 And markazosat < mabnet1) Or (mabnet4 > mabnet1 And (markazosat >= mabnet4 Or markazosat < mabnet1)) Then
+nettzrmosame = "netaq4"
+End If
+End Function
+Public Function nettzrmaqame(sal As Integer, mah As Integer, rooz As Double, mbtool As Double)
+Dim a As Double
+a = wasat(sal, mah, rooz, mbtool)
+Dim b As Double
+b = wasatzh(sal, mah, rooz, mbtool)
+Dim c As Double
+c = oujzh(sal, mah, rooz, mbtool)
+Dim d As Double
+If b > c Then
+d = b - c
+Else
+d = b + 360 - c
+End If
+Dim markaz As Double
+If a > b Then
+markaz = a - b
+Else
+markaz = a + 360 - b
+End If
+Dim aslkhase As Double
+aslkhase = (((((24 / 60) + 15) / 60) + 50) / 60) + 261
+Dim khaseq As Double
+If markaz + aslkhase < 360 Then
+khaseq = markaz + aslkhase
+Else
+khaseq = markaz + aslkhase - 360
+End If
+Dim markazosat As Double
+markazosat = khaseq + tzohre1(markaz)
+Dim mabnet2 As Double
+mabnet2 = (((38 / 60) + 1) / 60) + 137
+Dim mabnet4 As Double
+mabnet4 = mabnet2 + 180
+Dim mabnet3 As Double
+mabnet3 = (mabnet2 + mabnet4) / 2
+Dim mabnet1 As Double
+mabnet1 = mabnet3 - 180
+If (mabnet1 < mabnet2 And markazosat >= mabnet1 And markazosat < mabnet2) Or (mabnet1 > mabnet2 And (markazosat >= mabnet1 Or markazosat < mabnet2)) Then
+nettzrmaqame = "netaq1"
+ElseIf (mabnet2 < mabnet3 And markazosat >= mabnet2 And markazosat < mabnet3) Or (mabnet2 > mabnet3 And (markazosat >= mabnet2 Or markazosat < mabnet3)) Then
+nettzrmaqame = "netaq2"
+ElseIf (mabnet3 < mabnet4 And markazosat >= mabnet3 And markazosat < mabnet4) Or (mabnet3 > mabnet4 And (markazosat >= mabnet3 Or markazosat < mabnet4)) Then
+nettzrmaqame = "netaq3"
+ElseIf (mabnet4 < mabnet1 And markazosat >= mabnet4 And markazosat < mabnet1) Or (mabnet4 > mabnet1 And (markazosat >= mabnet4 Or markazosat < mabnet1)) Then
+nettzrmaqame = "netaq4"
+End If
+End Function
+Public Function nettzrbabame(sal As Integer, mah As Integer, rooz As Double, mbtool As Double)
+Dim a As Double
+a = wasat(sal, mah, rooz, mbtool)
+Dim b As Double
+b = wasatzh(sal, mah, rooz, mbtool)
+Dim c As Double
+c = oujzh(sal, mah, rooz, mbtool)
+Dim d As Double
+If b > c Then
+d = b - c
+Else
+d = b + 360 - c
+End If
+Dim markaz As Double
+If a > b Then
+markaz = a - b
+Else
+markaz = a + 360 - b
+End If
+Dim aslkhase As Double
+aslkhase = (((((24 / 60) + 15) / 60) + 50) / 60) + 261
+Dim khaseq As Double
+If markaz + aslkhase < 360 Then
+khaseq = markaz + aslkhase
+Else
+khaseq = markaz + aslkhase - 360
+End If
+Dim markazosat As Double
+markazosat = khaseq + tzohre1(markaz)
+Dim d1 As Double
+d1 = (((59 / 60) + 15) / 60) + 135
+Dim mabnet2 As Double
+mabnet2 = ((d1 - 90) / 2) + 90
+Dim mabnet4 As Double
+mabnet4 = 360 - mabnet2
+Dim mabnet3 As Double
+mabnet3 = (mabnet2 + mabnet4) / 2
+Dim mabnet1 As Double
+mabnet1 = mabnet3 - 180
+If (mabnet1 < mabnet2 And markazosat >= mabnet1 And markazosat < mabnet2) Or (mabnet1 > mabnet2 And (markazosat >= mabnet1 Or markazosat < mabnet2)) Then
+nettzrbabame = "netaq1"
+ElseIf (mabnet2 < mabnet3 And markazosat >= mabnet2 And markazosat < mabnet3) Or (mabnet2 > mabnet3 And (markazosat >= mabnet2 Or markazosat < mabnet3)) Then
+nettzrbabame = "netaq2"
+ElseIf (mabnet3 < mabnet4 And markazosat >= mabnet3 And markazosat < mabnet4) Or (mabnet3 > mabnet4 And (markazosat >= mabnet3 Or markazosat < mabnet4)) Then
+ nettzrbabame = "netaq3"
+ElseIf (mabnet4 < mabnet1 And markazosat >= mabnet4 And markazosat < mabnet1) Or (mabnet4 > mabnet1 And (markazosat >= mabnet4 Or markazosat < mabnet1)) Then
+nettzrbabame = "netaq4"
+End If
+
+End Function
+Public Function nettzrbosame(sal As Integer, mah As Integer, rooz As Double, mbtool As Double)
+Dim a As Double
+a = wasat(sal, mah, rooz, mbtool)
+Dim b As Double
+b = wasatzh(sal, mah, rooz, mbtool)
+Dim c As Double
+c = oujzh(sal, mah, rooz, mbtool)
+Dim d As Double
+If b > c Then
+d = b - c
+Else
+d = b + 360 - c
+End If
+Dim markaz As Double
+If a > b Then
+markaz = a - b
+Else
+markaz = a + 360 - b
+End If
+Dim aslkhase As Double
+aslkhase = (((((24 / 60) + 15) / 60) + 50) / 60) + 261
+Dim khaseq As Double
+If markaz + aslkhase < 360 Then
+khaseq = markaz + aslkhase
+Else
+khaseq = markaz + aslkhase - 360
+End If
+Dim markazosat As Double
+markazosat = khaseq + tzohre1(markaz)
+Dim d1 As Double
+d1 = (((34 / 60) + 0) / 60) + 136
+Dim mabnet2 As Double
+mabnet2 = ((d1 - 90) / 2) + 90
+Dim mabnet4 As Double
+mabnet4 = 360 - mabnet2
+Dim mabnet3 As Double
+mabnet3 = (mabnet2 + mabnet4) / 2
+Dim mabnet1 As Double
+mabnet1 = mabnet3 - 180
+If (mabnet1 < mabnet2 And markazosat >= mabnet1 And markazosat < mabnet2) Or (mabnet1 > mabnet2 And (markazosat >= mabnet1 Or markazosat < mabnet2)) Then
+nettzrbosame = "netaq1"
+ElseIf (mabnet2 < mabnet3 And markazosat >= mabnet2 And markazosat < mabnet3) Or (mabnet2 > mabnet3 And (markazosat >= mabnet2 Or markazosat < mabnet3)) Then
+nettzrbosame = "netaq2"
+ElseIf (mabnet3 < mabnet4 And markazosat >= mabnet3 And markazosat < mabnet4) Or (mabnet3 > mabnet4 And (markazosat >= mabnet3 Or markazosat < mabnet4)) Then
+nettzrbosame = "netaq3"
+ElseIf (mabnet4 < mabnet1 And markazosat >= mabnet4 And markazosat < mabnet1) Or (mabnet4 > mabnet1 And (markazosat >= mabnet4 Or markazosat < mabnet1)) Then
+nettzrbosame = "netaq4"
+End If
+
+End Function
+Public Function nettzrbaqame(sal As Integer, mah As Integer, rooz As Double, mbtool As Double)
+Dim a As Double
+a = wasat(sal, mah, rooz, mbtool)
+Dim b As Double
+b = wasatzh(sal, mah, rooz, mbtool)
+Dim c As Double
+c = oujzh(sal, mah, rooz, mbtool)
+Dim d As Double
+If b > c Then
+d = b - c
+Else
+d = b + 360 - c
+End If
+Dim markaz As Double
+If a > b Then
+markaz = a - b
+Else
+markaz = a + 360 - b
+End If
+Dim aslkhase As Double
+aslkhase = (((((24 / 60) + 15) / 60) + 50) / 60) + 261
+Dim khaseq As Double
+If markaz + aslkhase < 360 Then
+khaseq = markaz + aslkhase
+Else
+khaseq = markaz + aslkhase - 360
+End If
+Dim markazosat As Double
+markazosat = khaseq + tzohre1(markaz)
+Dim d1 As Double
+d1 = (((38 / 60) + 1) / 60) + 137
+Dim mabnet2 As Double
+mabnet2 = ((d1 - 90) / 2) + 90
+Dim mabnet4 As Double
+mabnet4 = 360 - mabnet2
+Dim mabnet3 As Double
+mabnet3 = (mabnet2 + mabnet4) / 2
+Dim mabnet1 As Double
+mabnet1 = mabnet3 - 180
+If (mabnet1 < mabnet2 And markazosat >= mabnet1 And markazosat < mabnet2) Or (mabnet1 > mabnet2 And (markazosat >= mabnet1 Or markazosat < mabnet2)) Then
+nettzrbaqame = "netaq1"
+ElseIf (mabnet2 < mabnet3 And markazosat >= mabnet2 And markazosat < mabnet3) Or (mabnet2 > mabnet3 And (markazosat >= mabnet2 Or markazosat < mabnet3)) Then
+nettzrbaqame = "netaq2"
+ElseIf (mabnet3 < mabnet4 And markazosat >= mabnet3 And markazosat < mabnet4) Or (mabnet3 > mabnet4 And (markazosat >= mabnet3 Or markazosat < mabnet4)) Then
+nettzrbaqame = "netaq3"
+ElseIf (mabnet4 < mabnet1 And markazosat >= mabnet4 And markazosat < mabnet1) Or (mabnet4 > mabnet1 And (markazosat >= mabnet4 Or markazosat < mabnet1)) Then
+nettzrbaqame = "netaq4"
+End If
+End Function
+Public Function nettottmabame(sal As Integer, mah As Integer, rooz As Double, mbtool As Double)
+Dim a As Double
+a = wasat(sal, mah, rooz, mbtool)
+Dim b As Double
+b = wasatott(sal, mah, rooz, mbtool)
+Dim c As Double
+c = oujott(sal, mah, rooz, mbtool)
+Dim d As Double
+If b > c Then
+d = b - c
+Else
+d = b + 360 - c
+End If
+Dim markaz As Double
+If a > b Then
+markaz = a - b
+Else
+markaz = a + 360 - b
+End If
+Dim aslkhase As Double
+aslkhase = (((((8 / 60) + 49) / 60) + 3) / 60) + 324
+Dim khaseq As Double
+If markaz + aslkhase < 360 Then
+khaseq = markaz + aslkhase
+Else
+khaseq = markaz + aslkhase - 360
+End If
+Dim markazosat As Double
+markazosat = khaseq + tota1(markaz)
+Dim mabnet2 As Double
+mabnet2 = (((54 / 60) + 1) / 60) + 109
+Dim mabnet4 As Double
+mabnet4 = mabnet2 + 180
+Dim mabnet3 As Double
+mabnet3 = (mabnet2 + mabnet4) / 2
+Dim mabnet1 As Double
+mabnet1 = mabnet3 - 180
+If (mabnet1 < mabnet2 And markazosat >= mabnet1 And markazosat < mabnet2) Or (mabnet1 > mabnet2 And (markazosat >= mabnet1 Or markazosat < mabnet2)) Then
+nettottmabame = "netaq1"
+ElseIf (mabnet2 < mabnet3 And markazosat >= mabnet2 And markazosat < mabnet3) Or (mabnet2 > mabnet3 And (markazosat >= mabnet2 Or markazosat < mabnet3)) Then
+nettottmabame = "netaq2"
+ElseIf (mabnet3 < mabnet4 And markazosat >= mabnet3 And markazosat < mabnet4) Or (mabnet3 > mabnet4 And (markazosat >= mabnet3 Or markazosat < mabnet4)) Then
+nettottmabame = "netaq3"
+ElseIf (mabnet4 < mabnet1 And markazosat >= mabnet4 And markazosat < mabnet1) Or (mabnet4 > mabnet1 And (markazosat >= mabnet4 Or markazosat < mabnet1)) Then
+nettottmabame = "netaq4"
+End If
+
+End Function
+Public Function nettottmosame(sal As Integer, mah As Integer, rooz As Double, mbtool As Double)
+Dim a As Double
+a = wasat(sal, mah, rooz, mbtool)
+Dim b As Double
+b = wasatott(sal, mah, rooz, mbtool)
+Dim c As Double
+c = oujott(sal, mah, rooz, mbtool)
+Dim d As Double
+If b > c Then
+d = b - c
+Else
+d = b + 360 - c
+End If
+Dim markaz As Double
+If a > b Then
+markaz = a - b
+Else
+markaz = a + 360 - b
+End If
+Dim aslkhase As Double
+aslkhase = (((((8 / 60) + 49) / 60) + 3) / 60) + 324
+Dim khaseq As Double
+If markaz + aslkhase < 360 Then
+khaseq = markaz + aslkhase
+Else
+khaseq = markaz + aslkhase - 360
+End If
+Dim markazosat As Double
+markazosat = khaseq + tota1(markaz)
+Dim mabnet2 As Double
+mabnet2 = (((28 / 60) + 1) / 60) + 112
+Dim mabnet4 As Double
+mabnet4 = mabnet2 + 180
+Dim mabnet3 As Double
+mabnet3 = (mabnet2 + mabnet4) / 2
+Dim mabnet1 As Double
+mabnet1 = mabnet3 - 180
+If (mabnet1 < mabnet2 And markazosat >= mabnet1 And markazosat < mabnet2) Or (mabnet1 > mabnet2 And (markazosat >= mabnet1 Or markazosat < mabnet2)) Then
+nettottmosame = "netaq1"
+ElseIf (mabnet2 < mabnet3 And markazosat >= mabnet2 And markazosat < mabnet3) Or (mabnet2 > mabnet3 And (markazosat >= mabnet2 Or markazosat < mabnet3)) Then
+nettottmosame = "netaq2"
+ElseIf (mabnet3 < mabnet4 And markazosat >= mabnet3 And markazosat < mabnet4) Or (mabnet3 > mabnet4 And (markazosat >= mabnet3 Or markazosat < mabnet4)) Then
+nettottmosame = "netaq3"
+ElseIf (mabnet4 < mabnet1 And markazosat >= mabnet4 And markazosat < mabnet1) Or (mabnet4 > mabnet1 And (markazosat >= mabnet4 Or markazosat < mabnet1)) Then
+nettottmosame = "netaq4"
+End If
+
+End Function
+Public Function nettottmaqame(sal As Integer, mah As Integer, rooz As Double, mbtool As Double)
+Dim a As Double
+a = wasat(sal, mah, rooz, mbtool)
+Dim b As Double
+b = wasatott(sal, mah, rooz, mbtool)
+Dim c As Double
+c = oujott(sal, mah, rooz, mbtool)
+Dim d As Double
+If b > c Then
+d = b - c
+Else
+d = b + 360 - c
+End If
+Dim markaz As Double
+If a > b Then
+markaz = a - b
+Else
+markaz = a + 360 - b
+End If
+Dim aslkhase As Double
+aslkhase = (((((8 / 60) + 49) / 60) + 3) / 60) + 324
+Dim khaseq As Double
+If markaz + aslkhase < 360 Then
+khaseq = markaz + aslkhase
+Else
+khaseq = markaz + aslkhase - 360
+End If
+Dim markazosat As Double
+markazosat = khaseq + tota1(markaz)
+Dim mabnet2 As Double
+mabnet2 = (((44 / 60) + 10) / 60) + 116
+Dim mabnet4 As Double
+mabnet4 = mabnet2 + 180
+Dim mabnet3 As Double
+mabnet3 = (mabnet2 + mabnet4) / 2
+Dim mabnet1 As Double
+mabnet1 = mabnet3 - 180
+If (mabnet1 < mabnet2 And markazosat >= mabnet1 And markazosat < mabnet2) Or (mabnet1 > mabnet2 And (markazosat >= mabnet1 Or markazosat < mabnet2)) Then
+nettottmaqame = "netaq1"
+ElseIf (mabnet2 < mabnet3 And markazosat >= mabnet2 And markazosat < mabnet3) Or (mabnet2 > mabnet3 And (markazosat >= mabnet2 Or markazosat < mabnet3)) Then
+nettottmaqame = "netaq2"
+ElseIf (mabnet3 < mabnet4 And markazosat >= mabnet3 And markazosat < mabnet4) Or (mabnet3 > mabnet4 And (markazosat >= mabnet3 Or markazosat < mabnet4)) Then
+nettottmaqame = "netaq3"
+ElseIf (mabnet4 < mabnet1 And markazosat >= mabnet4 And markazosat < mabnet1) Or (mabnet4 > mabnet1 And (markazosat >= mabnet4 Or markazosat < mabnet1)) Then
+nettottmaqame = "netaq4"
+End If
+
+End Function
+Public Function nettottbabame(sal As Integer, mah As Integer, rooz As Double, mbtool As Double)
+Dim a As Double
+a = wasat(sal, mah, rooz, mbtool)
+Dim b As Double
+b = wasatott(sal, mah, rooz, mbtool)
+Dim c As Double
+c = oujott(sal, mah, rooz, mbtool)
+Dim d As Double
+If b > c Then
+d = b - c
+Else
+d = b + 360 - c
+End If
+Dim markaz As Double
+If a > b Then
+markaz = a - b
+Else
+markaz = a + 360 - b
+End If
+Dim aslkhase As Double
+aslkhase = (((((8 / 60) + 49) / 60) + 3) / 60) + 324
+Dim khaseq As Double
+If markaz + aslkhase < 360 Then
+khaseq = markaz + aslkhase
+Else
+khaseq = markaz + aslkhase - 360
+End If
+Dim markazosat As Double
+markazosat = khaseq + tota1(markaz)
+Dim d1 As Double
+d1 = (((54 / 60) + 1) / 60) + 109
+Dim mabnet2 As Double
+mabnet2 = ((d1 - 90) / 2) + 90
+Dim mabnet4 As Double
+mabnet4 = 360 - mabnet2
+Dim mabnet3 As Double
+mabnet3 = (mabnet2 + mabnet4) / 2
+Dim mabnet1 As Double
+mabnet1 = mabnet3 - 180
+If (mabnet1 < mabnet2 And markazosat >= mabnet1 And markazosat < mabnet2) Or (mabnet1 > mabnet2 And (markazosat >= mabnet1 Or markazosat < mabnet2)) Then
+nettottbabame = "netaq1"
+ElseIf (mabnet2 < mabnet3 And markazosat >= mabnet2 And markazosat < mabnet3) Or (mabnet2 > mabnet3 And (markazosat >= mabnet2 Or markazosat < mabnet3)) Then
+nettottbabame = "netaq2"
+ElseIf (mabnet3 < mabnet4 And markazosat >= mabnet3 And markazosat < mabnet4) Or (mabnet3 > mabnet4 And (markazosat >= mabnet3 Or markazosat < mabnet4)) Then
+nettottbabame = "netaq3"
+ElseIf (mabnet4 < mabnet1 And markazosat >= mabnet4 And markazosat < mabnet1) Or (mabnet4 > mabnet1 And (markazosat >= mabnet4 Or markazosat < mabnet1)) Then
+nettottbabame = "netaq4"
+End If
+End Function
+Public Function nettottbosame(sal As Integer, mah As Integer, rooz As Double, mbtool As Double)
+Dim a As Double
+a = wasat(sal, mah, rooz, mbtool)
+Dim b As Double
+b = wasatott(sal, mah, rooz, mbtool)
+Dim c As Double
+c = oujott(sal, mah, rooz, mbtool)
+Dim d As Double
+If b > c Then
+d = b - c
+Else
+d = b + 360 - c
+End If
+Dim markaz As Double
+If a > b Then
+markaz = a - b
+Else
+markaz = a + 360 - b
+End If
+Dim aslkhase As Double
+aslkhase = (((((8 / 60) + 49) / 60) + 3) / 60) + 324
+Dim khaseq As Double
+If markaz + aslkhase < 360 Then
+khaseq = markaz + aslkhase
+Else
+khaseq = markaz + aslkhase - 360
+End If
+Dim markazosat As Double
+markazosat = khaseq + tota1(markaz)
+Dim d1 As Double
+d1 = (((28 / 60) + 1) / 60) + 112
+Dim mabnet2 As Double
+mabnet2 = ((d1 - 90) / 2) + 90
+Dim mabnet4 As Double
+mabnet4 = 360 - mabnet2
+Dim mabnet3 As Double
+mabnet3 = (mabnet2 + mabnet4) / 2
+Dim mabnet1 As Double
+mabnet1 = mabnet3 - 180
+If (mabnet1 < mabnet2 And markazosat >= mabnet1 And markazosat < mabnet2) Or (mabnet1 > mabnet2 And (markazosat >= mabnet1 Or markazosat < mabnet2)) Then
+nettottbosame = "netaq1"
+ElseIf (mabnet2 < mabnet3 And markazosat >= mabnet2 And markazosat < mabnet3) Or (mabnet2 > mabnet3 And (markazosat >= mabnet2 Or markazosat < mabnet3)) Then
+nettottbosame = "netaq2"
+ElseIf (mabnet3 < mabnet4 And markazosat >= mabnet3 And markazosat < mabnet4) Or (mabnet3 > mabnet4 And (markazosat >= mabnet3 Or markazosat < mabnet4)) Then
+nettottbosame = "netaq3"
+ElseIf (mabnet4 < mabnet1 And markazosat >= mabnet4 And markazosat < mabnet1) Or (mabnet4 > mabnet1 And (markazosat >= mabnet4 Or markazosat < mabnet1)) Then
+nettottbosame = "netaq4"
+End If
+
+End Function
+Public Function nettottbaqame(sal As Integer, mah As Integer, rooz As Double, mbtool As Double)
+Dim a As Double
+a = wasat(sal, mah, rooz, mbtool)
+Dim b As Double
+b = wasatott(sal, mah, rooz, mbtool)
+Dim c As Double
+c = oujott(sal, mah, rooz, mbtool)
+Dim d As Double
+If b > c Then
+d = b - c
+Else
+d = b + 360 - c
+End If
+Dim markaz As Double
+If a > b Then
+markaz = a - b
+Else
+markaz = a + 360 - b
+End If
+Dim aslkhase As Double
+aslkhase = (((((8 / 60) + 49) / 60) + 3) / 60) + 324
+Dim khaseq As Double
+If markaz + aslkhase < 360 Then
+khaseq = markaz + aslkhase
+Else
+khaseq = markaz + aslkhase - 360
+End If
+Dim markazosat As Double
+markazosat = khaseq + tota1(markaz)
+Dim d1 As Double
+d1 = (((44 / 60) + 10) / 60) + 116
+Dim mabnet2 As Double
+mabnet2 = ((d1 - 90) / 2) + 90
+Dim mabnet4 As Double
+mabnet4 = 360 - mabnet2
+Dim mabnet3 As Double
+mabnet3 = (mabnet2 + mabnet4) / 2
+Dim mabnet1 As Double
+mabnet1 = mabnet3 - 180
+If (mabnet1 < mabnet2 And markazosat >= mabnet1 And markazosat < mabnet2) Or (mabnet1 > mabnet2 And (markazosat >= mabnet1 Or markazosat < mabnet2)) Then
+nettottbaqame = "netaq1"
+ElseIf (mabnet2 < mabnet3 And markazosat >= mabnet2 And markazosat < mabnet3) Or (mabnet2 > mabnet3 And (markazosat >= mabnet2 Or markazosat < mabnet3)) Then
+nettottbaqame = "netaq2"
+ElseIf (mabnet3 < mabnet4 And markazosat >= mabnet3 And markazosat < mabnet4) Or (mabnet3 > mabnet4 And (markazosat >= mabnet3 Or markazosat < mabnet4)) Then
+nettottbaqame = "netaq3"
+ElseIf (mabnet4 < mabnet1 And markazosat >= mabnet4 And markazosat < mabnet1) Or (mabnet4 > mabnet1 And (markazosat >= mabnet4 Or markazosat < mabnet1)) Then
+nettottbaqame = "netaq4"
+End If
+
+End Function
+Public Function samtamee(arzb As Double, toolb As Double)
+Dim mabtool As Double
+mabtool = Abs(39.8579118 - toolb)
+Dim mahfooz1 As Double
+mahfooz1 = acs(csn(Abs(21.3890824)) * sn(mabtool) / 60)
+Dim mahfooz2 As Double
+mahfooz2 = asn(sn(Abs(21.3890824)) * 60 / sn(mahfooz1))
+Dim mahfooz3 As Double
+mahfooz3 = mahfooz2 + (90 - Abs(arzb))
+Dim mahfooz3a As Double
+mahfooz3a = Abs(mahfooz2 - (90 - Abs(arzb)))
+Dim j As Double
+If arzb > 0 Then
+j = 1
+Else
+j = -1
+End If
+If toolb = 39.8579118 Then
+If arzb > 21.3890824 Then
+samtamee = "jonoob "
+Else
+samtamee = "shomal"
+End If
+ElseIf mabtool = 180 Then
+If arzb > 21.3890824 * -1 Then
+samtamee = "shomal"
+ElseIf arzb < 21.3890824 * -1 Then
+samtamee = "jonoob"
+Else
+samtamee = "vajh allah"
+End If
+ElseIf mabtool < 90 And j = 1 Then
+If mahfooz3 = 90 And toolb > 39.8579118 Then
+samtamee = "qarby"
+ElseIf mahfooz3 = 90 And toolb < -180 + 39.8579118 Then
+samtamee = "qarby"
+ElseIf (arzb < 0 Or mahfooz3 > 90) And (toolb > 39.8579118 Or toolb < -180 + 39.8579118) Then
+samtamee = "shomal-qarby"
+ElseIf mahfooz3 = 90 And toolb <= 39.8579118 Then
+samtamee = "sharqy"
+ElseIf mahfooz3 = 90 And toolb >= -180 + 39.8579118 Then
+samtamee = "sharqy"
+ElseIf (arzb >= 0 Or mahfooz3 < 90) And (toolb > 39.8579118 Or toolb < -180 + 39.8579118) Then
+samtamee = "jonoob=qarby"
+ElseIf (arzb < 0 Or mahfooz3 > 90) And (toolb <= 39.8579118 Or toolb >= -180 + 39.8579118) Then
+samtamee = "shomal=sharqy"
+ElseIf (arzb >= 0 Or mahfooz3 < 90) And (toolb <= 39.8579118 Or toolb >= -180 + 39.8579118) Then
+samtamee = "jonoob-sharqy"
+End If
+ElseIf mabtool < 90 And j = -1 Then
+If mahfooz3a = 90 And toolb > 39.8579118 Then
+samtamee = "qarby"
+ElseIf mahfooz3a = 90 And toolb < -180 + 39.8579118 Then
+samtamee = "qarby"
+ElseIf (arzb < 0 Or mahfooz3 > 90) And (toolb > 39.8579118 Or toolb < -180 + 39.8579118) Then
+samtamee = "shomal=qarby"
+ElseIf mahfooz3a = 90 And toolb <= 39.8579118 Then
+samtamee = "sharqy"
+ElseIf mahfooz3a = 90 And toolb >= -180 + 39.8579118 Then
+samtamee = "sharqy"
+ElseIf (arzb >= 0 Or mahfooz3a < 90) And (toolb > 39.8579118 Or toolb < -180 + 39.8579118) Then
+samtamee = "jonoob-qarby"
+ElseIf (arzb < 0 Or mahfooz3a > 90) And (toolb <= 39.8579118 Or toolb >= -180 + 39.8579118) Then
+samtamee = "shomal-sharqy"
+ElseIf (arzb >= 0 Or mahfooz3a < 90) And (toolb <= 39.8579118 Or toolb >= -180 + 39.8579118) Then
+samtamee = "jonoob-sharqy"
+End If
+ElseIf mabtool < 180 And j = 1 Then
+If mahfooz3a = 90 And toolb > 39.8579118 Then
+samtamee = "qarby"
+ElseIf mahfooz3a = 90 And toolb < -180 + 39.8579118 Then
+samtamee = "qarby"
+ElseIf (arzb > 0 Or mahfooz3a > 90) And (toolb > 39.8579118 Or toolb < -180 + 39.8579118) Then
+samtamee = "shomal-qarby"
+ElseIf mahfooz3a = 90 And toolb <= 39.8579118 Then
+samtamee = "sarqy"
+ElseIf mahfooz3a = 90 And toolb >= -180 + 39.8579118 Then
+samtamee = "sharqy"
+ElseIf (arzb <= 0 Or mahfooz3a < 90) And (toolb > 39.8579118 Or toolb < -180 + 39.8579118) Then
+samtamee = "jonoob-qarby"
+ElseIf (arzb > 0 Or mahfooz3a > 90) And (toolb <= 39.8579118 Or toolb >= -180 + 39.8579118) Then
+samtamee = "shomal-sharqy"
+ElseIf (arzb <= 0 Or mahfooz3a < 90) And (toolb <= 39.8579118 Or toolb >= -180 + 39.8579118) Then
+samtamee = "jonoob-sharqy"
+End If
+ElseIf mabtool < 180 And j = -1 Then
+If mahfooz3 = 90 And toolb > 39.8579118 Then
+samtamee = "qarby"
+ElseIf mahfooz3 = 90 And toolb < -180 + 39.8579118 Then
+samtamee = "qarby"
+ElseIf (arzb > 0 Or mahfooz3 > 90) And (toolb > 39.8579118 Or toolb < -180 + 39.8579118) Then
+samtamee = "shomal-qarby"
+ElseIf mahfooz3 = 90 And toolb <= 39.8579118 Then
+samtamee = "sharqy"
+ElseIf mahfooz3 = 90 And toolb >= -180 + 39.8579118 Then
+samtamee = "sharqy"
+ElseIf (arzb <= 0 Or mahfooz3 < 90) And (toolb > 39.8579118 Or toolb < -180 + 39.8579118) Then
+samtamee = "jonoob-qarby"
+ElseIf (arzb > 0 Or mahfooz3 > 90) And (toolb <= 39.8579118 Or toolb >= -180 + 39.8579118) Then
+samtamee = "shomal-sharqy"
+ElseIf (arzb <= 0 Or mahfooz3 < 90) And (toolb <= 39.8579118 Or toolb >= -180 + 39.8579118) Then
+samtamee = "jonoob-sharqy"
+End If
+ElseIf mabtool = 90 Then
+If arzb > 0 And toolb > 39.8579118 Then
+samtamee = "shomal-qarb"
+ElseIf arzb <= 0 And toolb > 39.8579118 Then
+samtamee = "jonoob-qarb"
+ElseIf arzb <= 0 And toolb < 39.8579118 Then
+samtamee = "jnoob-sharq"
+ElseIf arzb > 0 And toolb < 39.8579118 Then
+samtamee = "shomal-sharq"
+End If
+End If
+
+End Function
+Public Function zavenheraf(toolb As Double, arzb As Double) As Double
+Dim mabtool As Double
+mabtool = Abs(39.85791 - toolb)
+Dim mahfooz1 As Double
+mahfooz1 = acs(csn(Abs(21.3890824)) * sn(mabtool) / 60)
+Dim mahfooz2 As Double
+mahfooz2 = asn(sn(Abs(21.3890824)) * 60 / sn(mahfooz1))
+Dim mahfooz3 As Double
+mahfooz3 = mahfooz2 + (90 - Abs(arzb))
+Dim mahfooz4 As Double
+mahfooz4 = asn(sn(mahfooz3) * sn(mahfooz1) / 60)
+Dim boad2b As Double
+boad2b = boad2balad(toolb, 39.8579118, arzb, 21.3890824)
+Dim q As Double
+q = asn(csn(mahfooz1) * 60 / sn(boad2b))
+Dim t As Double
+t = asn(sn(21.3890824) * sn(Abs(arzb)) / 60)
+Dim w As Double
+w = asn(sn(t) * 60 / csn(21.3890824))
+Dim y As Double
+If arzb = 0 Then
+y = 90 - 21.3890824
+Else
+y = w
+End If
+If toolb = 39.8579118 Then
+zavenheraf = 0
+ElseIf mabtool = 180 Then
+zavenheraf = 0
+ElseIf mabtool < 90 Then
+zavenheraf = q
+ElseIf mabtool < 180 Then
+zavenheraf = q
+ElseIf Abs(39.5 - toolb) = 90 Then
+zavenheraf = y
+End If
+End Function
+Public Function zohorkame(sal As Integer, arzk As Double, taqsh As Double, taqk As Double, arzb As Double)
+Dim x As Double
+x = mtb(sal, taqsh, arzb)
+Dim ertasher As Double
+ertasher = qrk(ml(asher(taqsh, arzb)), arzb)
+Dim arzeq As Double
+arzeq = Arzr(asher(taqsh, arzb), ml(x), arzb)
+Dim y As Double
+y = 90 - arzeq
+Dim boadkoly As Double
+boadkoly = (8 / 60) + 11
+Dim tadilroyat As Double
+tadilroyat = asn(sn(boadkoly) * 60 / sn(y))
+Dim w As Double
+w = asn(60 * tn(arzk) / tn(y))
+Dim qosroyat As Double
+If arzk > 0 Then
+qosroyat = tadilroyat - w
+Else
+qosroyat = tadilroyat + w
+End If
+Dim z As Double
+If Abs(taqk - taqsh) < 180 Then
+z = Abs(taqk - taqsh)
+Else
+z = 360 - Abs(taqk - taqsh)
+End If
+If z = qosroyat Then
+zohorkame = "ebteda"
+ElseIf z > qosroyat Then
+zohorkame = "zaher"
+Else
+zohorkame = "makhfi"
+End If
+
+
+End Function

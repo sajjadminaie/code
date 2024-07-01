@@ -1,0 +1,1001 @@
+Public Function vfajr(sal As Integer, mah As Integer, rooz As Double, mbtool As Double, arzb As Double) As Double
+Dim a As Double
+a = qsn(ml(sal, taqsh(sal, mah, rooz, mbtool)), arzb)
+Dim b As Double
+b = a / 2 / 15
+Dim taqtolooe As Double
+taqtolooe = taqsh(sal, mah, rooz + (b / 24), mbtool)
+Dim c As Double
+c = sadeq2
+Dim taqfajr As Double
+taqfajr = tq(taqtolooe - c)
+Dim nazir As Double
+If taqfajr + 180 < 360 Then
+nazir = taqfajr + 180
+Else
+nazir = taqfajr + 180 - 360
+End If
+Dim d As Double
+d = 360 - a
+Dim e As Double
+e = d / 2
+Dim qayat As Double
+qayat = qrk(ml(sal, nazir), arzb)
+Dim jtafazol As Double
+jtafazol = sn(qayat - sadeq)
+Dim f As Double
+f = sn(qayat)
+Dim g As Double
+g = sn(sadeq)
+Dim sahmnesf As Double
+sahmnesf = 60 - Abs(csn(e))
+Dim sahmqos As Double
+sahmqos = 60 - csn(e)
+Dim h As Double
+h = sahmqos * g / f
+Dim k As Double
+k = sahmqos - h
+Dim j As Double
+j = acs(60 - Abs(k))
+Dim z As Double
+z = acs(60 - sahmqos)
+Dim daer As Double
+If k > 0 Then
+daer = z - j
+Else
+daer = z + j
+End If
+Dim mbtoloo As Double
+mbtoloo = daer / 15
+Dim zohr As Double
+zohr = vzohr(sal, mah, rooz, mbtool)
+Dim vtoloo As Double
+vtoloo = zohr - b
+vfajr = vtoloo - mbtoloo
+End Function
+Public Function vfajr15(sal As Integer, mah As Integer, rooz As Double, mbtool As Double, arzb As Double) As Double
+Dim a As Double
+a = qsn(ml(sal, taqsh(sal, mah, rooz, mbtool)), arzb)
+Dim b As Double
+b = a / 2 / 15
+Dim taqtolooe As Double
+taqtolooe = taqsh(sal, mah, rooz + (b / 24), mbtool)
+Dim sadeqq As Double
+sadeqq = 15
+Dim sadeqq2 As Double
+sadeqq2 = sadeqq * (4 / 60) / 18
+Dim c As Double
+c = sadeqq2
+Dim taqfajr As Double
+taqfajr = tq(taqtolooe - c)
+Dim nazir As Double
+If taqfajr + 180 < 360 Then
+nazir = taqfajr + 180
+Else
+nazir = taqfajr + 180 - 360
+End If
+Dim d As Double
+d = 360 - a
+Dim e As Double
+e = d / 2
+Dim qayat As Double
+qayat = qrk(ml(sal, nazir), arzb)
+Dim jtafazol As Double
+jtafazol = sn(qayat - sadeqq)
+Dim f As Double
+f = sn(qayat)
+Dim g As Double
+g = sn(sadeqq)
+Dim sahmnesf As Double
+sahmnesf = 60 - Abs(csn(e))
+Dim sahmqos As Double
+sahmqos = 60 - csn(e)
+Dim h As Double
+h = sahmqos * g / f
+Dim k As Double
+k = sahmqos - h
+Dim j As Double
+j = acs(60 - Abs(k))
+Dim z As Double
+z = acs(60 - sahmqos)
+Dim daer As Double
+If k > 0 Then
+daer = z - j
+Else
+daer = z + j
+End If
+Dim mbtoloo As Double
+mbtoloo = daer / 15
+Dim zohr As Double
+zohr = vzohr(sal, mah, rooz, mbtool)
+Dim vtoloo As Double
+vtoloo = zohr - b
+vfajr15 = vtoloo - mbtoloo
+End Function
+
+
+
+Public Function mbtoloo(sal As Integer, mah As Integer, rooz As Double, mbtool As Double, arzb As Double) As Double
+Dim a As Double
+a = qsn(ml(sal, taqsh(sal, mah, rooz, mbtool)), arzb)
+Dim b As Double
+b = a / 2 / 15
+Dim taqtolooe As Double
+taqtolooe = taqsh(sal, mah, rooz + (b / 24), mbtool)
+Dim c As Double
+c = sadeq2
+Dim taqfajr As Double
+taqfajr = tq(taqtolooe - c)
+Dim nazir As Double
+If taqfajr + 180 < 360 Then
+nazir = taqfajr + 180
+Else
+nazir = taqfajr + 180 - 360
+End If
+Dim d As Double
+d = 360 - a
+Dim e As Double
+e = d / 2
+Dim qayat As Double
+qayat = qrk(ml(sal, nazir), arzb)
+Dim jtafazol As Double
+jtafazol = sn(qayat - sadeq)
+Dim f As Double
+f = sn(qayat)
+Dim g As Double
+g = sn(sadeq)
+Dim sahmqos As Double
+sahmqos = 60 - csn(e)
+Dim h As Double
+h = sahmqos * g / f
+Dim k As Double
+k = sahmqos - h
+Dim j As Double
+j = acs(60 - Abs(k))
+Dim z As Double
+z = acs(60 - sahmqos)
+Dim daer As Double
+If k > 0 Then
+daer = z - j
+Else
+daer = z + j
+End If
+mbtoloo = daer / 15
+End Function
+
+
+Public Function vtoloo(sal As Integer, mah As Integer, rooz As Double, mbtool As Double, arzb As Double) As Double
+Dim a As Double
+a = qsn(ml(sal, taqsh(sal, mah, rooz, mbtool)), arzb)
+Dim b As Double
+b = a / 2 / 15
+Dim zohr As Double
+zohr = vzohr(sal, mah, rooz, mbtool)
+vtoloo = zohr - b - (3 / 60)
+End Function
+
+
+
+Public Function vqoroob(sal As Integer, mah As Integer, rooz As Double, mbtool As Double, arzb As Double) As Double
+Dim a As Double
+a = qsn(ml(sal, taqsh(sal, mah, rooz, mbtool)), arzb)
+Dim b As Double
+b = a / 2 / 15
+Dim zohr As Double
+zohr = vzohr(sal, mah, rooz, mbtool)
+vqoroob = zohr + b + (3 / 60)
+End Function
+
+
+
+Public Function vmaqreb(sal As Integer, mah As Integer, rooz As Double, mbtool As Double, arzb As Double) As Double
+Dim a As Double
+a = qsn(ml(sal, taqsh(sal, mah, rooz, mbtool)), arzb)
+Dim b As Double
+b = a / 2 / 15
+Dim c As Double
+c = taqsh(sal, mah, rooz + ((b + 12) / 24), mbtool)
+Dim d As Double
+d = ((4 / 60) * 4.5) / 18
+Dim e As Double
+e = c + d
+Dim nazir As Double
+If e + 180 < 360 Then
+nazir = e + 180
+Else
+nazir = e + 180 - 360
+End If
+Dim f As Double
+f = 360 - a
+Dim g As Double
+g = f / 2
+Dim qayat As Double
+qayat = qrk(ml(sal, nazir), arzb)
+Dim h As Double
+h = sn(qayat)
+Dim k As Double
+k = sn(shafaq)
+Dim sahmqos As Double
+sahmqos = 60 - csn(g)
+Dim m As Double
+m = sahmqos * k / h
+Dim n As Double
+n = sahmqos - m
+Dim z As Double
+z = acs(60 - Abs(n))
+Dim x As Double
+x = acs(60 - sahmqos)
+Dim daer As Double
+If n > 0 Then
+daer = x - z
+Else
+daer = x + z
+End If
+Dim mbmaqreb As Double
+mbmaqreb = daer / 15
+Dim zohr As Double
+zohr = vzohr(sal, mah, rooz, mbtool)
+Dim w As Double
+w = zohr + b
+vmaqreb = w + mbmaqreb
+End Function
+
+Public Function vzohr(sal As Integer, mah As Integer, rooz As Double, mbtool As Double) As Double
+Dim wasatsh As Double
+wasatsh = wasat(sal, mah, rooz, mbtool)
+Dim a As Double
+a = (wasatsh + 1.8972) / 0.985647331382888
+Dim mazy As Double
+If Int(a) + 1 <= 365 Then
+mazy = Int(a) + 1
+Else
+mazy = Int(a) + 1 - 365
+End If
+Dim b As Double
+b = (mbtool - 0.095416667) * 24
+vzohr = 12 - tzaman(mazy) + b
+End Function
+
+
+
+Public Function nimeshab(sal As Integer, mah As Integer, rooz As Double, mbtool As Double, arzb As Double) As Double
+Dim a As Double
+a = vqoroob(sal, mah, rooz, mbtool, arzb)
+Dim b As Double
+b = vfajr15(sal, mah, rooz, mbtool, arzb)
+Dim nesf As Double
+If (a < 12 And b < 12) Or (a > 12 And b > 12) Then
+nesf = (b - a) / 2
+Else
+nesf = (b + 24 - a) / 2
+End If
+If nesf + a > 24 Then
+nimeshab = nesf + a - 24
+Else
+nimeshab = nesf + a
+End If
+End Function
+
+
+Public Function vesha(sal As Integer, mah As Integer, rooz As Double, mbtool As Double, arzb As Double) As Double
+Dim a As Double
+a = qsn(ml(sal, taqsh(sal, mah, rooz, mbtool)), arzb)
+Dim b As Double
+b = a / 2 / 15
+Dim taqtolooe As Double
+taqtolooe = taqsh(sal, mah, rooz + (b / 24), mbtool)
+Dim c As Double
+c = ((sadeq - 3) * (4 / 60)) / 18
+Dim taqfajr As Double
+taqfajr = tq(taqtolooe - c)
+Dim nazir As Double
+If taqfajr + 180 < 360 Then
+nazir = taqfajr + 180
+Else
+nazir = taqfajr + 180 - 360
+End If
+Dim d As Double
+d = 360 - a
+Dim e As Double
+e = d / 2
+Dim qayat As Double
+qayat = qrk(ml(sal, nazir), arzb)
+Dim jtafazol As Double
+jtafazol = sn(qayat - sadeq)
+Dim f As Double
+f = sn(qayat)
+Dim g As Double
+g = sn(sadeq - 3)
+Dim sahmqos As Double
+sahmqos = 60 - csn(e)
+Dim h As Double
+h = sahmqos * g / f
+Dim k As Double
+k = sahmqos - h
+Dim j As Double
+j = acs(60 - Abs(k))
+Dim z As Double
+z = acs(60 - sahmqos)
+Dim daer As Double
+If k > 0 Then
+daer = z - j
+Else
+daer = z + j
+End If
+Dim mbqroob As Double
+mbqroob = daer / 15
+Dim qroob As Double
+qroob = vzohr(sal, mah, rooz, mbtool) + b
+If qroob + mbqroob > 24 Then
+vesha = qroob + mbqroob - 24
+Else
+vesha = qroob + mbqroob
+End If
+End Function
+
+
+Public Function vesha15(sal As Integer, mah As Integer, rooz As Double, mbtool As Double, arzb As Double) As Double
+Dim a As Double
+a = qsn(ml(sal, taqsh(sal, mah, rooz, mbtool)), arzb)
+Dim b As Double
+b = a / 2 / 15
+Dim taqtolooe As Double
+taqtolooe = taqsh(sal, mah, rooz + (b / 24), mbtool)
+
+
+Dim sadeqq As Double
+sadeqq = 15
+Dim sadeqq2 As Double
+sadeqq2 = sadeqq * (4 / 60) / 18
+
+
+Dim c As Double
+c = ((sadeqq - 3) * (4 / 60)) / 18
+Dim taqfajr As Double
+taqfajr = tq(taqtolooe - c)
+Dim nazir As Double
+If taqfajr + 180 < 360 Then
+nazir = taqfajr + 180
+Else
+nazir = taqfajr + 180 - 360
+End If
+Dim d As Double
+d = 360 - a
+Dim e As Double
+e = d / 2
+Dim qayat As Double
+qayat = qrk(ml(sal, nazir), arzb)
+Dim jtafazol As Double
+jtafazol = sn(qayat - sadeqq)
+Dim f As Double
+f = sn(qayat)
+Dim g As Double
+g = sn(sadeqq - 3)
+Dim sahmqos As Double
+sahmqos = 60 - csn(e)
+Dim h As Double
+h = sahmqos * g / f
+Dim k As Double
+k = sahmqos - h
+Dim j As Double
+j = acs(60 - Abs(k))
+Dim z As Double
+z = acs(60 - sahmqos)
+Dim daer As Double
+If k > 0 Then
+daer = z - j
+Else
+daer = z + j
+End If
+Dim mbqroob As Double
+mbqroob = daer / 15
+Dim qroob As Double
+qroob = vzohr(sal, mah, rooz, mbtool) + b
+If qroob + mbqroob > 24 Then
+vesha15 = qroob + mbqroob - 24
+Else
+vesha15 = qroob + mbqroob
+End If
+End Function
+
+
+Public Function vasr(sal As Integer, mah As Integer, rooz As Double, mbtool As Double, arzb As Double) As Double
+Dim zohr As Double
+zohr = vzohr(sal, mah, rooz, mbtool)
+Dim sat As Double
+Dim daq As Double
+Dim sanie As Double
+sat = Int(Abs(zohr))
+daq = Int((Abs(zohr) - sat) * 60)
+sanie = Int((((Abs(zohr) - sat) * 60) - daq) * 60)
+
+Dim saat As Double
+saat = saatzij(sal, mah, roz(rooz, sat, daq, sanie))
+Dim taq As Double
+taq = taqsh(sal, mah, Int(rooz) + (saat / 24), mbtool)
+Dim tale As Double
+tale = tale3(sal, arzb, taq, saat)
+Dim ert1 As Double
+ert1 = ertaztale(sal, arzb, 0, taq, tale)
+Dim boadk As Double
+boadk = bkm(sal, 0, taq)
+Dim matmmr As Double
+matmmr = mtm(sal, boadk, taq)
+Dim fazl As Double
+fazl = fdaer(sal, 0, taq, ert1, arzb)
+Dim matasher As Double
+If matmmr + fazl < 360 Then
+matasher = matmmr + fazl
+Else
+matasher = matmmr + fazl - 360
+End If
+Dim mattal As Double
+If matasher + 90 < 360 Then
+mattal = matasher + 90
+Else
+mattal = matasher + 90 - 360
+End If
+Dim taleb As Double
+taleb = tazmb(sal, mattal, arzb)
+Dim qosn As Double
+qosn = qsn(boadk, arzb)
+Dim daer As Double
+daer = (qosn / 2) + fazl
+Dim ertasr As Double
+ertasr = acj(60 + ctn(ert1))
+Dim fazl2 As Double
+fazl2 = fdaer(sal, 0, taq, ertasr, arzb)
+vasr = (fazl2 / 15) + zohr
+
+End Function
+
+Public Function ventehaasr(sal As Integer, mah As Integer, rooz As Double, mbtool As Double, arzb As Double) As Double
+Dim zohr As Double
+zohr = vzohr(sal, mah, rooz, mbtool)
+Dim sat As Double
+Dim daq As Double
+Dim sanie As Double
+sat = Int(Abs(zohr))
+daq = Int((Abs(zohr) - sat) * 60)
+sanie = Int((((Abs(zohr) - sat) * 60) - daq) * 60)
+
+Dim saat As Double
+saat = saatzij(sal, mah, roz(rooz, sat, daq, sanie))
+Dim taq As Double
+taq = taqsh(sal, mah, Int(rooz) + (saat / 24), mbtool)
+Dim tale As Double
+tale = tale3(sal, arzb, taq, saat)
+Dim ert1 As Double
+ert1 = ertaztale(sal, arzb, 0, taq, tale)
+Dim boadk As Double
+boadk = bkm(sal, 0, taq)
+Dim matmmr As Double
+matmmr = mtm(sal, boadk, taq)
+Dim fazl As Double
+fazl = fdaer(sal, 0, taq, ert1, arzb)
+Dim matasher As Double
+If matmmr + fazl < 360 Then
+matasher = matmmr + fazl
+Else
+matasher = matmmr + fazl - 360
+End If
+Dim mattal As Double
+If matasher + 90 < 360 Then
+mattal = matasher + 90
+Else
+mattal = matasher + 90 - 360
+End If
+Dim taleb As Double
+taleb = tazmb(sal, mattal, arzb)
+Dim qosn As Double
+qosn = qsn(boadk, arzb)
+Dim daer As Double
+daer = (qosn / 2) + fazl
+Dim ertasr As Double
+ertasr = acj(120 + ctn(ert1))
+Dim fazl2 As Double
+fazl2 = fdaer(sal, 0, taq, ertasr, arzb)
+ventehaasr = (fazl2 / 15) + zohr
+End Function
+
+
+Public Function vfajr(sal As Integer, mah As Integer, rooz As Double, mbtool As Double, arzb As Double) As Double
+Dim a As Double
+a = qsn(ml(sal, taqsh(sal, mah, rooz, mbtool)), arzb)
+Dim b As Double
+b = a / 2 / 15
+Dim taqtolooe As Double
+taqtolooe = taqsh(sal, mah, rooz + (b / 24), mbtool)
+Dim c As Double
+c = sadeq2
+Dim taqfajr As Double
+taqfajr = tq(taqtolooe - c)
+Dim nazir As Double
+If taqfajr + 180 < 360 Then
+nazir = taqfajr + 180
+Else
+nazir = taqfajr + 180 - 360
+End If
+Dim d As Double
+d = 360 - a
+Dim e As Double
+e = d / 2
+Dim qayat As Double
+qayat = qrk(ml(sal, nazir), arzb)
+Dim jtafazol As Double
+jtafazol = sn(qayat - sadeq)
+Dim f As Double
+f = sn(qayat)
+Dim g As Double
+g = sn(sadeq)
+Dim sahmnesf As Double
+sahmnesf = 60 - Abs(csn(e))
+Dim sahmqos As Double
+sahmqos = 60 - csn(e)
+Dim h As Double
+h = sahmqos * g / f
+Dim k As Double
+k = sahmqos - h
+Dim j As Double
+j = acs(60 - Abs(k))
+Dim z As Double
+z = acs(60 - sahmqos)
+Dim daer As Double
+If k > 0 Then
+daer = z - j
+Else
+daer = z + j
+End If
+Dim mbtoloo As Double
+mbtoloo = daer / 15
+Dim zohr As Double
+zohr = vzohr(sal, mah, rooz, mbtool)
+Dim vtoloo As Double
+vtoloo = zohr - b
+vfajr = vtoloo - mbtoloo
+End Function
+Public Function vfajr15(sal As Integer, mah As Integer, rooz As Double, mbtool As Double, arzb As Double) As Double
+Dim a As Double
+a = qsn(ml(sal, taqsh(sal, mah, rooz, mbtool)), arzb)
+Dim b As Double
+b = a / 2 / 15
+Dim taqtolooe As Double
+taqtolooe = taqsh(sal, mah, rooz + (b / 24), mbtool)
+Dim sadeqq As Double
+sadeqq = 15
+Dim sadeqq2 As Double
+sadeqq2 = sadeqq * (4 / 60) / 18
+Dim c As Double
+c = sadeqq2
+Dim taqfajr As Double
+taqfajr = tq(taqtolooe - c)
+Dim nazir As Double
+If taqfajr + 180 < 360 Then
+nazir = taqfajr + 180
+Else
+nazir = taqfajr + 180 - 360
+End If
+Dim d As Double
+d = 360 - a
+Dim e As Double
+e = d / 2
+Dim qayat As Double
+qayat = qrk(ml(sal, nazir), arzb)
+Dim jtafazol As Double
+jtafazol = sn(qayat - sadeqq)
+Dim f As Double
+f = sn(qayat)
+Dim g As Double
+g = sn(sadeqq)
+Dim sahmnesf As Double
+sahmnesf = 60 - Abs(csn(e))
+Dim sahmqos As Double
+sahmqos = 60 - csn(e)
+Dim h As Double
+h = sahmqos * g / f
+Dim k As Double
+k = sahmqos - h
+Dim j As Double
+j = acs(60 - Abs(k))
+Dim z As Double
+z = acs(60 - sahmqos)
+Dim daer As Double
+If k > 0 Then
+daer = z - j
+Else
+daer = z + j
+End If
+Dim mbtoloo As Double
+mbtoloo = daer / 15
+Dim zohr As Double
+zohr = vzohr(sal, mah, rooz, mbtool)
+Dim vtoloo As Double
+vtoloo = zohr - b
+vfajr15 = vtoloo - mbtoloo
+End Function
+
+
+
+Public Function mbtoloo(sal As Integer, mah As Integer, rooz As Double, mbtool As Double, arzb As Double) As Double
+Dim a As Double
+a = qsn(ml(sal, taqsh(sal, mah, rooz, mbtool)), arzb)
+Dim b As Double
+b = a / 2 / 15
+Dim taqtolooe As Double
+taqtolooe = taqsh(sal, mah, rooz + (b / 24), mbtool)
+Dim c As Double
+c = sadeq2
+Dim taqfajr As Double
+taqfajr = tq(taqtolooe - c)
+Dim nazir As Double
+If taqfajr + 180 < 360 Then
+nazir = taqfajr + 180
+Else
+nazir = taqfajr + 180 - 360
+End If
+Dim d As Double
+d = 360 - a
+Dim e As Double
+e = d / 2
+Dim qayat As Double
+qayat = qrk(ml(sal, nazir), arzb)
+Dim jtafazol As Double
+jtafazol = sn(qayat - sadeq)
+Dim f As Double
+f = sn(qayat)
+Dim g As Double
+g = sn(sadeq)
+Dim sahmqos As Double
+sahmqos = 60 - csn(e)
+Dim h As Double
+h = sahmqos * g / f
+Dim k As Double
+k = sahmqos - h
+Dim j As Double
+j = acs(60 - Abs(k))
+Dim z As Double
+z = acs(60 - sahmqos)
+Dim daer As Double
+If k > 0 Then
+daer = z - j
+Else
+daer = z + j
+End If
+mbtoloo = daer / 15
+End Function
+
+
+Public Function vtoloo(sal As Integer, mah As Integer, rooz As Double, mbtool As Double, arzb As Double) As Double
+Dim a As Double
+a = qsn(ml(sal, taqsh(sal, mah, rooz, mbtool)), arzb)
+Dim b As Double
+b = a / 2 / 15
+Dim zohr As Double
+zohr = vzohr(sal, mah, rooz, mbtool)
+vtoloo = zohr - b - (3 / 60)
+End Function
+
+
+
+Public Function vqoroob(sal As Integer, mah As Integer, rooz As Double, mbtool As Double, arzb As Double) As Double
+Dim a As Double
+a = qsn(ml(sal, taqsh(sal, mah, rooz, mbtool)), arzb)
+Dim b As Double
+b = a / 2 / 15
+Dim zohr As Double
+zohr = vzohr(sal, mah, rooz, mbtool)
+vqoroob = zohr + b + (3 / 60)
+End Function
+
+
+
+Public Function vmaqreb(sal As Integer, mah As Integer, rooz As Double, mbtool As Double, arzb As Double) As Double
+Dim a As Double
+a = qsn(ml(sal, taqsh(sal, mah, rooz, mbtool)), arzb)
+Dim b As Double
+b = a / 2 / 15
+Dim c As Double
+c = taqsh(sal, mah, rooz + ((b + 12) / 24), mbtool)
+Dim d As Double
+d = ((4 / 60) * 4.5) / 18
+Dim e As Double
+e = c + d
+Dim nazir As Double
+If e + 180 < 360 Then
+nazir = e + 180
+Else
+nazir = e + 180 - 360
+End If
+Dim f As Double
+f = 360 - a
+Dim g As Double
+g = f / 2
+Dim qayat As Double
+qayat = qrk(ml(sal, nazir), arzb)
+Dim h As Double
+h = sn(qayat)
+Dim k As Double
+k = sn(shafaq)
+Dim sahmqos As Double
+sahmqos = 60 - csn(g)
+Dim m As Double
+m = sahmqos * k / h
+Dim n As Double
+n = sahmqos - m
+Dim z As Double
+z = acs(60 - Abs(n))
+Dim x As Double
+x = acs(60 - sahmqos)
+Dim daer As Double
+If n > 0 Then
+daer = x - z
+Else
+daer = x + z
+End If
+Dim mbmaqreb As Double
+mbmaqreb = daer / 15
+Dim zohr As Double
+zohr = vzohr(sal, mah, rooz, mbtool)
+Dim w As Double
+w = zohr + b
+vmaqreb = w + mbmaqreb
+End Function
+
+Public Function vzohr(sal As Integer, mah As Integer, rooz As Double, mbtool As Double) As Double
+Dim wasatsh As Double
+wasatsh = wasat(sal, mah, rooz, mbtool)
+Dim a As Double
+a = (wasatsh + 1.8972) / 0.985647331382888
+Dim mazy As Double
+If Int(a) + 1 <= 365 Then
+mazy = Int(a) + 1
+Else
+mazy = Int(a) + 1 - 365
+End If
+Dim b As Double
+b = (mbtool - 0.095416667) * 24
+vzohr = 12 - tzaman(mazy) + b
+End Function
+
+
+
+Public Function nimeshab(sal As Integer, mah As Integer, rooz As Double, mbtool As Double, arzb As Double) As Double
+Dim a As Double
+a = vqoroob(sal, mah, rooz, mbtool, arzb)
+Dim b As Double
+b = vfajr(sal, mah, rooz, mbtool, arzb)
+Dim nesf As Double
+If (a < 12 And b < 12) Or (a > 12 And b > 12) Then
+nesf = (b - a) / 2
+Else
+nesf = (b + 24 - a) / 2
+End If
+If nesf + a > 24 Then
+nimeshab = nesf + a - 24
+Else
+nimeshab = nesf + a
+End If
+End Function
+
+
+Public Function vesha(sal As Integer, mah As Integer, rooz As Double, mbtool As Double, arzb As Double) As Double
+Dim a As Double
+a = qsn(ml(sal, taqsh(sal, mah, rooz, mbtool)), arzb)
+Dim b As Double
+b = a / 2 / 15
+Dim taqtolooe As Double
+taqtolooe = taqsh(sal, mah, rooz + (b / 24), mbtool)
+Dim c As Double
+c = ((sadeq - 3) * (4 / 60)) / 18
+Dim taqfajr As Double
+taqfajr = tq(taqtolooe - c)
+Dim nazir As Double
+If taqfajr + 180 < 360 Then
+nazir = taqfajr + 180
+Else
+nazir = taqfajr + 180 - 360
+End If
+Dim d As Double
+d = 360 - a
+Dim e As Double
+e = d / 2
+Dim qayat As Double
+qayat = qrk(ml(sal, nazir), arzb)
+Dim jtafazol As Double
+jtafazol = sn(qayat - sadeq)
+Dim f As Double
+f = sn(qayat)
+Dim g As Double
+g = sn(sadeq - 3)
+Dim sahmqos As Double
+sahmqos = 60 - csn(e)
+Dim h As Double
+h = sahmqos * g / f
+Dim k As Double
+k = sahmqos - h
+Dim j As Double
+j = acs(60 - Abs(k))
+Dim z As Double
+z = acs(60 - sahmqos)
+Dim daer As Double
+If k > 0 Then
+daer = z - j
+Else
+daer = z + j
+End If
+Dim mbqroob As Double
+mbqroob = daer / 15
+Dim qroob As Double
+qroob = vzohr(sal, mah, rooz, mbtool) + b
+If qroob + mbqroob > 24 Then
+vesha = qroob + mbqroob - 24
+Else
+vesha = qroob + mbqroob
+End If
+End Function
+
+
+Public Function vesha15(sal As Integer, mah As Integer, rooz As Double, mbtool As Double, arzb As Double) As Double
+Dim a As Double
+a = qsn(ml(sal, taqsh(sal, mah, rooz, mbtool)), arzb)
+Dim b As Double
+b = a / 2 / 15
+Dim taqtolooe As Double
+taqtolooe = taqsh(sal, mah, rooz + (b / 24), mbtool)
+
+
+Dim sadeqq As Double
+sadeqq = 15
+Dim sadeqq2 As Double
+sadeqq2 = sadeqq * (4 / 60) / 18
+
+
+Dim c As Double
+c = ((sadeqq - 3) * (4 / 60)) / 18
+Dim taqfajr As Double
+taqfajr = tq(taqtolooe - c)
+Dim nazir As Double
+If taqfajr + 180 < 360 Then
+nazir = taqfajr + 180
+Else
+nazir = taqfajr + 180 - 360
+End If
+Dim d As Double
+d = 360 - a
+Dim e As Double
+e = d / 2
+Dim qayat As Double
+qayat = qrk(ml(sal, nazir), arzb)
+Dim jtafazol As Double
+jtafazol = sn(qayat - sadeqq)
+Dim f As Double
+f = sn(qayat)
+Dim g As Double
+g = sn(sadeqq - 3)
+Dim sahmqos As Double
+sahmqos = 60 - csn(e)
+Dim h As Double
+h = sahmqos * g / f
+Dim k As Double
+k = sahmqos - h
+Dim j As Double
+j = acs(60 - Abs(k))
+Dim z As Double
+z = acs(60 - sahmqos)
+Dim daer As Double
+If k > 0 Then
+daer = z - j
+Else
+daer = z + j
+End If
+Dim mbqroob As Double
+mbqroob = daer / 15
+Dim qroob As Double
+qroob = vzohr(sal, mah, rooz, mbtool) + b
+If qroob + mbqroob > 24 Then
+vesha15 = qroob + mbqroob - 24
+Else
+vesha15 = qroob + mbqroob
+End If
+End Function
+
+
+Public Function vasr(sal As Integer, mah As Integer, rooz As Double, mbtool As Double, arzb As Double) As Double
+Dim zohr As Double
+zohr = vzohr(sal, mah, rooz, mbtool)
+Dim sat As Double
+Dim daq As Double
+Dim sanie As Double
+sat = Int(Abs(zohr))
+daq = Int((Abs(zohr) - sat) * 60)
+sanie = Int((((Abs(zohr) - sat) * 60) - daq) * 60)
+
+Dim saat As Double
+saat = saatzij(sal, mah, roz(rooz, sat, daq, sanie))
+Dim taq As Double
+taq = taqsh(sal, mah, Int(rooz) + (saat / 24), mbtool)
+Dim tale As Double
+tale = tale3(sal, arzb, taq, saat)
+Dim ert1 As Double
+ert1 = ertaztale(sal, arzb, 0, taq, tale)
+Dim boadk As Double
+boadk = bkm(sal, 0, taq)
+Dim matmmr As Double
+matmmr = mtm(sal, boadk, taq)
+Dim fazl As Double
+fazl = fdaer(sal, 0, taq, ert1, arzb)
+Dim matasher As Double
+If matmmr + fazl < 360 Then
+matasher = matmmr + fazl
+Else
+matasher = matmmr + fazl - 360
+End If
+Dim mattal As Double
+If matasher + 90 < 360 Then
+mattal = matasher + 90
+Else
+mattal = matasher + 90 - 360
+End If
+Dim taleb As Double
+taleb = tazmb(sal, mattal, arzb)
+Dim qosn As Double
+qosn = qsn(boadk, arzb)
+Dim daer As Double
+daer = (qosn / 2) + fazl
+Dim ertasr As Double
+ertasr = acj(60 + ctn(ert1))
+Dim fazl2 As Double
+fazl2 = fdaer(sal, 0, taq, ertasr, arzb)
+vasr = (fazl2 / 15) + zohr
+End Function
+
+Public Function ventehaasr(sal As Integer, mah As Integer, rooz As Double, mbtool As Double, arzb As Double) As Double
+Dim zohr As Double
+zohr = vzohr(sal, mah, rooz, mbtool)
+Dim sat As Double
+Dim daq As Double
+Dim sanie As Double
+sat = Int(Abs(zohr))
+daq = Int((Abs(zohr) - sat) * 60)
+sanie = Int((((Abs(zohr) - sat) * 60) - daq) * 60)
+
+Dim saat As Double
+saat = saatzij(sal, mah, roz(rooz, sat, daq, sanie))
+Dim taq As Double
+taq = taqsh(sal, mah, Int(rooz) + (saat / 24), mbtool)
+Dim tale As Double
+tale = tale3(sal, arzb, taq, saat)
+Dim ert1 As Double
+ert1 = ertaztale(sal, arzb, 0, taq, tale)
+Dim boadk As Double
+boadk = bkm(sal, 0, taq)
+Dim matmmr As Double
+matmmr = mtm(sal, boadk, taq)
+Dim fazl As Double
+fazl = fdaer(sal, 0, taq, ert1, arzb)
+Dim matasher As Double
+If matmmr + fazl < 360 Then
+matasher = matmmr + fazl
+Else
+matasher = matmmr + fazl - 360
+End If
+Dim mattal As Double
+If matasher + 90 < 360 Then
+mattal = matasher + 90
+Else
+mattal = matasher + 90 - 360
+End If
+Dim taleb As Double
+taleb = tazmb(sal, mattal, arzb)
+Dim qosn As Double
+qosn = qsn(boadk, arzb)
+Dim daer As Double
+daer = (qosn / 2) + fazl
+Dim ertasr As Double
+ertasr = acj(120 + ctn(ert1))
+Dim fazl2 As Double
+fazl2 = fdaer(sal, 0, taq, ertasr, arzb)
+ventehaasr = (fazl2 / 15) + zohr
+End Function
+
+

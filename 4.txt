@@ -1,0 +1,3266 @@
+Public Function saatejtema(sal As Integer, mah As Integer, rooz As Double, mbtool As Double) As Double
+Dim sabqq As Double
+sabqq = qadrsaatq(markaz3a(sal, mah, rooz, mbtool)) - qadrsaatsh(mtasha(sal, mah, rooz, mbtool))
+Dim ajzaeboad As Double
+Dim baq1 As Double
+baq1 = Abs(taqqa(sal, mah, rooz, mbtool) - taqsha(sal, mah, rooz, mbtool))
+If baq1 < 180 Then
+ajzaeboad = Abs(taqsha(sal, mah, rooz, mbtool) - taqqa(sal, mah, rooz, mbtool))
+Else
+ajzaeboad = Abs(360 + taqsha(sal, mah, rooz, mbtool) - taqqa(sal, mah, rooz, mbtool))
+End If
+Dim saatboad As Double
+saatboad = ajzaeboad / sabqq
+Dim tafazol As Double
+If Abs((taqsha(sal, mah, roz(rooz, saatboad, 0, 0), mbtool) - taqqa(sal, mah, roz(rooz, saatboad, 0, 0), mbtool))) < 180 Then
+tafazol = Abs((taqsha(sal, mah, roz(rooz, saatboad, 0, 0), mbtool) - taqqa(sal, mah, roz(rooz, saatboad, 0, 0), mbtool)))
+Else
+tafazol = 360 - Abs((taqsha(sal, mah, roz(rooz, saatboad, 0, 0), mbtool) - taqqa(sal, mah, roz(rooz, saatboad, 0, 0), mbtool)))
+End If
+Dim x As Double
+x = tafazol / sabqq
+If taqsha(sal, mah, roz(rooz, saatboad, 0, 0), mbtool) > taqqa(sal, mah, roz(rooz, saatboad, 0, 0), mbtool) Then
+saatejtema = saatboad + x
+Else
+saatejtema = saatboad - x
+End If
+End Function
+
+Public Function sabqq(sal As Integer, mah As Integer, rooz As Double, mbtool As Double) As Double
+sabqq = qadrsaatq(markaz3a(sal, mah, rooz, mbtool)) - qadrsaatsh(mtasha(sal, mah, rooz, mbtool))
+End Function
+
+
+
+
+
+
+
+
+
+Public Function boad2balad(toolb1 As Double, toolb2 As Double, arzb1 As Double, arzb2 As Double) As Double
+Dim mabtool As Double
+If toolb2 - toolb1 <= 180 Then
+mabtool = Abs(toolb2 - toolb1)
+Else
+mabtool = 360 - Abs(toolb2 - toolb1)
+End If
+Dim x As Double
+x = 90 - (asn(csn(Abs(arzb2 + arzb1)) * sn(Abs(90 - mabtool)) / 60))
+Dim y As Double
+y = 90 + (asn(csn(Abs(arzb2 + arzb1)) * sn(Abs(90 - mabtool)) / 60))
+Dim jahatb1 As Double
+If arzb1 > 0 Then
+jahatb1 = 1
+Else
+jahatb1 = -1
+End If
+Dim jahatb2 As Double
+If arzb2 > 0 Then
+jahatb2 = 1
+Else
+jahatb2 = -1
+End If
+Dim mabarz As Double
+mabarz = Abs(arzb2 - arzb1)
+Dim mahfooz1 As Double
+mahfooz1 = acs(csn(Abs(arzb1)) * sn(mabtool) / 60)
+Dim mahfooz2 As Double
+mahfooz2 = asn(sn(Abs(arzb1)) * 60 / sn(mahfooz1))
+Dim mahfooz3 As Double
+mahfooz3 = mahfooz2 + (90 - Abs(arzb2))
+Dim mahfooz4 As Double
+mahfooz4 = asn(sn(mahfooz3) * sn(mahfooz1) / 60)
+Dim z As Double
+z = 90 - mahfooz4
+Dim mahfooz3a As Double
+mahfooz3a = Abs(mahfooz2 - (90 - Abs(arzb2)))
+Dim mahfooz4a As Double
+mahfooz4a = asn(sn(mahfooz3a) * sn(mahfooz1) / 60)
+Dim w As Double
+If 90 - Abs(arzb2) > mahfooz2 Then
+w = 90 - mahfooz4a
+Else
+w = 90 + mahfooz4a
+End If
+Dim t As Double
+t = 90 - (asn(sn(Abs(arzb1)) * sn(Abs(arzb2)) / 60))
+Dim s As Double
+s = 90 + (asn(sn(Abs(arzb1)) * sn(Abs(arzb2)) / 60))
+Dim mahfooz3b As Double
+mahfooz3b = Abs(mahfooz2 - (90 - Abs(arzb2)))
+Dim mahfooz4b As Double
+mahfooz4b = asn(sn(mahfooz3b) * sn(mahfooz1) / 60)
+Dim u As Double
+If 90 - Abs(arzb2) < mahfooz2 Then
+u = 90 - mahfooz4b
+Else
+u = 90 + mahfooz4b
+End If
+Dim mahfooz3c As Double
+mahfooz3c = mahfooz2 + (90 - Abs(arzb2))
+Dim mahfooz4c As Double
+mahfooz4c = asn(sn(mahfooz3c) * sn(mahfooz1) / 60)
+Dim m As Double
+m = mahfooz4c + 90
+Dim n As Double
+n = 180 - (Abs(arzb1) + Abs(arzb2))
+Dim k As Double
+k = 180 - Abs(arzb1 + arzb2)
+If arzb1 = 0 And arzb2 = 0 Then
+boad2balad = mabtool
+ElseIf (arzb1 = 0 Or arzb2 = 0) And mabtool = 0 Then
+boad2balad = mabarz
+ElseIf (arzb1 = 0 Or arzb2 = 0) And mabtool = 90 Then
+boad2balad = 90
+ElseIf (arzb1 = 0 Or arzb2 = 0) And mabtool < 90 Then
+boad2balad = x
+ElseIf (arzb1 = 0 Or arzb2 = 0) And mabtool < 180 Then
+boad2balad = y
+ElseIf (arzb1 = 0 Or arzb2 = 0) And mabtool = 180 Then
+boad2balad = 180 - (arzb1 + arzb2)
+ElseIf (arzb1 <> 0 And arzb2 <> 0) And mabtool = 0 And (jahatb1 = 1 And jahatb2 = 1) Then
+boad2balad = Abs(arzb1 - arzb2)
+ElseIf (arzb1 <> 0 And arzb2 <> 0) And mabtool = 0 And (jahatb1 = -1 And jahatb2 = -1) Then
+boad2balad = Abs(arzb1 - arzb2)
+ElseIf (arzb1 <> 0 And arzb2 <> 0) And mabtool = 0 And (jahatb1 = 1 And jahatb2 = -1) Then
+boad2balad = Abs(arzb1) + Abs(arzb2)
+ElseIf (arzb1 <> 0 And arzb2 <> 0) And mabtool = 0 And (jahatb1 = -1 And jahatb2 = 1) Then
+boad2balad = Abs(arzb1) + Abs(arzb2)
+ElseIf (arzb1 <> 0 And arzb2 <> 0) And mabtool < 90 And (jahatb1 = 1 And jahatb2 = 1) Then
+boad2balad = z
+ElseIf (arzb1 <> 0 And arzb2 <> 0) And mabtool < 90 And (jahatb1 = -1 And jahatb2 = -1) Then
+boad2balad = z
+ElseIf (arzb1 <> 0 And arzb2 <> 0) And mabtool < 90 And (jahatb1 = 1 And jahatb2 = -1) Then
+boad2balad = w
+ElseIf (arzb1 <> 0 And arzb2 <> 0) And mabtool < 90 And (jahatb1 = -1 And jahatb2 = 1) Then
+boad2balad = w
+ElseIf (arzb1 <> 0 And arzb2 <> 0) And mabtool = 90 And (jahatb1 = 1 And jahatb2 = 1) Then
+boad2balad = t
+ElseIf (arzb1 <> 0 And arzb2 <> 0) And mabtool = 90 And (jahatb1 = -1 And jahatb2 = -1) Then
+boad2balad = t
+ElseIf (arzb1 <> 0 And arzb2 <> 0) And mabtool = 90 And (jahatb1 = 1 And jahatb2 = -1) Then
+boad2balad = s
+ElseIf (arzb1 <> 0 And arzb2 <> 0) And mabtool = 90 And (jahatb1 = -1 And jahatb2 = 1) Then
+boad2balad = s
+ElseIf (arzb1 <> 0 And arzb2 <> 0) And mabtool < 180 And (jahatb1 = -1 And jahatb2 = -1) Then
+boad2balad = u
+ElseIf (arzb1 <> 0 And arzb2 <> 0) And mabtool < 180 And (jahatb1 = 1 And jahatb2 = 1) Then
+boad2balad = u
+ElseIf (arzb1 <> 0 And arzb2 <> 0) And mabtool < 180 And (jahatb1 = 1 And jahatb2 = -1) Then
+boad2balad = m
+ElseIf (arzb1 <> 0 And arzb2 <> 0) And mabtool < 180 And (jahatb1 = -1 And jahatb2 = 1) Then
+boad2balad = m
+ElseIf (arzb1 <> 0 And arzb2 <> 0) And mabtool = 180 And (jahatb1 = -1 And jahatb2 = -1) Then
+boad2balad = n
+ElseIf (arzb1 <> 0 And arzb2 <> 0) And mabtool = 180 And (jahatb1 = 1 And jahatb2 = 1) Then
+boad2balad = n
+ElseIf (arzb1 <> 0 And arzb2 <> 0) And mabtool = 180 And (jahatb1 = -1 And jahatb2 = 1) Then
+boad2balad = k
+ElseIf (arzb1 <> 0 And arzb2 <> 0) And mabtool = 180 And (jahatb1 = 1 And jahatb2 = -1) Then
+boad2balad = k
+End If
+End Function
+
+
+
+
+
+Public Function boad2k(toolk1 As Double, toolk2 As Double, arzk1 As Double, arzk2 As Double) As Double
+Dim mabtaq As Double
+If toolk2 - toolk1 <= 180 Then
+mabtaq = Abs(toolk2 - toolk1)
+Else
+mabtaq = 360 - Abs(toolk2 - toolk1)
+End If
+Dim x As Double
+x = 90 - (asn(csn(Abs(arzk2 + arzk1)) * sn(Abs(90 - mabtaq)) / 60))
+Dim y As Double
+y = 90 + (asn(csn(Abs(arzk2 + arzk1)) * sn(Abs(90 - mabtaq)) / 60))
+Dim jahatk1 As Double
+If arzk1 > 0 Then
+jahatk1 = 1
+Else
+jahatk1 = -1
+End If
+Dim jahatk2 As Double
+If arzk2 > 0 Then
+jahatk2 = 1
+Else
+jahatk2 = -1
+End If
+Dim mabarz As Double
+mabarz = Abs(arzk2 - arzk1)
+Dim mahfooz1 As Double
+mahfooz1 = acs(csn(Abs(arzk1)) * sn(mabtaq) / 60)
+Dim mahfooz2 As Double
+mahfooz2 = asn(sn(Abs(arzk1)) * 60 / sn(mahfooz1))
+Dim mahfooz3 As Double
+mahfooz3 = mahfooz2 + (90 - Abs(arzk2))
+Dim mahfooz4 As Double
+mahfooz4 = asn(sn(mahfooz3) * sn(mahfooz1) / 60)
+Dim z As Double
+z = 90 - mahfooz4
+Dim mahfooz3a As Double
+mahfooz3a = Abs(mahfooz2 - (90 - Abs(arzk2)))
+Dim mahfooz4a As Double
+mahfooz4a = asn(sn(mahfooz3a) * sn(mahfooz1) / 60)
+Dim w As Double
+If 90 - Abs(arzk2) > mahfooz2 Then
+w = 90 - mahfooz4a
+Else
+w = 90 + mahfooz4a
+End If
+Dim t As Double
+t = 90 - (asn(sn(Abs(arzk1)) * sn(Abs(arzk2)) / 60))
+Dim s As Double
+s = 90 + (asn(sn(Abs(arzk1)) * sn(Abs(arzk2)) / 60))
+Dim mahfooz3b As Double
+mahfooz3b = Abs(mahfooz2 - (90 - Abs(arzk2)))
+Dim mahfooz4b As Double
+mahfooz4b = asn(sn(mahfooz3b) * sn(mahfooz1) / 60)
+Dim u As Double
+If 90 - Abs(arzk2) < mahfooz2 Then
+u = 90 - mahfooz4b
+Else
+u = 90 + mahfooz4b
+End If
+Dim mahfooz3c As Double
+mahfooz3c = mahfooz2 + (90 - Abs(arzk2))
+Dim mahfooz4c As Double
+mahfooz4c = asn(sn(mahfooz3c) * sn(mahfooz1) / 60)
+Dim m As Double
+m = mahfooz4c + 90
+Dim n As Double
+n = 180 - (Abs(arzk1) + Abs(arzk2))
+Dim k As Double
+k = 180 - Abs(arzk1 + arzk2)
+If arzk1 = 0 And arzk2 = 0 Then
+boad2k = mabtaq
+ElseIf (arzk1 = 0 Or arzk2 = 0) And mabtaq = 0 Then
+boad2k = mabarz
+ElseIf (arzk1 = 0 Or arzk2 = 0) And mabtaq = 90 Then
+boad2k = 90
+ElseIf (arzk1 = 0 Or arzk2 = 0) And mabtaq < 90 Then
+boad2k = x
+ElseIf (arzk1 = 0 Or arzk2 = 0) And mabtaq < 180 Then
+boad2k = y
+ElseIf (arzk1 = 0 Or arzk2 = 0) And mabtaq = 180 Then
+boad2k = 180 - (arzk1 + arzk2)
+ElseIf (arzk1 <> 0 And arzk2 <> 0) And mabtaq = 0 And (jahatk1 = 1 And jahatk2 = 1) Then
+boad2k = Abs(arzk1 - arzk2)
+ElseIf (arzk1 <> 0 And arzk2 <> 0) And mabtaq = 0 And (jahatk1 = -1 And jahatk2 = -1) Then
+boad2k = Abs(arzk1 - arzk2)
+ElseIf (arzk1 <> 0 And arzk2 <> 0) And mabtaq = 0 And (jahatk1 = 1 And jahatk2 = -1) Then
+boad2k = Abs(arzk1) + Abs(arzk2)
+ElseIf (arzk1 <> 0 And arzk2 <> 0) And mabtaq = 0 And (jahatk1 = -1 And jahatk2 = 1) Then
+boad2k = Abs(arzk1) + Abs(arzk2)
+ElseIf (arzk1 <> 0 And arzk2 <> 0) And mabtaq < 90 And (jahatk1 = 1 And jahatk2 = 1) Then
+boad2k = z
+ElseIf (arzk1 <> 0 And arzk2 <> 0) And mabtaq < 90 And (jahatk1 = -1 And jahatk2 = -1) Then
+boad2k = z
+ElseIf (arzk1 <> 0 And arzk2 <> 0) And mabtaq < 90 And (jahatk1 = 1 And jahatk2 = -1) Then
+boad2k = w
+ElseIf (arzk1 <> 0 And arzk2 <> 0) And mabtaq < 90 And (jahatk1 = -1 And jahatk2 = 1) Then
+boad2k = w
+ElseIf (arzk1 <> 0 And arzk2 <> 0) And mabtaq = 90 And (jahatk1 = 1 And jahatk2 = 1) Then
+boad2k = t
+ElseIf (arzk1 <> 0 And arzk2 <> 0) And mabtaq = 90 And (jahatk1 = -1 And jahatk2 = -1) Then
+boad2k = t
+ElseIf (arzk1 <> 0 And arzk2 <> 0) And mabtaq = 90 And (jahatk1 = 1 And jahatk2 = -1) Then
+boad2k = s
+ElseIf (arzk1 <> 0 And arzk2 <> 0) And mabtaq = 90 And (jahatk1 = -1 And jahatk2 = 1) Then
+boad2k = s
+ElseIf (arzk1 <> 0 And arzk2 <> 0) And mabtaq < 180 And (jahatk1 = -1 And jahatk2 = -1) Then
+boad2k = u
+ElseIf (arzk1 <> 0 And arzk2 <> 0) And mabtaq < 180 And (jahatk1 = 1 And jahatk2 = 1) Then
+boad2k = u
+ElseIf (arzk1 <> 0 And arzk2 <> 0) And mabtaq < 180 And (jahatk1 = 1 And jahatk2 = -1) Then
+boad2k = m
+ElseIf (arzk1 <> 0 And arzk2 <> 0) And mabtaq < 180 And (jahatk1 = -1 And jahatk2 = 1) Then
+boad2k = m
+ElseIf (arzk1 <> 0 And arzk2 <> 0) And mabtaq = 180 And (jahatk1 = -1 And jahatk2 = -1) Then
+boad2k = n
+ElseIf (arzk1 <> 0 And arzk2 <> 0) And mabtaq = 180 And (jahatk1 = 1 And jahatk2 = 1) Then
+boad2k = n
+ElseIf (arzk1 <> 0 And arzk2 <> 0) And mabtaq = 180 And (jahatk1 = -1 And jahatk2 = 1) Then
+boad2k = k
+ElseIf (arzk1 <> 0 And arzk2 <> 0) And mabtaq = 180 And (jahatk1 = 1 And jahatk2 = -1) Then
+boad2k = k
+End If
+End Function
+
+Public Function ertmaree(sal As Integer, mah As Integer, rooz As Double, saatejtema As Double, mbtool As Double, arzb As Double) As Double
+Dim zohr As Double
+zohr = vzohr(sal, mah, rooz, mbtool)
+Dim saatnesf As Double
+saatnesf = ((qsn(ml(sal, taqsha(sal, mah, roz(rooz, saatejtema, 0, 0), mbtool)), arzb)) / 2) / 15
+Dim saatejtemaaval As Double
+Dim a1 As Double
+Dim a2 As Double
+Dim a3 As Double
+Dim a4 As Double
+Dim a5 As Double
+a1 = qsn(ml(sal, taqqa(sal, mah, roz(rooz, saatejtema, 0, 0), mbtool)), arzb)
+a2 = (360 - a1) / 15
+a3 = a1 / 30
+a4 = a2 + a3
+a5 = saatejtema - a4
+
+saatejtemaaval = saatejtema - (12 - saatnesf)
+
+Dim daer As Double
+daer = saatejtemaaval * 15
+Dim matalerasad As Double
+matalerasad = mtb(sal, taqsha(sal, mah, roz(rooz, saatejtema, 0, 0), mbtool), arzb)
+Dim mataltale As Double
+If matalerasad + daer < 360 Then
+mataltale = matalerasad + daer
+Else
+mataltale = matalerasad + daer - 360
+End If
+Dim talevaqt As Double
+talevaqt = tazmb(sal, mataltale, arzb)
+Dim mlasher As Double
+mlasher = ml(sal, asher(sal, talevaqt, arzb))
+Dim ertasher As Double
+ertasher = qrk(ml(sal, asher(sal, talevaqt, arzb)), arzb)
+Dim a As Double
+Dim c As Double
+Dim d As Double
+Dim e As Double
+Dim f As Double
+Dim g As Double
+Dim h As Double
+Dim i As Double
+Dim j As Double
+Dim y As Double
+Dim z As Double
+Dim k As Double
+
+y = hesseha(sal, mah, roz(rooz, saatejtema, 0, 0), mbtool)
+z = arzq(y)
+
+a = asher(sal, talevaqt, arzb)
+c = taqqa(sal, mah, roz(rooz, saatejtema, 0, 0), mbtool)
+d = ertefaqamar(sal, mah, rooz, saatejtema, mbtool, arzb)
+k = ertaztale(sal, arzb, z, c, talevaqt)
+e = markaz3a(sal, mah, roz(rooz, saatejtema, 0, 0), mbtool)
+f = ekhtmanzofoq(e)
+g = ekhtmanzkoly(sal, mah, (rooz + saatejtema / 24), mbtool, k)
+h = ertefashams(sal, mah, rooz, saatejtema, mbtool, arzb)
+i = manzarsh(h)
+j = g - i
+Dim za As Double
+za = sn(g + (90 - k))
+Dim zb As Double
+zb = g - i
+ertmaree = 90 - ((90 - k) + zb)
+
+End Function
+
+Public Function taqtasa(taq As Double, talevaqt As Double)
+' ﬁÊÌ„  « ”«»⁄'
+Dim a As Double
+If Abs(taq - talevaqt) < 180 Then
+a = Abs(taq - talevaqt)
+Else
+a = 360 - Abs(taq - talevaqt)
+End If
+taqtasa = 180 - a
+End Function
+
+Public Function taqtalsab(taq As Double, talevaqt As Double)
+' ﬁÊÌ„  « ÿ«·⁄ Ì« ”«»⁄° »Â Â— òœ«„ ‰“œÌò  —»«‘'
+Dim a As Double
+If Abs(taq - talevaqt) < 180 Then
+taqtale = Abs(taq - talevaqt)
+Else
+taqtale = 360 - Abs(taq - talevaqt)
+End If
+Dim taqsabe As Double
+taqsabe = 180 - taqtale
+If taqsabe <= 90 Then
+taqtalsab = taqsabe
+Else
+taqtalsab = taqtale
+End If
+End Function
+
+Public Function ekharzq(arzhaqiqi As Double, arzmare As Double)
+If arzmare > 0 Then
+b = 1
+Else
+b = -1
+End If
+
+If arzhaqiqi > 0 Then
+a = 1
+Else
+a = -1
+End If
+If a = b Then
+ekharzq = Abs(Abs(arzhaqiqi) - Abs(arzmare))
+Else
+ekharzq = Abs(arzhaqiqi) + Abs(arzmare)
+End If
+End Function
+
+Public Function ekhtoolq(sal As Integer, arzb As Double, taqq As Double, arzq As Double, tale As Double, ertmare As Double)
+tarbit = tq(tale - 90)
+
+'»«» 20 ’84  ’—ÌÕ ‘œÂ «”  »Â ÿ«·⁄ Ì« ”«»⁄ Â— òœ«„ ‰“œÌò — »«‘œ »«Ìœ „Õ«”»Â ‘Êœ'
+Dim qos1 As Double
+qos1 = 90 - asn(csn(arzq) * sn(90 - taqtalsab(taqq, tale)) / 60)
+
+Dim mahfooz1 As Double
+mahfooz1 = (asn(sn(90 - ertmare) * csn(qos1) / csn(ertaztale(sal, arzb, arzq, taqq, tale))))
+
+Dim taqtatarbi As Double
+Dim arzmare As Double
+Dim boddaraje As Double
+
+If Abs(taqq - tarbit) < 180 Then
+taqtatarbi = Abs(taqq - tarbit)
+Else
+taqtatarbi = 360 - Abs(taqq - tarbit)
+End If
+If taqtatarbi <= 90 Then
+taqtatarbi = taqtatarbi
+Else
+taqtatarbi = 180 - taqtatarbi
+End If
+'‘—ÿ ›Êﬁ »«Ìœ ê–«‘ Â ‘Êœ  « œ—’Ê— Ì òÂ òÊò»  Õ  «›ﬁ «”  ‰Ì“ ÃÊ«» ’ÕÌÕ »œ”  ¬Ìœ'
+arzmare = arzmaree(sal, arzb, taqq, arzq, tale, ertmare)
+boddaraje = asn(sn(mahfooz1) * 60 / csn(arzmare))
+ekhtoolq = Abs(boddaraje - taqtatarbi)
+
+End Function
+
+
+Public Function arzmaree(sal As Integer, arzb As Double, taqq As Double, arzq As Double, tale As Double, ertmare As Double)
+
+Dim qos1 As Double
+qos1 = 90 - asn(csn(Abs(arzq)) * sn(90 - taqtasa(taqq, tale)) / 60)
+Dim qos2 As Double
+qos2 = asn(sn(Abs(arzq)) / sn(qos1) * 60)
+
+Dim mahfooz1 As Double
+Dim mahfooz2 As Double
+Dim zz As Double
+Dim oo As Double
+Dim ooa As Double
+Dim oob As Double
+Dim maila As Double
+
+Dim au As Double
+Dim eqlim As Double
+Dim av As Double
+Dim ax As Double
+
+mahfooz1 = asn(sn(90 - Abs(ertmare)) * csn(qos1) / csn(ertaztale(sal, arzb, arzq, taqq, tale)))
+mahfooz2 = asn(sn(Abs(ertmare)) * 60 / csn(mahfooz1))
+
+If arzb > 0 Then
+jarzb = 1
+Else
+jarzb = -1
+End If
+'zz ÃÂ  ⁄—÷ òÊò»'
+If arzq > 0 Then
+zz = 1
+Else
+zz = -1
+End If
+'zz ÃÂ  ⁄—÷ òÊò»'
+eqlim = Arzr2(sal, asher(sal, tale, arzb), ml(sal, mtb(sal, tale, arzb)), arzb)
+maila = ml(sal, asher(sal, tale, arzb))
+
+If arzb > maila Then
+ooa = jarzb
+Else
+ooa = jarzb * -1
+End If
+
+If arzb < maila Then
+oob = jarzb
+Else
+oob = jarzb * -1
+End If
+
+If arzb > 0 Then
+oo = ooa
+Else
+oo = oob
+End If
+'oo ÃÂ  ⁄—÷ «ﬁ·Ì„ —ÊÌ '
+
+If zz = oo And qos2 > eqlim Then
+au = 180 - mahfooz2
+Else
+au = mahfooz2
+End If
+
+If Abs(au - (90 - eqlim)) <= 180 Then
+av = Abs(au - (90 - eqlim))
+Else
+av = 360 - Abs(au - (90 - eqlim))
+End If
+If zz = oo And qos2 < eqlim And au < (90 - eqlim) Then
+ax = zz * -1
+Else
+ax = zz
+End If
+arzmaree = asn(sn(av) * (csn(mahfooz1) / 60)) * ax
+End Function
+
+Public Function taqmaree(taqq As Double, tale As Double, ekhtool As Double) As Double
+Dim tafsabe As Double
+Dim taftale As Double
+
+tafsabe = taqtasa(taqq, tale)
+taftale = 180 - tafsabe
+If taftale < tafsabe Then
+taqmaree = tq(taqq + ekhtool)
+Else
+taqmaree = tq(taqq - ekhtool)
+End If
+End Function
+Public Function taqmareeq(sal As Integer, mah As Integer, rooz As Double, saat As Double, toolb As Double, arzb As Double)
+Dim taq As Double
+Dim tale As Double
+Dim ertmare As Double
+Dim arzqq As Double
+Dim ekhtooll As Double
+Dim taqs As Double
+Dim taqss As Double
+
+
+taqs = taqmareesh(sal, mah, rooz, saat, toolb, arzb)
+taqss = taqsh(sal, mah, roz(rooz, saat, 0, 0), toolb)
+
+taq = taqq(sal, mah, roz(rooz, saat, 0, 0), toolb)
+tale = tale3(sal, arzb, taqs, saat)
+ertmare = ertmaree(sal, mah, rooz, saat, toolb, arzb)
+arzqq = arzq(hesseh(sal, mah, roz(rooz, saat, 0, 0), toolb))
+ekhtooll = ekhtoolq(sal, arzb, taq, arzqq, tale, ertmare)
+taqmareeq = taqmaree(taq, tale, ekhtooll)
+
+End Function
+Public Function taqmareeqa(sal As Integer, mah As Integer, rooz As Double, saat As Double, toolb As Double, arzb As Double)
+Dim taq As Double
+Dim tale As Double
+Dim ertmare As Double
+Dim arzqq As Double
+Dim ekhtooll As Double
+Dim taqs As Double
+
+taqs = taqmareesha(sal, mah, rooz, saat, toolb, arzb)
+taq = taqqa(sal, mah, roz(rooz, saat, 0, 0), toolb)
+tale = tale3(sal, arzb, taqs, saat)
+ertmare = ertmaree(sal, mah, rooz, saat, toolb, arzb)
+arzqq = arzq(hesseha(sal, mah, roz(rooz, saat, 0, 0), toolb))
+ekhtooll = ekhtoolq(sal, arzb, taq, arzqq, tale, ertmare)
+taqmareeqa = taqmaree(taq, tale, ekhtooll)
+End Function
+
+
+
+Public Function asaqotrqmr(sal As Integer, mah As Integer, rooz As Double, saattahqiq As Double, mbtool As Double, arzb As Double) As Double
+Dim saatmaree As Double
+saatmaree = saejtmaree(sal, mah, rooz, saattahqiq, mbtool, arzb)
+Dim talevaqt As Double
+talevaqt = tale3(sal, arzb, taqmareesh(sal, mah, rooz, saatmaree, mbtool, arzb), saatmaree)
+Dim taqtatale As Double
+taqtatale = 180 - taqtasa(taqqa(sal, mah, roz(rooz, saatmaree, 0, 0), mbtool), talevaqt)
+Dim qtrq2 As Double
+qtrq2 = qtrq(markaz3a(sal, mah, roz(rooz, saatmaree, 0, 0), mbtool))
+Dim qtrsh2 As Double
+qtrsh2 = qtrsh(mtasha(sal, mah, roz(rooz, saatmaree, 0, 0), mbtool))
+Dim baqouj2 As Double
+If oujqa(sal, mah, roz(rooz, saatmaree, 0, 0), mbtool) > taqmareesh(sal, mah, rooz, saatmaree, mbtool, arzb) Then
+baqouj2 = oujqa(sal, mah, roz(rooz, saatmaree, 0, 0), mbtool) - taqmareesh(sal, mah, rooz, saatmaree, mbtool, arzb)
+Else
+baqouj2 = oujqa(sal, mah, roz(rooz, saatmaree, 0, 0), mbtool) + 360 - taqmareesh(sal, mah, rooz, saatmaree, mbtool, arzb)
+End If
+Dim tadil2 As Double
+tadil2 = tadq1(baqouj2, markaz3a(sal, mah, roz(rooz, saatmaree, 0, 0), mbtool))
+Dim qtrqm2 As Double
+qtrqm2 = qtrq2 + tadil2
+Dim ekhtool As Double
+ekhtool = ekhtoolq(sal, arzb, taqqa(sal, mah, roz(rooz, saatmaree, 0, 0), mbtool), arzqmr(hesseha(sal, mah, roz(rooz, saatmaree, 0, 0), mbtool)), talevaqt, ertmaree(sal, mah, rooz, saatmaree, mbtool, arzb))
+Dim nesfqtrmaree As Double
+nesfqtrmaree = (qotrer(ertaztale(sal, arzb, arzqmr(hesseha(sal, mah, roz(rooz, saatmaree, 0, 0), mbtool)), taqmaree(taqqa(sal, mah, roz(rooz, saatmaree, 0, 0), mbtool), taqtatale, ekhtool), talevaqt), qtrqm2)) / 2
+Dim majmoo2 As Double
+majmoo2 = (qtrsh2 / 2) + nesfqtrmaree
+Dim daqkosoof As Double
+daqkosoof = majmoo2 - sn(Abs(arzmaree(sal, arzb, taqmaree(taqqa(sal, mah, roz(rooz, saatmaree, 0, 0), mbtool), taqtatale, ekhtool), arzqmr(hesseha(sal, mah, roz(rooz, saatmaree, 0, 0), mbtool)), talevaqt, ertmaree(sal, mah, rooz, saatmaree, mbtool, arzb))))
+
+asaqotrqmr = (daqkosoof * 6) / (qtrsh2 / 2)
+
+End Function
+
+Public Function asaqotrqmr1(sal As Integer, mah As Integer, rooz As Double, saattahqiq As Double, mbtool As Double, arzb As Double) As Double
+Dim x As Double
+x = saejtmaree11(sal, mah, rooz, saattahqiq, mbtool, arzb)
+Dim saatnesf As Double
+saatnesf = (qsn(ml(sal, taqsha(sal, mah, roz(rooz, saattahqiq, 0, 0), mbtool)), arzb)) / 30
+Dim tadil As Double
+tadil = taam(wasata(sal, mah, roz(rooz, x - saatnesf, 0, 0), mbtool))
+Dim saatmaree As Double
+saatmaree = x - saatnesf + tadil
+Dim talevaqt As Double
+talevaqt = tale3(sal, arzb, taqsha(sal, mah, roz(rooz, saatmaree, 0, 0), mbtool), saatmaree)
+Dim qtrq2 As Double
+qtrq2 = qtrq(markaz3a(sal, mah, roz(rooz, saatmaree, 0, 0), mbtool))
+Dim qtrsh2 As Double
+qtrsh2 = qtrsh(mtasha(sal, mah, roz(rooz, saatmaree, 0, 0), mbtool))
+Dim baqouj2 As Double
+If oujqa(sal, mah, roz(rooz, saatmaree, 0, 0), mbtool) > taqsha(sal, mah, roz(rooz, saatmaree, 0, 0), mbtool) Then
+baqouj2 = oujqa(sal, mah, roz(rooz, saatmaree, 0, 0), mbtool) - taqsha(sal, mah, roz(rooz, saatmaree, 0, 0), mbtool)
+Else
+baqouj2 = oujqa(sal, mah, roz(rooz, saatmaree, 0, 0), mbtool) + 360 - taqsha(sal, mah, roz(rooz, saatmaree, 0, 0), mbtool)
+End If
+Dim tadil2 As Double
+tadil2 = tadq1(baqouj2, markaz3a(sal, mah, roz(rooz, saatmaree, 0, 0), mbtool))
+Dim qtrqm2 As Double
+qtrqm2 = qtrq2 + tadil2
+Dim arzq1 As Double
+arzq1 = arzqmr(hesseha(sal, mah, roz(rooz, saatmaree, 0, 0), mbtool))
+Dim taqq1 As Double
+taqq1 = taqqa(sal, mah, roz(rooz, saatmaree, 0, 0), mbtool)
+Dim ertmaree1 As Double
+ertmaree1 = ertmaree(sal, mah, rooz, saatmaree, mbtool, arzb)
+Dim ekht As Double
+ekht = ekhtoolq(sal, arzb, taqq1, arzq1, talevaqt, ertmaree1)
+Dim nesfqtrmaree As Double
+nesfqtrmaree = (qotrer(ertaztale(sal, arzb, arzqmr(hesseha(sal, mah, roz(rooz, saatmaree, 0, 0), mbtool)), taqmaree(taqq1, talevaqt, ekht), talevaqt), qtrqm2)) / 2
+Dim majmoo2 As Double
+majmoo2 = (qtrsh2 / 2) + nesfqtrmaree
+Dim daqkosoof As Double
+daqkosoof = majmoo2 - sn(Abs(arzmaree(sal, arzb, taqmaree(taqq1, talevaqt, ekht), arzqmr(hesseha(sal, mah, roz(rooz, saatmaree, 0, 0), mbtool)), talevaqt, ertmaree(sal, mah, rooz, saatmaree, mbtool, arzb))))
+asaqotrqmr1 = (daqkosoof * 6) / (qtrsh2 / 2)
+End Function
+
+Public Function asajermqmr(sal As Integer, mah As Integer, rooz As Double, saattahqiq As Double, mbtool As Double, arzb As Double) As Double
+Dim talevaqt As Double
+talevaqt = tale3(sal, arzb, taqsha(sal, mah, roz(rooz, saattahqiq, 0, 0), mbtool), saattahqiq)
+
+Dim qtrq2 As Double
+qtrq2 = qtrq(markaz3a(sal, mah, roz(rooz, saattahqiq, 0, 0), mbtool))
+
+Dim qtrsh2 As Double
+qtrsh2 = qtrsh(mtasha(sal, mah, roz(rooz, saattahqiq, 0, 0), mbtool))
+
+Dim baqouj2 As Double
+If oujqa(sal, mah, roz(rooz, saattahqiq, 0, 0), mbtool) > taqsha(sal, mah, roz(rooz, saattahqiq, 0, 0), mbtool) Then
+baqouj2 = oujqa(sal, mah, roz(rooz, saattahqiq, 0, 0), mbtool) - taqsha(sal, mah, roz(rooz, saattahqiq, 0, 0), mbtool)
+Else
+baqouj2 = oujqa(sal, mah, roz(rooz, saattahqiq, 0, 0), mbtool) + 360 - taqsha(sal, mah, roz(rooz, saattahqiq, 0, 0), mbtool)
+End If
+Dim tadil2 As Double
+tadil2 = tadq1(baqouj2, markaz3a(sal, mah, roz(rooz, saattahqiq, 0, 0), mbtool))
+
+
+Dim qtrqm2 As Double
+qtrqm2 = qtrq2 + tadil2
+Dim nesfqtrmaree As Double
+nesfqtrmaree = (qotrer(ertaztale(sal, arzb, arzq(hesseha(sal, mah, roz(rooz, saattahqiq, 0, 0), mbtool)), taqqa(sal, mah, roz(rooz, saattahqiq, 0, 0), mbtool), talevaqt), qtrqm2)) / 2
+
+Dim majmoo2 As Double
+majmoo2 = (qtrsh2 / 2) + nesfqtrmaree
+Dim daqkosoof As Double
+daqkosoof = majmoo2 - sn(Abs(arzmaree(sal, arzb, taqqa(sal, mah, roz(rooz, saattahqiq, 0, 0), mbtool), arzq(hesseha(sal, mah, roz(rooz, saattahqiq, 0, 0), mbtool)), talevaqt, ertmaree(sal, mah, rooz, saattahqiq, mbtool, arzb))))
+
+
+Dim masahatdaersh As Double
+masahatdaersh = ((qtrsh2 * qtrsh2) * 11) / 14
+Dim maqsoom1 As Double
+maqsoom1 = ((nesfqtrmaree * 2) - daqkosoof) * daqkosoof
+Dim maqsoomalay2 As Double
+maqsoomalay2 = (qtrsh2 - daqkosoof) + ((nesfqtrmaree * 2) - daqkosoof)
+Dim sahmqetemonkasaf As Double
+sahmqetemonkasaf = maqsoom1 / maqsoomalay2
+Dim sahmqetemonjaly As Double
+sahmqetemonjaly = qtrsh2 - sahmqetemonkasaf
+Dim jazr As Double
+jazr = Sqr(sahmqetemonkasaf * sahmqetemonjaly)
+Dim qossh As Double
+qossh = asn(jazr / (qtrsh2 / 2) * 60)
+Dim qosq As Double
+qosq = asn(jazr / (nesfqtrmaree) * 60)
+Dim qetash As Double
+qetash = qossh * ((qtrsh2 / 2) * (qtrsh2 / 2)) / 60
+Dim qetaq As Double
+qetaq = qosq * ((qtrq2 / 2) * (qtrq2 / 2)) / 60
+Dim mosalasqetash As Double
+mosalasqetash = ((qtrsh2 / 2) - sahmqetemonkasaf) * jazr
+Dim qetesh As Double
+qetesh = qetash - mosalasqetash
+Dim mosalasqetaq As Double
+mosalasqetaq = ((qtrq2 / 2) - sahmqetemonkasaf) * jazr
+Dim qeteq As Double
+qeteq = qetaq - mosalasqetaq
+Dim masahtqetemonkasaf As Double
+masahtqetemonkasaf = qetesh + qeteq
+
+asajermqmr = (masahtqetemonkasaf * 12) / masahatdaersh
+
+
+End Function
+
+
+
+Public Function bodovkosoof(sal As Integer, mah As Integer, rooz As Double, saattahqiq As Double, mbtool As Double, arzb As Double) As Double
+
+Dim talevaqt As Double
+talevaqt = tale3(sal, arzb, taqsha(sal, mah, roz(rooz, saattahqiq, 0, 0), mbtool), saattahqiq)
+Dim baqouj2 As Double
+If oujqa(sal, mah, roz(rooz, saattahqiq, 0, 0), mbtool) > taqsha(sal, mah, roz(rooz, saattahqiq, 0, 0), mbtool) Then
+baqouj2 = oujqa(sal, mah, roz(rooz, saattahqiq, 0, 0), mbtool) - taqsha(sal, mah, roz(rooz, saattahqiq, 0, 0), mbtool)
+Else
+baqouj2 = oujqa(sal, mah, roz(rooz, saattahqiq, 0, 0), mbtool) + 360 - taqsha(sal, mah, roz(rooz, saattahqiq, 0, 0), mbtool)
+End If
+Dim tadil2 As Double
+tadil2 = tadq1(baqouj2, markaz3a(sal, mah, roz(rooz, saattahqiq, 0, 0), mbtool))
+Dim qtrq2 As Double
+qtrq2 = qtrq(markaz3a(sal, mah, roz(rooz, saattahqiq, 0, 0), mbtool))
+Dim qtrsh2 As Double
+qtrsh2 = qtrsh(mtasha(sal, mah, roz(rooz, saattahqiq, 0, 0), mbtool))
+Dim qtrqm2 As Double
+qtrqm2 = qtrq2 + tadil2
+Dim nesfqtrmaree As Double
+nesfqtrmaree = (qotrer(ertaztale(sal, arzb, arzqmr(hesseha(sal, mah, roz(rooz, saattahqiq, 0, 0), mbtool)), taqqa(sal, mah, roz(rooz, saattahqiq, 0, 0), mbtool), talevaqt), qtrqm2)) / 2
+Dim majmoo2 As Double
+majmoo2 = (qtrsh2 / 2) + nesfqtrmaree
+Dim arzmare As Double
+arzmare = (arzmaree(sal, arzb, taqqa(sal, mah, roz(rooz, saattahqiq, 0, 0), mbtool), arzqmr(hesseha(sal, mah, roz(rooz, saattahqiq, 0, 0), mbtool)), talevaqt, ertmaree(sal, mah, rooz, saattahqiq, mbtool, arzb)))
+Dim moraba As Double
+moraba = sn(arzmare) * sn(arzmare)
+Dim morabe2 As Double
+morabe2 = majmoo2 * majmoo2
+Dim tafazol3 As Double
+tafazol3 = morabe2 - moraba
+Dim jazr2 As Double
+jazr2 = Sqr(tafazol3)
+Dim saatsoqootqyrmodal As Double
+saatsoqootqyrmodal = jazr2 / sabqq(sal, mah, roz(rooz, saattahqiq, 0, 0), mbtool)
+
+Dim bodovqeyr As Double
+If saattahqiq - saatsoqootqyrmodal > 0 Then
+bodovqeyr = saattahqiq - saatsoqootqyrmodal
+Else
+bodovqeyr = (saattahqiq - saatsoqootqyrmodal) + 24
+End If
+
+Dim enjelaqyir As Double
+If saattahqiq - saatsoqootqyrmodal < 24 Then
+enjelaqyir = saattahqiq + saatsoqootqyrmodal
+Else
+enjelaqyir = (saattahqiq + saatsoqootqyrmodal) - 24
+End If
+
+
+Dim talevaqt2 As Double
+talevaqt2 = tale3(sal, arzb, taqsha(sal, mah, roz(rooz, bodovqeyr, 0, 0), mbtool), bodovqeyr)
+Dim jamaree2 As Double
+jamaree2 = sn(arzmaree(sal, arzb, taqqa(sal, mah, roz(rooz, bodovqeyr, 0, 0), mbtool), arzqmr(hesseha(sal, mah, roz(rooz, bodovqeyr, 0, 0), mbtool)), talevaqt2, ertmaree(sal, mah, rooz, bodovqeyr, mbtool, arzb)))
+moraba3 = jamaree2 * jamaree2
+Dim baqouj3 As Double
+baqouj3 = tq(oujqa(sal, mah, roz(rooz, bodovqeyr, 0, 0), mbtool) - taqsha(sal, mah, roz(rooz, bodovqeyr, 0, 0), mbtool))
+Dim tadil3 As Double
+tadil3 = tadq1(baqouj3, markaz3a(sal, mah, roz(rooz, bodovqeyr, 0, 0), mbtool))
+Dim qtrq3 As Double
+qtrq3 = qtrq(markaz3a(sal, mah, roz(rooz, bodovqeyr, 0, 0), mbtool))
+Dim qtrsh3 As Double
+qtrsh3 = qtrsh(mtasha(sal, mah, roz(rooz, bodovqeyr, 0, 0), mbtool))
+Dim qtrqm3 As Double
+qtrqm3 = qtrq3 + tadil3
+Dim nesfqtrmaree3 As Double
+nesfqtrmaree3 = (qotrer(ertaztale(sal, arzb, arzqmr(hesseha(sal, mah, roz(rooz, bodovqeyr, 0, 0), mbtool)), taqqa(sal, mah, roz(rooz, bodovqeyr, 0, 0), mbtool), talevaqt2), qtrqm3)) / 2
+Dim majmoo3 As Double
+majmoo3 = (qtrsh3 / 2) + nesfqtrmaree3
+Dim moraba4 As Double
+Dim tafazol4 As Double
+Dim jazr3 As Double
+moraba4 = majmoo3 * majmoo3
+tafazol4 = moraba4 - moraba3
+jazr3 = Sqr(tafazol4)
+Dim sooqootmb As Double
+sooqootmb = jazr3 / sabqq(sal, mah, roz(rooz, bodovqeyr, 0, 0), mbtool)
+
+If saattahqiq - sooqootmb > 0 Then
+bodovkosoof = saattahqiq - sooqootmb
+Else
+bodovkosoof = (saattahqiq - sooqootmb) + 24
+End If
+End Function
+
+
+
+
+
+
+
+Public Function senjelak(sal As Integer, mah As Integer, rooz As Double, saattahqiq As Double, mbtool As Double, arzb As Double) As Double
+
+Dim talevaqt As Double
+talevaqt = tale3(sal, arzb, taqsha(sal, mah, roz(rooz, saattahqiq, 0, 0), mbtool), saattahqiq)
+Dim baqouj2 As Double
+If oujqa(sal, mah, roz(rooz, saattahqiq, 0, 0), mbtool) > taqsha(sal, mah, roz(rooz, saattahqiq, 0, 0), mbtool) Then
+baqouj2 = oujqa(sal, mah, roz(rooz, saattahqiq, 0, 0), mbtool) - taqsha(sal, mah, roz(rooz, saattahqiq, 0, 0), mbtool)
+Else
+baqouj2 = oujqa(sal, mah, roz(rooz, saattahqiq, 0, 0), mbtool) + 360 - taqsha(sal, mah, roz(rooz, saattahqiq, 0, 0), mbtool)
+End If
+Dim tadil2 As Double
+tadil2 = tadq1(baqouj2, markaz3a(sal, mah, roz(rooz, saattahqiq, 0, 0), mbtool))
+Dim qtrq2 As Double
+qtrq2 = qtrq(markaz3a(sal, mah, roz(rooz, saattahqiq, 0, 0), mbtool))
+Dim qtrsh2 As Double
+qtrsh2 = qtrsh(mtasha(sal, mah, roz(rooz, saattahqiq, 0, 0), mbtool))
+Dim qtrqm2 As Double
+qtrqm2 = qtrq2 + tadil2
+Dim nesfqtrmaree As Double
+nesfqtrmaree = (qotrer(ertaztale(sal, arzb, arzqmr(hesseha(sal, mah, roz(rooz, saattahqiq, 0, 0), mbtool)), taqqa(sal, mah, roz(rooz, saattahqiq, 0, 0), mbtool), talevaqt), qtrqm2)) / 2
+Dim majmoo2 As Double
+majmoo2 = (qtrsh2 / 2) + nesfqtrmaree
+Dim arzmare As Double
+arzmare = (arzmaree(sal, arzb, taqqa(sal, mah, roz(rooz, saattahqiq, 0, 0), mbtool), arzqmr(hesseha(sal, mah, roz(rooz, saattahqiq, 0, 0), mbtool)), talevaqt, ertmaree(sal, mah, rooz, saattahqiq, mbtool, arzb)))
+Dim moraba As Double
+moraba = sn(arzmare) * sn(arzmare)
+Dim morabe2 As Double
+morabe2 = majmoo2 * majmoo2
+Dim tafazol3 As Double
+tafazol3 = morabe2 - moraba
+Dim jazr2 As Double
+jazr2 = Sqr(tafazol3)
+Dim saatsoqootqyrmodal As Double
+saatsoqootqyrmodal = jazr2 / sabqq(sal, mah, roz(rooz, saattahqiq, 0, 0), mbtool)
+
+Dim bodovqeyr As Double
+If saattahqiq - saatsoqootqyrmodal > 0 Then
+bodovqeyr = saattahqiq - saatsoqootqyrmodal
+Else
+bodovqeyr = (saattahqiq - saatsoqootqyrmodal) + 24
+End If
+
+Dim enjelaqyir As Double
+If saattahqiq - saatsoqootqyrmodal < 24 Then
+enjelaqyir = saattahqiq + saatsoqootqyrmodal
+Else
+enjelaqyir = (saattahqiq + saatsoqootqyrmodal) - 24
+End If
+
+
+Dim talevaqt2 As Double
+talevaqt2 = tale3(sal, arzb, taqsha(sal, mah, roz(rooz, bodovqeyr, 0, 0), mbtool), bodovqeyr)
+Dim jamaree2 As Double
+jamaree2 = sn(arzmaree(sal, arzb, taqqa(sal, mah, roz(rooz, bodovqeyr, 0, 0), mbtool), arzqmr(hesseha(sal, mah, roz(rooz, bodovqeyr, 0, 0), mbtool)), talevaqt2, ertmaree(sal, mah, rooz, bodovqeyr, mbtool, arzb)))
+moraba3 = jamaree2 * jamaree2
+Dim baqouj3 As Double
+baqouj3 = tq(oujqa(sal, mah, roz(rooz, bodovqeyr, 0, 0), mbtool) - taqsha(sal, mah, roz(rooz, bodovqeyr, 0, 0), mbtool))
+Dim tadil3 As Double
+tadil3 = tadq1(baqouj3, markaz3a(sal, mah, roz(rooz, bodovqeyr, 0, 0), mbtool))
+Dim qtrq3 As Double
+qtrq3 = qtrq(markaz3a(sal, mah, roz(rooz, bodovqeyr, 0, 0), mbtool))
+Dim qtrsh3 As Double
+qtrsh3 = qtrsh(mtasha(sal, mah, roz(rooz, bodovqeyr, 0, 0), mbtool))
+Dim qtrqm3 As Double
+qtrqm3 = qtrq3 + tadil3
+Dim nesfqtrmaree3 As Double
+nesfqtrmaree3 = (qotrer(ertaztale(sal, arzb, arzqmr(hesseha(sal, mah, roz(rooz, bodovqeyr, 0, 0), mbtool)), taqqa(sal, mah, roz(rooz, bodovqeyr, 0, 0), mbtool), talevaqt2), qtrqm3)) / 2
+Dim majmoo3 As Double
+majmoo3 = (qtrsh3 / 2) + nesfqtrmaree3
+Dim moraba4 As Double
+Dim tafazol4 As Double
+Dim jazr3 As Double
+moraba4 = majmoo3 * majmoo3
+tafazol4 = moraba4 - moraba3
+jazr3 = Sqr(tafazol4)
+Dim sooqootmb As Double
+sooqootmb = jazr3 / sabqq(sal, mah, roz(rooz, bodovqeyr, 0, 0), mbtool)
+Dim bodovmoada As Double
+If saattahqiq - sooqootmb > 0 Then
+bodovmoada = saattahqiq - sooqootmb
+Else
+bodovmoada = (saattahqiq - sooqootmb) + 24
+End If
+
+
+Dim talevaqt3 As Double
+talevaqt3 = tale3(sal, arzb, taqsha(sal, mah, roz(rooz, enjelaqyir, 0, 0), mbtool), enjelaqyir)
+Dim jamaree3 As Double
+jamaree3 = sn(arzmaree(sal, arzb, taqqa(sal, mah, roz(rooz, enjelaqyir, 0, 0), mbtool), arzqmr(hesseha(sal, mah, roz(rooz, enjelaqyir, 0, 0), mbtool)), talevaqt3, ertmaree(sal, mah, rooz, enjelaqyir, mbtool, arzb)))
+moraba5 = jamaree3 * jamaree3
+Dim baqouj4 As Double
+baqouj4 = tq(oujqa(sal, mah, roz(rooz, enjelaqyir, 0, 0), mbtool) - taqsha(sal, mah, roz(rooz, enjelaqyir, 0, 0), mbtool))
+Dim tadil4 As Double
+tadil4 = tadq1(baqouj3, markaz3a(sal, mah, roz(rooz, enjelaqyir, 0, 0), mbtool))
+Dim qtrq4 As Double
+qtrq4 = qtrq(markaz3a(sal, mah, roz(rooz, enjelaqyir, 0, 0), mbtool))
+Dim qtrsh4 As Double
+qtrsh4 = qtrsh(mtasha(sal, mah, roz(rooz, enjelaqyir, 0, 0), mbtool))
+Dim qtrqm4 As Double
+qtrqm4 = qtrq4 + tadil4
+Dim nesfqtrmaree4 As Double
+nesfqtrmaree4 = (qotrer(ertaztale(sal, arzb, arzqmr(hesseha(sal, mah, roz(rooz, enjelaqyir, 0, 0), mbtool)), taqqa(sal, mah, roz(rooz, enjelaqyir, 0, 0), mbtool), talevaqt3), qtrqm3)) / 2
+Dim majmoo4 As Double
+majmoo4 = (qtrsh4 / 2) + nesfqtrmaree4
+Dim moraba6 As Double
+Dim tafazol5 As Double
+Dim jazr4 As Double
+moraba6 = majmoo4 * majmoo4
+tafazol5 = moraba6 - moraba5
+jazr4 = Sqr(tafazol5)
+Dim sooqootmt As Double
+sooqootmt = jazr4 / sabqq(sal, mah, roz(rooz, enjelaqyir, 0, 0), mbtool)
+
+Dim tamammoadal As Double
+If saattahqiq + saatsoqootqyrmodal < 24 Then
+tamammoadal = saattahqiq + sooqootmt
+Else
+tamammoadal = (saattahqiq + sooqootmt) - 24
+End If
+
+
+senjelak = tamammoadal
+
+End Function
+
+
+Public Function tasirk(modatkosoof As Double) As Double
+tasirk = modatkosoof / (10 / 3600)
+End Function
+
+Public Function mozamtasirk(sal As Integer, mah As Integer, rooz As Double, saattahqiq As Double, mbtool As Double, arzb As Double) As Double
+Dim qosnahar As Double
+Dim saat As Double
+Dim x As Double
+Dim mail As Double
+mail = ml(sal, taqsha(sal, mah, roz(rooz, saattahqiq, 0, 0), mbtool))
+qosnahar = qsn(mail, arzb) / 2
+If qosnahar + saattahqiq < 24 Then
+a = qosnahar + saattahqiq
+Else
+a = qosnahar + saattahqiq - 24
+End If
+saat = a * 15 / (qosnahar / 12)
+
+x = saat * modatkosoof(bodovkosoof(sal, mah, rooz, saattahqiq, mbtool, arzb), senjelak(sal, mah, rooz, saattahqiq, mbtool, arzb)) / 12
+mozamtasirk = x / (10 / 3600)
+
+End Function
+
+Public Function modatkosoof(bodov As Double, enjela As Double) As Double
+If enjela - bodov > 0 Then
+modatkosoof = enjela - bodov
+Else
+modatkosoof = enjela - bodov + 24
+End If
+End Function
+
+Public Function jozeekolik(sal As Integer, mah As Integer, rooz As Double, saattahqiq As Double, mbtool As Double, arzb As Double)
+Dim qotrq As Double
+Dim ertefaq As Double
+Dim nesfq As Double
+Dim nesfsh As Double
+Dim taqq As Double
+Dim arzqq As Double
+Dim tale As Double
+Dim fazl As Double
+Dim ertmare As Double
+
+
+
+taqq = taqqa(sal, mah, roz(rooz, saattahqiq, 0, 0), mbtool)
+arzqq = arzq(hesseha(sal, mah, roz(rooz, saattahqiq, 0, 0), mbtool))
+tale = tale3(sal, arzb, taqqa(sal, mah, roz(rooz, saattahqiq, 0, 0), mbtool), saattahqiq)
+qotrq = qtrq(markaz3a(sal, mah, roz(rooz, saattahqiq, 0, 0), mbtool))
+ertefaq = ertaztale(sal, arzb, arzqq, taqq, tale)
+ertmare = ertmaree(sal, mah, rooz, saattahqiq, mbtool, arzb)
+
+arzmare = Abs(arzmaree(sal, arzb, taqq, arzqq, tale, ertmare))
+nesfq = qotrer(ertefaq, qotrq) / 2
+nesfsh = qtrsh(mtasha(sal, mah, roz(rooz, saattahqiq, 0, 0), mbtool)) / 2
+fazl = Abs(nesfq - nesfsh)
+
+If (nesfq = nesfsh And arzmare = 0) Then
+jozeekolik = "koli bimaks"
+ElseIf (nesfq > nesfsh And arzmare = 0) Then
+jozeekolik = "koli bamaks"
+ElseIf nesfq > nesfsh And arzmare = fazl Then
+jozeekolik = "koli bimaks"
+ElseIf nesfq = nesfsh And arzmare > 0 Then
+jozeekolik = "jozee"
+ElseIf nesfq > nesfsh And arzmare > fazl Then
+jozeekolik = "jozee"
+ElseIf nesfq < nesfsh And arzmare = 0 Then
+jozeekolik = "halqavi motashabeh"
+ElseIf nesfq < nesfsh And arzmare < fazl Then
+jozeekolik = "halqavi qeirmotashabeh"
+ElseIf nesfq < nesfsh And arzmare = fazl Then
+jozeekolik = "jozee motamem noorani"
+ElseIf nesfq < nesfsh And arzmare > fazl Then
+jozeekolik = "jozee yek tarafi"
+Else
+jozeekolik = "false"
+End If
+
+End Function
+
+
+
+
+
+
+Public Function sasoqootkk(arz As Double, boht As Double)
+Dim a As Double
+a = arz * 60
+Dim b As Double
+b = boht * 6
+Dim c As Double
+
+If a = 0 And b = ((50 / 60) + 11) * 6 Then
+c = (10 / 60) + 1
+ElseIf a = 2 And b = ((50 / 60) + 11) * 6 Then
+c = (10 / 60) + 1
+ElseIf a = 4 And b = ((50 / 60) + 11) * 6 Then
+c = (9 / 60) + 1
+ElseIf a = 6 And b = ((50 / 60) + 11) * 6 Then
+c = (8 / 60) + 1
+ElseIf a = 8 And b = ((50 / 60) + 11) * 6 Then
+c = (7 / 60) + 1
+ElseIf a = 10 And b = ((50 / 60) + 11) * 6 Then
+c = (6 / 60) + 1
+ElseIf a = 12 And b = ((50 / 60) + 11) * 6 Then
+c = (4 / 60) + 1
+ElseIf a = 14 And b = ((50 / 60) + 11) * 6 Then
+c = (2 / 60) + 1
+ElseIf a = 16 And b = ((50 / 60) + 11) * 6 Then
+c = (0 / 60) + 1
+ElseIf a = 18 And b = ((50 / 60) + 11) * 6 Then
+c = (57 / 60) + 0
+ElseIf a = 20 And b = ((50 / 60) + 11) * 6 Then
+c = (54 / 60) + 0
+ElseIf a = 22 And b = ((50 / 60) + 11) * 6 Then
+c = (50 / 60) + 0
+ElseIf a = 24 And b = ((50 / 60) + 11) * 6 Then
+c = (45 / 60) + 0
+ElseIf a = 26 And b = ((50 / 60) + 11) * 6 Then
+c = (39 / 60) + 0
+ElseIf a = 28 And b = ((50 / 60) + 11) * 6 Then
+c = (31 / 60) + 0
+ElseIf a = 30 And b = ((50 / 60) + 11) * 6 Then
+c = (22 / 60) + 0
+ElseIf a = 32 And b = ((50 / 60) + 11) * 6 Then
+c = (0 / 60) + 0
+
+
+
+
+ElseIf a = 0 And b = ((10 / 60) + 12) * 6 Then
+c = (8 / 60) + 1
+ElseIf a = 2 And b = ((10 / 60) + 12) * 6 Then
+c = (8 / 60) + 1
+ElseIf a = 4 And b = ((10 / 60) + 12) * 6 Then
+c = (7 / 60) + 1
+ElseIf a = 6 And b = ((10 / 60) + 12) * 6 Then
+c = (6 / 60) + 1
+ElseIf a = 8 And b = ((10 / 60) + 12) * 6 Then
+c = (5 / 60) + 1
+ElseIf a = 10 And b = ((10 / 60) + 12) * 6 Then
+c = (4 / 60) + 1
+ElseIf a = 12 And b = ((10 / 60) + 12) * 6 Then
+c = (2 / 60) + 1
+ElseIf a = 14 And b = ((10 / 60) + 12) * 6 Then
+c = (0 / 60) + 1
+ElseIf a = 16 And b = ((10 / 60) + 12) * 6 Then
+c = (58 / 60) + 0
+ElseIf a = 18 And b = ((10 / 60) + 12) * 6 Then
+c = (56 / 60) + 0
+ElseIf a = 20 And b = ((10 / 60) + 12) * 6 Then
+c = (53 / 60) + 0
+ElseIf a = 22 And b = ((10 / 60) + 12) * 6 Then
+c = (49 / 60) + 0
+ElseIf a = 24 And b = ((10 / 60) + 12) * 6 Then
+c = (44 / 60) + 0
+ElseIf a = 26 And b = ((10 / 60) + 12) * 6 Then
+c = (38 / 60) + 0
+ElseIf a = 28 And b = ((10 / 60) + 12) * 6 Then
+c = (31 / 60) + 0
+ElseIf a = 30 And b = ((10 / 60) + 12) * 6 Then
+c = (23 / 60) + 0
+ElseIf a = 32 And b = ((10 / 60) + 12) * 6 Then
+c = (0 / 60) + 0
+
+
+
+
+
+ElseIf a = 0 And b = ((30 / 60) + 12) * 6 Then
+c = (7 / 60) + 1
+ElseIf a = 2 And b = ((30 / 60) + 12) * 6 Then
+c = (7 / 60) + 1
+ElseIf a = 4 And b = ((30 / 60) + 12) * 6 Then
+c = (6 / 60) + 1
+ElseIf a = 6 And b = ((30 / 60) + 12) * 6 Then
+c = (5 / 60) + 1
+ElseIf a = 8 And b = ((30 / 60) + 12) * 6 Then
+c = (4 / 60) + 1
+ElseIf a = 10 And b = ((30 / 60) + 12) * 6 Then
+c = (3 / 60) + 1
+ElseIf a = 12 And b = ((30 / 60) + 12) * 6 Then
+c = (1 / 60) + 1
+ElseIf a = 14 And b = ((30 / 60) + 12) * 6 Then
+c = (59 / 60) + 0
+ElseIf a = 16 And b = ((30 / 60) + 12) * 6 Then
+c = (57 / 60) + 0
+ElseIf a = 18 And b = ((30 / 60) + 12) * 6 Then
+c = (55 / 60) + 0
+ElseIf a = 20 And b = ((30 / 60) + 12) * 6 Then
+c = (52 / 60) + 0
+ElseIf a = 22 And b = ((30 / 60) + 12) * 6 Then
+c = (48 / 60) + 0
+ElseIf a = 24 And b = ((30 / 60) + 12) * 6 Then
+c = (43 / 60) + 0
+ElseIf a = 26 And b = ((30 / 60) + 12) * 6 Then
+c = (38 / 60) + 0
+ElseIf a = 28 And b = ((30 / 60) + 12) * 6 Then
+c = (32 / 60) + 0
+ElseIf a = 30 And b = ((30 / 60) + 12) * 6 Then
+c = (25 / 60) + 0
+ElseIf a = 32 And b = ((30 / 60) + 12) * 6 Then
+c = (8 / 60) + 0
+
+
+
+
+ElseIf a = 0 And b = ((50 / 60) + 12) * 6 Then
+c = (6 / 60) + 1
+ElseIf a = 2 And b = ((50 / 60) + 12) * 6 Then
+c = (5 / 60) + 1
+ElseIf a = 4 And b = ((50 / 60) + 12) * 6 Then
+c = (5 / 60) + 1
+ElseIf a = 6 And b = ((50 / 60) + 12) * 6 Then
+c = (4 / 60) + 1
+ElseIf a = 8 And b = ((50 / 60) + 12) * 6 Then
+c = (3 / 60) + 1
+ElseIf a = 10 And b = ((50 / 60) + 12) * 6 Then
+c = (2 / 60) + 1
+ElseIf a = 12 And b = ((50 / 60) + 12) * 6 Then
+c = (1 / 60) + 1
+ElseIf a = 14 And b = ((50 / 60) + 12) * 6 Then
+c = (59 / 60) + 0
+ElseIf a = 16 And b = ((50 / 60) + 12) * 6 Then
+c = (57 / 60) + 0
+ElseIf a = 18 And b = ((50 / 60) + 12) * 6 Then
+c = (55 / 60) + 0
+ElseIf a = 20 And b = ((50 / 60) + 12) * 6 Then
+c = (52 / 60) + 0
+ElseIf a = 22 And b = ((50 / 60) + 12) * 6 Then
+c = (48 / 60) + 0
+ElseIf a = 24 And b = ((50 / 60) + 12) * 6 Then
+c = (43 / 60) + 0
+ElseIf a = 26 And b = ((50 / 60) + 12) * 6 Then
+c = (38 / 60) + 0
+ElseIf a = 28 And b = ((50 / 60) + 12) * 6 Then
+c = (32 / 60) + 0
+ElseIf a = 30 And b = ((50 / 60) + 12) * 6 Then
+c = (26 / 60) + 0
+ElseIf a = 32 And b = ((50 / 60) + 12) * 6 Then
+c = (12 / 60) + 0
+
+
+
+
+ElseIf a = 0 And b = ((10 / 60) + 13) * 6 Then
+c = (5 / 60) + 1
+ElseIf a = 2 And b = ((10 / 60) + 13) * 6 Then
+c = (5 / 60) + 1
+ElseIf a = 4 And b = ((10 / 60) + 13) * 6 Then
+c = (4 / 60) + 1
+ElseIf a = 6 And b = ((10 / 60) + 13) * 6 Then
+c = (3 / 60) + 1
+ElseIf a = 8 And b = ((10 / 60) + 13) * 6 Then
+c = (2 / 60) + 1
+ElseIf a = 10 And b = ((10 / 60) + 13) * 6 Then
+c = (1 / 60) + 1
+ElseIf a = 12 And b = ((10 / 60) + 13) * 6 Then
+c = (0 / 60) + 1
+ElseIf a = 14 And b = ((10 / 60) + 13) * 6 Then
+c = (59 / 60) + 0
+ElseIf a = 16 And b = ((10 / 60) + 13) * 6 Then
+c = (57 / 60) + 0
+ElseIf a = 18 And b = ((10 / 60) + 13) * 6 Then
+c = (55 / 60) + 0
+ElseIf a = 20 And b = ((10 / 60) + 13) * 6 Then
+c = (52 / 60) + 0
+ElseIf a = 22 And b = ((10 / 60) + 13) * 6 Then
+c = (48 / 60) + 0
+ElseIf a = 24 And b = ((10 / 60) + 13) * 6 Then
+c = (43 / 60) + 0
+ElseIf a = 26 And b = ((10 / 60) + 13) * 6 Then
+c = (38 / 60) + 0
+ElseIf a = 28 And b = ((10 / 60) + 13) * 6 Then
+c = (32 / 60) + 0
+ElseIf a = 30 And b = ((10 / 60) + 13) * 6 Then
+c = (26 / 60) + 0
+ElseIf a = 32 And b = ((10 / 60) + 13) * 6 Then
+c = (14 / 60) + 0
+
+
+
+
+ElseIf a = 0 And b = ((30 / 60) + 13) * 6 Then
+c = (3 / 60) + 1
+ElseIf a = 2 And b = ((30 / 60) + 13) * 6 Then
+c = (3 / 60) + 1
+ElseIf a = 4 And b = ((30 / 60) + 13) * 6 Then
+c = (2 / 60) + 1
+ElseIf a = 6 And b = ((30 / 60) + 13) * 6 Then
+c = (2 / 60) + 1
+ElseIf a = 8 And b = ((30 / 60) + 13) * 6 Then
+c = (1 / 60) + 1
+ElseIf a = 10 And b = ((30 / 60) + 13) * 6 Then
+c = (0 / 60) + 1
+ElseIf a = 12 And b = ((30 / 60) + 13) * 6 Then
+c = (59 / 60) + 0
+ElseIf a = 14 And b = ((30 / 60) + 13) * 6 Then
+c = (58 / 60) + 0
+ElseIf a = 16 And b = ((30 / 60) + 13) * 6 Then
+c = (57 / 60) + 0
+ElseIf a = 18 And b = ((30 / 60) + 13) * 6 Then
+c = (54 / 60) + 0
+ElseIf a = 20 And b = ((30 / 60) + 13) * 6 Then
+c = (51 / 60) + 0
+ElseIf a = 22 And b = ((30 / 60) + 13) * 6 Then
+c = (48 / 60) + 0
+ElseIf a = 24 And b = ((30 / 60) + 13) * 6 Then
+c = (44 / 60) + 0
+ElseIf a = 26 And b = ((30 / 60) + 13) * 6 Then
+c = (39 / 60) + 0
+ElseIf a = 28 And b = ((30 / 60) + 13) * 6 Then
+c = (33 / 60) + 0
+ElseIf a = 30 And b = ((30 / 60) + 13) * 6 Then
+c = (27 / 60) + 0
+ElseIf a = 32 And b = ((30 / 60) + 13) * 6 Then
+c = (16 / 60) + 0
+ElseIf a = 34 And b = ((30 / 60) + 13) * 6 Then
+c = (0 / 60) + 0
+
+
+
+
+ElseIf a = 0 And b = ((50 / 60) + 13) * 6 Then
+c = (2 / 60) + 1
+ElseIf a = 2 And b = ((50 / 60) + 13) * 6 Then
+c = (2 / 60) + 1
+ElseIf a = 4 And b = ((50 / 60) + 13) * 6 Then
+c = (1 / 60) + 1
+ElseIf a = 6 And b = ((50 / 60) + 13) * 6 Then
+c = (1 / 60) + 1
+ElseIf a = 8 And b = ((50 / 60) + 13) * 6 Then
+c = (0 / 60) + 1
+ElseIf a = 10 And b = ((50 / 60) + 13) * 6 Then
+c = (59 / 60) + 0
+ElseIf a = 12 And b = ((50 / 60) + 13) * 6 Then
+c = (59 / 60) + 0
+ElseIf a = 14 And b = ((50 / 60) + 13) * 6 Then
+c = (58 / 60) + 0
+ElseIf a = 16 And b = ((50 / 60) + 13) * 6 Then
+c = (56 / 60) + 0
+ElseIf a = 18 And b = ((50 / 60) + 13) * 6 Then
+c = (54 / 60) + 0
+ElseIf a = 20 And b = ((50 / 60) + 13) * 6 Then
+c = (51 / 60) + 0
+ElseIf a = 22 And b = ((50 / 60) + 13) * 6 Then
+c = (48 / 60) + 0
+ElseIf a = 24 And b = ((50 / 60) + 13) * 6 Then
+c = (44 / 60) + 0
+ElseIf a = 26 And b = ((50 / 60) + 13) * 6 Then
+c = (39 / 60) + 0
+ElseIf a = 28 And b = ((50 / 60) + 13) * 6 Then
+c = (33 / 60) + 0
+ElseIf a = 30 And b = ((50 / 60) + 13) * 6 Then
+c = (26 / 60) + 0
+ElseIf a = 32 And b = ((50 / 60) + 13) * 6 Then
+c = (19 / 60) + 0
+ElseIf a = 34 And b = ((50 / 60) + 13) * 6 Then
+c = (0 / 60) + 0
+
+
+
+
+ElseIf a = 0 And b = ((10 / 60) + 14) * 6 Then
+c = (1 / 60) + 1
+ElseIf a = 2 And b = ((10 / 60) + 14) * 6 Then
+c = (1 / 60) + 1
+ElseIf a = 4 And b = ((10 / 60) + 14) * 6 Then
+c = (0 / 60) + 1
+ElseIf a = 6 And b = ((10 / 60) + 14) * 6 Then
+c = (0 / 60) + 1
+ElseIf a = 8 And b = ((10 / 60) + 14) * 6 Then
+c = (59 / 60) + 0
+ElseIf a = 10 And b = ((10 / 60) + 14) * 6 Then
+c = (58 / 60) + 0
+ElseIf a = 12 And b = ((10 / 60) + 14) * 6 Then
+c = (57 / 60) + 0
+ElseIf a = 14 And b = ((10 / 60) + 14) * 6 Then
+c = (56 / 60) + 0
+ElseIf a = 16 And b = ((10 / 60) + 14) * 6 Then
+c = (54 / 60) + 0
+ElseIf a = 18 And b = ((10 / 60) + 14) * 6 Then
+c = (52 / 60) + 0
+ElseIf a = 20 And b = ((10 / 60) + 14) * 6 Then
+c = (49 / 60) + 0
+ElseIf a = 22 And b = ((10 / 60) + 14) * 6 Then
+c = (46 / 60) + 0
+ElseIf a = 24 And b = ((10 / 60) + 14) * 6 Then
+c = (43 / 60) + 0
+ElseIf a = 26 And b = ((10 / 60) + 14) * 6 Then
+c = (39 / 60) + 0
+ElseIf a = 28 And b = ((10 / 60) + 14) * 6 Then
+c = (33 / 60) + 0
+ElseIf a = 30 And b = ((10 / 60) + 14) * 6 Then
+c = (28 / 60) + 0
+ElseIf a = 32 And b = ((10 / 60) + 14) * 6 Then
+c = (20 / 60) + 0
+ElseIf a = 34 And b = ((10 / 60) + 14) * 6 Then
+c = (0 / 60) + 0
+
+
+
+
+
+ElseIf a = 0 And b = ((30 / 60) + 14) * 6 Then
+c = (0 / 60) + 1
+ElseIf a = 2 And b = ((30 / 60) + 14) * 6 Then
+c = (0 / 60) + 1
+ElseIf a = 4 And b = ((30 / 60) + 14) * 6 Then
+c = (59 / 60) + 0
+ElseIf a = 6 And b = ((30 / 60) + 14) * 6 Then
+c = (58 / 60) + 0
+ElseIf a = 8 And b = ((30 / 60) + 14) * 6 Then
+c = (57 / 60) + 0
+ElseIf a = 10 And b = ((30 / 60) + 14) * 6 Then
+c = (56 / 60) + 0
+ElseIf a = 12 And b = ((30 / 60) + 14) * 6 Then
+c = (55 / 60) + 0
+ElseIf a = 14 And b = ((30 / 60) + 14) * 6 Then
+c = (54 / 60) + 0
+ElseIf a = 16 And b = ((30 / 60) + 14) * 6 Then
+c = (52 / 60) + 0
+ElseIf a = 18 And b = ((30 / 60) + 14) * 6 Then
+c = (50 / 60) + 0
+ElseIf a = 20 And b = ((30 / 60) + 14) * 6 Then
+c = (48 / 60) + 0
+ElseIf a = 22 And b = ((30 / 60) + 14) * 6 Then
+c = (45 / 60) + 0
+ElseIf a = 24 And b = ((30 / 60) + 14) * 6 Then
+c = (42 / 60) + 0
+ElseIf a = 26 And b = ((30 / 60) + 14) * 6 Then
+c = (38 / 60) + 0
+ElseIf a = 28 And b = ((30 / 60) + 14) * 6 Then
+c = (33 / 60) + 0
+ElseIf a = 30 And b = ((30 / 60) + 14) * 6 Then
+c = (28 / 60) + 0
+ElseIf a = 32 And b = ((30 / 60) + 14) * 6 Then
+c = (20 / 60) + 0
+ElseIf a = 34 And b = ((30 / 60) + 14) * 6 Then
+c = (0 / 60) + 0
+
+
+
+
+ElseIf a = 0 And b = ((50 / 60) + 14) * 6 Then
+c = (59 / 60) + 0
+ElseIf a = 2 And b = ((50 / 60) + 14) * 6 Then
+c = (59 / 60) + 0
+ElseIf a = 4 And b = ((50 / 60) + 14) * 6 Then
+c = (58 / 60) + 0
+ElseIf a = 6 And b = ((50 / 60) + 14) * 6 Then
+c = (58 / 60) + 0
+ElseIf a = 8 And b = ((50 / 60) + 14) * 6 Then
+c = (57 / 60) + 0
+ElseIf a = 10 And b = ((50 / 60) + 14) * 6 Then
+c = (56 / 60) + 0
+ElseIf a = 12 And b = ((50 / 60) + 14) * 6 Then
+c = (55 / 60) + 0
+ElseIf a = 14 And b = ((50 / 60) + 14) * 6 Then
+c = (53 / 60) + 0
+ElseIf a = 16 And b = ((50 / 60) + 14) * 6 Then
+c = (51 / 60) + 0
+ElseIf a = 18 And b = ((50 / 60) + 14) * 6 Then
+c = (49 / 60) + 0
+ElseIf a = 20 And b = ((50 / 60) + 14) * 6 Then
+c = (47 / 60) + 0
+ElseIf a = 22 And b = ((50 / 60) + 14) * 6 Then
+c = (44 / 60) + 0
+ElseIf a = 24 And b = ((50 / 60) + 14) * 6 Then
+c = (41 / 60) + 0
+ElseIf a = 26 And b = ((50 / 60) + 14) * 6 Then
+c = (38 / 60) + 0
+ElseIf a = 28 And b = ((50 / 60) + 14) * 6 Then
+c = (34 / 60) + 0
+ElseIf a = 30 And b = ((50 / 60) + 14) * 6 Then
+c = (29 / 60) + 0
+ElseIf a = 32 And b = ((50 / 60) + 14) * 6 Then
+c = (21 / 60) + 0
+ElseIf a = 34 And b = ((50 / 60) + 14) * 6 Then
+c = (7 / 60) + 0
+End If
+sasoqootkk = c
+End Function
+
+
+
+Public Function sasoqootk(arz As Double, boht As Double)
+Dim y As Double
+y = arz * 60
+Dim z As Double
+z = boht * 6
+Dim a As Double
+a = Int(y / 2) * 2
+Dim a1 As Double
+a1 = Int(z)
+Dim a2 As Double
+a2 = a1 / 2
+Dim a3 As Double
+a3 = Int(a2)
+Dim b As Double
+If a2 = a3 Then
+b = a1 - 1
+Else
+b = a1
+End If
+Dim aa As Double
+aa = a + 2
+Dim bb As Double
+bb = b + 2
+Dim c As Double
+c = sasoqootkk(a / 60, b / 6)
+Dim d As Double
+d = sasoqootkk(a / 60, bb / 6)
+Dim e As Double
+e = sasoqootkk(aa / 60, b / 6)
+Dim f As Double
+f = sasoqootkk(aa / 60, bb / 6)
+Dim g As Double
+g = d - c
+Dim h As Double
+h = e - c
+Dim j As Double
+j = ((y - a) * h) / 2
+Dim k As Double
+k = ((z - b) * g) / 2
+Dim m As Double
+m = c + j
+Dim n As Double
+n = c + k
+Dim o As Double
+o = f - e
+Dim p As Double
+p = z - b
+Dim q As Double
+q = aa - a
+Dim r As Double
+r = p * o / q
+Dim s As Double
+s = e + r
+Dim t As Double
+t = s - n
+Dim u As Double
+u = aa - a
+Dim v As Double
+v = y - a
+Dim w As Double
+w = t * v / u
+Dim x As Double
+x = n + w
+Dim xx As Double
+If arz = a Then
+xx = 1
+Else
+xx = 2
+End If
+Dim xy As Double
+If boht = b Then
+xy = 1
+Else
+xy = 2
+End If
+If xy = 1 And xx = 1 Then
+sasoqootk = c
+ElseIf xx = 2 And xy = 1 Then
+sasoqootk = m
+ElseIf xx = 1 And xy = 2 Then
+sasoqootk = n
+Else
+sasoqootk = x
+End If
+
+
+End Function
+
+
+Public Function asabejermkk(x As Double, y As Double)
+Dim a As Double
+a = x * 60
+Dim b As Double
+b = y * 6
+Dim c As Double
+If a = 0 And b = ((50 / 60) + 11) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 2 And b = ((50 / 60) + 11) * 6 Then
+c = (7 / 60) + 11
+ElseIf a = 4 And b = ((50 / 60) + 11) * 6 Then
+c = (9 / 60) + 10
+ElseIf a = 6 And b = ((50 / 60) + 11) * 6 Then
+c = (13 / 60) + 9
+ElseIf a = 8 And b = ((50 / 60) + 11) * 6 Then
+c = (15 / 60) + 8
+ElseIf a = 10 And b = ((50 / 60) + 11) * 6 Then
+c = (21 / 60) + 7
+ElseIf a = 12 And b = ((50 / 60) + 11) * 6 Then
+c = (27 / 60) + 6
+ElseIf a = 14 And b = ((50 / 60) + 11) * 6 Then
+c = (34 / 60) + 5
+ElseIf a = 16 And b = ((50 / 60) + 11) * 6 Then
+c = (45 / 60) + 4
+ElseIf a = 18 And b = ((50 / 60) + 11) * 6 Then
+c = (57 / 60) + 3
+ElseIf a = 20 And b = ((50 / 60) + 11) * 6 Then
+c = (7 / 60) + 3
+ElseIf a = 22 And b = ((50 / 60) + 11) * 6 Then
+c = (22 / 60) + 2
+ElseIf a = 24 And b = ((50 / 60) + 11) * 6 Then
+c = (40 / 60) + 1
+ElseIf a = 26 And b = ((50 / 60) + 11) * 6 Then
+c = (4 / 60) + 1
+ElseIf a = 28 And b = ((50 / 60) + 11) * 6 Then
+c = (34 / 60) + 0
+ElseIf a = 30 And b = ((50 / 60) + 11) * 6 Then
+c = (13 / 60) + 0
+ElseIf a = 32 And b = ((50 / 60) + 11) * 6 Then
+c = (0 / 60) + 0
+
+
+
+
+ElseIf a = 0 And b = ((10 / 60) + 12) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 2 And b = ((10 / 60) + 12) * 6 Then
+c = (15 / 60) + 11
+ElseIf a = 4 And b = ((10 / 60) + 12) * 6 Then
+c = (19 / 60) + 10
+ElseIf a = 6 And b = ((10 / 60) + 12) * 6 Then
+c = (23 / 60) + 9
+ElseIf a = 8 And b = ((10 / 60) + 12) * 6 Then
+c = (25 / 60) + 8
+ElseIf a = 10 And b = ((10 / 60) + 12) * 6 Then
+c = (29 / 60) + 7
+ElseIf a = 12 And b = ((10 / 60) + 12) * 6 Then
+c = (34 / 60) + 6
+ElseIf a = 14 And b = ((10 / 60) + 12) * 6 Then
+c = (42 / 60) + 5
+ElseIf a = 16 And b = ((10 / 60) + 12) * 6 Then
+c = (51 / 60) + 4
+ElseIf a = 18 And b = ((10 / 60) + 12) * 6 Then
+c = (4 / 60) + 4
+ElseIf a = 20 And b = ((10 / 60) + 12) * 6 Then
+c = (14 / 60) + 3
+ElseIf a = 22 And b = ((10 / 60) + 12) * 6 Then
+c = (29 / 60) + 2
+ElseIf a = 24 And b = ((10 / 60) + 12) * 6 Then
+c = (47 / 60) + 1
+ElseIf a = 26 And b = ((10 / 60) + 12) * 6 Then
+c = (9 / 60) + 1
+ElseIf a = 28 And b = ((10 / 60) + 12) * 6 Then
+c = (38 / 60) + 0
+ElseIf a = 30 And b = ((10 / 60) + 12) * 6 Then
+c = (15 / 60) + 0
+ElseIf a = 32 And b = ((10 / 60) + 12) * 6 Then
+c = (0 / 60) + 0
+
+
+
+
+
+ElseIf a = 0 And b = ((30 / 60) + 12) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 2 And b = ((30 / 60) + 12) * 6 Then
+c = (22 / 60) + 11
+ElseIf a = 4 And b = ((30 / 60) + 12) * 6 Then
+c = (25 / 60) + 10
+ElseIf a = 6 And b = ((30 / 60) + 12) * 6 Then
+c = (30 / 60) + 9
+ElseIf a = 8 And b = ((30 / 60) + 12) * 6 Then
+c = (33 / 60) + 8
+ElseIf a = 10 And b = ((30 / 60) + 12) * 6 Then
+c = (37 / 60) + 7
+ElseIf a = 12 And b = ((30 / 60) + 12) * 6 Then
+c = (42 / 60) + 6
+ElseIf a = 14 And b = ((30 / 60) + 12) * 6 Then
+c = (50 / 60) + 5
+ElseIf a = 16 And b = ((30 / 60) + 12) * 6 Then
+c = (0 / 60) + 5
+ElseIf a = 18 And b = ((30 / 60) + 12) * 6 Then
+c = (12 / 60) + 4
+ElseIf a = 20 And b = ((30 / 60) + 12) * 6 Then
+c = (23 / 60) + 3
+ElseIf a = 22 And b = ((30 / 60) + 12) * 6 Then
+c = (37 / 60) + 2
+ElseIf a = 24 And b = ((30 / 60) + 12) * 6 Then
+c = (53 / 60) + 1
+ElseIf a = 26 And b = ((30 / 60) + 12) * 6 Then
+c = (18 / 60) + 1
+ElseIf a = 28 And b = ((30 / 60) + 12) * 6 Then
+c = (43 / 60) + 0
+ElseIf a = 30 And b = ((30 / 60) + 12) * 6 Then
+c = (18 / 60) + 0
+ElseIf a = 32 And b = ((30 / 60) + 12) * 6 Then
+c = (2 / 60) + 0
+
+
+
+
+ElseIf a = 0 And b = ((50 / 60) + 12) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 2 And b = ((50 / 60) + 12) * 6 Then
+c = (30 / 60) + 11
+ElseIf a = 4 And b = ((50 / 60) + 12) * 6 Then
+c = (35 / 60) + 10
+ElseIf a = 6 And b = ((50 / 60) + 12) * 6 Then
+c = (38 / 60) + 9
+ElseIf a = 8 And b = ((50 / 60) + 12) * 6 Then
+c = (40 / 60) + 8
+ElseIf a = 10 And b = ((50 / 60) + 12) * 6 Then
+c = (43 / 60) + 7
+ElseIf a = 12 And b = ((50 / 60) + 12) * 6 Then
+c = (48 / 60) + 6
+ElseIf a = 14 And b = ((50 / 60) + 12) * 6 Then
+c = (55 / 60) + 5
+ElseIf a = 16 And b = ((50 / 60) + 12) * 6 Then
+c = (6 / 60) + 5
+ElseIf a = 18 And b = ((50 / 60) + 12) * 6 Then
+c = (18 / 60) + 4
+ElseIf a = 20 And b = ((50 / 60) + 12) * 6 Then
+c = (29 / 60) + 3
+ElseIf a = 22 And b = ((50 / 60) + 12) * 6 Then
+c = (42 / 60) + 2
+ElseIf a = 24 And b = ((50 / 60) + 12) * 6 Then
+c = (59 / 60) + 1
+ElseIf a = 26 And b = ((50 / 60) + 12) * 6 Then
+c = (21 / 60) + 1
+ElseIf a = 28 And b = ((50 / 60) + 12) * 6 Then
+c = (47 / 60) + 0
+ElseIf a = 30 And b = ((50 / 60) + 12) * 6 Then
+c = (20 / 60) + 0
+ElseIf a = 32 And b = ((50 / 60) + 12) * 6 Then
+c = (4 / 60) + 0
+
+
+
+ElseIf a = 0 And b = ((10 / 60) + 13) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 2 And b = ((10 / 60) + 13) * 6 Then
+c = (39 / 60) + 11
+ElseIf a = 4 And b = ((10 / 60) + 13) * 6 Then
+c = (48 / 60) + 10
+ElseIf a = 6 And b = ((10 / 60) + 13) * 6 Then
+c = (12 / 60) + 9
+ElseIf a = 8 And b = ((10 / 60) + 13) * 6 Then
+c = (45 / 60) + 8
+ElseIf a = 10 And b = ((10 / 60) + 13) * 6 Then
+c = (58 / 60) + 7
+ElseIf a = 12 And b = ((10 / 60) + 13) * 6 Then
+c = (1 / 60) + 7
+ElseIf a = 14 And b = ((10 / 60) + 13) * 6 Then
+c = (8 / 60) + 6
+ElseIf a = 16 And b = ((10 / 60) + 13) * 6 Then
+c = (16 / 60) + 5
+ElseIf a = 18 And b = ((10 / 60) + 13) * 6 Then
+c = (27 / 60) + 4
+ElseIf a = 20 And b = ((10 / 60) + 13) * 6 Then
+c = (37 / 60) + 3
+ElseIf a = 22 And b = ((10 / 60) + 13) * 6 Then
+c = (42 / 60) + 2
+ElseIf a = 24 And b = ((10 / 60) + 13) * 6 Then
+c = (6 / 60) + 2
+ElseIf a = 26 And b = ((10 / 60) + 13) * 6 Then
+c = (27 / 60) + 1
+ElseIf a = 28 And b = ((10 / 60) + 13) * 6 Then
+c = (51 / 60) + 0
+ElseIf a = 30 And b = ((10 / 60) + 13) * 6 Then
+c = (24 / 60) + 0
+ElseIf a = 32 And b = ((10 / 60) + 13) * 6 Then
+c = (7 / 60) + 0
+
+
+
+
+ElseIf a = 0 And b = ((30 / 60) + 13) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 2 And b = ((30 / 60) + 13) * 6 Then
+c = (46 / 60) + 11
+ElseIf a = 4 And b = ((30 / 60) + 13) * 6 Then
+c = (54 / 60) + 10
+ElseIf a = 6 And b = ((30 / 60) + 13) * 6 Then
+c = (57 / 60) + 9
+ElseIf a = 8 And b = ((30 / 60) + 13) * 6 Then
+c = (1 / 60) + 9
+ElseIf a = 10 And b = ((30 / 60) + 13) * 6 Then
+c = (3 / 60) + 8
+ElseIf a = 12 And b = ((30 / 60) + 13) * 6 Then
+c = (7 / 60) + 7
+ElseIf a = 14 And b = ((30 / 60) + 13) * 6 Then
+c = (13 / 60) + 6
+ElseIf a = 16 And b = ((30 / 60) + 13) * 6 Then
+c = (21 / 60) + 5
+ElseIf a = 18 And b = ((30 / 60) + 13) * 6 Then
+c = (32 / 60) + 4
+ElseIf a = 20 And b = ((30 / 60) + 13) * 6 Then
+c = (42 / 60) + 3
+ElseIf a = 22 And b = ((30 / 60) + 13) * 6 Then
+c = (55 / 60) + 2
+ElseIf a = 24 And b = ((30 / 60) + 13) * 6 Then
+c = (11 / 60) + 2
+ElseIf a = 26 And b = ((30 / 60) + 13) * 6 Then
+c = (30 / 60) + 1
+ElseIf a = 28 And b = ((30 / 60) + 13) * 6 Then
+c = (55 / 60) + 0
+ElseIf a = 30 And b = ((30 / 60) + 13) * 6 Then
+c = (28 / 60) + 0
+ElseIf a = 32 And b = ((30 / 60) + 13) * 6 Then
+c = (9 / 60) + 0
+ElseIf a = 34 And b = ((30 / 60) + 13) * 6 Then
+c = (0 / 60) + 0
+
+
+
+
+ElseIf a = 0 And b = ((50 / 60) + 13) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 2 And b = ((50 / 60) + 13) * 6 Then
+c = (54 / 60) + 11
+ElseIf a = 4 And b = ((50 / 60) + 13) * 6 Then
+c = (3 / 60) + 11
+ElseIf a = 6 And b = ((50 / 60) + 13) * 6 Then
+c = (8 / 60) + 10
+ElseIf a = 8 And b = ((50 / 60) + 13) * 6 Then
+c = (12 / 60) + 9
+ElseIf a = 10 And b = ((50 / 60) + 13) * 6 Then
+c = (15 / 60) + 8
+ElseIf a = 12 And b = ((50 / 60) + 13) * 6 Then
+c = (18 / 60) + 7
+ElseIf a = 14 And b = ((50 / 60) + 13) * 6 Then
+c = (24 / 60) + 6
+ElseIf a = 16 And b = ((50 / 60) + 13) * 6 Then
+c = (33 / 60) + 5
+ElseIf a = 18 And b = ((50 / 60) + 13) * 6 Then
+c = (41 / 60) + 4
+ElseIf a = 20 And b = ((50 / 60) + 13) * 6 Then
+c = (52 / 60) + 3
+ElseIf a = 22 And b = ((50 / 60) + 13) * 6 Then
+c = (3 / 60) + 3
+ElseIf a = 24 And b = ((50 / 60) + 13) * 6 Then
+c = (18 / 60) + 2
+ElseIf a = 26 And b = ((50 / 60) + 13) * 6 Then
+c = (37 / 60) + 1
+ElseIf a = 28 And b = ((50 / 60) + 13) * 6 Then
+c = (59 / 60) + 0
+ElseIf a = 30 And b = ((50 / 60) + 13) * 6 Then
+c = (32 / 60) + 0
+ElseIf a = 32 And b = ((50 / 60) + 13) * 6 Then
+c = (12 / 60) + 0
+ElseIf a = 34 And b = ((50 / 60) + 13) * 6 Then
+c = (0 / 60) + 0
+
+
+
+
+ElseIf a = 0 And b = ((10 / 60) + 14) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 2 And b = ((10 / 60) + 14) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 4 And b = ((10 / 60) + 14) * 6 Then
+c = (10 / 60) + 11
+ElseIf a = 6 And b = ((10 / 60) + 14) * 6 Then
+c = (15 / 60) + 10
+ElseIf a = 8 And b = ((10 / 60) + 14) * 6 Then
+c = (20 / 60) + 9
+ElseIf a = 10 And b = ((10 / 60) + 14) * 6 Then
+c = (21 / 60) + 8
+ElseIf a = 12 And b = ((10 / 60) + 14) * 6 Then
+c = (26 / 60) + 7
+ElseIf a = 14 And b = ((10 / 60) + 14) * 6 Then
+c = (31 / 60) + 6
+ElseIf a = 16 And b = ((10 / 60) + 14) * 6 Then
+c = (39 / 60) + 5
+ElseIf a = 18 And b = ((10 / 60) + 14) * 6 Then
+c = (49 / 60) + 4
+ElseIf a = 20 And b = ((10 / 60) + 14) * 6 Then
+c = (0 / 60) + 4
+ElseIf a = 22 And b = ((10 / 60) + 14) * 6 Then
+c = (10 / 60) + 3
+ElseIf a = 24 And b = ((10 / 60) + 14) * 6 Then
+c = (24 / 60) + 2
+ElseIf a = 26 And b = ((10 / 60) + 14) * 6 Then
+c = (42 / 60) + 1
+ElseIf a = 28 And b = ((10 / 60) + 14) * 6 Then
+c = (5 / 60) + 1
+ElseIf a = 30 And b = ((10 / 60) + 14) * 6 Then
+c = (37 / 60) + 0
+ElseIf a = 32 And b = ((10 / 60) + 14) * 6 Then
+c = (13 / 60) + 0
+ElseIf a = 34 And b = ((10 / 60) + 14) * 6 Then
+c = (0 / 60) + 0
+
+
+
+
+
+ElseIf a = 0 And b = ((30 / 60) + 14) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 2 And b = ((30 / 60) + 14) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 4 And b = ((30 / 60) + 14) * 6 Then
+c = (17 / 60) + 11
+ElseIf a = 6 And b = ((30 / 60) + 14) * 6 Then
+c = (23 / 60) + 10
+ElseIf a = 8 And b = ((30 / 60) + 14) * 6 Then
+c = (26 / 60) + 9
+ElseIf a = 10 And b = ((30 / 60) + 14) * 6 Then
+c = (29 / 60) + 8
+ElseIf a = 12 And b = ((30 / 60) + 14) * 6 Then
+c = (32 / 60) + 7
+ElseIf a = 14 And b = ((30 / 60) + 14) * 6 Then
+c = (38 / 60) + 6
+ElseIf a = 16 And b = ((30 / 60) + 14) * 6 Then
+c = (44 / 60) + 5
+ElseIf a = 18 And b = ((30 / 60) + 14) * 6 Then
+c = (55 / 60) + 4
+ElseIf a = 20 And b = ((30 / 60) + 14) * 6 Then
+c = (6 / 60) + 4
+ElseIf a = 22 And b = ((30 / 60) + 14) * 6 Then
+c = (16 / 60) + 3
+ElseIf a = 24 And b = ((30 / 60) + 14) * 6 Then
+c = (30 / 60) + 2
+ElseIf a = 26 And b = ((30 / 60) + 14) * 6 Then
+c = (48 / 60) + 1
+ElseIf a = 28 And b = ((30 / 60) + 14) * 6 Then
+c = (10 / 60) + 1
+ElseIf a = 30 And b = ((30 / 60) + 14) * 6 Then
+c = (39 / 60) + 0
+ElseIf a = 32 And b = ((30 / 60) + 14) * 6 Then
+c = (16 / 60) + 0
+ElseIf a = 34 And b = ((30 / 60) + 14) * 6 Then
+c = (0 / 60) + 0
+
+
+
+
+ElseIf a = 0 And b = ((50 / 60) + 14) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 2 And b = ((50 / 60) + 14) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 4 And b = ((50 / 60) + 14) * 6 Then
+c = (24 / 60) + 11
+ElseIf a = 6 And b = ((50 / 60) + 14) * 6 Then
+c = (30 / 60) + 10
+ElseIf a = 8 And b = ((50 / 60) + 14) * 6 Then
+c = (33 / 60) + 9
+ElseIf a = 10 And b = ((50 / 60) + 14) * 6 Then
+c = (35 / 60) + 8
+ElseIf a = 12 And b = ((50 / 60) + 14) * 6 Then
+c = (39 / 60) + 7
+ElseIf a = 14 And b = ((50 / 60) + 14) * 6 Then
+c = (44 / 60) + 6
+ElseIf a = 16 And b = ((50 / 60) + 14) * 6 Then
+c = (50 / 60) + 5
+ElseIf a = 18 And b = ((50 / 60) + 14) * 6 Then
+c = (0 / 60) + 5
+ElseIf a = 20 And b = ((50 / 60) + 14) * 6 Then
+c = (11 / 60) + 4
+ElseIf a = 22 And b = ((50 / 60) + 14) * 6 Then
+c = (22 / 60) + 3
+ElseIf a = 24 And b = ((50 / 60) + 14) * 6 Then
+c = (35 / 60) + 2
+ElseIf a = 26 And b = ((50 / 60) + 14) * 6 Then
+c = (23 / 60) + 1
+ElseIf a = 28 And b = ((50 / 60) + 14) * 6 Then
+c = (15 / 60) + 1
+ElseIf a = 30 And b = ((50 / 60) + 14) * 6 Then
+c = (43 / 60) + 0
+ElseIf a = 32 And b = ((50 / 60) + 14) * 6 Then
+c = (18 / 60) + 0
+ElseIf a = 34 And b = ((50 / 60) + 14) * 6 Then
+c = (2 / 60) + 0
+End If
+asabejermkk = c
+End Function
+
+
+
+
+
+Public Function asabejermk(arz As Double, boht As Double)
+Dim y As Double
+y = arz * 60
+Dim z As Double
+z = boht * 6
+Dim a As Double
+a = Int(y / 2) * 2
+Dim a1 As Double
+a1 = Int(z)
+Dim a2 As Double
+a2 = a1 / 2
+Dim a3 As Double
+a3 = Int(a2)
+Dim b As Double
+If a2 = a3 Then
+b = a1 - 1
+Else
+b = a1
+End If
+Dim aa As Double
+aa = a + 2
+Dim bb As Double
+bb = b + 2
+Dim c As Double
+c = asabejermkk(a / 60, b / 6)
+Dim d As Double
+d = asabejermkk(a / 60, bb / 6)
+Dim e As Double
+e = asabejermkk(aa / 60, b / 6)
+Dim f As Double
+f = asabejermkk(aa / 60, bb / 6)
+Dim g As Double
+g = d - c
+Dim h As Double
+h = e - c
+Dim j As Double
+j = ((y - a) * h) / 2
+Dim k As Double
+k = ((z - b) * g) / 2
+Dim m As Double
+m = c + j
+Dim n As Double
+n = c + k
+Dim o As Double
+o = f - e
+Dim p As Double
+p = z - b
+Dim q As Double
+q = aa - a
+Dim r As Double
+r = p * o / q
+Dim s As Double
+s = e + r
+Dim t As Double
+t = s - n
+Dim u As Double
+u = aa - a
+Dim v As Double
+v = y - a
+Dim w As Double
+w = t * v / u
+Dim x As Double
+x = n + w
+Dim xx As Double
+If arz = a Then
+xx = 1
+Else
+xx = 2
+End If
+Dim xy As Double
+If boht = b Then
+xy = 1
+Else
+xy = 2
+End If
+If xy = 1 And xx = 1 Then
+asabejermk = c
+ElseIf xx = 2 And xy = 1 Then
+asabejermk = m
+ElseIf xx = 1 And xy = 2 Then
+asabejermk = n
+Else
+asabejermk = x
+End If
+
+End Function
+
+Public Function asabeqotrkk(arz As Double, boht As Double)
+
+Dim a As Double
+a = arz * 60
+Dim b As Double
+b = boht * 6
+Dim c As Double
+
+If a = 0 And b = ((50 / 60) + 11) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 2 And b = ((50 / 60) + 11) * 6 Then
+c = (14 / 60) + 11
+ElseIf a = 4 And b = ((50 / 60) + 11) * 6 Then
+c = (27 / 60) + 10
+ElseIf a = 6 And b = ((50 / 60) + 11) * 6 Then
+c = (42 / 60) + 9
+ElseIf a = 8 And b = ((50 / 60) + 11) * 6 Then
+c = (57 / 60) + 8
+ElseIf a = 10 And b = ((50 / 60) + 11) * 6 Then
+c = (12 / 60) + 8
+ElseIf a = 12 And b = ((50 / 60) + 11) * 6 Then
+c = (27 / 60) + 7
+ElseIf a = 14 And b = ((50 / 60) + 11) * 6 Then
+c = (41 / 60) + 6
+ElseIf a = 16 And b = ((50 / 60) + 11) * 6 Then
+c = (56 / 60) + 5
+ElseIf a = 18 And b = ((50 / 60) + 11) * 6 Then
+c = (10 / 60) + 5
+ElseIf a = 20 And b = ((50 / 60) + 11) * 6 Then
+c = (24 / 60) + 4
+ElseIf a = 22 And b = ((50 / 60) + 11) * 6 Then
+c = (39 / 60) + 3
+ElseIf a = 24 And b = ((50 / 60) + 11) * 6 Then
+c = (13 / 60) + 2
+ElseIf a = 26 And b = ((50 / 60) + 11) * 6 Then
+c = (8 / 60) + 2
+ElseIf a = 28 And b = ((50 / 60) + 11) * 6 Then
+c = (22 / 60) + 1
+ElseIf a = 30 And b = ((50 / 60) + 11) * 6 Then
+c = (36 / 60) + 0
+ElseIf a = 32 And b = ((50 / 60) + 11) * 6 Then
+c = (0 / 60) + 0
+
+
+
+
+ElseIf a = 0 And b = ((10 / 60) + 12) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 2 And b = ((10 / 60) + 12) * 6 Then
+c = (21 / 60) + 11
+ElseIf a = 4 And b = ((10 / 60) + 12) * 6 Then
+c = (35 / 60) + 10
+ElseIf a = 6 And b = ((10 / 60) + 12) * 6 Then
+c = (50 / 60) + 9
+ElseIf a = 8 And b = ((10 / 60) + 12) * 6 Then
+c = (4 / 60) + 9
+ElseIf a = 10 And b = ((10 / 60) + 12) * 6 Then
+c = (19 / 60) + 8
+ElseIf a = 12 And b = ((10 / 60) + 12) * 6 Then
+c = (33 / 60) + 7
+ElseIf a = 14 And b = ((10 / 60) + 12) * 6 Then
+c = (48 / 60) + 6
+ElseIf a = 16 And b = ((10 / 60) + 12) * 6 Then
+c = (2 / 60) + 6
+ElseIf a = 18 And b = ((10 / 60) + 12) * 6 Then
+c = (17 / 60) + 5
+ElseIf a = 20 And b = ((10 / 60) + 12) * 6 Then
+c = (31 / 60) + 4
+ElseIf a = 22 And b = ((10 / 60) + 12) * 6 Then
+c = (46 / 60) + 3
+ElseIf a = 24 And b = ((10 / 60) + 12) * 6 Then
+c = (0 / 60) + 3
+ElseIf a = 26 And b = ((10 / 60) + 12) * 6 Then
+c = (15 / 60) + 2
+ElseIf a = 28 And b = ((10 / 60) + 12) * 6 Then
+c = (29 / 60) + 1
+ElseIf a = 30 And b = ((10 / 60) + 12) * 6 Then
+c = (43 / 60) + 0
+ElseIf a = 32 And b = ((10 / 60) + 12) * 6 Then
+c = (0 / 60) + 0
+
+
+
+
+
+ElseIf a = 0 And b = ((30 / 60) + 12) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 2 And b = ((30 / 60) + 12) * 6 Then
+c = (27 / 60) + 11
+ElseIf a = 4 And b = ((30 / 60) + 12) * 6 Then
+c = (40 / 60) + 10
+ElseIf a = 6 And b = ((30 / 60) + 12) * 6 Then
+c = (55 / 60) + 9
+ElseIf a = 8 And b = ((30 / 60) + 12) * 6 Then
+c = (10 / 60) + 9
+ElseIf a = 10 And b = ((30 / 60) + 12) * 6 Then
+c = (25 / 60) + 8
+ElseIf a = 12 And b = ((30 / 60) + 12) * 6 Then
+c = (40 / 60) + 7
+ElseIf a = 14 And b = ((30 / 60) + 12) * 6 Then
+c = (55 / 60) + 6
+ElseIf a = 16 And b = ((30 / 60) + 12) * 6 Then
+c = (10 / 60) + 6
+ElseIf a = 18 And b = ((30 / 60) + 12) * 6 Then
+c = (25 / 60) + 5
+ElseIf a = 20 And b = ((30 / 60) + 12) * 6 Then
+c = (40 / 60) + 4
+ElseIf a = 22 And b = ((30 / 60) + 12) * 6 Then
+c = (54 / 60) + 3
+ElseIf a = 24 And b = ((30 / 60) + 12) * 6 Then
+c = (8 / 60) + 3
+ElseIf a = 26 And b = ((30 / 60) + 12) * 6 Then
+c = (22 / 60) + 2
+ElseIf a = 28 And b = ((30 / 60) + 12) * 6 Then
+c = (37 / 60) + 1
+ElseIf a = 30 And b = ((30 / 60) + 12) * 6 Then
+c = (51 / 60) + 0
+ElseIf a = 32 And b = ((30 / 60) + 12) * 6 Then
+c = (6 / 60) + 0
+
+
+
+
+ElseIf a = 0 And b = ((50 / 60) + 12) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 2 And b = ((50 / 60) + 12) * 6 Then
+c = (34 / 60) + 11
+ElseIf a = 4 And b = ((50 / 60) + 12) * 6 Then
+c = (48 / 60) + 10
+ElseIf a = 6 And b = ((50 / 60) + 12) * 6 Then
+c = (2 / 60) + 10
+ElseIf a = 8 And b = ((50 / 60) + 12) * 6 Then
+c = (16 / 60) + 9
+ElseIf a = 10 And b = ((50 / 60) + 12) * 6 Then
+c = (30 / 60) + 8
+ElseIf a = 12 And b = ((50 / 60) + 12) * 6 Then
+c = (45 / 60) + 7
+ElseIf a = 14 And b = ((50 / 60) + 12) * 6 Then
+c = (0 / 60) + 7
+ElseIf a = 16 And b = ((50 / 60) + 12) * 6 Then
+c = (15 / 60) + 6
+ElseIf a = 18 And b = ((50 / 60) + 12) * 6 Then
+c = (30 / 60) + 5
+ElseIf a = 20 And b = ((50 / 60) + 12) * 6 Then
+c = (45 / 60) + 4
+ElseIf a = 22 And b = ((50 / 60) + 12) * 6 Then
+c = (0 / 60) + 4
+ElseIf a = 24 And b = ((50 / 60) + 12) * 6 Then
+c = (14 / 60) + 3
+ElseIf a = 26 And b = ((50 / 60) + 12) * 6 Then
+c = (29 / 60) + 2
+ElseIf a = 28 And b = ((50 / 60) + 12) * 6 Then
+c = (43 / 60) + 1
+ElseIf a = 30 And b = ((50 / 60) + 12) * 6 Then
+c = (57 / 60) + 0
+ElseIf a = 32 And b = ((50 / 60) + 12) * 6 Then
+c = (12 / 60) + 0
+
+
+
+ElseIf a = 0 And b = ((10 / 60) + 13) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 2 And b = ((10 / 60) + 13) * 6 Then
+c = (42 / 60) + 11
+ElseIf a = 4 And b = ((10 / 60) + 13) * 6 Then
+c = (58 / 60) + 10
+ElseIf a = 6 And b = ((10 / 60) + 13) * 6 Then
+c = (53 / 60) + 10
+ElseIf a = 8 And b = ((10 / 60) + 13) * 6 Then
+c = (28 / 60) + 9
+ElseIf a = 10 And b = ((10 / 60) + 13) * 6 Then
+c = (42 / 60) + 8
+ElseIf a = 12 And b = ((10 / 60) + 13) * 6 Then
+c = (56 / 60) + 7
+ElseIf a = 14 And b = ((10 / 60) + 13) * 6 Then
+c = (11 / 60) + 7
+ElseIf a = 16 And b = ((10 / 60) + 13) * 6 Then
+c = (25 / 60) + 6
+ElseIf a = 18 And b = ((10 / 60) + 13) * 6 Then
+c = (39 / 60) + 5
+ElseIf a = 20 And b = ((10 / 60) + 13) * 6 Then
+c = (53 / 60) + 4
+ElseIf a = 22 And b = ((10 / 60) + 13) * 6 Then
+c = (7 / 60) + 4
+ElseIf a = 24 And b = ((10 / 60) + 13) * 6 Then
+c = (21 / 60) + 3
+ElseIf a = 26 And b = ((10 / 60) + 13) * 6 Then
+c = (35 / 60) + 2
+ElseIf a = 28 And b = ((10 / 60) + 13) * 6 Then
+c = (50 / 60) + 1
+ElseIf a = 30 And b = ((10 / 60) + 13) * 6 Then
+c = (5 / 60) + 1
+ElseIf a = 32 And b = ((10 / 60) + 13) * 6 Then
+c = (20 / 60) + 0
+
+
+
+
+ElseIf a = 0 And b = ((30 / 60) + 13) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 2 And b = ((30 / 60) + 13) * 6 Then
+c = (48 / 60) + 11
+ElseIf a = 4 And b = ((30 / 60) + 13) * 6 Then
+c = (3 / 60) + 11
+ElseIf a = 6 And b = ((30 / 60) + 13) * 6 Then
+c = (17 / 60) + 11
+ElseIf a = 8 And b = ((30 / 60) + 13) * 6 Then
+c = (32 / 60) + 9
+ElseIf a = 10 And b = ((30 / 60) + 13) * 6 Then
+c = (46 / 60) + 8
+ElseIf a = 12 And b = ((30 / 60) + 13) * 6 Then
+c = (1 / 60) + 8
+ElseIf a = 14 And b = ((30 / 60) + 13) * 6 Then
+c = (15 / 60) + 7
+ElseIf a = 16 And b = ((30 / 60) + 13) * 6 Then
+c = (29 / 60) + 6
+ElseIf a = 18 And b = ((30 / 60) + 13) * 6 Then
+c = (44 / 60) + 5
+ElseIf a = 20 And b = ((30 / 60) + 13) * 6 Then
+c = (58 / 60) + 4
+ElseIf a = 22 And b = ((30 / 60) + 13) * 6 Then
+c = (13 / 60) + 4
+ElseIf a = 24 And b = ((30 / 60) + 13) * 6 Then
+c = (27 / 60) + 3
+ElseIf a = 26 And b = ((30 / 60) + 13) * 6 Then
+c = (41 / 60) + 2
+ElseIf a = 28 And b = ((30 / 60) + 13) * 6 Then
+c = (56 / 60) + 1
+ElseIf a = 30 And b = ((30 / 60) + 13) * 6 Then
+c = (11 / 60) + 1
+ElseIf a = 32 And b = ((30 / 60) + 13) * 6 Then
+c = (26 / 60) + 0
+ElseIf a = 34 And b = ((30 / 60) + 13) * 6 Then
+c = (0 / 60) + 0
+
+
+
+
+ElseIf a = 0 And b = ((50 / 60) + 13) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 2 And b = ((50 / 60) + 13) * 6 Then
+c = (55 / 60) + 11
+ElseIf a = 4 And b = ((50 / 60) + 13) * 6 Then
+c = (11 / 60) + 11
+ElseIf a = 6 And b = ((50 / 60) + 13) * 6 Then
+c = (26 / 60) + 10
+ElseIf a = 8 And b = ((50 / 60) + 13) * 6 Then
+c = (11 / 60) + 9
+ElseIf a = 10 And b = ((50 / 60) + 13) * 6 Then
+c = (56 / 60) + 8
+ElseIf a = 12 And b = ((50 / 60) + 13) * 6 Then
+c = (10 / 60) + 8
+ElseIf a = 14 And b = ((50 / 60) + 13) * 6 Then
+c = (24 / 60) + 7
+ElseIf a = 16 And b = ((50 / 60) + 13) * 6 Then
+c = (38 / 60) + 6
+ElseIf a = 18 And b = ((50 / 60) + 13) * 6 Then
+c = (52 / 60) + 5
+ElseIf a = 20 And b = ((50 / 60) + 13) * 6 Then
+c = (6 / 60) + 5
+ElseIf a = 22 And b = ((50 / 60) + 13) * 6 Then
+c = (20 / 60) + 4
+ElseIf a = 24 And b = ((50 / 60) + 13) * 6 Then
+c = (34 / 60) + 3
+ElseIf a = 26 And b = ((50 / 60) + 13) * 6 Then
+c = (48 / 60) + 2
+ElseIf a = 28 And b = ((50 / 60) + 13) * 6 Then
+c = (3 / 60) + 2
+ElseIf a = 30 And b = ((50 / 60) + 13) * 6 Then
+c = (18 / 60) + 1
+ElseIf a = 32 And b = ((50 / 60) + 13) * 6 Then
+c = (33 / 60) + 0
+ElseIf a = 34 And b = ((50 / 60) + 13) * 6 Then
+c = (0 / 60) + 0
+
+
+
+
+ElseIf a = 0 And b = ((10 / 60) + 14) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 2 And b = ((10 / 60) + 14) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 4 And b = ((10 / 60) + 14) * 6 Then
+c = (17 / 60) + 11
+ElseIf a = 6 And b = ((10 / 60) + 14) * 6 Then
+c = (32 / 60) + 10
+ElseIf a = 8 And b = ((10 / 60) + 14) * 6 Then
+c = (17 / 60) + 9
+ElseIf a = 10 And b = ((10 / 60) + 14) * 6 Then
+c = (1 / 60) + 9
+ElseIf a = 12 And b = ((10 / 60) + 14) * 6 Then
+c = (16 / 60) + 8
+ElseIf a = 14 And b = ((10 / 60) + 14) * 6 Then
+c = (30 / 60) + 7
+ElseIf a = 16 And b = ((10 / 60) + 14) * 6 Then
+c = (45 / 60) + 6
+ElseIf a = 18 And b = ((10 / 60) + 14) * 6 Then
+c = (59 / 60) + 5
+ElseIf a = 20 And b = ((10 / 60) + 14) * 6 Then
+c = (13 / 60) + 5
+ElseIf a = 22 And b = ((10 / 60) + 14) * 6 Then
+c = (27 / 60) + 4
+ElseIf a = 24 And b = ((10 / 60) + 14) * 6 Then
+c = (41 / 60) + 3
+ElseIf a = 26 And b = ((10 / 60) + 14) * 6 Then
+c = (55 / 60) + 2
+ElseIf a = 28 And b = ((10 / 60) + 14) * 6 Then
+c = (10 / 60) + 2
+ElseIf a = 30 And b = ((10 / 60) + 14) * 6 Then
+c = (24 / 60) + 1
+ElseIf a = 32 And b = ((10 / 60) + 14) * 6 Then
+c = (38 / 60) + 0
+ElseIf a = 34 And b = ((10 / 60) + 14) * 6 Then
+c = (0 / 60) + 0
+
+
+
+
+
+ElseIf a = 0 And b = ((30 / 60) + 14) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 2 And b = ((30 / 60) + 14) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 4 And b = ((30 / 60) + 14) * 6 Then
+c = (23 / 60) + 11
+ElseIf a = 6 And b = ((30 / 60) + 14) * 6 Then
+c = (38 / 60) + 10
+ElseIf a = 8 And b = ((30 / 60) + 14) * 6 Then
+c = (52 / 60) + 9
+ElseIf a = 10 And b = ((30 / 60) + 14) * 6 Then
+c = (7 / 60) + 9
+ElseIf a = 12 And b = ((30 / 60) + 14) * 6 Then
+c = (21 / 60) + 8
+ElseIf a = 14 And b = ((30 / 60) + 14) * 6 Then
+c = (36 / 60) + 7
+ElseIf a = 16 And b = ((30 / 60) + 14) * 6 Then
+c = (50 / 60) + 6
+ElseIf a = 18 And b = ((30 / 60) + 14) * 6 Then
+c = (5 / 60) + 6
+ElseIf a = 20 And b = ((30 / 60) + 14) * 6 Then
+c = (49 / 60) + 5
+ElseIf a = 22 And b = ((30 / 60) + 14) * 6 Then
+c = (33 / 60) + 4
+ElseIf a = 24 And b = ((30 / 60) + 14) * 6 Then
+c = (47 / 60) + 3
+ElseIf a = 26 And b = ((30 / 60) + 14) * 6 Then
+c = (2 / 60) + 3
+ElseIf a = 28 And b = ((30 / 60) + 14) * 6 Then
+c = (36 / 60) + 2
+ElseIf a = 30 And b = ((30 / 60) + 14) * 6 Then
+c = (30 / 60) + 1
+ElseIf a = 32 And b = ((30 / 60) + 14) * 6 Then
+c = (45 / 60) + 0
+ElseIf a = 34 And b = ((30 / 60) + 14) * 6 Then
+c = (0 / 60) + 0
+
+
+
+
+ElseIf a = 0 And b = ((50 / 60) + 14) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 2 And b = ((50 / 60) + 14) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 4 And b = ((50 / 60) + 14) * 6 Then
+c = (29 / 60) + 11
+ElseIf a = 6 And b = ((50 / 60) + 14) * 6 Then
+c = (44 / 60) + 10
+ElseIf a = 8 And b = ((50 / 60) + 14) * 6 Then
+c = (58 / 60) + 9
+ElseIf a = 10 And b = ((50 / 60) + 14) * 6 Then
+c = (12 / 60) + 9
+ElseIf a = 12 And b = ((50 / 60) + 14) * 6 Then
+c = (27 / 60) + 8
+ElseIf a = 14 And b = ((50 / 60) + 14) * 6 Then
+c = (41 / 60) + 7
+ElseIf a = 16 And b = ((50 / 60) + 14) * 6 Then
+c = (55 / 60) + 6
+ElseIf a = 18 And b = ((50 / 60) + 14) * 6 Then
+c = (10 / 60) + 6
+ElseIf a = 20 And b = ((50 / 60) + 14) * 6 Then
+c = (24 / 60) + 5
+ElseIf a = 22 And b = ((50 / 60) + 14) * 6 Then
+c = (39 / 60) + 4
+ElseIf a = 24 And b = ((50 / 60) + 14) * 6 Then
+c = (53 / 60) + 3
+ElseIf a = 26 And b = ((50 / 60) + 14) * 6 Then
+c = (8 / 60) + 3
+ElseIf a = 28 And b = ((50 / 60) + 14) * 6 Then
+c = (22 / 60) + 2
+ElseIf a = 30 And b = ((50 / 60) + 14) * 6 Then
+c = (36 / 60) + 1
+ElseIf a = 32 And b = ((50 / 60) + 14) * 6 Then
+c = (50 / 60) + 0
+ElseIf a = 34 And b = ((50 / 60) + 14) * 6 Then
+c = (5 / 60) + 0
+End If
+asabeqotrkk = c
+End Function
+
+
+
+
+
+Public Function asabeqotrk(arz As Double, boht As Double)
+Dim y As Double
+y = arz * 60
+Dim z As Double
+z = boht * 6
+Dim a As Double
+a = Int(y / 2) * 2
+Dim a1 As Double
+a1 = Int(z)
+Dim a2 As Double
+a2 = a1 / 2
+Dim a3 As Double
+a3 = Int(a2)
+Dim b As Double
+If a2 = a3 Then
+b = a1 - 1
+Else
+b = a1
+End If
+Dim aa As Double
+aa = a + 2
+Dim bb As Double
+bb = b + 2
+Dim c As Double
+c = asabeqotrkk(a / 60, b / 6)
+Dim d As Double
+d = asabeqotrkk(a / 60, bb / 6)
+Dim e As Double
+e = asabeqotrkk(aa / 60, b / 6)
+Dim f As Double
+f = asabeqotrkk(aa / 60, bb / 6)
+Dim g As Double
+g = d - c
+Dim h As Double
+h = e - c
+Dim j As Double
+j = ((y - a) * h) / 2
+Dim k As Double
+k = ((z - b) * g) / 2
+Dim m As Double
+m = c + j
+Dim n As Double
+n = c + k
+Dim o As Double
+o = f - e
+Dim p As Double
+p = z - b
+Dim q As Double
+q = aa - a
+Dim r As Double
+r = p * o / q
+Dim s As Double
+s = e + r
+Dim t As Double
+t = s - n
+Dim u As Double
+u = aa - a
+Dim v As Double
+v = y - a
+Dim w As Double
+w = t * v / u
+Dim x As Double
+x = n + w
+Dim xx As Double
+If arz = a Then
+xx = 1
+Else
+xx = 2
+End If
+Dim xy As Double
+If boht = b Then
+xy = 1
+Else
+xy = 2
+End If
+If xy = 1 And xx = 1 Then
+asabeqotrk = c
+ElseIf xx = 2 And xy = 1 Then
+asabeqotrk = m
+ElseIf xx = 1 And xy = 2 Then
+asabeqotrk = n
+Else
+asabeqotrk = x
+End If
+
+End Function
+
+
+
+Public Function makskk(boht As Double)
+Dim a As Double
+a = boht * 6
+Dim c As Double
+
+
+
+If a = ((50 / 60) + 11) * 6 Then
+c = 0
+ElseIf a = ((10 / 60) + 12) * 6 Then
+c = 1 / 60
+ElseIf a = ((30 / 60) + 12) * 6 Then
+c = 2 / 60
+ElseIf a = ((50 / 60) + 12) * 6 Then
+c = 3 / 60
+ElseIf a = ((10 / 60) + 13) * 6 Then
+c = 4 / 60
+ElseIf a = ((30 / 60) + 13) * 6 Then
+c = 5 / 60
+ElseIf a = ((50 / 60) + 13) * 6 Then
+c = 6 / 60
+ElseIf a = ((10 / 60) + 14) * 6 Then
+c = 8 / 60
+ElseIf a = ((30 / 60) + 14) * 6 Then
+c = 10 / 60
+ElseIf a = ((50 / 60) + 14) * 6 Then
+c = 12 / 60
+End If
+makskk = c
+End Function
+Public Function maksk(boht As Double)
+Dim z As Double
+z = boht * 6
+Dim a1 As Double
+a1 = Int(z)
+Dim a2 As Double
+a2 = a1 / 2
+Dim a3 As Double
+a3 = Int(a2)
+Dim b As Double
+If a2 = a3 Then
+b = a1 - 1
+Else
+b = a1
+End If
+Dim bb As Double
+bb = b + 2
+Dim c As Double
+c = makskk(b / 6)
+Dim d As Double
+d = makskk(bb / 6)
+Dim e As Double
+e = d - c
+Dim f As Double
+f = z - b
+Dim g As Double
+g = f / 2 * e
+Dim h As Double
+h = c + g
+maksk = h
+End Function
+
+Public Function bodowkh(soqoot As Double, esteqbal As Double)
+If soqoot > esteqbal Then
+bodowkh = soqoot - esteqbal
+Else
+bodowkh = soqoot + 24 - esteqbal
+End If
+End Function
+
+
+Public Function bodowmaks(maks As Double, esteqbal As Double)
+If maks > esteqbal Then
+bodowmaks = maks - esteqbal
+Else
+bodowmaks = maks + 24 - esteqbal
+End If
+End Function
+
+
+Public Function bodowenjela(maks As Double, esteqbal As Double)
+If maks + esteqbal < 24 Then
+bodowenjela = maks + esteqbal
+Else
+bodowenjela = maks + esteqbal - 24
+End If
+End Function
+
+
+Public Function tamamenjela(soqoot As Double, esteqbal As Double)
+If sooot + esteqbal < 24 Then
+tamamenjela = sooot + esteqbal
+Else
+tamamenjela = sooot + esteqbal - 24
+End If
+End Function
+
+Public Function majmookh(bodowkh As Double, tamam As Double)
+If bodowkh > tamam Then
+majmookh = bodowkh - tamam
+Else
+majmookh = bodowkh + 24 - tamam
+End If
+End Function
+
+
+Public Function zamanmks(ebtedamaks As Double, bodowenjela As Double)
+If ebtedamaks > bodowenjela Then
+zamanmks = ebtedamaks - bodowenjela
+Else
+zamanmks = ebtedamaks + 24 - bodowenjela
+End If
+End Function
+Public Function ekharzsh(sal As Integer, mah As Integer, rooz As Double, saat As Double, mbtool As Double, arzb As Double) As Double
+Dim taqs As Double
+taqs = taqsh(sal, mah, roz(rooz, saat, 0, 0), mbtool)
+Dim tale As Double
+tale = tale3(sal, arzb, taqs, saat)
+Dim ertsh As Double
+ertsh = ertaztale(sal, arzb, 0, taqs, tale)
+Dim ekhert As Double
+ekhert = manzarsh(Abs(ertsh))
+Dim asherr As Double
+asherr = asher(sal, tale, arzb)
+Dim nesfsaat As Double
+nesfsaat = qsn(ml(sal, taqs), arzb) / 30
+Dim saatejtaval As Double
+If saat + nesfsaat < 24 Then
+saatejtaval = saat + nesfsaat
+Else
+saatejtaval = saat + nesfsaat - 24
+End If
+Dim daeer As Double
+daeer = saatejtaval * 15
+Dim matalemoze As Double
+matalemoze = mtb(sal, taqs, arzb)
+Dim mataletale As Double
+If daeer + matalemoze < 360 Then
+mataletale = daeer + matalemoze
+Else
+mataletale = daeer + matalemoze - 360
+End If
+Dim haselzarb As Double
+haselzarb = sn(Arzr(sal, asherr, ml(sal, mataletale), arzb)) * sn(ekhert)
+Dim x As Double
+x = csn(ertsh)
+ekharzsh = asn(haselzarb / x)
+
+End Function
+
+Public Function ekhtoolsh(sal As Integer, mah As Integer, rooz As Double, saat As Double, mbtool As Double, arzb As Double) As Double
+Dim taqs As Double
+taqs = taqsh(sal, mah, roz(rooz, saat, 0, 0), mbtool)
+Dim tale As Double
+tale = tale3(sal, arzb, taqs, saat)
+Dim ertsh As Double
+ertsh = ertaztale(sal, arzb, 0, taqs, tale)
+Dim ekhert As Double
+ekhert = manzarsh(Abs(ertsh))
+Dim x As Double
+x = 90 - ekhert
+Dim ekharz As Double
+ekharz = ekharzsh(sal, mah, rooz, saat, mbtool, arzb)
+Dim y As Double
+y = 90 - ekharz
+Dim z As Double
+z = sn(x) / sn(y) * 60
+ekhtoolsh = 90 - asn(z)
+End Function
+
+
+
+
+Public Function taqmareesh(sal As Integer, mah As Integer, rooz As Double, saat As Double, mbtool As Double, arzb As Double) As Double
+Dim taqs As Double
+taqs = taqsh(sal, mah, roz(rooz, saat, 0, 0), mbtool)
+Dim tale As Double
+tale = tale3(sal, arzb, taqs, saat)
+Dim taftale As Double
+If Abs(taqs - tale) < 180 Then
+taftale = Abs(taqs - tale)
+Else
+taftale = 360 - Abs(taqs - tale)
+End If
+Dim tafsabe As Double
+tafsabe = taqtasa(taqs, tale)
+Dim ekhtools As Double
+ekhtools = ekhtoolsh(sal, mah, rooz, mbtool, saat, arzb)
+If taftale < tafsabe Then
+taqmareesh = tq(taqs + ekhtools)
+Else
+taqmareesh = tq(taqs - ekhtools)
+End If
+End Function
+Public Function taqmareesha(sal As Integer, mah As Integer, rooz As Double, saat As Double, mbtool As Double, arzb As Double) As Double
+Dim taqs As Double
+taqs = taqsha(sal, mah, roz(rooz, saat, 0, 0), mbtool)
+Dim tale As Double
+tale = tale3(sal, arzb, taqs, saat)
+Dim taftale As Double
+If Abs(taqs - tale) < 180 Then
+taftale = Abs(taqs - tale)
+Else
+taftale = 360 - Abs(taqs - tale)
+End If
+Dim tafsabe As Double
+tafsabe = taqtasa(taqs, tale)
+Dim ekhtools As Double
+ekhtools = ekhtoolsh(sal, mah, rooz, mbtool, saat, arzb)
+If taftale < tafsabe Then
+taqmareesha = tq(taqs + ekhtools)
+Else
+taqmareesha = tq(taqs - ekhtools)
+End If
+End Function
+
+
+Public Function saejtmaree(sal As Integer, mah As Integer, rooz As Double, saathaqiq As Double, mbtool As Double, arzb As Double) As Double
+Dim sabq As Double
+sabq = sabqq(sal, mah, roz(rooz, saathaqiq, 0, 0), mbtool)
+Dim saatnesf As Double
+saatnesf = (qsn(ml(sal, taqsha(sal, mah, roz(rooz, saathaqiq, 0, 0), mbtool)), arzb)) / 30
+Dim arzq1 As Double
+arzq1 = arzq(hesseh(sal, mah, roz(rooz, saathaqiq, 0, 0), mbtool))
+Dim taqq1 As Double
+taqq1 = taqqa(sal, mah, roz(rooz, saathaqiq, 0, 0), mbtool)
+Dim taqs As Double
+taqs = taqsha(sal, mah, roz(rooz, saathaqiq, 0, 0), mbtool)
+Dim tale1 As Double
+tale1 = tale3(sal, arzb, taqs, saathaqiq)
+Dim ertmaree1 As Double
+ertmaree1 = ertmaree(sal, mah, rooz, saathaqiq, mbtool, arzb)
+Dim ekht1 As Double
+ekht1 = ekhtoolq(sal, arzb, taqq1, arzq1, tale1, ertmaree1)
+Dim taqsim1 As Double
+taqsim1 = ekht1 / sabq
+Dim taftasabe As Double
+taftasabe = taqtasa(taqq1, tale1)
+Dim taftatale As Double
+If Abs(taqq1 - tale1) < 180 Then
+taftatale = Abs(taqq1 - tale1)
+Else
+taftatale = 360 - Abs(taqq1 - tale1)
+End If
+Dim saathaqaval As Double
+saathaqaval = saathaqiq + saatnesf
+Dim a As Double
+If taftatale < taftasabe Then
+a = saathaqaval - taqsim1
+Else
+a = saathaqaval + taqsim1
+End If
+Dim saatmareeaval As Double
+If a >= 0 Then
+saatmareeaval = a
+Else
+saatmareeaval = a + 24
+End If
+Dim taqmareesh1 As Double
+taqmareesh1 = taqmareesh(sal, mah, rooz, mbtool, saatmareeaval - saatnesf, arzb)
+Dim taqq2 As Double
+taqq2 = taqqa(sal, mah, roz(rooz, saatmareeaval - saatnesf, 0, 0), mbtool)
+Dim tale2 As Double
+tale2 = tale3(sal, arzb, taqmareesh1, saatmareeaval - saatnesf)
+Dim arzq2 As Double
+arzq2 = arzq(hesseh(sal, mah, roz(rooz, saatmareeaval - saatnesf, 0, 0), mbtool))
+Dim ertmaree2 As Double
+ertmaree2 = ertmaree(sal, mah, rooz, saatmareeaval - saatnesf, mbtool, arzb)
+Dim ekht2 As Double
+ekht2 = ekhtoolq(sal, arzb, taqq2, arzq2, tale2, ertmaree2)
+Dim taqmareeq1 As Double
+taqmareeq1 = taqmaree(taqq2, tale2, ekht2)
+Dim taftaqvim1 As Double
+If (Abs(taqmareesh1 - taqmareeq1)) < 180 Then
+taftaqvim1 = taqmareesh1 - taqmareeq1
+ElseIf (Abs(taqmareesh1 - taqmareeq1)) < -180 Then
+taftaqvim1 = 360 - (taqmareesh1 - taqmareeq1)
+Else
+taftaqvim1 = taqmareesh1 - taqmareeq1 - 360
+End If
+Dim taqsim2 As Double
+taqsim2 = taftaqvim1 / sabq
+Dim saejtmaree1 As Double
+saejtmaree1 = saatmareeaval + taqsim2
+Dim taqmareesh2 As Double
+taqmareesh2 = taqmareesh(sal, mah, rooz, mbtool, saejtmaree1 - saatnesf, arzb)
+Dim taqq3 As Double
+taqq3 = taqqa(sal, mah, roz(rooz, saejtmaree1 - saatnesf, 0, 0), mbtool)
+Dim tale33 As Double
+tale33 = tale3(sal, arzb, taqmareesh2, saejtmaree1 - saatnesf)
+Dim arzq3 As Double
+arzq3 = arzq(hesseh(sal, mah, roz(rooz, saejtmaree1 - saatnesf, 0, 0), mbtool))
+Dim ertmaree3 As Double
+ertmaree3 = ertmaree(sal, mah, rooz, saejtmaree1 - saatnesf, mbtool, arzb)
+Dim ekht3 As Double
+ekht3 = ekhtoolq(sal, arzb, taqq3, arzq3, tale33, ertmaree3)
+Dim taqmareeq2 As Double
+taqmareeq2 = taqmaree(taqq3, tale33, ekht3)
+Dim taftaqvim2 As Double
+If (Abs(taqmareesh2 - taqmareeq2)) < 180 Then
+taftaqvim2 = taqmareesh2 - taqmareeq2
+ElseIf (Abs(taqmareesh2 - taqmareeq2)) < -180 Then
+taftaqvim2 = 360 - (taqmareesh2 - taqmareeq2)
+Else
+taftaqvim2 = taqmareesh2 - taqmareeq2 - 360
+End If
+Dim taqsim3 As Double
+taqsim3 = taftaqvim2 / sabq
+Dim saejtmaree2 As Double
+saejtmaree2 = saejtmaree1 + taqsim3
+Dim taqmareesh3 As Double
+taqmareesh3 = taqmareesh(sal, mah, rooz, mbtool, saejtmaree2 - saatnesf, arzb)
+Dim taqq4 As Double
+taqq4 = taqqa(sal, mah, roz(rooz, saejtmaree2 - saatnesf, 0, 0), mbtool)
+Dim tale4 As Double
+tale4 = tale3(sal, arzb, taqmareesh3, saejtmaree2 - saatnesf)
+Dim arzq4 As Double
+arzq4 = arzq(hesseh(sal, mah, roz(rooz, saejtmaree2 - saatnesf, 0, 0), mbtool))
+Dim ertmaree4 As Double
+ertmaree4 = ertmaree(sal, mah, rooz, saejtmaree2 - saatnesf, mbtool, arzb)
+Dim ekht4 As Double
+ekht4 = ekhtoolq(sal, arzb, taqq4, arzq4, tale4, ertmaree4)
+Dim taqmareeq3 As Double
+taqmareeq3 = taqmaree(taqq4, tale4, ekht4)
+Dim taftaqvim3 As Double
+If (Abs(taqmareesh3 - taqmareeq3)) < 180 Then
+taftaqvim3 = taqmareesh3 - taqmareeq3
+ElseIf (Abs(taqmareesh3 - taqmareeq3)) < -180 Then
+taftaqvim3 = 360 - (taqmareesh3 - taqmareeq3)
+Else
+taftaqvim3 = taqmareesh3 - taqmareeq3 - 360
+End If
+Dim taqsim4 As Double
+taqsim4 = taftaqvim3 / sabq
+Dim saejtmaree3 As Double
+saejtmaree3 = saejtmaree2 + taqsim4
+Dim taqmareesh4 As Double
+taqmareesh4 = taqmareesh(sal, mah, rooz, mbtool, saejtmaree3 - saatnesf, arzb)
+Dim taqq5 As Double
+taqq5 = taqqa(sal, mah, roz(rooz, saejtmaree3 - saatnesf, 0, 0), mbtool)
+Dim tale5 As Double
+tale5 = tale3(sal, arzb, taqmareesh4, saejtmaree3 - saatnesf)
+Dim arzq5 As Double
+arzq5 = arzq(hesseh(sal, mah, roz(rooz, saejtmaree3 - saatnesf, 0, 0), mbtool))
+Dim ertmaree5 As Double
+ertmaree5 = ertmaree(sal, mah, rooz, saejtmaree3 - saatnesf, mbtool, arzb)
+Dim ekht5 As Double
+ekht5 = ekhtoolq(sal, arzb, taqq5, arzq5, tale5, ertmaree5)
+Dim taqmareeq4 As Double
+taqmareeq4 = taqmaree(taqq5, tale5, ekht5)
+Dim taftaqvim4 As Double
+If (Abs(taqmareesh4 - taqmareeq4)) < 180 Then
+taftaqvim4 = taqmareesh4 - taqmareeq4
+ElseIf (Abs(taqmareesh4 - taqmareeq4)) < -180 Then
+taftaqvim4 = 360 - (taqmareesh4 - taqmareeq4)
+Else
+taftaqvim4 = taqmareesh4 - taqmareeq4 - 360
+End If
+Dim taqsim5 As Double
+taqsim5 = taftaqvim4 / sabq
+Dim saejtmaree4 As Double
+saejtmaree4 = saejtmaree3 + taqsim5
+Dim taqmareesh5 As Double
+taqmareesh5 = taqmareesh(sal, mah, rooz, mbtool, saejtmaree4 - saatnesf, arzb)
+Dim taqq6 As Double
+taqq6 = taqqa(sal, mah, roz(rooz, saejtmaree4 - saatnesf, 0, 0), mbtool)
+Dim tale6 As Double
+tale6 = tale3(sal, arzb, taqmareesh5, saejtmaree4 - saatnesf)
+Dim arzq6 As Double
+arzq6 = arzq(hesseh(sal, mah, roz(rooz, saejtmaree4 - saatnesf, 0, 0), mbtool))
+Dim ertmaree6 As Double
+ertmaree6 = ertmaree(sal, mah, rooz, saejtmaree4 - saatnesf, mbtool, arzb)
+Dim ekht6 As Double
+ekht6 = ekhtoolq(sal, arzb, taqq6, arzq6, tale6, ertmaree6)
+Dim taqmareeq5 As Double
+taqmareeq5 = taqmaree(taqq6, tale6, ekht6)
+Dim taftaqvim5 As Double
+If (Abs(taqmareesh5 - taqmareeq5)) < 180 Then
+taftaqvim5 = taqmareesh5 - taqmareeq5
+ElseIf (Abs(taqmareesh5 - taqmareeq5)) < -180 Then
+taftaqvim5 = 360 - (taqmareesh5 - taqmareeq5)
+Else
+taftaqvim5 = taqmareesh5 - taqmareeq5 - 360
+End If
+Dim taqsim6 As Double
+taqsim6 = taftaqvim5 / sabq
+Dim saejtmaree5 As Double
+saejtmaree5 = saejtmaree4 + taqsim6
+Dim taqmareesh6 As Double
+taqmareesh6 = taqmareesh(sal, mah, rooz, mbtool, saejtmaree5 - saatnesf, arzb)
+Dim taqq7 As Double
+taqq7 = taqqa(sal, mah, roz(rooz, saejtmaree5 - saatnesf, 0, 0), mbtool)
+Dim tale7 As Double
+tale7 = tale3(sal, arzb, taqmareesh6, saejtmaree5 - saatnesf)
+Dim arzq7 As Double
+arzq7 = arzq(hesseh(sal, mah, roz(rooz, saejtmaree5 - saatnesf, 0, 0), mbtool))
+Dim ertmaree7 As Double
+ertmaree7 = ertmaree(sal, mah, rooz, saejtmaree5 - saatnesf, mbtool, arzb)
+Dim ekht7 As Double
+ekht7 = ekhtoolq(sal, arzb, taqq7, arzq7, tale7, ertmaree7)
+Dim taqmareeq6 As Double
+taqmareeq6 = taqmaree(taqq7, tale7, ekht7)
+Dim taftaqvim6 As Double
+If (Abs(taqmareesh6 - taqmareeq6)) < 180 Then
+taftaqvim6 = taqmareesh6 - taqmareeq6
+ElseIf (Abs(taqmareesh6 - taqmareeq6)) < -180 Then
+taftaqvim6 = 360 - (taqmareesh6 - taqmareeq6)
+Else
+taftaqvim6 = taqmareesh6 - taqmareeq6 - 360
+End If
+Dim taqsim7 As Double
+taqsim7 = taftaqvim6 / sabq
+Dim saejtmaree6 As Double
+saejtmaree6 = saejtmaree5 + taqsim7
+saejtmaree = saejtmaree6 - saatnesf
+
+End Function
+
+
+
+Public Function saejtmaree11(sal As Integer, mah As Integer, rooz As Double, saathaqiq As Double, mbtool As Double, arzb As Double) As Double
+Dim sabq As Double
+sabq = sabqq(sal, mah, roz(rooz, saathaqiq, 0, 0), mbtool)
+Dim saatnesf As Double
+saatnesf = (qsn(ml(sal, taqsha(sal, mah, roz(rooz, saathaqiq, 0, 0), mbtool)), arzb)) / 30
+Dim arzq1 As Double
+arzq1 = arzq(hesseh(sal, mah, roz(rooz, saathaqiq, 0, 0), mbtool))
+Dim taqq1 As Double
+taqq1 = taqqa(sal, mah, roz(rooz, saathaqiq, 0, 0), mbtool)
+Dim taqs As Double
+taqs = taqsha(sal, mah, roz(rooz, saathaqiq, 0, 0), mbtool)
+Dim tale1 As Double
+tale1 = tale3(sal, arzb, taqs, saathaqiq)
+Dim ertmaree1 As Double
+ertmaree1 = ertmaree(sal, mah, rooz, saathaqiq, mbtool, arzb)
+Dim ekht1 As Double
+ekht1 = ekhtoolq(sal, arzb, taqq1, arzq1, tale1, ertmaree1)
+Dim taqsim1 As Double
+taqsim1 = ekht1 / sabq
+Dim taftasabe As Double
+taftasabe = taqtasa(taqq1, tale1)
+Dim taftatale As Double
+If Abs(taqq1 - tale1) < 180 Then
+taftatale = Abs(taqq1 - tale1)
+Else
+taftatale = 360 - Abs(taqq1 - tale1)
+End If
+Dim saathaqaval As Double
+saathaqaval = saathaqiq + saatnesf
+Dim a As Double
+If taftatale < taftasabe Then
+a = saathaqaval - taqsim1
+Else
+a = saathaqaval + taqsim1
+End If
+Dim saatmareeaval As Double
+If a >= 0 Then
+saatmareeaval = a
+Else
+saatmareeaval = a + 24
+End If
+Dim taqmareesh1 As Double
+taqmareesh1 = taqsha(sal, mah, roz(rooz, saatmareeaval - saatnesf, 0, 0), mbtool)
+Dim taqq2 As Double
+taqq2 = taqqa(sal, mah, roz(rooz, saatmareeaval - saatnesf, 0, 0), mbtool)
+Dim tale2 As Double
+tale2 = tale3(sal, arzb, taqmareesh1, saatmareeaval - saatnesf)
+Dim arzq2 As Double
+arzq2 = arzq(hesseh(sal, mah, roz(rooz, saatmareeaval - saatnesf, 0, 0), mbtool))
+Dim ertmaree2 As Double
+ertmaree2 = ertmaree(sal, mah, rooz, saatmareeaval - saatnesf, mbtool, arzb)
+Dim ekht2 As Double
+ekht2 = ekhtoolq(sal, arzb, taqq2, arzq2, tale2, ertmaree2)
+Dim taqmareeq1 As Double
+taqmareeq1 = taqmaree(taqq2, tale2, ekht2)
+Dim taftaqvim1 As Double
+If (Abs(taqmareesh1 - taqmareeq1)) < 180 Then
+taftaqvim1 = taqmareesh1 - taqmareeq1
+ElseIf (Abs(taqmareesh1 - taqmareeq1)) < -180 Then
+taftaqvim1 = 360 - (taqmareesh1 - taqmareeq1)
+Else
+taftaqvim1 = taqmareesh1 - taqmareeq1 - 360
+End If
+Dim taqsim2 As Double
+taqsim2 = taftaqvim1 / sabq
+Dim saejtmaree1 As Double
+saejtmaree1 = saatmareeaval + taqsim2
+Dim taqmareesh2 As Double
+taqmareesh2 = taqsha(sal, mah, roz(rooz, saejtmaree1 - saatnesf, 0, 0), mbtool)
+Dim taqq3 As Double
+taqq3 = taqqa(sal, mah, roz(rooz, saejtmaree1 - saatnesf, 0, 0), mbtool)
+Dim tale33 As Double
+tale33 = tale3(sal, arzb, taqmareesh2, saejtmaree1 - saatnesf)
+Dim arzq3 As Double
+arzq3 = arzq(hesseh(sal, mah, roz(rooz, saejtmaree1 - saatnesf, 0, 0), mbtool))
+Dim ertmaree3 As Double
+ertmaree3 = ertmaree(sal, mah, rooz, saejtmaree1 - saatnesf, mbtool, arzb)
+Dim ekht3 As Double
+ekht3 = ekhtoolq(sal, arzb, taqq3, arzq3, tale33, ertmaree3)
+Dim taqmareeq2 As Double
+taqmareeq2 = taqmaree(taqq3, tale33, ekht3)
+Dim taftaqvim2 As Double
+If (Abs(taqmareesh2 - taqmareeq2)) < 180 Then
+taftaqvim2 = taqmareesh2 - taqmareeq2
+ElseIf (Abs(taqmareesh2 - taqmareeq2)) < -180 Then
+taftaqvim2 = 360 - (taqmareesh2 - taqmareeq2)
+Else
+taftaqvim2 = taqmareesh2 - taqmareeq2 - 360
+End If
+Dim taqsim3 As Double
+taqsim3 = taftaqvim2 / sabq
+Dim saejtmaree2 As Double
+saejtmaree2 = saejtmaree1 + taqsim3
+Dim taqmareesh3 As Double
+taqmareesh3 = taqsha(sal, mah, roz(rooz, saejtmaree2 - saatnesf, 0, 0), mbtool)
+Dim taqq4 As Double
+taqq4 = taqqa(sal, mah, roz(rooz, saejtmaree2 - saatnesf, 0, 0), mbtool)
+Dim tale4 As Double
+tale4 = tale3(sal, arzb, taqmareesh3, saejtmaree2 - saatnesf)
+Dim arzq4 As Double
+arzq4 = arzq(hesseh(sal, mah, roz(rooz, saejtmaree2 - saatnesf, 0, 0), mbtool))
+Dim ertmaree4 As Double
+ertmaree4 = ertmaree(sal, mah, rooz, saejtmaree2 - saatnesf, mbtool, arzb)
+Dim ekht4 As Double
+ekht4 = ekhtoolq(sal, arzb, taqq4, arzq4, tale4, ertmaree4)
+Dim taqmareeq3 As Double
+taqmareeq3 = taqmaree(taqq4, tale4, ekht4)
+Dim taftaqvim3 As Double
+If (Abs(taqmareesh3 - taqmareeq3)) < 180 Then
+taftaqvim3 = taqmareesh3 - taqmareeq3
+ElseIf (Abs(taqmareesh3 - taqmareeq3)) < -180 Then
+taftaqvim3 = 360 - (taqmareesh3 - taqmareeq3)
+Else
+taftaqvim3 = taqmareesh3 - taqmareeq3 - 360
+End If
+Dim taqsim4 As Double
+taqsim4 = taftaqvim3 / sabq
+Dim saejtmaree3 As Double
+saejtmaree3 = saejtmaree2 + taqsim4
+Dim taqmareesh4 As Double
+taqmareesh4 = taqsha(sal, mah, roz(rooz, saejtmaree3 - saatnesf, 0, 0), mbtool)
+Dim taqq5 As Double
+taqq5 = taqqa(sal, mah, roz(rooz, saejtmaree3 - saatnesf, 0, 0), mbtool)
+Dim tale5 As Double
+tale5 = tale3(sal, arzb, taqmareesh4, saejtmaree3 - saatnesf)
+Dim arzq5 As Double
+arzq5 = arzq(hesseh(sal, mah, roz(rooz, saejtmaree3 - saatnesf, 0, 0), mbtool))
+Dim ertmaree5 As Double
+ertmaree5 = ertmaree(sal, mah, rooz, saejtmaree3 - saatnesf, mbtool, arzb)
+Dim ekht5 As Double
+ekht5 = ekhtoolq(sal, arzb, taqq5, arzq5, tale5, ertmaree5)
+Dim taqmareeq4 As Double
+taqmareeq4 = taqmaree(taqq5, tale5, ekht5)
+Dim taftaqvim4 As Double
+If (Abs(taqmareesh4 - taqmareeq4)) < 180 Then
+taftaqvim4 = taqmareesh4 - taqmareeq4
+ElseIf (Abs(taqmareesh4 - taqmareeq4)) < -180 Then
+taftaqvim4 = 360 - (taqmareesh4 - taqmareeq4)
+Else
+taftaqvim4 = taqmareesh4 - taqmareeq4 - 360
+End If
+Dim taqsim5 As Double
+taqsim5 = taftaqvim4 / sabq
+Dim saejtmaree4 As Double
+saejtmaree4 = saejtmaree3 + taqsim5
+Dim taqmareesh5 As Double
+taqmareesh5 = taqsha(sal, mah, roz(rooz, saejtmaree4 - saatnesf, 0, 0), mbtool)
+Dim taqq6 As Double
+taqq6 = taqqa(sal, mah, roz(rooz, saejtmaree4 - saatnesf, 0, 0), mbtool)
+Dim tale6 As Double
+tale6 = tale3(sal, arzb, taqmareesh5, saejtmaree4 - saatnesf)
+Dim arzq6 As Double
+arzq6 = arzq(hesseh(sal, mah, roz(rooz, saejtmaree4 - saatnesf, 0, 0), mbtool))
+Dim ertmaree6 As Double
+ertmaree6 = ertmaree(sal, mah, rooz, saejtmaree4 - saatnesf, mbtool, arzb)
+Dim ekht6 As Double
+ekht6 = ekhtoolq(sal, arzb, taqq6, arzq6, tale6, ertmaree6)
+Dim taqmareeq5 As Double
+taqmareeq5 = taqmaree(taqq6, tale6, ekht6)
+Dim taftaqvim5 As Double
+If (Abs(taqmareesh5 - taqmareeq5)) < 180 Then
+taftaqvim5 = taqmareesh5 - taqmareeq5
+ElseIf (Abs(taqmareesh5 - taqmareeq5)) < -180 Then
+taftaqvim5 = 360 - (taqmareesh5 - taqmareeq5)
+Else
+taftaqvim5 = taqmareesh5 - taqmareeq5 - 360
+End If
+Dim taqsim6 As Double
+taqsim6 = taftaqvim5 / sabq
+Dim saejtmaree5 As Double
+saejtmaree5 = saejtmaree4 + taqsim6
+Dim taqmareesh6 As Double
+taqmareesh6 = taqsha(sal, mah, roz(rooz, saejtmaree5 - saatnesf, 0, 0), mbtool)
+Dim taqq7 As Double
+taqq7 = taqqa(sal, mah, roz(rooz, saejtmaree5 - saatnesf, 0, 0), mbtool)
+Dim tale7 As Double
+tale7 = tale3(sal, arzb, taqmareesh6, saejtmaree5 - saatnesf)
+Dim arzq7 As Double
+arzq7 = arzq(hesseh(sal, mah, roz(rooz, saejtmaree5 - saatnesf, 0, 0), mbtool))
+Dim ertmaree7 As Double
+ertmaree7 = ertmaree(sal, mah, rooz, saejtmaree5 - saatnesf, mbtool, arzb)
+Dim ekht7 As Double
+ekht7 = ekhtoolq(sal, arzb, taqq7, arzq7, tale7, ertmaree7)
+Dim taqmareeq6 As Double
+taqmareeq6 = taqmaree(taqq7, tale7, ekht7)
+Dim taftaqvim6 As Double
+If (Abs(taqmareesh6 - taqmareeq6)) < 180 Then
+taftaqvim6 = taqmareesh6 - taqmareeq6
+ElseIf (Abs(taqmareesh6 - taqmareeq6)) < -180 Then
+taftaqvim6 = 360 - (taqmareesh6 - taqmareeq6)
+Else
+taftaqvim6 = taqmareesh6 - taqmareeq6 - 360
+End If
+Dim taqsim7 As Double
+taqsim7 = taftaqvim6 / sabq
+Dim saejtmaree6 As Double
+saejtmaree6 = saejtmaree5 + taqsim7
+saejtmaree11 = saejtmaree6
+
+
+
+
+
+
+End Function
+
+
+
+
+
+
+Public Function etahqiq(sal As Integer, mah As Integer, rooz As Double, saatejtema As Double, mbtool As Double, arzb As Double) As Double
+Dim saatnesf As Double
+saatnesf = ((qsn(ml(sal, taqsha(sal, mah, roz(rooz, saatejtema, 0, 0), mbtool)), arzb)) / 2) / 15
+Dim saatejtemaaval As Double
+Dim a1 As Double
+Dim a2 As Double
+Dim a3 As Double
+Dim a4 As Double
+Dim a5 As Double
+a1 = qsn(ml(sal, taqqa(sal, mah, roz(rooz, saatejtema, 0, 0), mbtool)), arzb)
+a2 = (360 - a1) / 15
+a3 = a1 / 30
+a4 = a2 + a3
+a5 = saatejtema - a4
+If saatejtema < a4 Then
+saatejtemaaval = saatejtema + saatnesf
+Else
+saatejtemaaval = a5
+End If
+saatejtemaaval = saatejtemaaval
+
+
+Dim talevaqt As Double
+talevaqt = tale3(sal, arzb, taqsha(sal, mah, roz(rooz, saatejtema, 0, 0), mbtool), saatejtema)
+Dim aaa As Double
+Dim ekhtool As Double
+
+ekhtool = ekhtoolq(sal, arzb, taqq(sal, mah, roz(rooz, saatejtema, 0, 0), mbtool), arzq(hesseha(sal, mah, roz(rooz, saatejtema, 0, 0), mbtool)), talevaqt, ertmaree(sal, mah, rooz, saatejtema, mbtool, arzb))
+aaa = ekhtool / sabqq(sal, mah, roz(rooz, saatejtema, 0, 0), mbtool)
+Dim bbb As Double
+bbb = Abs(taqqa(sal, mah, roz(rooz, saatejtema, 0, 0), mbtool) - talevaqt)
+Dim fff As Double
+If bbb < 180 Then
+fff = bbb
+Else
+fff = 360 - bbb
+End If
+Dim sabe As Double
+sabe = tq(talevaqt + 180)
+Dim ddd As Double
+ddd = Abs(taqqa(sal, mah, roz(rooz, saatejtema, 0, 0), mbtool) - sabe)
+Dim ggg As Double
+If ddd < 180 Then
+ggg = ddd
+Else
+ggg = 360 - ddd
+End If
+Dim emaree As Double
+If fff < ggg Then
+emaree = saatejtemaaval - aaa
+Else
+emaree = saatejtemaaval + aaa
+End If
+Dim xx As Double
+xx = (qsn(ml(sal, taqqa(sal, mah, roz(rooz, saatejtema, 0, 0), mbtool)), arzb)) / 30
+
+
+Dim enesf As Double
+If emaree > xx Then
+enesf = emaree - xx
+Else
+enesf = emaree + a4
+End If
+Dim talevaqt2 As Double
+talevaqt2 = tale3(sal, arzb, taqsha(sal, mah, roz(rooz, enesf, 0, 0), mbtool), enesf)
+
+Dim taqtale As Double
+If Abs(taqqa(sal, mah, roz(rooz, enesf, 0, 0), mbtool) - talevaqt2) < 180 Then
+taqtale = Abs(taqqa(sal, mah, roz(rooz, enesf, 0, 0), mbtool) - talevaqt2)
+Else
+taqtale = 360 - Abs(taqqa(sal, mah, roz(rooz, enesf, 0, 0), mbtool) - talevaqt2)
+End If
+
+
+
+Dim nnn As Double
+nnn = taqsha(sal, mah, roz(rooz, enesf, 0, 0), mbtool)
+Dim pp As Double
+If Abs(nnn - taqmaree(taqqa(sal, mah, roz(rooz, enesf, 0, 0), mbtool), talevaqt2, ekhtool)) < 180 Then
+pp = nnn - taqmaree(taqqa(sal, mah, roz(rooz, enesf, 0, 0), mbtool), talevaqt2, ekhtool)
+Else
+pp = 360 - (nnn - taqmaree(taqqa(sal, mah, roz(rooz, enesf, 0, 0), mbtool), talevaqt2, ekhtool))
+End If
+
+Dim ppp As Double
+If pp > 0 Then
+ppp = pp
+ElseIf pp < 0 And pp > -360 Then
+ppp = pp
+Else
+ppp = 360 + (nnn - taqmaree(taqqa(sal, mah, roz(rooz, enesf, 0, 0), mbtool), talevaqt2, ekhtool))
+End If
+Dim qqq As Double
+qqq = (ppp / sabqq(sal, mah, roz(rooz, enesf, 0, 0), mbtool))
+Dim kkk As Double
+
+
+
+
+If fff < ggg Then
+kkk = emaree - qqq
+Else
+kkk = emaree + qqq
+End If
+
+Dim enesf2 As Double
+If kkk > xx Then
+enesf2 = kkk - xx
+Else
+enesf2 = kkk + a4
+End If
+
+
+Dim www As Double
+www = taqsha(sal, mah, roz(rooz, enesf2, 0, 0), mbtool)
+
+
+Dim talevaqt3 As Double
+talevaqt3 = tale3(sal, arzb, taqsha(sal, mah, roz(rooz, enesf2, 0, 0), mbtool), enesf2)
+
+Dim ekhtool2 As Double
+ekhtool2 = ekhtoolq(sal, arzb, taqqa(sal, mah, roz(rooz, enesf2, 0, 0), mbtool), arzq(hesseha(sal, mah, roz(rooz, enesf2, 0, 0), mbtool)), talevaqt3, ertmaree(sal, mah, rooz, enesf2, mbtool, arzb))
+
+
+Dim taqtale2 As Double
+If Abs(taqqa(sal, mah, roz(rooz, enesf2, 0, 0), mbtool) - talevaqt3) < 180 Then
+taqtale2 = Abs(taqqa(sal, mah, roz(rooz, enesf, 0, 0), mbtool) - talevaqt3)
+Else
+taqtale2 = 360 - Abs(taqqa(sal, mah, roz(rooz, enesf2, 0, 0), mbtool) - talevaqt3)
+End If
+
+Dim vvv As Double
+vvv = taqmaree(taqqa(sal, mah, roz(rooz, enesf2, 0, 0), mbtool), talevaqt3, ekhtool)
+Dim etahqiqq As Double
+etahqiqq = emaree - taam(wasata(sal, mah, roz(rooz, enesf2, 0, 0), mbtool))
+
+
+Dim enesf3 As Double
+If etahqiqq > xx Then
+enesf3 = etahqiqq - xx
+Else
+enesf3 = etahqiqq + a4
+End If
+
+
+
+etahqiq = enesf3
+
+End Function
+

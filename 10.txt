@@ -1,0 +1,5050 @@
+
+
+Public Function shamsqamarame(s As Integer, m As Integer, r As Double, tol As Double)
+Dim taqshams As Double
+taqshams = taqsh(s, m, r, tol)
+Dim taqqamar As Double
+taqqamar = taqq(s, m, r, tol)
+Dim fazl1 As Double
+fazl1 = tq(taqshams - taqqamar)
+Dim fazl2 As Double
+fazl2 = tq(taqqamar - taqshams)
+Dim fazl As Double
+If fazl1 <= 180 Then
+fazl = fazl1
+Else
+fazl = fazl2
+End If
+Dim daraje As Integer
+daraje = Int(Abs(fazl))
+Dim daqiqe As Double
+daqiqe = Int((Abs(fazl) - daraje) * 60)
+If (daraje = 60) And (daqiqe = 0) Or ((daraje = 59) And (daqiqe = 59)) Then
+shamsqmarame = "tasdis"
+ElseIf ((daraje = 90) And (daqiqe = 0)) Or ((daraje = 89) And (daqiqe = 59)) Then
+shamsqamarame = "tarbi"
+ElseIf ((daraje = 120) And (daqiqe = 0)) Or ((daraje = 119) And (daqiqe = 59)) Then
+shamsqamarame = "taslis"
+ElseIf ((daraje = 180) And (daqiqe = 0)) Or ((daraje = 179) And (daqiqe = 59)) Then
+shamsqamarame = "moqabeleh"
+ElseIf ((daraje = 0) And (daqiqe = 0)) Then
+shamsqamarame = "qeran"
+Else
+shamsqamarame = "qermottasel"
+End If
+
+End Function
+
+Public Function shamsotaredame(s As Integer, m As Integer, r As Double, tol As Double)
+Dim taqshams As Double
+taqshams = taqsh(s, m, r, tol)
+Dim taqotared As Double
+taqotared = taqota(s, m, r, tol)
+Dim fazl1 As Double
+fazl1 = tq(taqshams - taqotared)
+Dim fazl2 As Double
+fazl2 = tq(taqotared - taqshams)
+Dim fazl As Double
+If fazl1 <= 180 Then
+fazl = fazl1
+Else
+fazl = fazl2
+End If
+Dim daraje As Integer
+daraje = Int(Abs(fazl))
+Dim daqiqe As Double
+daqiqe = Int((Abs(fazl) - daraje) * 60)
+If (daraje = 60) And (daqiqe = 0) Or ((daraje = 59) And (daqiqe = 59)) Then
+shamsotaredame = "tasdis"
+ElseIf ((daraje = 90) And (daqiqe = 0)) Or ((daraje = 89) And (daqiqe = 59)) Then
+shamsotaredame = "tarbi"
+ElseIf ((daraje = 120) And (daqiqe = 0)) Or ((daraje = 119) And (daqiqe = 59)) Then
+shamsotaredame = "taslis"
+ElseIf ((daraje = 180) And (daqiqe = 0)) Or ((daraje = 179) And (daqiqe = 59)) Then
+shamsotaredame = "moqabeleh"
+ElseIf ((daraje = 0) And (daqiqe = 0)) Then
+shamsotaredame = "qeran"
+Else
+shamsotaredame = "qermottasel"
+End If
+
+End Function
+
+
+Public Function shamszohreame(s As Integer, m As Integer, r As Double, tol As Double)
+Dim taqshams As Double
+taqshams = taqsh(s, m, r, tol)
+Dim taqzohreh As Double
+taqzohreh = taqzohre(s, m, r, tol)
+Dim fazl1 As Double
+fazl1 = tq(taqshams - taqzohreh)
+Dim fazl2 As Double
+fazl2 = tq(taqzohreh - taqshams)
+Dim fazl As Double
+If fazl1 <= 180 Then
+fazl = fazl1
+Else
+fazl = fazl2
+End If
+Dim daraje As Integer
+daraje = Int(Abs(fazl))
+Dim daqiqe As Double
+daqiqe = Int((Abs(fazl) - daraje) * 60)
+If (daraje = 60) And (daqiqe = 0) Or ((daraje = 59) And (daqiqe = 59)) Then
+shamszohreame = "tasdis"
+ElseIf ((daraje = 90) And (daqiqe = 0)) Or ((daraje = 89) And (daqiqe = 59)) Then
+shamszohreame = "tarbi"
+ElseIf ((daraje = 120) And (daqiqe = 0)) Or ((daraje = 119) And (daqiqe = 59)) Then
+shamszohreame = "taslis"
+ElseIf ((daraje = 180) And (daqiqe = 0)) Or ((daraje = 179) And (daqiqe = 59)) Then
+shamszohreame = "moqabeleh"
+ElseIf ((daraje = 0) And (daqiqe = 0)) Then
+shamszohreame = "qeran"
+Else
+shamszohreame = "qermottasel"
+End If
+
+End Function
+
+
+
+Public Function shamsmerikhame(s As Integer, m As Integer, r As Double, tol As Double)
+Dim taqshams As Double
+taqshams = taqsh(s, m, r, tol)
+Dim taqmerikh As Double
+taqmerikh = taqmer(s, m, r, tol)
+Dim fazl1 As Double
+fazl1 = tq(taqshams - taqmerikh)
+Dim fazl2 As Double
+fazl2 = tq(taqmerikh - taqshams)
+Dim fazl As Double
+If fazl1 <= 180 Then
+fazl = fazl1
+Else
+fazl = fazl2
+End If
+Dim daraje As Integer
+daraje = Int(Abs(fazl))
+Dim daqiqe As Double
+daqiqe = Int((Abs(fazl) - daraje) * 60)
+If (daraje = 60) And (daqiqe = 0) Or ((daraje = 59) And (daqiqe = 59)) Then
+shamsmerikhame = "tasdis"
+ElseIf ((daraje = 90) And (daqiqe = 0)) Or ((daraje = 89) And (daqiqe = 59)) Then
+shamsmerikhame = "tarbi"
+ElseIf ((daraje = 120) And (daqiqe = 0)) Or ((daraje = 119) And (daqiqe = 59)) Then
+shamsmerikhame = "taslis"
+ElseIf ((daraje = 180) And (daqiqe = 0)) Or ((daraje = 179) And (daqiqe = 59)) Then
+shamsmerikhame = "moqabeleh"
+ElseIf ((daraje = 0) And (daqiqe = 0)) Then
+shamsmerikhame = "qeran"
+Else
+shamsmerikhame = "qermottasel"
+End If
+
+End Function
+
+
+Public Function shamsmoshtariame(s As Integer, m As Integer, r As Double, tol As Double)
+Dim taqshams As Double
+taqshams = taqsh(s, m, r, tol)
+Dim taqmoshtari As Double
+taqmoshtari = taqmosh(s, m, r, tol)
+Dim fazl1 As Double
+fazl1 = tq(taqshams - taqmoshtari)
+Dim fazl2 As Double
+fazl2 = tq(taqmoshtari - taqshams)
+Dim fazl As Double
+If fazl1 <= 180 Then
+fazl = fazl1
+Else
+fazl = fazl2
+End If
+Dim daraje As Integer
+daraje = Int(Abs(fazl))
+Dim daqiqe As Double
+daqiqe = Int((Abs(fazl) - daraje) * 60)
+If (daraje = 60) And (daqiqe = 0) Or ((daraje = 59) And (daqiqe = 59)) Then
+shamsmoshtariame = "tasdis"
+ElseIf ((daraje = 90) And (daqiqe = 0)) Or ((daraje = 89) And (daqiqe = 59)) Then
+shamsmoshtariame = "tarbi"
+ElseIf ((daraje = 120) And (daqiqe = 0)) Or ((daraje = 119) And (daqiqe = 59)) Then
+shamsmoshtariame = "taslis"
+ElseIf ((daraje = 180) And (daqiqe = 0)) Or ((daraje = 179) And (daqiqe = 59)) Then
+shamsmoshtariame = "moqabeleh"
+ElseIf ((daraje = 0) And (daqiqe = 0)) Then
+shamsmoshtariame = "qeran"
+Else
+shamsmoshtariame = "qermottasel"
+End If
+
+End Function
+
+
+Public Function shamszohalame(s As Integer, m As Integer, r As Double, tol As Double)
+Dim taqshams As Double
+taqshams = taqsh(s, m, r, tol)
+Dim taqzohall As Double
+taqzohall = taqzohal(s, m, r, tol)
+Dim fazl1 As Double
+fazl1 = tq(taqshams - taqzohall)
+Dim fazl2 As Double
+fazl2 = tq(taqzohall - taqshams)
+Dim fazl As Double
+If fazl1 <= 180 Then
+fazl = fazl1
+Else
+fazl = fazl2
+End If
+Dim daraje As Integer
+daraje = Int(Abs(fazl))
+Dim daqiqe As Double
+daqiqe = Int((Abs(fazl) - daraje) * 60)
+If (daraje = 60) And (daqiqe = 0) Or ((daraje = 59) And (daqiqe = 59)) Then
+shamszohalame = "tasdis"
+ElseIf ((daraje = 90) And (daqiqe = 0)) Or ((daraje = 89) And (daqiqe = 59)) Then
+shamszohalame = "tarbi"
+ElseIf ((daraje = 120) And (daqiqe = 0)) Or ((daraje = 119) And (daqiqe = 59)) Then
+shamszohalame = "taslis"
+ElseIf ((daraje = 180) And (daqiqe = 0)) Or ((daraje = 179) And (daqiqe = 59)) Then
+shamszohalame = "moqabeleh"
+ElseIf ((daraje = 0) And (daqiqe = 0)) Then
+shamszohalame = "qeran"
+Else
+shamszohalame = "qermottasel"
+End If
+
+End Function
+
+
+
+Public Function qamarotaredame(s As Integer, m As Integer, r As Double, tol As Double)
+Dim taqqamar As Double
+taqqamar = taqq(s, m, r, tol)
+Dim taqotared As Double
+taqotared = taqzohal(s, m, r, tol)
+Dim fazl1 As Double
+fazl1 = tq(taqqamar - taqotared)
+Dim fazl2 As Double
+fazl2 = tq(taqotared - taqqamar)
+Dim fazl As Double
+If fazl1 <= 180 Then
+fazl = fazl1
+Else
+fazl = fazl2
+End If
+Dim daraje As Integer
+daraje = Int(Abs(fazl))
+Dim daqiqe As Double
+daqiqe = Int((Abs(fazl) - daraje) * 60)
+If (daraje = 60) And (daqiqe = 0) Or ((daraje = 59) And (daqiqe = 59)) Then
+qamarotaredame = "tasdis"
+ElseIf ((daraje = 90) And (daqiqe = 0)) Or ((daraje = 89) And (daqiqe = 59)) Then
+qamarotaredame = "tarbi"
+ElseIf ((daraje = 120) And (daqiqe = 0)) Or ((daraje = 119) And (daqiqe = 59)) Then
+qamarotaredame = "taslis"
+ElseIf ((daraje = 180) And (daqiqe = 0)) Or ((daraje = 179) And (daqiqe = 59)) Then
+qamarotaredame = "moqabeleh"
+ElseIf ((daraje = 0) And (daqiqe = 0)) Then
+qamarotaredame = "qeran"
+Else
+qamarotaredame = "qermottasel"
+End If
+
+End Function
+
+
+Public Function qamarzohreame(s As Integer, m As Integer, r As Double, tol As Double)
+Dim taqqamar As Double
+taqqamar = taqq(s, m, r, tol)
+Dim taqzohree As Double
+taqzohree = taqzohre(s, m, r, tol)
+Dim fazl1 As Double
+fazl1 = tq(taqqamar - taqzohree)
+Dim fazl2 As Double
+fazl2 = tq(taqzohree - taqqamar)
+Dim fazl As Double
+If fazl1 <= 180 Then
+fazl = fazl1
+Else
+fazl = fazl2
+End If
+Dim daraje As Integer
+daraje = Int(Abs(fazl))
+Dim daqiqe As Double
+daqiqe = Int((Abs(fazl) - daraje) * 60)
+If (daraje = 60) And (daqiqe = 0) Or ((daraje = 59) And (daqiqe = 59)) Then
+qamarzohreame = "tasdis"
+ElseIf ((daraje = 90) And (daqiqe = 0)) Or ((daraje = 89) And (daqiqe = 59)) Then
+qamarzohreame = "tarbi"
+ElseIf ((daraje = 120) And (daqiqe = 0)) Or ((daraje = 119) And (daqiqe = 59)) Then
+qamarzohreame = "taslis"
+ElseIf ((daraje = 180) And (daqiqe = 0)) Or ((daraje = 179) And (daqiqe = 59)) Then
+qamarzohreame = "moqabeleh"
+ElseIf ((daraje = 0) And (daqiqe = 0)) Then
+qamarzohreame = "qeran"
+Else
+qamarzohreame = "qermottasel"
+End If
+
+End Function
+
+
+Public Function qamarmerikhame(s As Integer, m As Integer, r As Double, tol As Double)
+Dim taqqamar As Double
+taqqamar = taqq(s, m, r, tol)
+Dim taqmerikh As Double
+taqmerikh = taqmer(s, m, r, tol)
+Dim fazl1 As Double
+fazl1 = tq(taqqamar - taqmerikh)
+Dim fazl2 As Double
+fazl2 = tq(taqmerikh - taqqamar)
+Dim fazl As Double
+If fazl1 <= 180 Then
+fazl = fazl1
+Else
+fazl = fazl2
+End If
+Dim daraje As Integer
+daraje = Int(Abs(fazl))
+Dim daqiqe As Double
+daqiqe = Int((Abs(fazl) - daraje) * 60)
+If (daraje = 60) And (daqiqe = 0) Or ((daraje = 59) And (daqiqe = 59)) Then
+qamarmerikhame = "tasdis"
+ElseIf ((daraje = 90) And (daqiqe = 0)) Or ((daraje = 89) And (daqiqe = 59)) Then
+qamarmerikhame = "tarbi"
+ElseIf ((daraje = 120) And (daqiqe = 0)) Or ((daraje = 119) And (daqiqe = 59)) Then
+qamarmerikhame = "taslis"
+ElseIf ((daraje = 180) And (daqiqe = 0)) Or ((daraje = 179) And (daqiqe = 59)) Then
+qamarmerikhame = "moqabeleh"
+ElseIf ((daraje = 0) And (daqiqe = 0)) Then
+qamarmerikhame = "qeran"
+Else
+qamarmerikhame = "qermottasel"
+End If
+
+End Function
+
+
+Public Function qamarmoshtariame(s As Integer, m As Integer, r As Double, tol As Double)
+Dim taqqamar As Double
+taqqamar = taqq(s, m, r, tol)
+Dim taqmoshtari As Double
+taqmoshtari = taqmosh(s, m, r, tol)
+Dim fazl1 As Double
+fazl1 = tq(taqqamar - taqmoshtari)
+Dim fazl2 As Double
+fazl2 = tq(taqmoshtari - taqqamar)
+Dim fazl As Double
+If fazl1 <= 180 Then
+fazl = fazl1
+Else
+fazl = fazl2
+End If
+Dim daraje As Integer
+daraje = Int(Abs(fazl))
+Dim daqiqe As Double
+daqiqe = Int((Abs(fazl) - daraje) * 60)
+If (daraje = 60) And (daqiqe = 0) Or ((daraje = 59) And (daqiqe = 59)) Then
+qamarmoshtariame = "tasdis"
+ElseIf ((daraje = 90) And (daqiqe = 0)) Or ((daraje = 89) And (daqiqe = 59)) Then
+qamarmoshtariame = "tarbi"
+ElseIf ((daraje = 120) And (daqiqe = 0)) Or ((daraje = 119) And (daqiqe = 59)) Then
+qamarmoshtariame = "taslis"
+ElseIf ((daraje = 180) And (daqiqe = 0)) Or ((daraje = 179) And (daqiqe = 59)) Then
+qamarmoshtariame = "moqabeleh"
+ElseIf ((daraje = 0) And (daqiqe = 0)) Then
+qamarmoshtariame = "qeran"
+Else
+qamarmoshtariame = "qermottasel"
+End If
+
+End Function
+
+
+Public Function qamarzohalame(s As Integer, m As Integer, r As Double, tol As Double)
+Dim taqqamar As Double
+taqqamar = taqq(s, m, r, tol)
+Dim taqzohall As Double
+taqzohall = taqzohal(s, m, r, tol)
+Dim fazl1 As Double
+fazl1 = tq(taqqamar - taqzohall)
+Dim fazl2 As Double
+fazl2 = tq(taqzohall - taqqamar)
+Dim fazl As Double
+If fazl1 <= 180 Then
+fazl = fazl1
+Else
+fazl = fazl2
+End If
+Dim daraje As Integer
+daraje = Int(Abs(fazl))
+Dim daqiqe As Double
+daqiqe = Int((Abs(fazl) - daraje) * 60)
+If (daraje = 60) And (daqiqe = 0) Or ((daraje = 59) And (daqiqe = 59)) Then
+qamarzohalame = "tasdis"
+ElseIf ((daraje = 90) And (daqiqe = 0)) Or ((daraje = 89) And (daqiqe = 59)) Then
+qamarzohalame = "tarbi"
+ElseIf ((daraje = 120) And (daqiqe = 0)) Or ((daraje = 119) And (daqiqe = 59)) Then
+qamarzohalame = "taslis"
+ElseIf ((daraje = 180) And (daqiqe = 0)) Or ((daraje = 179) And (daqiqe = 59)) Then
+qamarzohalame = "moqabeleh"
+ElseIf ((daraje = 0) And (daqiqe = 0)) Then
+qamarzohalame = "qeran"
+Else
+qamarzohalame = "qermottasel"
+End If
+End Function
+
+
+
+Public Function otaredzohreame(s As Integer, m As Integer, r As Double, tol As Double)
+Dim taqotared As Double
+taqotared = taqota(s, m, r, tol)
+Dim taqzohree As Double
+taqzohree = taqzohre(s, m, r, tol)
+Dim fazl1 As Double
+fazl1 = tq(taqotared - taqzohree)
+Dim fazl2 As Double
+fazl2 = tq(taqzohree - taqotared)
+Dim fazl As Double
+If fazl1 <= 180 Then
+fazl = fazl1
+Else
+fazl = fazl2
+End If
+Dim daraje As Integer
+daraje = Int(Abs(fazl))
+Dim daqiqe As Double
+daqiqe = Int((Abs(fazl) - daraje) * 60)
+If (daraje = 60) And (daqiqe = 0) Or ((daraje = 59) And (daqiqe = 59)) Then
+otaredzohreame = "tasdis"
+ElseIf ((daraje = 90) And (daqiqe = 0)) Or ((daraje = 89) And (daqiqe = 59)) Then
+otaredzohreame = "tarbi"
+ElseIf ((daraje = 120) And (daqiqe = 0)) Or ((daraje = 119) And (daqiqe = 59)) Then
+otaredzohreame = "taslis"
+ElseIf ((daraje = 180) And (daqiqe = 0)) Or ((daraje = 179) And (daqiqe = 59)) Then
+otaredzohreame = "moqabeleh"
+ElseIf ((daraje = 0) And (daqiqe = 0)) Then
+otaredzohreame = "qeran"
+Else
+otaredzohreame = "qermottasel"
+End If
+End Function
+
+
+Public Function otaredmerikhame(s As Integer, m As Integer, r As Double, tol As Double)
+Dim taqotared As Double
+taqotared = taqota(s, m, r, tol)
+Dim taqmerikh As Double
+taqmerikh = taqmer(s, m, r, tol)
+Dim fazl1 As Double
+fazl1 = tq(taqotared - taqmerikh)
+Dim fazl2 As Double
+fazl2 = tq(taqmerikh - taqotared)
+Dim fazl As Double
+If fazl1 <= 180 Then
+fazl = fazl1
+Else
+fazl = fazl2
+End If
+Dim daraje As Integer
+daraje = Int(Abs(fazl))
+Dim daqiqe As Double
+daqiqe = Int((Abs(fazl) - daraje) * 60)
+If (daraje = 60) And (daqiqe = 0) Or ((daraje = 59) And (daqiqe = 59)) Then
+otaredmerikhame = "tasdis"
+ElseIf ((daraje = 90) And (daqiqe = 0)) Or ((daraje = 89) And (daqiqe = 59)) Then
+otaredmerikhame = "tarbi"
+ElseIf ((daraje = 120) And (daqiqe = 0)) Or ((daraje = 119) And (daqiqe = 59)) Then
+otaredmerikhame = "taslis"
+ElseIf ((daraje = 180) And (daqiqe = 0)) Or ((daraje = 179) And (daqiqe = 59)) Then
+otaredmerikhame = "moqabeleh"
+ElseIf ((daraje = 0) And (daqiqe = 0)) Then
+otaredmerikhame = "qeran"
+Else
+otaredmerikhame = "qermottasel"
+End If
+End Function
+
+
+Public Function otaredmoshtariame(s As Integer, m As Integer, r As Double, tol As Double)
+Dim taqotared As Double
+taqotared = taqota(s, m, r, tol)
+Dim taqmoshtari As Double
+taqmoshtari = taqmosh(s, m, r, tol)
+Dim fazl1 As Double
+fazl1 = tq(taqotared - taqmoshtari)
+Dim fazl2 As Double
+fazl2 = tq(taqmoshtari - taqotared)
+Dim fazl As Double
+If fazl1 <= 180 Then
+fazl = fazl1
+Else
+fazl = fazl2
+End If
+Dim daraje As Integer
+daraje = Int(Abs(fazl))
+Dim daqiqe As Double
+daqiqe = Int((Abs(fazl) - daraje) * 60)
+If (daraje = 60) And (daqiqe = 0) Or ((daraje = 59) And (daqiqe = 59)) Then
+otaredmoshtariame = "tasdis"
+ElseIf ((daraje = 90) And (daqiqe = 0)) Or ((daraje = 89) And (daqiqe = 59)) Then
+otaredmoshtariame = "tarbi"
+ElseIf ((daraje = 120) And (daqiqe = 0)) Or ((daraje = 119) And (daqiqe = 59)) Then
+otaredmoshtariame = "taslis"
+ElseIf ((daraje = 180) And (daqiqe = 0)) Or ((daraje = 179) And (daqiqe = 59)) Then
+otaredmoshtariame = "moqabeleh"
+ElseIf ((daraje = 0) And (daqiqe = 0)) Then
+otaredmoshtariame = "qeran"
+Else
+otaredmoshtariame = "qermottasel"
+End If
+End Function
+
+
+Public Function otaredzohalame(s As Integer, m As Integer, r As Double, tol As Double)
+Dim taqotared As Double
+taqotared = taqota(s, m, r, tol)
+Dim taqzohall As Double
+taqzohall = taqzohal(s, m, r, tol)
+Dim fazl1 As Double
+fazl1 = tq(taqotared - taqzohall)
+Dim fazl2 As Double
+fazl2 = tq(taqzohall - taqotared)
+Dim fazl As Double
+If fazl1 <= 180 Then
+fazl = fazl1
+Else
+fazl = fazl2
+End If
+Dim daraje As Integer
+daraje = Int(Abs(fazl))
+Dim daqiqe As Double
+daqiqe = Int((Abs(fazl) - daraje) * 60)
+If (daraje = 60) And (daqiqe = 0) Or ((daraje = 59) And (daqiqe = 59)) Then
+otaredzohalame = "tasdis"
+ElseIf ((daraje = 90) And (daqiqe = 0)) Or ((daraje = 89) And (daqiqe = 59)) Then
+otaredzohalame = "tarbi"
+ElseIf ((daraje = 120) And (daqiqe = 0)) Or ((daraje = 119) And (daqiqe = 59)) Then
+otaredzohalame = "taslis"
+ElseIf ((daraje = 180) And (daqiqe = 0)) Or ((daraje = 179) And (daqiqe = 59)) Then
+otaredzohalame = "moqabeleh"
+ElseIf ((daraje = 0) And (daqiqe = 0)) Then
+otaredzohalame = "qeran"
+Else
+otaredzohalame = "qermottasel"
+End If
+End Function
+
+
+
+Public Function zohremerikhame(s As Integer, m As Integer, r As Double, tol As Double)
+Dim taqzohree As Double
+taqzohree = taqzohre(s, m, r, tol)
+Dim taqmerikh As Double
+taqmerikh = taqmer(s, m, r, tol)
+Dim fazl1 As Double
+fazl1 = tq(taqzohree - taqmerikh)
+Dim fazl2 As Double
+fazl2 = tq(taqmerikh - taqzohree)
+Dim fazl As Double
+If fazl1 <= 180 Then
+fazl = fazl1
+Else
+fazl = fazl2
+End If
+Dim daraje As Integer
+daraje = Int(Abs(fazl))
+Dim daqiqe As Double
+daqiqe = Int((Abs(fazl) - daraje) * 60)
+If (daraje = 60) And (daqiqe = 0) Or ((daraje = 59) And (daqiqe = 59)) Then
+zohremerikhame = "tasdis"
+ElseIf ((daraje = 90) And (daqiqe = 0)) Or ((daraje = 89) And (daqiqe = 59)) Then
+zohremerikhame = "tarbi"
+ElseIf ((daraje = 120) And (daqiqe = 0)) Or ((daraje = 119) And (daqiqe = 59)) Then
+zohremerikhame = "taslis"
+ElseIf ((daraje = 180) And (daqiqe = 0)) Or ((daraje = 179) And (daqiqe = 59)) Then
+zohremerikhame = "moqabeleh"
+ElseIf ((daraje = 0) And (daqiqe = 0)) Then
+zohremerikhame = "qeran"
+Else
+zohremerikhame = "qermottasel"
+End If
+End Function
+
+
+
+Public Function zohremoshtariame(s As Integer, m As Integer, r As Double, tol As Double)
+Dim taqzohree As Double
+taqzohree = taqzohre(s, m, r, tol)
+Dim taqmoshtari As Double
+taqmoshtari = taqmosh(s, m, r, tol)
+Dim fazl1 As Double
+fazl1 = tq(taqzohree - taqmoshtari)
+Dim fazl2 As Double
+fazl2 = tq(taqmoshtari - taqzohree)
+Dim fazl As Double
+If fazl1 <= 180 Then
+fazl = fazl1
+Else
+fazl = fazl2
+End If
+Dim daraje As Integer
+daraje = Int(Abs(fazl))
+Dim daqiqe As Double
+daqiqe = Int((Abs(fazl) - daraje) * 60)
+If (daraje = 60) And (daqiqe = 0) Or ((daraje = 59) And (daqiqe = 59)) Then
+zohremoshtariame = "tasdis"
+ElseIf ((daraje = 90) And (daqiqe = 0)) Or ((daraje = 89) And (daqiqe = 59)) Then
+zohremoshtariame = "tarbi"
+ElseIf ((daraje = 120) And (daqiqe = 0)) Or ((daraje = 119) And (daqiqe = 59)) Then
+zohremoshtariame = "taslis"
+ElseIf ((daraje = 180) And (daqiqe = 0)) Or ((daraje = 179) And (daqiqe = 59)) Then
+zohremoshtariame = "moqabeleh"
+ElseIf ((daraje = 0) And (daqiqe = 0)) Then
+zohremoshtariame = "qeran"
+Else
+zohremoshtariame = "qermottasel"
+End If
+End Function
+
+
+Public Function zohrezohalame(s As Integer, m As Integer, r As Double, tol As Double)
+Dim taqzohree As Double
+taqzohree = taqzohre(s, m, r, tol)
+Dim taqzohall As Double
+taqzohall = taqzohal(s, m, r, tol)
+Dim fazl1 As Double
+fazl1 = tq(taqzohree - taqzohall)
+Dim fazl2 As Double
+fazl2 = tq(taqzohall - taqzohree)
+Dim fazl As Double
+If fazl1 <= 180 Then
+fazl = fazl1
+Else
+fazl = fazl2
+End If
+Dim daraje As Integer
+daraje = Int(Abs(fazl))
+Dim daqiqe As Double
+daqiqe = Int((Abs(fazl) - daraje) * 60)
+If (daraje = 60) And (daqiqe = 0) Or ((daraje = 59) And (daqiqe = 59)) Then
+zohrezohalame = "tasdis"
+ElseIf ((daraje = 90) And (daqiqe = 0)) Or ((daraje = 89) And (daqiqe = 59)) Then
+zohrezohalame = "tarbi"
+ElseIf ((daraje = 120) And (daqiqe = 0)) Or ((daraje = 119) And (daqiqe = 59)) Then
+zohrezohalame = "taslis"
+ElseIf ((daraje = 180) And (daqiqe = 0)) Or ((daraje = 179) And (daqiqe = 59)) Then
+zohrezohalame = "moqabeleh"
+ElseIf ((daraje = 0) And (daqiqe = 0)) Then
+zohrezohalame = "qeran"
+Else
+zohrezohalame = "qermottasel"
+End If
+End Function
+
+
+Public Function merikhmoshtariame(s As Integer, m As Integer, r As Double, tol As Double)
+Dim taqmerikh As Double
+taqmerikh = taqmer(s, m, r, tol)
+Dim taqmoshtari As Double
+taqmoshtari = taqmosh(s, m, r, tol)
+Dim fazl1 As Double
+fazl1 = tq(taqmerikh - taqmoshtari)
+Dim fazl2 As Double
+fazl2 = tq(taqmoshtari - taqmerikh)
+Dim fazl As Double
+If fazl1 <= 180 Then
+fazl = fazl1
+Else
+fazl = fazl2
+End If
+Dim daraje As Integer
+daraje = Int(Abs(fazl))
+Dim daqiqe As Double
+daqiqe = Int((Abs(fazl) - daraje) * 60)
+If (daraje = 60) And (daqiqe = 0) Or ((daraje = 59) And (daqiqe = 59)) Then
+merikhmoshtariame = "tasdis"
+ElseIf ((daraje = 90) And (daqiqe = 0)) Or ((daraje = 89) And (daqiqe = 59)) Then
+merikhmoshtariame = "tarbi"
+ElseIf ((daraje = 120) And (daqiqe = 0)) Or ((daraje = 119) And (daqiqe = 59)) Then
+merikhmoshtariame = "taslis"
+ElseIf ((daraje = 180) And (daqiqe = 0)) Or ((daraje = 179) And (daqiqe = 59)) Then
+merikhmoshtariame = "moqabeleh"
+ElseIf ((daraje = 0) And (daqiqe = 0)) Then
+merikhmoshtariame = "qeran"
+Else
+merikhmoshtariame = "qermottasel"
+End If
+End Function
+
+
+
+Public Function merikhzohalame(s As Integer, m As Integer, r As Double, tol As Double)
+Dim taqmerikh As Double
+taqmerikh = taqmer(s, m, r, tol)
+Dim taqzohall As Double
+taqzohall = taqzohal(s, m, r, tol)
+Dim fazl1 As Double
+fazl1 = tq(taqmerikh - taqzohall)
+Dim fazl2 As Double
+fazl2 = tq(taqzohall - taqmerikh)
+Dim fazl As Double
+If fazl1 <= 180 Then
+fazl = fazl1
+Else
+fazl = fazl2
+End If
+Dim daraje As Integer
+daraje = Int(Abs(fazl))
+Dim daqiqe As Double
+daqiqe = Int((Abs(fazl) - daraje) * 60)
+If (daraje = 60) And (daqiqe = 0) Or ((daraje = 59) And (daqiqe = 59)) Then
+merikhzohalame = "tasdis"
+ElseIf ((daraje = 90) And (daqiqe = 0)) Or ((daraje = 89) And (daqiqe = 59)) Then
+merikhzohalame = "tarbi"
+ElseIf ((daraje = 120) And (daqiqe = 0)) Or ((daraje = 119) And (daqiqe = 59)) Then
+merikhzohalame = "taslis"
+ElseIf ((daraje = 180) And (daqiqe = 0)) Or ((daraje = 179) And (daqiqe = 59)) Then
+merikhzohalame = "moqabeleh"
+ElseIf ((daraje = 0) And (daqiqe = 0)) Then
+merikhzohalame = "qeran"
+Else
+merikhzohalame = "qermottasel"
+End If
+End Function
+
+
+
+Public Function moshtarizohalame(s As Integer, m As Integer, r As Double, tol As Double)
+Dim taqmoshtari As Double
+taqmoshtari = taqmosh(s, m, r, tol)
+Dim taqzohall As Double
+taqzohall = taqzohal(s, m, r, tol)
+Dim fazl1 As Double
+fazl1 = tq(taqmoshtari - taqzohall)
+Dim fazl2 As Double
+fazl2 = tq(taqzohall - taqmoshtari)
+Dim fazl As Double
+If fazl1 <= 180 Then
+fazl = fazl1
+Else
+fazl = fazl2
+End If
+Dim daraje As Integer
+daraje = Int(Abs(fazl))
+Dim daqiqe As Double
+daqiqe = Int((Abs(fazl) - daraje) * 60)
+If (daraje = 60) And (daqiqe = 0) Or ((daraje = 59) And (daqiqe = 59)) Then
+moshtarizohalame = "tasdis"
+ElseIf ((daraje = 90) And (daqiqe = 0)) Or ((daraje = 89) And (daqiqe = 59)) Then
+moshtarizohalame = "tarbi"
+ElseIf ((daraje = 120) And (daqiqe = 0)) Or ((daraje = 119) And (daqiqe = 59)) Then
+moshtarizohalame = "taslis"
+ElseIf ((daraje = 180) And (daqiqe = 0)) Or ((daraje = 179) And (daqiqe = 59)) Then
+moshtarizohalame = "moqabeleh"
+ElseIf ((daraje = 0) And (daqiqe = 0)) Then
+moshtarizohalame = "qeran"
+Else
+moshtarizohalame = "qermottasel"
+End If
+End Function
+
+Public Function kername(n As Double)
+If 0 < n And n < 6 Then
+kername = " kostogohen parva pekhehe soody"
+ElseIf 6 <= n And n <= 12 Then
+kername = " beb parva pekhehe soody "
+ElseIf 12 < n And n < 18 Then
+kername = "baloo dooj pekhehe soody"
+ElseIf 18 <= n And n <= 24 Then
+kername = " koloo dooj pekhehe soody"
+ElseIf 24 < n And n < 30 Then
+kername = " tytel teej pekhehe soody"
+ElseIf 30 <= n And n <= 36 Then
+kername = " gar teej pekhehe soody"
+ElseIf 36 < n And n < 42 Then
+kername = "banj chothe pekhehe soody"
+ElseIf 42 <= n And n <= 48 Then
+kername = "basht chothe pekhehe soody behdare"
+ElseIf 48 < n And n < 54 Then
+kername = "bab pachmy pekhehe soody "
+ElseIf 54 <= n And n <= 60 Then
+kername = "baloo pachmy pekhehe soody "
+ElseIf 60 < n And n < 66 Then
+kername = "koloo chahtehe pakhe soody "
+ElseIf 66 <= n And n <= 72 Then
+kername = "tytel chahtehe pakhe soody "
+ElseIf 72 < n And n < 78 Then
+kername = "gar setmy pakhe soody"
+ElseIf 78 <= n And n <= 84 Then
+kername = "banj setmy pakhehe soody "
+ElseIf 84 < n And n < 90 Then
+kername = "basht ashtamy soody bahdare"
+ElseIf 90 <= n And n <= 96 Then
+kername = "bab ashtamy pkhehe soody "
+ElseIf 96 < n And n < 102 Then
+kername = "baloo nomy pakhehe soody "
+ElseIf 102 <= n And n <= 108 Then
+kername = "koloo nomy pakhehe soody "
+ElseIf 108 < n And n < 114 Then
+kername = "tytel vasmy pakhehe soody "
+ElseIf 114 <= n And n <= 120 Then
+kername = "gar vasmy pakheh soody "
+ElseIf 120 < n And n < 126 Then
+kername = "banj ekaosy pakheh soody"
+ElseIf 126 <= n And n <= 132 Then
+kername = " basht ekaosy pakhehe soody bahdere"
+ElseIf 132 < n And n < 138 Then
+kername = "bab doavesy pakhehe soody"
+ElseIf 138 <= n And n <= 144 Then
+kername = "baloo doavesy pakhehe soody"
+ElseIf 144 < n And n < 150 Then
+kername = "koloo troodesy pakhehe soody"
+ElseIf 150 <= n And n <= 156 Then
+kername = " tytel troodesy pakhehe soody"
+ElseIf 156 < n And n < 162 Then
+kername = "gar chetroosy pakhehe soody"
+ElseIf 162 <= n And n <= 168 Then
+kername = "banj chatroosy pakhehe soody "
+ElseIf 168 < n And n < 174 Then
+kername = "basht poornamasy pakhehe soody bahdare"
+ElseIf 174 <= n And n <= 180 Then
+kername = "bab poornamasy pakhehe soody"
+ElseIf 180 < n And n < 186 Then
+kername = " baloo parva pakhehe body "
+ElseIf 186 <= n And n <= 192 Then
+kername = "koloo parva pakhehe body "
+ElseIf 192 < n And n < 198 Then
+kername = " tytel dooj pakhehe body "
+ElseIf 198 <= n And n <= 204 Then
+kername = "gar dooj pakhehe body"
+ElseIf 204 < n And n < 210 Then
+kername = " banj tyj pakhehe body "
+ElseIf 210 <= n And n <= 216 Then
+kername = "basht tyj pakhehe body bahdare"
+ElseIf 216 < n And n < 222 Then
+kername = "bab chothe pakhehe body "
+ElseIf 222 <= n And n <= 228 Then
+kername = " baloo chothe pakhehe body "
+ElseIf 228 < n And n < 234 Then
+kername = " koloo pachmy pakhehe body"
+ElseIf 234 <= n And n <= 240 Then
+kername = "tytel pachmy pakhehe body "
+ElseIf 240 < n And n < 246 Then
+kername = "gar chathehe pakhehe body"
+ElseIf 246 <= n And n <= 252 Then
+kername = "banj chahathehe pakhehe body"
+ElseIf 252 < n And n < 258 Then
+kername = "basht setmy  pakhehe body bahdare "
+ElseIf 258 <= n And n <= 264 Then
+kername = "bab setmy pakhehe body"
+ElseIf 264 < n And n < 270 Then
+kername = "baloo eshtamy pakhehe body"
+ElseIf 270 <= n And n <= 276 Then
+kername = "koloo eshtemy  pakhehe body"
+ElseIf 276 < n And n < 282 Then
+kername = " tytel nomy pakhehe body"
+ElseIf 282 <= n And n <= 288 Then
+kername = "gar nomy pakhehe body"
+ElseIf 288 < n And n < 294 Then
+kername = " banj vasmy pakhehe body"
+ElseIf 294 <= n And n <= 300 Then
+kername = "basht vasmy pakhehe body bahdare"
+ElseIf 300 < n And n < 306 Then
+kername = "bab ekaosy pakhehe body"
+ElseIf 306 <= n And n <= 312 Then
+kername = "baloo ekaosy pakhehe body"
+ElseIf 312 < n And n < 318 Then
+kername = "koloo doadesy pakhehe body"
+ElseIf 318 <= n And n <= 324 Then
+kername = "tytel doadesy pakhehe body"
+ElseIf 324 < n And n < 330 Then
+kername = "gar terodesy pakhehe body"
+ElseIf 330 <= n And n <= 336 Then
+kername = "banj trodesy pakhehe body"
+ElseIf 336 < n And n < 342 Then
+kername = "basht chatroosy pakhehe body bahdare"
+ElseIf 342 <= n And n <= 348 Then
+kername = "sakan chetrosy pakhehe body"
+ElseIf 348 < n And n < 354 Then
+kername = "chas pad amaos pakhehe body"
+ElseIf 354 <= n And n <= 360 Then
+kername = "nak amaos pakhehe body "
+End If
+End Function
+Public Function kahryentjook(sal As Integer, mah As Integer, rooz As Double, mbtool As Double, arzb As Double) As Double
+Dim markaz As Double
+If wasatq(sal, mah, rooz, mbtool) > oujq(sal, mah, rooz, mbtool) Then
+markaz = wasatq(sal, mah, rooz, mbtool) - oujq(sal, mah, rooz, mbtool)
+Else
+markaz = (wasatq(sal, mah, rooz, mbtool) + 360) - oujq(sal, mah, rooz, mbtool)
+End If
+Dim markazmoadaltadyleyn As Double
+markazmoadaltadyleyn = markaz + taqm1(markaz) + taqm2(tq((wasatq(sal, mah, rooz, mbtool) - oujsh(sal, mah, rooz, mbtool))), (tq(wasatq(sal, mah, rooz, mbtool) - taqsh(sal, mah, rooz, mbtool))))
+Dim wasatmoadaltadyleyn As Double
+wasatmoadaltadyleyn = wasatq(sal, mah, rooz, mbtool) + taqm1(markaz) + taqm2(tq((wasatq(sal, mah, rooz, mbtool) - oujsh(sal, mah, rooz, mbtool))), (tq(wasatq(sal, mah, rooz, mbtool) - taqsh(sal, mah, rooz, mbtool))))
+Dim wasatmanqossams As Double
+If wasatmoadaltadyleyn > taqsh(sal, mah, rooz, mbtool) Then
+wasatmanqossams = wasatmoadaltadyleyn - taqsh(sal, mah, rooz, mbtool)
+Else
+wasatmanqossams = (wasatmoadaltadyleyn + 360) - taqsh(sal, mah, rooz, mbtool)
+End If
+Dim salmabda As Double
+salmabda = Int(((1251 - 1) * 354.3671) + (Int(1 / 2) * 30 + (1 - 1 - Int(1 / 2)) * 29) + 1)
+Dim salmaqsad As Double
+salmaqsad = Int(((sal - 1) * 354.3671) + (Int(mah / 2) * 30 + (mah - 1 - Int(mah / 2)) * 29) + rooz)
+Dim majmootadylat As Double
+If salmaqsad >= salmabda Then
+majmootadylat = taqm1(markaz) + taqm2(tq((wasatq(sal, mah, rooz, mbtool) - oujsh(sal, mah, rooz, mbtool))), (tq(wasatq(sal, mah, rooz, mbtool) - taqsh(sal, mah, rooz, mbtool)))) + taqm3(markazmoadaltadyleyn, wasatmanqossams) + taqm4(hesseh(sal, mah, rooz, mbtool))
+Else
+majmootadylat = (taqm1(markaz) + taqm2(tq((wasatq(sal, mah, rooz, mbtool) - oujsh(sal, mah, rooz, mbtool))), (tq(wasatq(sal, mah, rooz, mbtool) - taqsh(sal, mah, rooz, mbtool)))) + taqm3(markazmoadaltadyleyn, wasatmanqossams) + taqm4(hesseh(sal, mah, rooz, mbtool))) * -1
+End If
+Dim mahfooz As Double
+If salmaqsad >= salmabda Then
+mahfooz = ((salmaqsad - salmabda) + 1) - (((55 / 60) + 15) / 60) + 0
+Else
+mahfooz = (Abs(salmaqsad - salmabda) + 1) + (((55 / 60) + 15) / 60) + 0
+End If
+Dim x As Double
+x = (((((((38 / 60) + 34) / 60) + 29) / 60) + 56) / 60)
+Dim zwasatjook As Double
+zwasatjook = 27 * x
+Dim y As Double
+y = ((mahfooz / zwasatjook) - Int(mahfooz / zwasatjook)) * zwasatjook
+Dim jookqmoadal As Double
+If y > 26 * x Then
+jookqmoadal = y - (x * 26)
+ElseIf y > 25 * x Then
+jookqmoadal = y - (x * 25)
+ElseIf y > 24 * x Then
+jookqmoadal = y - (x * 24)
+ElseIf y > 23 * x Then
+jookqmoadal = y - (x * 23)
+ElseIf y > 22 * x Then
+jookqmoadal = y - (x * 22)
+ElseIf y > 21 * x Then
+jookqmoadal = y - (x * 21)
+ElseIf y > 20 * x Then
+jookqmoadal = y - (x * 20)
+ElseIf y > 19 * x Then
+jookqmoadal = y - (x * 19)
+ElseIf y > 18 * x Then
+jookqmoadal = y - (x * 18)
+ElseIf y > 17 * x Then
+jookqmoadal = y - (x * 17)
+ElseIf y > 16 * x Then
+jookqmoadal = y - (x * 16)
+ElseIf y > 15 * x Then
+jookqmoadal = y - (x * 15)
+ElseIf y > 14 * x Then
+jookqmoadal = y - (x * 14)
+ElseIf y > 13 * x Then
+jookqmoadal = y - (x * 13)
+ElseIf y > 12 * x Then
+jookqmoadal = y - (x * 12)
+ElseIf y > 11 * x Then
+jookqmoadal = y - (x * 11)
+ElseIf y > 10 * x Then
+jookqmoadal = y - (x * 10)
+ElseIf y > 9 * x Then
+jookqmoadal = y - (x * 9)
+ElseIf y > 8 * x Then
+jookqmoadal = y - (x * 8)
+ElseIf y > 7 * x Then
+jookqmoadal = y - (x * 7)
+ElseIf y > 6 * x Then
+jookqmoadal = y - (x * 6)
+ElseIf y > 5 * x Then
+jookqmoadal = y - (x * 5)
+ElseIf y > 4 * x Then
+jookqmoadal = y - (x * 4)
+ElseIf y > 3 * x Then
+jookqmoadal = y - (x * 3)
+ElseIf y > 2 * x Then
+jookqmoadal = y - (x * 2)
+ElseIf y > x Then
+jookqmoadal = y - x
+End If
+Dim kahrymoadal As Double
+kahrymoadal = jookqmoadal + (majmootadylat / bohtq(sal, mah, rooz, mbtool))
+Dim hasel As Double
+hasel = (((((((22 / 60) + 24) / 60) + 12) / 60) + 0) * 60) / (bohtq(sal, mah, rooz, mbtool))
+Dim kahrygozara As Double
+If kahrymoadal - hasel > 0 Then
+kahrygozara = kahrymoadal - hasel
+Else
+kahrygozara = kahrymoadal - hasel + 1
+End If
+kahryentjook = (((qsn(ml(sal, taqsh(sal, mah, rooz, mbtool)), arzb) / (2 * 15)) * 2.5) - kahrygozara) / 60
+End Function
+
+
+Public Function kahryenteqtathe(sal As Integer, mah As Integer, rooz As Double, mbtool As Double, arzb As Double) As Double
+Dim x As Double
+If taqq(sal, mah, rooz, mbtool) > taqsh(sal, mah, rooz, mbtool) Then
+x = taqq(sal, mah, rooz, mbtool) - taqsh(sal, mah, rooz, mbtool)
+Else
+x = (taqq(sal, mah, rooz, mbtool) + 360) - taqsh(sal, mah, rooz, mbtool)
+End If
+Dim bohtmoadalq As Double
+bohtmoadalq = bohtq(sal, mah, rooz, mbtool) - bohtsh(sal, mah, rooz, mbtool)
+Dim boadentq As Double
+boadentq = ((Int(x / 12) + 1) * 12) - x
+Dim kahrytathe As Double
+kahrytathe = (boadentq) / bohtmoadalq
+Dim kahrynesfnahar As Double
+kahrynesfnahar = (qsn(ml(sal, taqsh(sal, mah, rooz, mbtool)), arzb) / (2 * 15)) * 2.5
+
+If kahrynesfnahar + kahrytathe < 60 Then
+kahryenteqtathe = kahrynesfnahar + kahrytathe
+Else
+kahryenteqtathe = kahrynesfnahar + kahrytathe - 60
+End If
+End Function
+
+
+
+Public Function nahhendme(x As Double)
+If x > 0 And x <= 1 * ((20 / 60) + 13) Then
+nahhendme = "ashany"
+ElseIf x > 1 * ((20 / 60) + 13) And x <= 2 * ((20 / 60) + 13) Then
+nahhendme = "baharny"
+ElseIf x > 2 * ((20 / 60) + 13) And x <= 3 * ((20 / 60) + 13) Then
+nahhendme = "kerteka"
+ElseIf x > 3 * ((20 / 60) + 13) And x <= 4 * ((20 / 60) + 13) Then
+nahhendme = "roohny"
+ElseIf x > 4 * ((20 / 60) + 13) And x <= 5 * ((20 / 60) + 13) Then
+nahhendme = "mergra"
+ElseIf x > 5 * ((20 / 60) + 13) And x <= 6 * ((20 / 60) + 13) Then
+nahhendme = "azara"
+ElseIf x > 6 * ((20 / 60) + 13) And x <= 7 * ((20 / 60) + 13) Then
+nahhendme = "gyzlis"
+ElseIf x > 7 * ((20 / 60) + 13) And x <= 8 * ((20 / 60) + 13) Then
+nahhendme = "mikheh"
+ElseIf x > 8 * ((20 / 60) + 13) And x <= 9 * ((20 / 60) + 13) Then
+nahhendme = "eslikha"
+ElseIf x > 9 * ((20 / 60) + 13) And x <= 10 * ((20 / 60) + 13) Then
+nahhendme = "naghtra"
+ElseIf x > 10 * ((20 / 60) + 13) And x <= 11 * ((20 / 60) + 13) Then
+nahhendme = "poornapehalkeny"
+ElseIf x > 11 * ((20 / 60) + 13) And x <= 12 * ((20 / 60) + 13) Then
+nahhendme = "atrapehalkany"
+ElseIf x > 12 * ((20 / 60) + 13) And x <= 13 * ((20 / 60) + 13) Then
+nahhendme = "hast"
+ElseIf x > 13 * ((20 / 60) + 13) And x <= 14 * ((20 / 60) + 13) Then
+nahhendme = "chatra"
+ElseIf x > 14 * ((20 / 60) + 13) And x <= 15 * ((20 / 60) + 13) Then
+nahhendme = "syvagy"
+ElseIf x > 15 * ((20 / 60) + 13) And x <= 16 * ((20 / 60) + 13) Then
+nahhendme = "benakha"
+ElseIf x > 16 * ((20 / 60) + 13) And x <= 17 * ((20 / 60) + 13) Then
+nahhendme = "atradeha"
+ElseIf x > 17 * ((20 / 60) + 13) And x <= (18 * ((20 / 60) + 13)) Then
+nahhendme = "jeentenha"
+ElseIf x > 18 * ((20 / 60) + 13) And x <= (19 * ((20 / 60) + 13)) Then
+nahhendme = "mool"
+ElseIf x > 19 * ((20 / 60) + 13) And x <= (20 * ((20 / 60) + 13)) Then
+nahhendme = "poornakhar"
+ElseIf x > 20 * ((20 / 60) + 13) And x <= (21 * ((20 / 60) + 13)) Then
+nahhendme = "atrakhar"
+ElseIf x > 21 * ((20 / 60) + 13) And x <= (22 * ((20 / 60) + 13)) Then
+nahhendme = "seroon"
+ElseIf x > 22 * ((20 / 60) + 13) And x <= (23 * ((20 / 60) + 13)) Then
+nahhendme = "dehshetha"
+ElseIf x > 23 * ((20 / 60) + 13) And x <= (24 * ((20 / 60) + 13)) Then
+nahhendme = "setbehka"
+ElseIf x > 24 * ((20 / 60) + 13) And x <= (25 * ((20 / 60) + 13)) Then
+nahhendme = "poorbabahadooryd"
+ElseIf x > 25 * ((20 / 60) + 13) And x <= (26 * ((20 / 60) + 13)) Then
+nahhendme = "atrabahadorvand"
+ElseIf x > 26 * ((20 / 60) + 13) And x <= (27 * ((20 / 60) + 13)) Or x = 0 Then
+nahhendme = "repooty"
+End If
+End Function
+
+
+
+
+
+Public Function nachparsame(sal As Integer, mah As Integer, roz As Double, tool As Double)
+Dim taq As Double
+taq = taqq(sal, mah, roz, tool)
+Dim harekat As Double
+harekat = 0.01585995
+Dim mazi As Double
+mazi = sal + 100.0282
+Dim kol As Double
+kol = mazi * harekat
+Dim n As Double
+If taq - kol >= 0 Then
+n = taq - kol
+Else
+n = taq - kol + 360
+End If
+nachparsame = nahhendme(n)
+End Function
+
+
+
+
+Public Function kahryentnachahtar(sal As Integer, mah As Integer, rooz As Double, mbtool As Double, arzb As Double) As Double
+Dim harekat As Double
+harekat = 0.01585995
+Dim mazi As Double
+mazi = sal + 100.0282
+Dim kol As Double
+kol = mazi * harekat
+Dim taq As Double
+
+taq = taqq(sal, mah, rooz, mbtool)
+Dim p As Double
+
+If taq + kol <= 360 Then
+p = taq + kol
+Else
+p = taq + kol - 360
+End If
+Dim tedad As Double
+tedad = Int(taq / (13 + (1 / 3))) + 1
+Dim m As Double
+m = (13 + (1 / 3)) * tedad
+Dim montaha As Double
+If sal < 1251 Then
+montaha = m - kol
+Else
+montaha = m + kol
+End If
+Dim bod As Double
+
+bod = montaha - p
+Dim kahrynesfnahar As Double
+kahrynesfnahar = (qsn(ml(sal, taqsh(sal, mah, rooz, mbtool)), arzb) / (2 * 15)) * 2.5
+Dim x As Double
+x = bod * 60 / bohtq(sal, mah, rooz, mbtool)
+If kahrynesfnahar + x < 60 Then
+kahryentnachahtar = kahrynesfnahar + x
+Else
+kahryentnachahtar = kahrynesfnahar + x - 60
+End If
+End Function
+
+
+Public Function kahryentjook2(sal As Integer, mah As Integer, rooz As Double, mbtool As Double, arzb As Double) As Double
+Dim harekat As Double
+harekat = 0.01585995
+Dim mazi As Double
+mazi = sal + 100.0282
+Dim kol As Double
+kol = mazi * harekat
+Dim taq As Double
+
+taq = tq(taqq(sal, mah, rooz, mbtool) + taqsh(sal, mah, rooz, mbtool))
+Dim p As Double
+
+If taq + kol <= 360 Then
+p = taq + kol
+Else
+p = taq + kol - 360
+End If
+Dim tedad As Double
+tedad = Int(taq / (13 + (1 / 3))) + 1
+Dim m As Double
+m = (13 + (1 / 3)) * tedad
+Dim montaha As Double
+If sal < 1251 Then
+montaha = m - kol
+Else
+montaha = m + kol
+End If
+Dim bod As Double
+
+bod = montaha - p
+Dim kahrynesfnahar As Double
+kahrynesfnahar = (qsn(ml(sal, taqsh(sal, mah, rooz, mbtool)), arzb) / (2 * 15)) * 2.5
+Dim x As Double
+x = bod * 60 / (bohtq(sal, mah, rooz, mbtool) + bohtsh(sal, mah, rooz, mbtool))
+If kahrynesfnahar + x < 60 Then
+kahryentjook2 = kahrynesfnahar + x
+Else
+kahryentjook2 = kahrynesfnahar + x - 60
+End If
+End Function
+
+
+
+Public Function jookhame(x As Double)
+If x > 0 And x <= 1 * ((20 / 60) + 13) Then
+jookhame = "aynder"
+ElseIf x > 1 * ((20 / 60) + 13) And x <= 2 * ((20 / 60) + 13) Then
+jookhame = "bydhert"
+ElseIf x > 2 * ((20 / 60) + 13) And x <= 3 * ((20 / 60) + 13) Then
+jookhame = "begheh"
+ElseIf x > 3 * ((20 / 60) + 13) And x <= 4 * ((20 / 60) + 13) Then
+jookhame = "peryt"
+ElseIf x > 4 * ((20 / 60) + 13) And x <= 5 * ((20 / 60) + 13) Then
+jookhame = "aykman"
+ElseIf x > 5 * ((20 / 60) + 13) And x <= 6 * ((20 / 60) + 13) Then
+jookhame = "soobhak"
+ElseIf x > 6 * ((20 / 60) + 13) And x <= 7 * ((20 / 60) + 13) Then
+jookhame = "soobhen"
+ElseIf x > 7 * ((20 / 60) + 13) And x <= 8 * ((20 / 60) + 13) Then
+jookhame = "etygand"
+ElseIf x > 8 * ((20 / 60) + 13) And x <= 9 * ((20 / 60) + 13) Then
+jookhame = "sookarma"
+ElseIf x > 9 * ((20 / 60) + 13) And x <= 10 * ((20 / 60) + 13) Then
+jookhame = "dehret"
+ElseIf x > 10 * ((20 / 60) + 13) And x <= 11 * ((20 / 60) + 13) Then
+jookhame = "sool"
+ElseIf x > 11 * ((20 / 60) + 13) And x <= 12 * ((20 / 60) + 13) Then
+jookhame = "gend"
+ElseIf x > 12 * ((20 / 60) + 13) And x <= 13 * ((20 / 60) + 13) Then
+jookhame = "berdeh"
+ElseIf x > 13 * ((20 / 60) + 13) And x <= 14 * ((20 / 60) + 13) Then
+jookhame = "dehro"
+ElseIf x > 14 * ((20 / 60) + 13) And x <= 15 * ((20 / 60) + 13) Then
+jookhame = "byakhat"
+ElseIf x > 15 * ((20 / 60) + 13) And x <= 16 * ((20 / 60) + 13) Then
+jookhame = "herkehn"
+ElseIf x > 16 * ((20 / 60) + 13) And x <= 17 * ((20 / 60) + 13) Then
+jookhame = "bajr"
+ElseIf x > 17 * ((20 / 60) + 13) And x <= (18 * ((20 / 60) + 13)) Then
+jookhame = "set"
+ElseIf x > 18 * ((20 / 60) + 13) And x <= (19 * ((20 / 60) + 13)) Then
+jookhame = "betypot"
+ElseIf x > 19 * ((20 / 60) + 13) And x <= (20 * ((20 / 60) + 13)) Then
+jookhame = "beryan"
+ElseIf x > 20 * ((20 / 60) + 13) And x <= (21 * ((20 / 60) + 13)) Then
+jookhame = "perakheh"
+ElseIf x > 21 * ((20 / 60) + 13) And x <= (22 * ((20 / 60) + 13)) Then
+jookhame = "shayv"
+ElseIf x > 22 * ((20 / 60) + 13) And x <= (23 * ((20 / 60) + 13)) Then
+jookhame = "sede"
+ElseIf x > 23 * ((20 / 60) + 13) And x <= (24 * ((20 / 60) + 13)) Then
+jookhame = "savha"
+ElseIf x > 24 * ((20 / 60) + 13) And x <= (25 * ((20 / 60) + 13)) Then
+jookhame = "sobheh"
+ElseIf x > 25 * ((20 / 60) + 13) And x <= (26 * ((20 / 60) + 13)) Then
+jookhame = "shookel"
+ElseIf x > 26 * ((20 / 60) + 13) And x <= (27 * ((20 / 60) + 13)) Or x = 0 Then
+jookhame = "bernbaha"
+End If
+
+
+End Function
+
+
+
+Public Function jookparsame(sal As Integer, mah As Integer, roz As Double, tool As Double)
+Dim taq As Double
+taq = taqq(sal, mah, roz, tool)
+Dim harekat As Double
+harekat = 0.01585995
+Dim mazi As Double
+mazi = sal + 100.0282
+Dim kol As Double
+kol = mazi * harekat
+Dim n As Double
+If taq - kol >= 0 Then
+n = taq - kol
+Else
+n = taq - kol + 360
+End If
+jookparsame = jookhame(n)
+End Function
+Public Function jookame(sal As Integer, mah As Integer, rooz As Double, mbtool As Double)
+Dim salmabda As Double
+salmabda = Int(((1251 - 1) * 354.3671) + (Int(1 / 2) * 30 + (1 - 1 - Int(1 / 2)) * 29) + 1)
+Dim salmaqsad As Double
+salmaqsad = Int(((sal - 1) * 354.3671) + (Int(mah / 2) * 30 + (mah - 1 - Int(mah / 2)) * 29) + rooz)
+Dim mahfooz As Double
+If salmaqsad >= salmabda Then
+mahfooz = ((salmaqsad - salmabda) + 1) - (((55 / 60) + 15) / 60) + 0
+Else
+mahfooz = (Abs(salmaqsad - salmabda) + 1) + (((55 / 60) + 15) / 60) + 0
+End If
+Dim x As Double
+x = (((((((38 / 60) + 34) / 60) + 29) / 60) + 56) / 60)
+Dim zwasatjook As Double
+zwasatjook = 27 * x
+Dim y As Double
+y = ((mahfooz / zwasatjook) - Int(mahfooz / zwasatjook)) * zwasatjook
+
+If sal > 1251 Then
+If y >= 1 * (((((((((38 / 60) + 34) / 60) + 29) / 60) + 56) / 60)) + 0) And y < 2 * (((((((((38 / 60) + 34) / 60) + 29) / 60) + 56) / 60)) + 0) Then
+jookame = "soobhak"
+ElseIf y >= 2 * (((((((((38 / 60) + 34) / 60) + 29) / 60) + 56) / 60)) + 0) And y < 3 * (((((((((38 / 60) + 34) / 60) + 29) / 60) + 56) / 60)) + 0) Then
+jookame = "soobhan"
+ElseIf y >= 3 * (((((((((38 / 60) + 34) / 60) + 29) / 60) + 56) / 60)) + 0) And y < 4 * (((((((((38 / 60) + 34) / 60) + 29) / 60) + 56) / 60)) + 0) Then
+jookame = "etygand"
+ElseIf y >= 4 * (((((((((38 / 60) + 34) / 60) + 29) / 60) + 56) / 60)) + 0) And y < 5 * (((((((((38 / 60) + 34) / 60) + 29) / 60) + 56) / 60)) + 0) Then
+jookame = "savkarma"
+ElseIf y >= 5 * (((((((((38 / 60) + 34) / 60) + 29) / 60) + 56) / 60)) + 0) And y < 6 * (((((((((38 / 60) + 34) / 60) + 29) / 60) + 56) / 60)) + 0) Then
+jookame = "redhert"
+ElseIf y >= 6 * (((((((((38 / 60) + 34) / 60) + 29) / 60) + 56) / 60)) + 0) And y < 7 * (((((((((38 / 60) + 34) / 60) + 29) / 60) + 56) / 60)) + 0) Then
+jookame = "sool"
+ElseIf y >= 7 * (((((((((38 / 60) + 34) / 60) + 29) / 60) + 56) / 60)) + 0) And y < 8 * (((((((((38 / 60) + 34) / 60) + 29) / 60) + 56) / 60)) + 0) Then
+jookame = "gand"
+ElseIf y >= 8 * (((((((((38 / 60) + 34) / 60) + 29) / 60) + 56) / 60)) + 0) And y < 9 * (((((((((38 / 60) + 34) / 60) + 29) / 60) + 56) / 60)) + 0) Then
+jookame = "barde"
+ElseIf y >= 9 * (((((((((38 / 60) + 34) / 60) + 29) / 60) + 56) / 60)) + 0) And y < 10 * (((((((((38 / 60) + 34) / 60) + 29) / 60) + 56) / 60)) + 0) Then
+jookame = "dehroo"
+ElseIf y >= 10 * (((((((((38 / 60) + 34) / 60) + 29) / 60) + 56) / 60)) + 0) And y < 11 * (((((((((38 / 60) + 34) / 60) + 29) / 60) + 56) / 60)) + 0) Then
+jookame = "byakhat"
+ElseIf y >= 11 * (((((((((38 / 60) + 34) / 60) + 29) / 60) + 56) / 60)) + 0) And y < 12 * (((((((((38 / 60) + 34) / 60) + 29) / 60) + 56) / 60)) + 0) Then
+jookame = "herkhen"
+ElseIf y >= 12 * (((((((((38 / 60) + 34) / 60) + 29) / 60) + 56) / 60)) + 0) And y < 13 * (((((((((38 / 60) + 34) / 60) + 29) / 60) + 56) / 60)) + 0) Then
+jookame = "bajr"
+ElseIf y >= 13 * (((((((((38 / 60) + 34) / 60) + 29) / 60) + 56) / 60)) + 0) And y < 14 * (((((((((38 / 60) + 34) / 60) + 29) / 60) + 56) / 60)) + 0) Then
+jookame = "sat"
+ElseIf y >= 14 * (((((((((38 / 60) + 34) / 60) + 29) / 60) + 56) / 60)) + 0) And y < 15 * (((((((((38 / 60) + 34) / 60) + 29) / 60) + 56) / 60)) + 0) Then
+jookame = "betyput"
+ElseIf y >= 15 * (((((((((38 / 60) + 34) / 60) + 29) / 60) + 56) / 60)) + 0) And y < 16 * (((((((((38 / 60) + 34) / 60) + 29) / 60) + 56) / 60)) + 0) Then
+jookame = "beryan"
+ElseIf y >= 16 * (((((((((38 / 60) + 34) / 60) + 29) / 60) + 56) / 60)) + 0) And y < 17 * (((((((((38 / 60) + 34) / 60) + 29) / 60) + 56) / 60)) + 0) Then
+jookame = "peraghe"
+ElseIf y >= 17 * (((((((((38 / 60) + 34) / 60) + 29) / 60) + 56) / 60)) + 0) And y < 18 * (((((((((38 / 60) + 34) / 60) + 29) / 60) + 56) / 60)) + 0) Then
+jookame = "shyv"
+ElseIf y >= 18 * (((((((((38 / 60) + 34) / 60) + 29) / 60) + 56) / 60)) + 0) And y < 19 * (((((((((38 / 60) + 34) / 60) + 29) / 60) + 56) / 60)) + 0) Then
+jookame = "sedeh"
+ElseIf y >= 19 * (((((((((38 / 60) + 34) / 60) + 29) / 60) + 56) / 60)) + 0) And y < 20 * (((((((((38 / 60) + 34) / 60) + 29) / 60) + 56) / 60)) + 0) Then
+jookame = "sadha"
+ElseIf y >= 20 * (((((((((38 / 60) + 34) / 60) + 29) / 60) + 56) / 60)) + 0) And y < 21 * (((((((((38 / 60) + 34) / 60) + 29) / 60) + 56) / 60)) + 0) Then
+jookame = "sobhehe"
+ElseIf y >= 21 * (((((((((38 / 60) + 34) / 60) + 29) / 60) + 56) / 60)) + 0) And y < 22 * (((((((((38 / 60) + 34) / 60) + 29) / 60) + 56) / 60)) + 0) Then
+jookame = "shookel"
+ElseIf y >= 22 * (((((((((38 / 60) + 34) / 60) + 29) / 60) + 56) / 60)) + 0) And y < 23 * (((((((((38 / 60) + 34) / 60) + 29) / 60) + 56) / 60)) + 0) Then
+jookame = "berenbaha"
+ElseIf y >= 23 * (((((((((38 / 60) + 34) / 60) + 29) / 60) + 56) / 60)) + 0) And y < 24 * (((((((((38 / 60) + 34) / 60) + 29) / 60) + 56) / 60)) + 0) Then
+jookame = "ayander"
+ElseIf y >= 24 * (((((((((38 / 60) + 34) / 60) + 29) / 60) + 56) / 60)) + 0) And y < 25 * (((((((((38 / 60) + 34) / 60) + 29) / 60) + 56) / 60)) + 0) Then
+jookame = "bydhert"
+ElseIf y >= 25 * (((((((((38 / 60) + 34) / 60) + 29) / 60) + 56) / 60)) + 0) And y < 26 * (((((((((38 / 60) + 34) / 60) + 29) / 60) + 56) / 60)) + 0) Then
+jookame = "beghehe"
+ElseIf y >= 26 * (((((((((38 / 60) + 34) / 60) + 29) / 60) + 56) / 60)) + 0) And y < 27 * (((((((((38 / 60) + 34) / 60) + 29) / 60) + 56) / 60)) + 0) Then
+jookame = "peryt"
+ElseIf y = 27 * (((((((((38 / 60) + 34) / 60) + 29) / 60) + 56) / 60)) + 0) Then
+jookame = "ekhman"
+End If
+Else
+If y >= 1 * (((((((((38 / 60) + 34) / 60) + 29) / 60) + 56) / 60)) + 0) And y < 2 * (((((((((38 / 60) + 34) / 60) + 29) / 60) + 56) / 60)) + 0) Then
+jookame = "ekhman"
+ElseIf y >= 2 * (((((((((38 / 60) + 34) / 60) + 29) / 60) + 56) / 60)) + 0) And y < 3 * (((((((((38 / 60) + 34) / 60) + 29) / 60) + 56) / 60)) + 0) Then
+jookame = "peryt"
+ElseIf y >= 3 * (((((((((38 / 60) + 34) / 60) + 29) / 60) + 56) / 60)) + 0) And y < 4 * (((((((((38 / 60) + 34) / 60) + 29) / 60) + 56) / 60)) + 0) Then
+jookame = "pekhehe"
+ElseIf y >= 4 * (((((((((38 / 60) + 34) / 60) + 29) / 60) + 56) / 60)) + 0) And y < 5 * (((((((((38 / 60) + 34) / 60) + 29) / 60) + 56) / 60)) + 0) Then
+jookame = "bydhert"
+ElseIf y >= 5 * (((((((((38 / 60) + 34) / 60) + 29) / 60) + 56) / 60)) + 0) And y < 6 * (((((((((38 / 60) + 34) / 60) + 29) / 60) + 56) / 60)) + 0) Then
+jookame = "eynder"
+ElseIf y >= 6 * (((((((((38 / 60) + 34) / 60) + 29) / 60) + 56) / 60)) + 0) And y < 7 * (((((((((38 / 60) + 34) / 60) + 29) / 60) + 56) / 60)) + 0) Then
+jookame = "beranbaha"
+ElseIf y >= 7 * (((((((((38 / 60) + 34) / 60) + 29) / 60) + 56) / 60)) + 0) And y < 8 * (((((((((38 / 60) + 34) / 60) + 29) / 60) + 56) / 60)) + 0) Then
+jookame = "shookel"
+ElseIf y >= 8 * (((((((((38 / 60) + 34) / 60) + 29) / 60) + 56) / 60)) + 0) And y < 9 * (((((((((38 / 60) + 34) / 60) + 29) / 60) + 56) / 60)) + 0) Then
+jookame = "sobhehe"
+ElseIf y >= 9 * (((((((((38 / 60) + 34) / 60) + 29) / 60) + 56) / 60)) + 0) And y < 10 * (((((((((38 / 60) + 34) / 60) + 29) / 60) + 56) / 60)) + 0) Then
+jookame = "sadha"
+ElseIf y >= 10 * (((((((((38 / 60) + 34) / 60) + 29) / 60) + 56) / 60)) + 0) And y < 11 * (((((((((38 / 60) + 34) / 60) + 29) / 60) + 56) / 60)) + 0) Then
+jookame = "sedeh"
+ElseIf y >= 11 * (((((((((38 / 60) + 34) / 60) + 29) / 60) + 56) / 60)) + 0) And y < 12 * (((((((((38 / 60) + 34) / 60) + 29) / 60) + 56) / 60)) + 0) Then
+jookame = "shyv"
+ElseIf y >= 12 * (((((((((38 / 60) + 34) / 60) + 29) / 60) + 56) / 60)) + 0) And y < 13 * (((((((((38 / 60) + 34) / 60) + 29) / 60) + 56) / 60)) + 0) Then
+jookame = "perakhehe"
+ElseIf y >= 13 * (((((((((38 / 60) + 34) / 60) + 29) / 60) + 56) / 60)) + 0) And y < 14 * (((((((((38 / 60) + 34) / 60) + 29) / 60) + 56) / 60)) + 0) Then
+jookame = "beryan"
+ElseIf y >= 14 * (((((((((38 / 60) + 34) / 60) + 29) / 60) + 56) / 60)) + 0) And y < 15 * (((((((((38 / 60) + 34) / 60) + 29) / 60) + 56) / 60)) + 0) Then
+jookame = "betyput"
+ElseIf y >= 15 * (((((((((38 / 60) + 34) / 60) + 29) / 60) + 56) / 60)) + 0) And y < 16 * (((((((((38 / 60) + 34) / 60) + 29) / 60) + 56) / 60)) + 0) Then
+jookame = "sat"
+ElseIf y >= 16 * (((((((((38 / 60) + 34) / 60) + 29) / 60) + 56) / 60)) + 0) And y < 17 * (((((((((38 / 60) + 34) / 60) + 29) / 60) + 56) / 60)) + 0) Then
+jookame = "bajr"
+ElseIf y >= 17 * (((((((((38 / 60) + 34) / 60) + 29) / 60) + 56) / 60)) + 0) And y < 18 * (((((((((38 / 60) + 34) / 60) + 29) / 60) + 56) / 60)) + 0) Then
+jookame = "herakhen"
+ElseIf y >= 18 * (((((((((38 / 60) + 34) / 60) + 29) / 60) + 56) / 60)) + 0) And y < 19 * (((((((((38 / 60) + 34) / 60) + 29) / 60) + 56) / 60)) + 0) Then
+jookame = "byakhat"
+ElseIf y >= 19 * (((((((((38 / 60) + 34) / 60) + 29) / 60) + 56) / 60)) + 0) And y < 20 * (((((((((38 / 60) + 34) / 60) + 29) / 60) + 56) / 60)) + 0) Then
+jookame = "dehroo"
+ElseIf y >= 20 * (((((((((38 / 60) + 34) / 60) + 29) / 60) + 56) / 60)) + 0) And y < 21 * (((((((((38 / 60) + 34) / 60) + 29) / 60) + 56) / 60)) + 0) Then
+jookame = "barde"
+ElseIf y >= 21 * (((((((((38 / 60) + 34) / 60) + 29) / 60) + 56) / 60)) + 0) And y < 22 * (((((((((38 / 60) + 34) / 60) + 29) / 60) + 56) / 60)) + 0) Then
+jookame = "gand"
+ElseIf y >= 22 * (((((((((38 / 60) + 34) / 60) + 29) / 60) + 56) / 60)) + 0) And y < 23 * (((((((((38 / 60) + 34) / 60) + 29) / 60) + 56) / 60)) + 0) Then
+jookame = "sool"
+ElseIf y >= 23 * (((((((((38 / 60) + 34) / 60) + 29) / 60) + 56) / 60)) + 0) And y < 24 * (((((((((38 / 60) + 34) / 60) + 29) / 60) + 56) / 60)) + 0) Then
+jookame = "dehert"
+ElseIf y >= 24 * (((((((((38 / 60) + 34) / 60) + 29) / 60) + 56) / 60)) + 0) And y < 25 * (((((((((38 / 60) + 34) / 60) + 29) / 60) + 56) / 60)) + 0) Then
+jookame = "sookroma"
+ElseIf y >= 25 * (((((((((38 / 60) + 34) / 60) + 29) / 60) + 56) / 60)) + 0) And y < 26 * (((((((((38 / 60) + 34) / 60) + 29) / 60) + 56) / 60)) + 0) Then
+jookame = "etygand"
+ElseIf y >= 26 * (((((((((38 / 60) + 34) / 60) + 29) / 60) + 56) / 60)) + 0) And y < 27 * (((((((((38 / 60) + 34) / 60) + 29) / 60) + 56) / 60)) + 0) Then
+jookame = "soobhen"
+ElseIf y = 27 * (((((((((38 / 60) + 34) / 60) + 29) / 60) + 56) / 60)) + 0) Then
+jookame = "soobhak"
+End If
+End If
+
+End Function
+
+
+Public Function sharafainame(taqm As Double)
+If taqm >= 18 And taqm < 19 Then
+sharafainame = "sharaf shams"
+ElseIf taqm >= 198 And taqm < 199 Then
+sharafainame = "hoboot shams"
+ElseIf taqm >= 32 And taqm < 33 Then
+sharafainame = " sharf qamar"
+ElseIf taqm >= 212 And taqm < 213 Then
+sharafainame = "hoboot qamar"
+ElseIf taqm >= 200 And taqm < 201 Then
+sharafainame = " sharaf zohal"
+ElseIf taqm >= 20 And taqm < 21 Then
+sharafainame = "hoboot zohal"
+ElseIf taqm >= 104 And taqm < 105 Then
+sharafainame = "sharaf moshtary"
+ElseIf taqm >= 284 And taqm < 285 Then
+sharafainame = "hobot moshtary"
+ElseIf taqm >= 297 And taqm < 298 Then
+sharafainame = "sharaf merikh"
+ElseIf taqm >= 117 And taqm < 118 Then
+sharafainame = "hoboot merikh"
+ElseIf taqm >= 356 And taqm < 357 Then
+sharafainame = "sharaf zohre"
+ElseIf taqm >= 176 And taqm < 177 Then
+sharafainame = "hoboot zohre"
+ElseIf taqm >= 164 And taqm < 165 Then
+sharafainame = " sharf otared"
+ElseIf taqm >= 344 And taqm < 345 Then
+sharafainame = "hoboot otared"
+ElseIf taqm >= 62 And taqm < 63 Then
+sharafainame = "sharaf ras-hoboot zanab"
+ElseIf taqm >= 242 And taqm < 243 Then
+sharafainame = "sharaf zanab-hoboot ras"
+End If
+End Function
+Public Function hesesamt(arzk As Double, taqk As Double, ertk As Double, arzb As Double) As Double
+Dim x As Double
+x = (sn(ertk) * tn(arzb)) / 60
+If bkm(arzk, taqk) >= x Then
+hesesamt = (sn(ertk) * tn(arzb)) / 60
+Else
+hesesamt = ((sn(ertk) * tn(arzb)) / 60) * -1
+End If
+End Function
+Public Function tadilsamt(arzk As Double, taqk As Double, ertk As Double, arzb As Double) As Double
+Dim x As Double
+x = (sn(ertk) * tn(arzb)) / 60
+Dim hesesamt As Double
+If bkm(arzk, taqk) > x Then
+hesesamt = (sn(ertk) * tn(arzb)) / 60
+Else
+hesesamt = ((sn(ertk) * tn(arzb)) / 60) * -1
+End If
+tadilsamt = sn(sem(arzb, taqk, arzk)) + hesesamt
+
+End Function
+Public Function mlhades(sal As Integer, arzk As Double, taqk As Double, ertk As Double, arzb As Double) As Double
+Dim jahata As Double
+Dim jahath As Double
+If arzb > 0 Then
+jahata = 1
+Else
+jahata = -1
+End If
+If ertk > 0 Then
+jahath = jahata * (-1)
+Else
+jahath = jahata * (1)
+End If
+Dim x As Double
+x = (sn(ertk) * tn(arzb)) / 60
+Dim hesesamt As Double
+If bkm(sal, arzk, taqk) > x Then
+hesesamt = (sn(ertk) * tn(arzb)) / 60
+Else
+hesesamt = ((sn(ertk) * tn(arzb)) / 60) * jahath
+End If
+Dim tadilsamt As Double
+tadilsamt = sn(sem(sal, arzb, taqk, arzk)) + hesesamt
+mlhades = acs(csn(asn(tadilsamt)) / sn(ertk))
+End Function
+
+Public Function arzhades(mlhades As Double, arzb As Double) As Double
+arzhades = asn(sn(mlhades) * sn(arzb) / 60)
+End Function
+
+Public Function mtlmosahah(sal As Integer, arzk As Double, taqk As Double, ertk As Double, arzb As Double) As Double
+
+Dim jahata As Double
+Dim jahath As Double
+If arzb > 0 Then
+jahata = 1
+Else
+jahata = -1
+End If
+If ertk > 0 Then
+jahath = jahata * (-1)
+Else
+jahath = jahata * (1)
+End If
+Dim x As Double
+x = (sn(ertk) * tn(arzb)) / 60
+Dim hesesamt As Double
+If bkm(sal, arzk, taqk) > x Then
+hesesamt = (sn(ertk) * tn(arzb)) / 60
+Else
+hesesamt = ((sn(ertk) * tn(arzb)) / 60) * jahath
+End If
+Dim tadilsamt As Double
+tadilsamt = sn(sem(sal, arzb, taqk, arzk)) + hesesamt
+Dim mlhades As Double
+mlhades = acs(csn(asn(tadilsamt)) / sn(ertk))
+Dim arzhades As Double
+arzhades = asn(sn(mlhades) * sn(arzb) / 60)
+
+Dim qayat As Double
+Dim mataletoloo As Double
+Dim maqareb As Double
+Dim matalemamar As Double
+Dim tadilnahar As Double
+Dim bod As Double
+
+qayat = qrk(bkm(sal, arzk, taqk), arzb)
+mataletoloo = mtdt(sal, arzk, taqk, arzb)
+maqareb = maqk(sal, arzk, taqk, arzb)
+bod = bkm(sal, arzk, taqk)
+matalemamar = mtm(sal, bod, taqk)
+tadilnahar = tdnk(arzhades, bod)
+
+Dim jboadk As Double
+If bkm(sal, arzk, taqk) >= 0 Then
+jboadk = 1
+Else
+jboadk = -1
+End If
+Dim jarzhades As Double
+If arzhades >= 0 Then
+jarzhades = 1
+Else
+jarzhades = -1
+End If
+Dim d As Double
+
+If matalemamar - tadilnahar >= 0 Then
+d = matalemamar - tadilnahar
+Else
+d = (matalemamar + 360) - tadilnahar
+End If
+
+Dim c As Double
+If jboadk = jarzhades Then
+c = d
+Else
+c = ba(matalemamar + tadilnahar)
+End If
+
+If arzb = arzhades Then
+mtlmosahah = mataletoloo
+ElseIf arzb = arzhades * -1 Then
+mtlmosahah = maqareb
+ElseIf ertk = qayat Then
+mtlmosahah = matalemamar
+Else
+mtlmosahah = c
+End If
+
+End Function
+
+
+Public Function drgmosahah(sal As Integer, mtlmosahahh As Double, arzhades As Double) As Double
+drgmosahah = tazmb(sal, mtlmosahahh, arzhades)
+
+End Function
+
+
+
+Public Function tanazormatlaame(taqvim1 As Double, taqvim2 As Double)
+Dim a As Double
+Dim b As Double
+
+If taqvim1 <= 180 Then
+a = taqvim1
+Else
+a = 360 - taqvim1
+End If
+
+If taqvim2 <= 180 Then
+b = taqvim2
+Else
+b = 360 - taqvim2
+End If
+
+If taqvim1 = taqvim2 Then
+tanazormatlaame = "qeyr tanazorm"
+ElseIf a = b Then
+tanazormatlaame = "tanazor matlaei"
+Else
+tanazormatlaame = "qeyr tanazorm"
+End If
+End Function
+
+
+Public Function tanazorzamaname(taqvim1 As Double, taqvim2 As Double)
+Dim a As Double
+Dim b As Double
+c = taqvim1 - 90
+d = taqvim2 - 90
+e = c + d
+If e = 0 Or e = 360 Then
+tanazorzamaname = "tanazor zamani"
+Else
+tanazorzamaname = "qeyr tanazor zamani"
+End If
+End Function
+
+Public Function tasdisaysar1(arzhades As Double, matalemosahah As Double) As Double
+Dim x As Double
+If matalemosahah + 60 < 360 Then
+x = matalemosahah + 60
+Else
+x = matalemosahah + 60 - 360
+End If
+tasdisaysar1 = tazmb(x, arzhades)
+
+End Function
+Public Function tarbyaysar1(arzhades As Double, matalemosahah As Double) As Double
+Dim x As Double
+If matalemosahah + 90 < 360 Then
+x = matalemosahah + 90
+Else
+x = matalemosahah + 90 - 360
+End If
+tarbyaysar1 = tazmb(x, arzhades)
+
+End Function
+Public Function taslysaysar1(arzhades As Double, matalemosahah As Double) As Double
+Dim x As Double
+If matalemosahah + 120 < 360 Then
+x = matalemosahah + 120
+Else
+x = matalemosahah + 120 - 360
+End If
+taslysaysar1 = tazmb(x, arzhades)
+
+End Function
+Public Function tasdisayman1(arzhades As Double, matalemosahah As Double) As Double
+Dim x As Double
+If matalemosahah - 60 > 0 Then
+x = matalemosahah - 60
+Else
+x = matalemosahah - 60 + 360
+End If
+tasdisayman1 = tazmb(x, arzhades)
+
+End Function
+Public Function tarbyayman1(arzhades As Double, matalemosahah As Double) As Double
+Dim x As Double
+If matalemosahah - 90 > 0 Then
+x = matalemosahah - 90
+Else
+x = matalemosahah - 90 + 360
+End If
+tarbyayman1 = tazmb(x, arzhades)
+
+End Function
+Public Function taslysayman1(arzhades As Double, matalemosahah As Double) As Double
+Dim x As Double
+If matalemosahah - 120 > 0 Then
+x = matalemosahah - 120
+Else
+x = matalemosahah - 120 + 360
+End If
+taslysayman1 = tazmb(x, arzhades)
+
+End Function
+Public Function tasdisaymanbyroony(matalmamar As Double, matalemosahah As Double) As Double
+Dim belqobe As Double
+If matalmamar + 90 < 360 Then
+belqobe = matalmamar + 90
+Else
+belqobe = matalmamar + 90 - 360
+End If
+Dim x As Double
+x = tafazoll(matalemosahah, belqobe)
+Dim w As Double
+w = tq((x / 3) + matalemosahah)
+Dim y As Double
+If w + 270 < 360 Then
+y = w + 270
+Else
+y = w - 90
+End If
+tasdisaymanbyroony = tl(y)
+
+
+End Function
+Public Function tasdisaysarbyroony(matalmamar As Double, matalemosahah As Double) As Double
+Dim belqobe As Double
+If matalmamar + 90 < 360 Then
+belqobe = matalmamar + 90
+Else
+belqobe = matalmamar + 90 - 360
+End If
+Dim x As Double
+x = tafazoll(matalemosahah, belqobe)
+Dim w As Double
+w = tq((x / 3) + matalemosahah)
+Dim y As Double
+If w + 120 - 90 < 360 Then
+y = w + 120 - 90
+Else
+y = w + 120 - 90 - 360
+End If
+tasdisaysarbyroony = tl(y)
+End Function
+Public Function tarbyaymanbyroony(matalemosahah As Double) As Double
+If matalemosahah + 270 < 360 Then
+Dim x As Double
+x = matalemosahah + 270
+Else
+x = matalemosahah + 270 - 360
+End If
+tarbyaymanbyroony = tl(x)
+End Function
+Public Function taslysaymanbyroony(matalmamar As Double, matalemosahah As Double) As Double
+Dim a As Double
+a = tasdisaysarbyroony(matalmamar, matalemosahah)
+If a + 180 < 360 Then
+taslysaymanbyroony = a + 180
+Else
+taslysaymanbyroony = a - 180
+End If
+End Function
+Public Function taslysaysarbyroony(matalmamar As Double, matalemosahah As Double) As Double
+Dim a  As Double
+a = tasdisaymanbyroony(matalmamar, matalemosahah)
+If a + 180 < 360 Then
+taslysaysarbyroony = a + 180
+Else
+taslysaysarbyroony = a - 180
+End If
+
+End Function
+Public Function tarbyaysarbyroony(matalemosahah As Double) As Double
+a = tarbyaymanbyroony(matalemosahah)
+If a + 180 < 360 Then
+tarbyaysarbyroony = a + 180
+Else
+tarbyaysarbyroony = a - 180
+End If
+End Function
+Public Function moqablebiroony(drgmosahahe As Double) As Double
+Dim a  As Double
+
+If drgmosahahe + 180 < 360 Then
+moqablebiroony = drqmosahahe + 180
+Else
+moqablebiroony = drqmosahahe - 180
+End If
+
+End Function
+
+Public Function tasaazam(sal As Integer, mah As Integer, rooz As Double, mbtool As Double) As Double
+Dim zaman As Double
+zaman = 185236.1039
+Dim x As Double
+x = 354.3671
+Dim y As Double
+y = (sal - 1) * x
+Dim z As Double
+z = Int(mah / 2) * 30 + (mah - 1 - Int(mah / 2)) * 29
+Dim a As Double
+a = Int(y + z + rooz)
+Dim b As Double
+b = (a / x) + 1
+Dim c As Double
+c = b - 1251
+Dim d As Double
+d = zaman + c
+tasaazam = modd(d / 1000, 360)
+
+
+End Function
+Public Function tasakbar(sal As Integer, mah As Integer, rooz As Double, mbtool As Double) As Double
+Dim zaman As Double
+zaman = 185236.1039
+Dim x As Double
+x = 354.3671
+Dim y As Double
+y = (sal - 1) * x
+Dim z As Double
+z = Int(mah / 2) * 30 + (mah - 1 - Int(mah / 2)) * 29
+Dim a As Double
+a = Int(y + z + rooz)
+Dim b As Double
+b = (a / x) + 1
+Dim c As Double
+c = b - 1251
+Dim d As Double
+d = zaman + c
+tasakbar = modd((d / 100), 360)
+
+
+End Function
+Public Function tasavsat(sal As Integer, mah As Integer, rooz As Double, mbtool As Double) As Double
+Dim zaman As Double
+zaman = 185236.1039
+Dim x As Double
+x = 354.3671
+Dim y As Double
+y = (sal - 1) * x
+Dim z As Double
+z = Int(mah / 2) * 30 + (mah - 1 - Int(mah / 2)) * 29
+Dim a As Double
+a = Int(y + z + rooz)
+Dim b As Double
+b = (a / x) + 1
+Dim c As Double
+c = b - 1251
+Dim d As Double
+d = zaman + c
+tasavsat = modd((d / 10), 360)
+
+
+End Function
+Public Function tasasqar(sal As Integer, mah As Integer, rooz As Double, mbtool As Double) As Double
+Dim zaman As Double
+zaman = 185236.1039
+Dim x As Double
+x = 354.3671
+Dim y As Double
+y = (sal - 1) * x
+Dim z As Double
+z = Int(mah / 2) * 30 + (mah - 1 - Int(mah / 2)) * 29
+Dim a As Double
+a = Int(y + z + rooz)
+Dim b As Double
+b = (a / x) + 1
+Dim c As Double
+c = b - 1251
+Dim d As Double
+d = zaman + c
+tasasqar = modd((d / 1), 360)
+
+End Function
+
+
+Public Function darageqesmat(sal1 As Integer, mah1 As Integer, rooz1 As Double, sal2 As Integer, mah2 As Integer, rooz2 As Double, mbtool As Double, arzb As Double, arzk1 As Double, arzk2 As Double) As Double
+Dim saat1 As Double
+Dim tale1 As Double
+Dim ertk1 As Double
+Dim saat2 As Double
+Dim tale2 As Double
+Dim ertk2 As Double
+saat1 = (rooz1 - Int(rooz1)) * 24
+tale1 = tale3(sal1, arzb, taqsh(sal1, mah1, rooz1, mbtool), saat1)
+ertk1 = ertaztale(sal1, arzb, arzk1, taqsh(sal1, mah1, rooz1, mbtool), tale1)
+saat2 = (rooz2 - Int(rooz2)) * 24
+tale2 = tale3(sal2, arzb, taqsh(sal2, mah2, rooz2, mbtool), saat2)
+ertk2 = ertaztale(sal2, arzb, arzk2, taqsh(sal2, mah2, rooz2, mbtool), tale2)
+Dim x As Double
+x = mtlmosahah(sal1, arzk1, taqsh(sal1, mah1, rooz1, mbtool), ertk1, arzb)
+Dim y As Double
+y = (sal1 - 1) * 354.36709259259
+Dim z As Double
+z = Int(mah1 / 2) * 30 + (mah1 - 1 - Int(mah1 / 2)) * 29
+Dim a As Double
+a = y + z + rooz1
+Dim saltam1 As Double
+saltam1 = a / 365.24220026363
+Dim d As Double
+d = (sal2 - 1) * 354.36709259259
+Dim f As Double
+f = Int(mah2 / 2) * 30 + (mah2 - 1 - Int(mah2 / 2)) * 29
+Dim g As Double
+g = d + f + rooz2
+Dim saltam2 As Double
+saltam2 = g / 365.24220026363
+Dim tafazol As Double
+tafazol = saltam2 - saltam1
+Dim m As Double
+m = tafazol * 0.999328704
+Dim n As Double
+If x + m < 360 Then
+n = x + m
+Else
+n = x + m - 360
+End If
+Dim j As Double
+Dim p As Double
+p = mlhades(sal2, arzk2, taqsh(sal2, mah2, rooz2, mbtool), ertk2, arzb)
+j = arzhades(p, arzb)
+darageqesmat = tazmb(sal2, n, j)
+End Function
+
+
+Public Function qasemame(darageqesmat As Double)
+qasemame = hodoodame(darageqesmat)
+End Function
+
+Public Function mozetasir(sal2 As Integer, mah2 As Integer, rooz2 As Double, mbtool As Double, arzb As Double, arzk As Double) As Double
+
+Dim sal1 As Integer
+Dim mah1 As Integer
+Dim rooz1 As Double
+sal1 = 1251
+mah1 = 12
+rooz1 = 3
+
+Dim saat1 As Double
+Dim tale1 As Double
+Dim ertk1 As Double
+saat1 = (rooz1 - Int(rooz1)) * 24
+tale1 = tale3(sal1, arzb, taqsh(sal1, mah1, rooz1, mbtool), saat1)
+ertk1 = ertaztale(sal1, arzb, arzk, taqsh(sal1, mah1, rooz1, mbtool), tale1)
+Dim x As Double
+x = mtlmosahah(sal1, arzk, taqsh(sal1, mah1, rooz1, mbtool), ertk1, arzb)
+Dim y As Double
+y = (sal1 - 1) * 354.36709259259
+Dim z As Double
+z = Int(mah1 / 2) * 30 + (mah1 - 1 - Int(mah1 / 2)) * 29
+Dim a As Double
+a = y + z + rooz1
+Dim saltam1 As Double
+saltam1 = a / 365.24220026363
+Dim d As Double
+d = (sal2 - 1) * 354.36709259259
+Dim f As Double
+f = Int(mah2 / 2) * 30 + (mah2 - 1 - Int(mah2 / 2)) * 29
+Dim g As Double
+g = d + f + rooz2
+Dim saltam2 As Double
+saltam2 = g / 365.24220026363
+Dim tafazol As Double
+tafazol = saltam2 - saltam1
+Dim b As Double
+Dim c As Double
+b = qsn(ml(sal1, taqsh(sal1, mah1, rooz1, mbtool)), arzb) / (2 * 15)
+c = taqsh(sal1, mah1, rooz1 - (b / 24), mbtool)
+Dim p As Double
+p = (tafazol - Int(tafazol)) * 360
+Dim q As Double
+q = p * 0.985647331382888
+Dim h As Double
+h = mtb(sal1, c, arzb)
+Dim r As Double
+If q + h < 360 Then
+r = q + h
+Else
+r = q + h - 360
+End If
+mozetasir = tazmb(sal1, r, arzb)
+End Function
+
+Public Function hesetasir(sal2 As Integer, mah2 As Integer, rooz2 As Double, mbtool As Double, arzb As Double, arzk As Double) As Double
+
+Dim sal1 As Integer
+Dim mah1 As Integer
+Dim rooz1 As Double
+sal1 = 1251
+mah1 = 12
+rooz1 = 3
+
+Dim saat1 As Double
+Dim tale1 As Double
+Dim ertk1 As Double
+saat1 = (rooz1 - Int(rooz1)) * 24
+tale1 = tale3(sal1, arzb, taqsh(sal1, mah1, rooz1, mbtool), saat1)
+ertk1 = ertaztale(sal1, arzb, arzk, taqsh(sal1, mah1, rooz1, mbtool), tale1)
+Dim x As Double
+x = mtlmosahah(sal1, arzk, taqsh(sal1, mah1, rooz1, mbtool), ertk1, arzb)
+Dim y As Double
+y = (sal1 - 1) * 354.36709259259
+Dim z As Double
+z = Int(mah1 / 2) * 30 + (mah1 - 1 - Int(mah1 / 2)) * 29
+Dim a As Double
+a = y + z + rooz1
+Dim saltam1 As Double
+saltam1 = a / 365.24220026363
+Dim d As Double
+d = (sal2 - 1) * 354.36709259259
+Dim f As Double
+f = Int(mah2 / 2) * 30 + (mah2 - 1 - Int(mah2 / 2)) * 29
+Dim g As Double
+g = d + f + rooz2
+Dim saltam2 As Double
+saltam2 = g / 365.24220026363
+Dim tafazol As Double
+tafazol = saltam2 - saltam1
+Dim b As Double
+Dim c As Double
+b = qsn(ml(sal1, taqsh(sal1, mah1, rooz1, mbtool)), arzb) / (2 * 15)
+c = taqsh(sal1, mah1, rooz1 - (b / 24), mbtool)
+Dim p As Double
+p = (tafazol - Int(tafazol)) * 360
+Dim q As Double
+q = p * 0.985647331382888
+Dim h As Double
+h = mtb(sal1, c, arzb)
+Dim r As Double
+If q + h < 360 Then
+r = q + h
+Else
+r = q + h - 360
+End If
+Dim k As Double
+k = tq(r - h)
+hesetasir = tazmb(sal1, k, arzb)
+End Function
+
+Public Function saatzij(s As Integer, m As Integer, r As Double) As Double
+Dim c As Double
+Dim b As Double
+c = tzaman2(s, m, r)
+b = (r - Int(r)) * 24
+saatzij = b + c
+End Function
+
+Public Function saatrasmi(s As Integer, m As Integer, r As Double) As Double
+Dim c As Double
+Dim b As Double
+c = tzaman2(s, m, r)
+b = (r - Int(r)) * 24
+saatrasmi = b - c
+End Function
+Public Function sahebborjame(taqvim As Double)
+If taqvim < 30 Then
+sahebborjame = "merikh"
+ElseIf taqvim < 60 Then
+sahebborjame = "zohreh"
+ElseIf taqvim < 90 Then
+sahebborjame = "otared"
+ElseIf taqvim < 120 Then
+sahebborjame = "qomar"
+ElseIf taqvim < 150 Then
+sahebborjame = "shams"
+ElseIf taqvim < 180 Then
+sahebborjame = "otared"
+ElseIf taqvim < 210 Then
+sahebborjame = "zohreh"
+ElseIf taqvim < 240 Then
+sahebborjame = "merikh"
+ElseIf taqvim < 270 Then
+sahebborjame = "moshtari"
+ElseIf taqvim < 300 Then
+sahebborjame = "zohal"
+ElseIf taqvim < 330 Then
+sahebborjame = "zohal"
+ElseIf taqvim < 360 Then
+sahebborjame = "moshtari"
+End If
+End Function
+
+
+Public Function sadnahsame(taqvim As Double)
+
+If (taqvim > 9 And taqvim <= 10) Or (taqvim > 18 And taqvim <= 19) Or (taqvim > 32 And taqvim <= 33) Or (taqvim > 36 And taqvim <= 37) Or (taqvim > 44 And taqvim <= 45) Or (taqvim > 56 And taqvim <= 57) Or (taqvim > 59 And taqvim <= 60) Or (taqvim > 70 And taqvim <= 71) Or (taqvim > 71 And taqvim <= 72) Then
+sadnahsame = "saad"
+ElseIf (taqvim > 79 And taqvim <= 80) Or (taqvim > 80 And taqvim <= 81) Or (taqvim > 90 And taqvim <= 91) Or (taqvim > 91 And taqvim <= 92) Or (taqvim > 92 And taqvim <= 93) Or (taqvim > 103 And taqvim <= 104) Or (taqvim > 104 And taqvim <= 105) Or (taqvim > 122 And taqvim <= 123) Or (taqvim > 124 And taqvim <= 125) Or (taqvim > 126 And taqvim <= 127) Or (taqvim > 136 And taqvim <= 137) Or (taqvim > 151 And taqvim <= 152) Or (taqvim > 161 And taqvim <= 162) Then
+sadnahsame = "saad"
+ElseIf (taqvim > 164 And taqvim <= 165) Or (taqvim > 169 And taqvim <= 170) Or (taqvim > 82 And taqvim <= 183) Or (taqvim > 184 And taqvim <= 185) Or (taqvim > 200 And taqvim <= 201) Or (taqvim > 201 And taqvim <= 202) Or (taqvim > 215 And taqvim <= 216) Or (taqvim > 221 And taqvim <= 222) Or (taqvim > 229 And taqvim <= 230) Or (taqvim > 252 And taqvim <= 253) Or (taqvim > 259 And taqvim <= 260) Or (taqvim > 262 And taqvim <= 263) Or (taqvim > 281 And taqvim <= 282) Then
+sadnahsame = "saad"
+ElseIf (taqvim > 282 And taqvim <= 283) Or (taqvim > 283 And taqvim <= 284) Or (taqvim > 289 And taqvim <= 290) Or (taqvim > 297 And taqvim <= 298) Or (taqvim > 305 And taqvim <= 306) Or (taqvim > 306 And taqvim <= 307) Then
+sadnahsame = "saad"
+ElseIf (taqvim > 315 And taqvim <= 316) Or (taqvim > 316 And taqvim <= 317) Or (taqvim > 319 And taqvim <= 320) Or (taqvim > 341 And taqvim <= 342) Or (taqvim > 349 And taqvim <= 350) Or (taqvim > 356 And taqvim <= 357) Then
+sadnahsame = "saad"
+  
+ElseIf (taqvim > 5 And taqvim <= 6) Or (taqvim > 10 And taqvim <= 11) Or (taqvim > 16 And taqvim <= 17) Or (taqvim > 22 And taqvim <= 23) Or (taqvim > 28 And taqvim <= 29) Or (taqvim > 34 And taqvim <= 35) Or (taqvim > 37 And taqvim <= 38) Or (taqvim > 42 And taqvim <= 43) Or (taqvim > 47 And taqvim <= 48) Or (taqvim > 54 And taqvim <= 55) Or (taqvim > 56 And taqvim <= 57) Or (taqvim > 61 And taqvim <= 62) Or (taqvim > 72 And taqvim <= 73) Or (taqvim > 76 And taqvim <= 77) Or (taqvim > 85 And taqvim <= 86) Or (taqvim > 89 And taqvim <= 90) Or (taqvim > 97 And taqvim <= 98) Or (taqvim > 101 And taqvim <= 102) Or (taqvim > 105 And taqvim <= 106) Or (taqvim > 112 And taqvim <= 113) Or (taqvim > 113 And taqvim <= 114) Then
+sadnahsame = "nahs"
+ElseIf (taqvim > 115 And taqvim <= 116) Or (taqvim > 119 And taqvim <= 120) Or (taqvim > 125 And taqvim <= 126) Or (taqvim > 132 And taqvim <= 133) Or (taqvim > 134 And taqvim <= 135) Or (taqvim > 135 And taqvim <= 136) Or (taqvim > 141 And taqvim <= 142) Or (taqvim > 142 And taqvim <= 143) Or (taqvim > 147 And taqvim <= 148) Or (taqvim > 156 And taqvim <= 157) Or (taqvim > 162 And taqvim <= 163) Or (taqvim > 165 And taqvim <= 166) Or (taqvim > 172 And taqvim <= 173) Or (taqvim > 174 And taqvim <= 175) Or (taqvim > 180 And taqvim <= 181) Or (taqvim > 186 And taqvim <= 187) Or (taqvim > 199 And taqvim <= 200) Or (taqvim > 209 And taqvim <= 210) Or (taqvim > 211 And taqvim <= 212) Or (taqvim > 219 And taqvim <= 220) Then
+sadnahsame = "nahs"
+ElseIf (taqvim > 226 And taqvim <= 227) Or (taqvim > 231 And taqvim <= 232) Or (taqvim > 232 And taqvim <= 233) Or (taqvim > 236 And taqvim <= 237) Or (taqvim > 246 And taqvim <= 247) Or (taqvim > 251 And taqvim <= 252) Or (taqvim > 256 And taqvim <= 257) Or (taqvim > 263 And taqvim <= 264) Then
+sadnahsame = "nahs"
+ElseIf (taqvim > 265 And taqvim <= 266) Or (taqvim > 269 And taqvim <= 270) Or (taqvim > 271 And taqvim <= 272) Or (taqvim > 272 And taqvim <= 273) Or (taqvim > 273 And taqvim <= 274) Or (taqvim > 276 And taqvim <= 277) Or (taqvim > 286 And taqvim <= 287) Or (taqvim > 291 And taqvim <= 292) Or (taqvim > 293 And taqvim <= 294) Or (taqvim > 296 And taqvim <= 297) Or (taqvim > 300 And taqvim <= 301) Or (taqvim > 311 And taqvim <= 312) Or (taqvim > 313 And taqvim <= 314) Or (taqvim > 322 And taqvim <= 323) Or (taqvim > 328 And taqvim <= 329) Or (taqvim > 335 And taqvim <= 336) Or (taqvim > 338 And taqvim <= 339) Or (taqvim > 348 And taqvim <= 349) Or (taqvim > 353 And taqvim <= 354) Or (taqvim > 355 And taqvim <= 356) Or (taqvim > 357 And taqvim <= 358) Then
+sadnahsame = "nahs"
+Else
+sadnahsame = "--"
+End If
+End Function
+
+Public Function mozakarame(taqvim As Double)
+
+If taqvim <= 7 Then
+mozakarame = "mozakkar"
+ElseIf taqvim <= 9 Then
+mozakarame = "moannas"
+ElseIf taqvim <= 15 Then
+mozakarame = "mozakkar"
+ElseIf taqvim <= 22 Then
+mozakarame = "moannas"
+ElseIf taqvim <= 37 Then
+mozakarame = "mozakkar"
+ElseIf taqvim <= 45 Then
+mozakarame = "moannas"
+ElseIf taqvim <= 60 Then
+mozakarame = "mozakkar"
+ElseIf taqvim <= 66 Then
+mozakarame = "moannas"
+ElseIf taqvim <= 77 Then
+mozakarame = "mozakkar"
+ElseIf taqvim <= 83 Then
+mozakarame = "moannas"
+ElseIf taqvim <= 87 Then
+mozakarame = "mozakkar"
+ElseIf taqvim <= 90 Then
+mozakarame = "moannas"
+ElseIf taqvim <= 92 Then
+mozakarame = "mozakkar"
+ElseIf taqvim <= 97 Then
+mozakarame = "moannas"
+ElseIf taqvim <= 103 Then
+mozakarame = "mozakkar"
+ElseIf taqvim <= 105 Then
+mozakarame = "moannas"
+ElseIf taqvim <= 116 Then
+mozakarame = "mozakkar"
+ElseIf taqvim <= 120 Then
+mozakarame = "moannas"
+ElseIf taqvim <= 125 Then
+mozakarame = "mozakkar"
+ElseIf taqvim <= 127 Then
+mozakarame = "moannas"
+ElseIf taqvim <= 133 Then
+mozakarame = "mozakkar"
+ElseIf taqvim <= 143 Then
+mozakarame = "moannas"
+ElseIf taqvim <= 150 Then
+mozakarame = "mozakkar"
+ElseIf taqvim <= 157 Then
+mozakarame = "moannas"
+ElseIf taqvim <= 162 Then
+mozakarame = "mozakkar"
+ElseIf taqvim <= 170 Then
+mozakarame = "moannas"
+ElseIf taqvim <= 185 Then
+mozakarame = "mozakkar"
+ElseIf taqvim <= 196 Then
+mozakarame = "moannas"
+ElseIf taqvim <= 203 Then
+mozakarame = "mozakkar"
+ElseIf taqvim <= 216 Then
+mozakarame = "moannas"
+ElseIf taqvim <= 220 Then
+mozakarame = "mozakkar"
+ElseIf taqvim <= 229 Then
+mozakarame = "moannas"
+ElseIf taqvim <= 237 Then
+mozakarame = "mozakkar"
+ElseIf taqvim <= 240 Then
+mozakarame = "moannas"
+ElseIf taqvim <= 242 Then
+mozakarame = "mozakkar"
+ElseIf taqvim <= 246 Then
+mozakarame = "moannas"
+ElseIf taqvim <= 253 Then
+mozakarame = "mozakkar"
+ElseIf taqvim <= 265 Then
+mozakarame = "moannas"
+ElseIf taqvim <= 270 Then
+mozakarame = "mozakkar"
+ElseIf taqvim <= 278 Then
+mozakarame = "moannas"
+ElseIf taqvim <= 289 Then
+mozakarame = "mozakkar"
+ElseIf taqvim <= 294 Then
+mozakarame = "moannas"
+ElseIf taqvim <= 305 Then
+mozakarame = "mozakkar"
+ElseIf taqvim <= 317 Then
+mozakarame = "moannas"
+ElseIf taqvim <= 323 Then
+mozakarame = "mozakkar"
+ElseIf taqvim <= 330 Then
+mozakarame = "moannas"
+ElseIf taqvim <= 340 Then
+mozakarame = "mozakkar"
+ElseIf taqvim <= 350 Then
+mozakarame = "moannas"
+ElseIf taqvim <= 353 Then
+mozakarame = "mozakkar"
+ElseIf taqvim <= 358 Then
+mozakarame = "moannas"
+ElseIf taqvim <= 360 Then
+mozakarame = "mozakkar"
+End If
+
+End Function
+
+
+Public Function abarame(taqvim As Double)
+If (taqvim > 5 And taqvim <= 6) Or (taqvim > 10 And taqvim <= 11) Or (taqvim > 16 And taqvim <= 17) Or (taqvim > 22 And taqvim <= 23) Or (taqvim > 28 And taqvim <= 29) Or (taqvim > 34 And taqvim <= 35) Or (taqvim > 42 And taqvim <= 43) Or (taqvim > 47 And taqvim <= 48) Or (taqvim > 53 And taqvim <= 56) Or (taqvim > 61 And taqvim <= 62) Or (taqvim > 72 And taqvim <= 73) Or (taqvim > 76 And taqvim <= 77) Or (taqvim > 85 And taqvim <= 86) Or (taqvim > 89 And taqvim <= 90) Or (taqvim > 101 And taqvim <= 102) Or (taqvim > 106 And taqvim <= 107) Or (taqvim > 112 And taqvim <= 113) Or (taqvim > 115 And taqvim <= 116) Or (taqvim > 119 And taqvim <= 120) Or (taqvim > 123 And taqvim <= 124) Or (taqvim > 132 And taqvim <= 133) Or (taqvim > 134 And taqvim <= 135) Or (taqvim > 141 And taqvim <= 142) Or (taqvim > 142 And taqvim <= 143) Or (taqvim > 147 And taqvim <= 148) Or (taqvim > 157 And taqvim <= 158) Then
+abarame = "abar"
+ElseIf (taqvim > 162 And taqvim <= 163) Or (taqvim > 165 And taqvim <= 166) Or (taqvim > 170 And taqvim <= 171) Or (taqvim > 174 And taqvim <= 175) Or (taqvim > 180 And taqvim <= 181) Or (taqvim > 186 And taqvim <= 187) Or (taqvim > 199 And taqvim <= 200) Or (taqvim > 209 And taqvim <= 210) Or (taqvim > 218 And taqvim <= 220) Or (taqvim > 226 And taqvim <= 227) Or (taqvim > 231 And taqvim <= 233) Or (taqvim > 236 And taqvim <= 237) Or (taqvim > 246 And taqvim <= 247) Or (taqvim > 251 And taqvim <= 252) Or (taqvim > 254 And taqvim <= 255) Or (taqvim > 263 And taqvim <= 264) Or (taqvim > 266 And taqvim <= 267) Or (taqvim > 269 And taqvim <= 270) Or (taqvim > 276 And taqvim <= 277) Or (taqvim > 291 And taqvim <= 292) Or (taqvim > 293 And taqvim <= 294) Or (taqvim > 296 And taqvim <= 297) Or (taqvim > 300 And taqvim <= 301) Or (taqvim > 311 And taqvim <= 312) Or (taqvim > 313 And taqvim <= 314) Or (taqvim > 317 And taqvim <= 318) Or (taqvim > 328 And taqvim <= 329) Then
+abarame = "abar"
+ElseIf (taqvim > 333 And taqvim <= 334) Or (taqvim > 338 And taqvim <= 340) Or (taqvim > 353 And taqvim <= 354) Or (taqvim > 355 And taqvim <= 356) Or (taqvim > 357 And taqvim <= 358) Then
+abarame = "abar"
+Else
+abarame = "--"
+End If
+End Function
+
+
+
+Public Function vozoohame(taqvim As Double)
+If (taqvim > 0 And taqvim <= 3) Then
+vozoohame = "qotmeh"
+ElseIf taqvim <= 8 Then
+vozoohame = "mozlemeh"
+ElseIf taqvim <= 16 Then
+vozoohame = "qotmeh"
+ElseIf taqvim <= 20 Then
+vozoohame = "nayyereh"
+ElseIf taqvim <= 24 Then
+vozoohame = "mozemeh"
+ElseIf taqvim <= 29 Then
+vozoohame = "nayyereh"
+ElseIf taqvim <= 30 Then
+vozoohame = "mozlemeh"
+ElseIf taqvim <= 33 Then
+vozoohame = "qotmeh"
+ElseIf taqvim <= 40 Then
+vozoohame = "mozieh"
+ElseIf taqvim <= 42 Then
+vozoohame = "khalieh"
+ElseIf taqvim <= 50 Then
+vozoohame = "nayyereh"
+ElseIf taqvim <= 55 Then
+vozoohame = "khalieh"
+ElseIf taqvim <= 58 Then
+vozoohame = "nayyereh"
+ElseIf taqvim <= 60 Then
+vozoohame = "qotmeh"
+ElseIf taqvim <= 67 Then
+vozoohame = "nayyereh"
+ElseIf taqvim <= 70 Then
+vozoohame = "qotmeh"
+ElseIf taqvim <= 75 Then
+vozoohame = "nayyereh"
+ElseIf taqvim <= 82 Then
+vozoohame = "khalieh"
+ElseIf taqvim <= 88 Then
+vozoohame = "nayyereh"
+ElseIf taqvim <= 97 Then
+vozoohame = "qotmeh"
+ElseIf taqvim <= 102 Then
+vozoohame = "nayyereh"
+ElseIf taqvim <= 104 Then
+vozoohame = "qotmeh"
+ElseIf taqvim <= 108 Then
+vozoohame = "mozieh"
+ElseIf taqvim <= 110 Then
+vozoohame = "mozlemeh"
+ElseIf taqvim <= 118 Then
+vozoohame = "nayyereh"
+ElseIf taqvim <= 120 Then
+vozoohame = "mozlemeh"
+ElseIf taqvim <= 127 Then
+vozoohame = "nayyereh"
+ElseIf taqvim <= 130 Then
+vozoohame = "qotmeh"
+ElseIf taqvim <= 136 Then
+vozoohame = "mozlemeh"
+ElseIf taqvim <= 141 Then
+vozoohame = "khalieh"
+ElseIf taqvim <= 150 Then
+vozoohame = "nayyereh"
+ElseIf taqvim <= 155 Then
+vozoohame = "qotmeh"
+ElseIf taqvim <= 159 Then
+vozoohame = "mozieh"
+ElseIf taqvim <= 161 Then
+vozoohame = "khalieh"
+ElseIf taqvim <= 168 Then
+vozoohame = "nayyereh"
+ElseIf taqvim <= 172 Then
+vozoohame = "mozlemeh"
+ElseIf taqvim <= 178 Then
+vozoohame = "nayyereh"
+ElseIf taqvim <= 180 Then
+vozoohame = "khalieh"
+ElseIf taqvim <= 185 Then
+vozoohame = "nayyereh"
+ElseIf taqvim <= 190 Then
+vozoohame = "qotmeh"
+ElseIf taqvim <= 197 Then
+vozoohame = "nayyereh"
+ElseIf taqvim <= 201 Then
+vozoohame = "qotmeh"
+ElseIf taqvim <= 208 Then
+vozoohame = "mozieh"
+ElseIf taqvim <= 210 Then
+vozoohame = "khalieh"
+ElseIf taqvim <= 213 Then
+vozoohame = "qotmeh"
+ElseIf taqvim <= 218 Then
+vozoohame = "mozieh"
+ElseIf taqvim <= 224 Then
+vozoohame = "khalieh"
+ElseIf taqvim <= 230 Then
+vozoohame = "mozieh"
+ElseIf taqvim <= 232 Then
+vozoohame = "mozlemeh"
+ElseIf taqvim <= 237 Then
+vozoohame = "mozieh"
+ElseIf taqvim <= 240 Then
+vozoohame = "qotmeh"
+ElseIf taqvim <= 249 Then
+vozoohame = "nayyerh"
+ElseIf taqvim <= 252 Then
+vozoohame = "qotmeh"
+ElseIf taqvim <= 259 Then
+vozoohame = "nayyereh"
+ElseIf taqvim <= 263 Then
+vozoohame = "mozlemeh"
+ElseIf taqvim <= 277 Then
+vozoohame = "qotmeh"
+ElseIf taqvim <= 280 Then
+vozoohame = "nayyereh"
+ElseIf taqvim <= 285 Then
+vozoohame = "mozlemeh"
+ElseIf taqvim <= 289 Then
+vozoohame = "nayyerh"
+ElseIf taqvim <= 291 Then
+vozoohame = "qotmeh"
+ElseIf taqvim <= 295 Then
+vozoohame = "mozieh"
+ElseIf taqvim <= 300 Then
+vozoohame = "nayyereh"
+ElseIf taqvim <= 304 Then
+vozoohame = "mozlemeh"
+ElseIf taqvim <= 309 Then
+vozoohame = "nayyereh"
+ElseIf taqvim <= 313 Then
+vozoohame = "qotmeh"
+ElseIf taqvim <= 321 Then
+vozoohame = "nayyereh"
+ElseIf taqvim <= 326 Then
+vozoohame = "mozieh"
+ElseIf taqvim <= 330 Then
+vozoohame = "mozlemeh"
+ElseIf taqvim <= 336 Then
+vozoohame = "qotmeh"
+ElseIf taqvim <= 343 Then
+vozoohame = "nayyereh"
+ElseIf taqvim <= 349 Then
+vozoohame = "qotmeh"
+ElseIf taqvim <= 353 Then
+vozoohame = "nayyereh"
+ElseIf taqvim <= 355 Then
+vozoohame = "khalieh"
+ElseIf taqvim <= 358 Then
+vozoohame = "mozieh"
+ElseIf taqvim <= 360 Then
+vozoohame = "qotmeh"
+End If
+End Function
+
+
+
+Public Function daragamaame(taqvim As Double)
+
+If taqvim > 5 And taqvim <= 8 Then
+daragamaame = "ama"
+ElseIf taqvim > 9 And taqvim <= 10 Then
+daragamaame = "ama"
+ElseIf taqvim > 98 And taqvim <= 105 Then
+daragamaame = "ama"
+ElseIf taqvim > 136 And taqvim <= 138 Then
+daragamaame = "ama"
+ElseIf taqvim > 139 And taqvim <= 140 Then
+daragamaame = "ama"
+ElseIf taqvim > 147 And taqvim <= 148 Then
+daragamaame = "ama"
+ElseIf taqvim > 228 And taqvim <= 229 Then
+daragamaame = "ama"
+ElseIf taqvim > 237 And taqvim <= 238 Then
+daragamaame = "ama"
+ElseIf taqvim > 240 And taqvim <= 241 Then
+daragamaame = "ama"
+ElseIf taqvim > 246 And taqvim <= 248 Then
+daragamaame = "ama"
+ElseIf taqvim > 257 And taqvim <= 259 Then
+daragamaame = "ama"
+ElseIf taqvim > 273 And taqvim <= 299 Then
+daragamaame = "ama"
+ElseIf taqvim > 309 And taqvim <= 310 Then
+daragamaame = "ama"
+ElseIf taqvim > 317 And taqvim <= 319 Then
+daragamaame = "ama"
+Else
+daragamaame = "lasheyafih"
+End If
+
+End Function
+Public Function esnaasharame(t As Double)
+Dim m As Double
+Dim x As Double
+
+m = t * 12
+x = modd(m, 360)
+'ãÞÏÇÑí ÊÛííÑ ÏÇÏå ÔÏ Õ682'
+If 0 <= x And x <= 2.5 Then
+esnaasharame = "merikh"
+ElseIf 2.5 < x And x <= 2 * 2.5 Then
+esnaasharame = "zohre"
+ElseIf 2 * 2.5 < x And x <= 3 * 2.5 Then
+esnaasharame = "otared"
+ElseIf 3 * 2.5 < x And x <= 4 * 2.5 Then
+esnaasharame = "qamar"
+ElseIf 4 * 2.5 < x And x <= 5 * 2.5 Then
+esnaasharame = "shams"
+ElseIf 5 * 2.5 < x And x <= 6 * 2.5 Then
+esnaasharame = "otared"
+ElseIf 6 * 2.5 < x And x <= 7 * 2.5 Then
+esnaasharame = "zohre"
+ElseIf 7 * 2.5 < x And x <= 8 * 2.5 Then
+esnaasharame = "merikh"
+ElseIf 8 * 2.5 < x And x <= 9 * 2.5 Then
+esnaasharame = "moshtari"
+ElseIf 9 * 2.5 < x And x <= 10 * 2.5 Then
+esnaasharame = "zohal"
+ElseIf 10 * 2.5 < x And x <= 11 * 2.5 Then
+esnaasharame = "zohal"
+ElseIf 11 * 2.5 < x And x <= 12 * 2.5 Then
+esnaasharame = "moshtari"
+ElseIf 12 * 2.5 < x And x <= 13 * 2.5 Then
+esnaasharame = "zohre"
+ElseIf 13 * 2.5 < x And x <= 14 * 2.5 Then
+esnaasharame = "otared"
+ElseIf 14 * 2.5 < x And x <= 15 * 2.5 Then
+esnaasharame = "qamar"
+ElseIf 15 * 2.5 < x And x <= 16 * 2.5 Then
+esnaasharame = "shams"
+ElseIf 16 * 2.5 < x And x <= 17 * 2.5 Then
+esnaasharame = "otared"
+ElseIf 17 * 2.5 < x And x <= 18 * 2.5 Then
+esnaasharame = "zohre"
+ElseIf 18 * 2.5 < x And x <= 19 * 2.5 Then
+esnaasharame = "merikh"
+ElseIf 19 * 2.5 < x And x <= 20 * 2.5 Then
+esnaasharame = "moshtari"
+ElseIf 20 * 2.5 < x And x <= 21 * 2.5 Then
+esnaasharame = "zohal"
+ElseIf 21 * 2.5 < x And x <= 22 * 2.5 Then
+esnaasharame = "zohal"
+ElseIf 22 * 2.5 < x And x <= 23 * 2.5 Then
+esnaasharame = "moshtari"
+ElseIf 23 * 2.5 < x And x <= 24 * 2.5 Then
+esnaasharame = "merikh"
+ElseIf 24 * 2.5 < x And x <= 25 * 2.5 Then
+esnaasharame = "otared"
+ElseIf 25 * 2.5 < x And x <= 26 * 2.5 Then
+esnaasharame = "qamar"
+ElseIf 26 * 2.5 < x And x <= 27 * 2.5 Then
+esnaasharame = "shams"
+ElseIf 27 * 2.5 < x And x <= 28 * 2.5 Then
+esnaasharame = "otared"
+ElseIf 28 * 2.5 < x And x <= 29 * 2.5 Then
+esnaasharame = "zohre"
+ElseIf 29 * 2.5 < x And x <= 30 * 2.5 Then
+esnaasharame = "merikh"
+ElseIf 30 * 2.5 < x And x <= 31 * 2.5 Then
+esnaasharame = "moshtari"
+ElseIf 31 * 2.5 < x And x <= 32 * 2.5 Then
+esnaasharame = "zohal"
+ElseIf 32 * 2.5 < x And x <= 33 * 2.5 Then
+esnaasharame = "zohal"
+ElseIf 33 * 2.5 < x And x <= 34 * 2.5 Then
+esnaasharame = "moshtri"
+ElseIf 34 * 2.5 < x And x <= 35 * 2.5 Then
+esnaasharame = "merikh"
+ElseIf 35 * 2.5 < x And x <= 36 * 2.5 Then
+esnaasharame = "zohre"
+ElseIf 36 * 2.5 < x And x <= 37 * 2.5 Then
+esnaasharame = "qamar"
+ElseIf 37 * 2.5 < x And x <= 38 * 2.5 Then
+esnaasharame = "shams"
+ElseIf 38 * 2.5 < x And x <= 39 * 2.5 Then
+esnaasharame = "otared"
+ElseIf 39 * 2.5 < x And x <= 40 * 2.5 Then
+esnaasharame = "zohre"
+ElseIf 40 * 2.5 < x And x <= 41 * 2.5 Then
+esnaasharame = "merikh"
+ElseIf 41 * 2.5 < x And x <= 42 * 2.5 Then
+esnaasharame = "moshtari"
+ElseIf 42 * 2.5 < x And x <= 43 * 2.5 Then
+esnaasharame = "zohal"
+ElseIf 43 * 2.5 < x And x <= 44 * 2.5 Then
+esnaasharame = "zohal"
+ElseIf 44 * 2.5 < x And x <= 45 * 2.5 Then
+esnaasharame = "moshtari"
+ElseIf 45 * 2.5 < x And x <= 46 * 2.5 Then
+esnaasharame = "merikh"
+ElseIf 46 * 2.5 < x And x <= 47 * 2.5 Then
+esnaasharame = "zohre"
+ElseIf 47 * 2.5 < x And x <= 48 * 2.5 Then
+esnaasharame = "otared"
+ElseIf 48 * 2.5 < x And x <= 49 * 2.5 Then
+esnaasharame = "shams"
+ElseIf 49 * 2.5 < x And x <= 50 * 2.5 Then
+esnaasharame = "otared"
+ElseIf 50 * 2.5 < x And x <= 51 * 2.5 Then
+esnaasharame = "zohre"
+ElseIf 51 * 2.5 < x And x <= 52 * 2.5 Then
+esnaasharame = "merikh"
+ElseIf 52 * 2.5 < x And x <= 53 * 2.5 Then
+esnaasharame = "moshtari"
+ElseIf 53 * 2.5 < x And x <= 54 * 2.5 Then
+esnaasharame = "zohal"
+ElseIf 54 * 2.5 < x And x <= 55 * 2.5 Then
+esnaasharame = "zohal"
+ElseIf 55 * 2.5 < x And x <= 56 * 2.5 Then
+esnaasharame = "moshtari"
+ElseIf 56 * 2.5 < x And x <= 57 * 2.5 Then
+esnaasharame = "merikh"
+ElseIf 57 * 2.5 < x And x <= 58 * 2.5 Then
+esnaasharame = "zohre"
+ElseIf 58 * 2.5 < x And x <= 59 * 2.5 Then
+esnaasharame = "otared"
+ElseIf 59 * 2.5 < x And x <= 60 * 2.5 Then
+esnaasharame = "qamar"
+ElseIf 60 * 2.5 < x And x <= 61 * 2.5 Then
+esnaasharame = "otared"
+ElseIf 61 * 2.5 < x And x <= 62 * 2.5 Then
+esnaasharame = "zohre"
+ElseIf 62 * 2.5 < x And x <= 63 * 2.5 Then
+esnaasharame = "merikh"
+ElseIf 63 * 2.5 < x And x <= 64 * 2.5 Then
+esnaasharame = "moshtari"
+ElseIf 64 * 2.5 < x And x <= 65 * 2.5 Then
+esnaasharame = "zohal"
+ElseIf 65 * 2.5 < x And x <= 66 * 2.5 Then
+esnaasharame = "zohal"
+ElseIf 66 * 2.5 < x And x <= 67 * 2.5 Then
+esnaasharame = "moshtari"
+ElseIf 67 * 2.5 < x And x <= 68 * 2.5 Then
+esnaasharame = "merikh"
+ElseIf 68 * 2.5 < x And x <= 69 * 2.5 Then
+esnaasharame = "zohre"
+ElseIf 69 * 2.5 < x And x <= 70 * 2.5 Then
+esnaasharame = "otared"
+ElseIf 70 * 2.5 < x And x <= 71 * 2.5 Then
+esnaasharame = "qamar"
+ElseIf 71 * 2.5 < x And x <= 72 * 2.5 Then
+esnaasharame = "shams"
+ElseIf 72 * 2.5 < x And x <= 73 * 2.5 Then
+esnaasharame = "zohre"
+ElseIf 73 * 2.5 < x And x <= 74 * 2.5 Then
+esnaasharame = "merikh"
+ElseIf 74 * 2.5 < x And x <= 75 * 2.5 Then
+esnaasharame = "moshtari"
+ElseIf 75 * 2.5 < x And x <= 76 * 2.5 Then
+esnaasharame = "zohal"
+ElseIf 76 * 2.5 < x And x <= 77 * 2.5 Then
+esnaasharame = "zohal"
+ElseIf 77 * 2.5 < x And x <= 78 * 2.5 Then
+esnaasharame = "mohtari"
+ElseIf 78 * 2.5 < x And x <= 79 * 2.5 Then
+esnaasharame = "merikh"
+ElseIf 79 * 2.5 < x And x <= 80 * 2.5 Then
+esnaasharame = "zohre"
+ElseIf 80 * 2.5 < x And x <= 81 * 2.5 Then
+esnaasharame = "otared"
+ElseIf 81 * 2.5 < x And x <= 82 * 2.5 Then
+esnaasharame = "qamar"
+ElseIf 82 * 2.5 < x And x <= 83 * 2.5 Then
+esnaasharame = "shams"
+ElseIf 83 * 2.5 < x And x <= 84 * 2.5 Then
+esnaasharame = "otared"
+ElseIf 84 * 2.5 < x And x <= 85 * 2.5 Then
+esnaasharame = "merikh"
+ElseIf 85 * 2.5 < x And x <= 86 * 2.5 Then
+esnaasharame = "moshtari"
+ElseIf 86 * 2.5 < x And x <= 87 * 2.5 Then
+esnaasharame = "zohal"
+ElseIf 87 * 2.5 < x And x <= 88 * 2.5 Then
+esnaasharame = "zohal"
+ElseIf 88 * 2.5 < x And x <= 89 * 2.5 Then
+esnaasharame = "moshtari"
+ElseIf 89 * 2.5 < x And x <= 90 * 2.5 Then
+esnaasharame = "merikh"
+ElseIf 90 * 2.5 < x And x <= 91 * 2.5 Then
+esnaasharame = "zohre"
+ElseIf 91 * 2.5 < x And x <= 92 * 2.5 Then
+esnaasharame = "otared"
+ElseIf 92 * 2.5 < x And x <= 93 * 2.5 Then
+esnaasharame = "qamar"
+ElseIf 93 * 2.5 < x And x <= 94 * 2.5 Then
+esnaasharame = "shams"
+ElseIf 94 * 2.5 < x And x <= 95 * 2.5 Then
+esnaasharame = "otared"
+ElseIf 95 * 2.5 < x And x <= 96 * 2.5 Then
+esnaasharame = "zohre"
+ElseIf 96 * 2.5 < x And x <= 97 * 2.5 Then
+esnaasharame = "moshtari"
+ElseIf 97 * 2.5 < x And x <= 98 * 2.5 Then
+esnaasharame = "zohal"
+ElseIf 98 * 2.5 < x And x <= 99 * 2.5 Then
+esnaasharame = "zohal"
+ElseIf 99 * 2.5 < x And x <= 100 * 2.5 Then
+esnaasharame = "moshtari"
+ElseIf 100 * 2.5 < x And x <= 101 * 2.5 Then
+esnaasharame = "merikh"
+ElseIf 101 * 2.5 < x And x <= 102 * 2.5 Then
+esnaasharame = "zohre"
+ElseIf 102 * 2.5 < x And x <= 103 * 2.5 Then
+esnaasharame = "otared"
+ElseIf 103 * 2.5 < x And x <= 104 * 2.5 Then
+esnaasharame = "qamar"
+ElseIf 104 * 2.5 < x And x <= 105 * 2.5 Then
+esnaasharame = "shams"
+ElseIf 105 * 2.5 < x And x <= 106 * 2.5 Then
+esnaasharame = "otared"
+ElseIf 106 * 2.5 < x And x <= 107 * 2.5 Then
+esnaasharame = "zohre"
+ElseIf 107 * 2.5 < x And x <= 108 * 2.5 Then
+esnaasharame = "merikh"
+ElseIf 108 * 2.5 < x And x <= 109 * 2.5 Then
+esnaasharame = "zohal"
+ElseIf 109 * 2.5 < x And x <= 110 * 2.5 Then
+esnaasharame = "zohal"
+ElseIf 110 * 2.5 < x And x <= 111 * 2.5 Then
+esnaasharame = "moshtari"
+ElseIf 111 * 2.5 < x And x <= 112 * 2.5 Then
+esnaasharame = "merikh"
+ElseIf 112 * 2.5 < x And x <= 113 * 2.5 Then
+esnaasharame = "zohre"
+ElseIf 113 * 2.5 < x And x <= 114 * 2.5 Then
+esnaasharame = "otared"
+ElseIf 114 * 2.5 < x And x <= 115 * 2.5 Then
+esnaasharame = "qamar"
+ElseIf 115 * 2.5 < x And x <= 116 * 2.5 Then
+esnaasharame = "shams"
+ElseIf 116 * 2.5 < x And x <= 117 * 2.5 Then
+esnaasharame = "otared"
+ElseIf 117 * 2.5 < x And x <= 118 * 2.5 Then
+esnaasharame = "zohre"
+ElseIf 118 * 2.5 < x And x <= 119 * 2.5 Then
+esnaasharame = "merikh"
+ElseIf 119 * 2.5 < x And x <= 120 * 2.5 Then
+esnaasharame = "moshtary"
+ElseIf 120 * 2.5 < x And x <= 121 * 2.5 Then
+esnaasharame = "zohal"
+ElseIf 121 * 2.5 < x And x <= 122 * 2.5 Then
+esnaasharame = "moshtari"
+ElseIf 122 * 2.5 < x And x <= 123 * 2.5 Then
+esnaasharame = "merikh"
+ElseIf 123 * 2.5 < x And x <= 124 * 2.5 Then
+esnaasharame = "zohre"
+ElseIf 124 * 2.5 < x And x <= 125 * 2.5 Then
+esnaasharame = "otared"
+ElseIf 125 * 2.5 < x And x <= 126 * 2.5 Then
+esnaasharame = "qamar"
+ElseIf 126 * 2.5 < x And x <= 127 * 2.5 Then
+esnaasharame = "shams"
+ElseIf 127 * 2.5 < x And x <= 128 * 2.5 Then
+esnaasharame = "otared"
+ElseIf 128 * 2.5 < x And x <= 129 * 2.5 Then
+esnaasharame = "zohre"
+ElseIf 129 * 2.5 < x And x <= 130 * 2.5 Then
+esnaasharame = "merikh"
+ElseIf 130 * 2.5 < x And x <= 131 * 2.5 Then
+esnaasharame = "moshtari"
+ElseIf 131 * 2.5 < x And x <= 132 * 2.5 Then
+esnaasharame = "zohal"
+ElseIf 132 * 2.5 < x And x <= 133 * 2.5 Then
+esnaasharame = "moshtari"
+ElseIf 133 * 2.5 < x And x <= 134 * 2.5 Then
+esnaasharame = "merikh"
+ElseIf 134 * 2.5 < x And x <= 135 * 2.5 Then
+esnaasharame = "zohre"
+ElseIf 135 * 2.5 < x And x <= 136 * 2.5 Then
+esnaasharame = "otared"
+ElseIf 136 * 2.5 < x And x <= 137 * 2.5 Then
+esnaasharame = "qamar"
+ElseIf 137 * 2.5 < x And x <= 138 * 2.5 Then
+esnaasharame = "shams"
+ElseIf 138 * 2.5 < x And x <= 139 * 2.5 Then
+esnaasharame = "otared"
+ElseIf 139 * 2.5 < x And x <= 140 * 2.5 Then
+esnaasharame = "zohre"
+ElseIf 140 * 2.5 < x And x <= 141 * 2.5 Then
+esnaasharame = "merikh"
+ElseIf 141 * 2.5 < x And x <= 142 * 2.5 Then
+esnaasharame = "moshtari"
+ElseIf 142 * 2.5 < x And x <= 143 * 2.5 Then
+esnaasharame = "zohal"
+ElseIf 143 * 2.5 < x And x <= 144 * 2.5 Then
+esnaasharame = "zohal"
+End If
+End Function
+
+
+Public Function hodoodame(drg As Double)
+If drg >= 0 And drg <= 6 Then
+hodoodame = "moshtari"
+ElseIf drg > 6 And drg <= 12 Then
+hodoodame = "zohre"
+ElseIf drg > 12 And drg <= 20 Then
+hodoodame = "otared"
+ElseIf drg > 20 And drg <= 25 Then
+hodoodame = "merikh"
+ElseIf drg > 25 And drg <= 30 Then
+hodoodame = "zohal"
+ElseIf drg > 30 And drg <= 38 Then
+hodoodame = "zohre"
+ElseIf drg > 38 And drg <= 44 Then
+hodoodame = "otared"
+ElseIf drg > 44 And drg <= 52 Then
+hodoodame = "moshtari"
+ElseIf drg > 52 And drg <= 57 Then
+hodoodame = "zohal"
+ElseIf drg > 57 And drg <= 60 Then
+hodoodame = "merikh"
+ElseIf drg > 60 And drg <= 66 Then
+hodoodame = "otared"
+ElseIf drg > 66 And drg <= 72 Then
+hodoodame = "moshtari"
+ElseIf drg > 72 And drg <= 77 Then
+hodoodame = "zohre"
+ElseIf drg > 77 And drg <= 84 Then
+hodoodame = "merikh"
+ElseIf drg > 84 And drg <= 90 Then
+hodoodame = "zohal"
+ElseIf drg > 90 And drg <= 97 Then
+hodoodame = "merikh"
+ElseIf drg > 97 And drg <= 103 Then
+hodoodame = "zohre"
+ElseIf drg > 103 And drg <= 109 Then
+hodoodame = "otared"
+ElseIf drg > 109 And drg <= 116 Then
+hodoodame = "moshtari"
+ElseIf drg > 116 And drg <= 120 Then
+hodoodame = "zohal"
+ElseIf drg > 120 And drg <= 126 Then
+hodoodame = "moshtari"
+ElseIf drg > 126 And drg <= 131 Then
+hodoodame = "zohre"
+ElseIf drg > 131 And drg <= 138 Then
+hodoodame = "zohal"
+ElseIf drg > 138 And drg <= 144 Then
+hodoodame = "otared"
+ElseIf drg > 144 And drg <= 150 Then
+hodoodame = "merikh"
+ElseIf drg > 150 And drg <= 157 Then
+hodoodame = "otared"
+ElseIf drg > 157 And drg <= 167 Then
+hodoodame = "zohre"
+ElseIf drg > 167 And drg <= 171 Then
+hodoodame = "moshtari"
+ElseIf drg > 171 And drg <= 178 Then
+hodoodame = "merikh"
+ElseIf drg > 178 And drg <= 180 Then
+hodoodame = "zohal"
+ElseIf drg > 180 And drg <= 186 Then
+hodoodame = "zohal"
+ElseIf drg > 186 And drg <= 194 Then
+hodoodame = "otared"
+ElseIf drg > 194 And drg <= 201 Then
+hodoodame = "moshtari"
+ElseIf drg > 201 And drg <= 208 Then
+hodoodame = "zohre"
+ElseIf drg > 208 And drg <= 210 Then
+hodoodame = "merikh"
+ElseIf drg > 210 And drg <= 217 Then
+hodoodame = "merikh"
+ElseIf drg > 217 And drg <= 221 Then
+hodoodame = "zohre"
+ElseIf drg > 221 And drg <= 229 Then
+hodoodame = "otared"
+ElseIf drg > 229 And drg <= 234 Then
+hodoodame = "moshtari"
+ElseIf drg > 234 And drg <= 240 Then
+hodoodame = "zohal"
+ElseIf drg > 240 And drg <= 252 Then
+hodoodame = "moshtari"
+ElseIf drg > 252 And drg <= 257 Then
+hodoodame = "zohre"
+ElseIf drg > 257 And drg <= 261 Then
+hodoodame = "otared"
+ElseIf drg > 261 And drg <= 266 Then
+hodoodame = "zohal"
+ElseIf drg > 266 And drg <= 270 Then
+hodoodame = "merikh"
+ElseIf drg > 270 And drg <= 277 Then
+hodoodame = "otared"
+ElseIf drg > 277 And drg <= 284 Then
+hodoodame = "moshtari"
+ElseIf drg > 284 And drg <= 292 Then
+hodoodame = "zohre"
+ElseIf drg > 292 And drg <= 296 Then
+hodoodame = "zohal"
+ElseIf drg > 296 And drg <= 300 Then
+hodoodame = "merikh"
+ElseIf drg > 300 And drg <= 307 Then
+hodoodame = "otared"
+ElseIf drg > 307 And drg <= 313 Then
+hodoodame = "zohre"
+ElseIf drg > 313 And drg <= 320 Then
+hodoodame = "moshtari"
+ElseIf drg > 320 And drg <= 325 Then
+hodoodame = "merikh"
+ElseIf drg > 325 And drg <= 330 Then
+hodoodame = "zohal"
+ElseIf drg > 330 And drg <= 342 Then
+hodoodame = "zohre"
+ElseIf drg > 342 And drg <= 346 Then
+hodoodame = "moshtari"
+ElseIf drg > 346 And drg <= 349 Then
+hodoodame = "otared"
+ElseIf drg > 349 And drg <= 358 Then
+hodoodame = "merikh"
+ElseIf drg > 358 And drg <= 360 Then
+hodoodame = "zohal"
+End If
+
+
+End Function
+
+Public Function vojoohame(drg As Double)
+If drg >= 0 And drg <= 10 Then
+vojoohame = "merikh"
+ElseIf drg > 10 And drg <= 20 Then
+vojoohame = "shams"
+ElseIf drg > 20 And drg <= 30 Then
+vojoohame = "zohre"
+ElseIf drg >= 30 And drg <= 40 Then
+vojoohame = "otared"
+ElseIf drg > 40 And drg <= 50 Then
+vojoohame = "qamar"
+ElseIf drg > 50 And drg <= 60 Then
+vojoohame = "zohal"
+ElseIf drg >= 60 And drg <= 70 Then
+vojoohame = "moshtary"
+ElseIf drg > 70 And drg <= 80 Then
+vojoohame = "merikh"
+ElseIf drg > 80 And drg <= 90 Then
+vojoohame = "shams"
+ElseIf drg >= 90 And drg <= 100 Then
+vojoohame = "zohre"
+ElseIf drg > 100 And drg <= 110 Then
+vojoohame = "otared"
+ElseIf drg > 110 And drg <= 120 Then
+vojoohame = "qamar"
+ElseIf drg >= 120 And drg <= 130 Then
+vojoohame = "zohal"
+ElseIf drg > 130 And drg <= 140 Then
+vojoohame = "moshtary"
+ElseIf drg > 140 And drg <= 150 Then
+vojoohame = "merikh"
+ElseIf drg >= 150 And drg <= 160 Then
+vojoohame = "shams"
+ElseIf drg > 160 And drg <= 170 Then
+vojoohame = "zohre"
+ElseIf drg > 170 And drg <= 180 Then
+vojoohame = "otared"
+ElseIf drg >= 180 And drg <= 190 Then
+vojoohame = "qamar"
+ElseIf drg > 190 And drg <= 200 Then
+vojoohame = "zohal"
+ElseIf drg > 200 And drg <= 210 Then
+vojoohame = "moshtary"
+ElseIf drg > 210 And drg <= 220 Then
+vojoohame = "merikh"
+ElseIf drg > 220 And drg <= 230 Then
+vojoohame = "shams"
+ElseIf drg > 230 And drg <= 240 Then
+vojoohame = "zohre"
+ElseIf drg >= 240 And drg <= 250 Then
+vojoohame = "otared"
+ElseIf drg > 250 And drg <= 260 Then
+vojoohame = "qamar"
+ElseIf drg > 260 And drg <= 270 Then
+vojoohame = "zohal"
+ElseIf drg >= 270 And drg <= 280 Then
+vojoohame = "moshtary"
+ElseIf drg > 280 And drg <= 290 Then
+vojoohame = "merikh"
+ElseIf drg > 290 And drg <= 300 Then
+vojoohame = "shams"
+ElseIf drg >= 300 And drg <= 310 Then
+vojoohame = "zohre"
+ElseIf drg > 310 And drg <= 320 Then
+vojoohame = "otared"
+ElseIf drg > 320 And drg <= 330 Then
+vojoohame = "qamar"
+ElseIf drg >= 330 And drg <= 340 Then
+vojoohame = "zohal"
+ElseIf drg > 340 And drg <= 350 Then
+vojoohame = "moshtary"
+ElseIf drg > 350 And drg <= 360 Then
+vojoohame = "merikh"
+End If
+
+End Function
+
+
+
+
+Public Function daryjaname(drg As Double)
+If drg >= 0 And drg <= 10 Then
+daryjaname = "merikh"
+ElseIf drg > 10 And drg <= 20 Then
+daryjaname = "shams"
+ElseIf drg > 20 And drg <= 30 Then
+daryjaname = "moshtary"
+ElseIf drg >= 30 And drg <= 40 Then
+daryjaname = "zohre"
+ElseIf drg > 40 And drg <= 50 Then
+daryjaname = "otared"
+ElseIf drg > 50 And drg <= 60 Then
+daryjaname = "zohal"
+ElseIf drg >= 60 And drg <= 70 Then
+daryjaname = "otared"
+ElseIf drg > 70 And drg <= 80 Then
+daryjaname = "zohre"
+ElseIf drg > 80 And drg <= 90 Then
+daryjaname = "zohal"
+ElseIf drg >= 90 And drg <= 100 Then
+daryjaname = "qamar"
+ElseIf drg > 100 And drg <= 110 Then
+daryjaname = "merikh"
+ElseIf drg > 110 And drg <= 120 Then
+daryjaname = "moshtary"
+ElseIf drg >= 120 And drg <= 130 Then
+daryjaname = "shams"
+ElseIf drg > 130 And drg <= 140 Then
+daryjaname = "moshtary"
+ElseIf drg > 140 And drg <= 150 Then
+daryjaname = "merikh"
+ElseIf drg >= 150 And drg <= 160 Then
+daryjaname = "otared"
+ElseIf drg > 160 And drg <= 170 Then
+daryjaname = "zohal"
+ElseIf drg > 170 And drg <= 180 Then
+daryjaname = "zohre"
+ElseIf drg >= 180 And drg <= 190 Then
+daryjaname = "zohre"
+ElseIf drg > 190 And drg <= 200 Then
+daryjaname = "zohal"
+ElseIf drg > 200 And drg <= 210 Then
+daryjaname = "otared"
+ElseIf drg > 210 And drg <= 220 Then
+daryjaname = "merikh"
+ElseIf drg > 220 And drg <= 230 Then
+daryjaname = "moshtary"
+ElseIf drg > 230 And drg <= 240 Then
+daryjaname = "qamar"
+ElseIf drg >= 240 And drg <= 250 Then
+daryjaname = "moshtary"
+ElseIf drg > 250 And drg <= 260 Then
+daryjaname = "merikh"
+ElseIf drg > 260 And drg <= 270 Then
+daryjaname = "shams"
+ElseIf drg >= 270 And drg <= 280 Then
+daryjaname = "zohal"
+ElseIf drg > 280 And drg <= 290 Then
+daryjaname = "zohre"
+ElseIf drg > 290 And drg <= 300 Then
+daryjaname = "otared"
+ElseIf drg >= 300 And drg <= 310 Then
+daryjaname = "zohal"
+ElseIf drg > 310 And drg <= 320 Then
+daryjaname = "otared"
+ElseIf drg > 320 And drg <= 330 Then
+daryjaname = "zohre"
+ElseIf drg >= 330 And drg <= 340 Then
+daryjaname = "moshtary"
+ElseIf drg > 340 And drg <= 350 Then
+daryjaname = "qamar"
+ElseIf drg > 350 And drg <= 360 Then
+daryjaname = "merikh"
+End If
+
+End Function
+Public Function ardjaname(drg As Double)
+If drg >= 0 And drg <= 10 Then
+ardjaname = "merikh"
+ElseIf drg > 10 And drg <= 20 Then
+ardjaname = "moshtary"
+ElseIf drg > 20 And drg <= 30 Then
+ardjaname = "zohal"
+ElseIf drg >= 30 And drg <= 40 Then
+ardjaname = "qamar"
+ElseIf drg > 40 And drg <= 50 Then
+ardjaname = "otared"
+ElseIf drg > 50 And drg <= 60 Then
+ardjaname = "zohre"
+ElseIf drg >= 60 And drg <= 70 Then
+ardjaname = "shams"
+ElseIf drg > 70 And drg <= 80 Then
+ardjaname = "merikh"
+ElseIf drg > 80 And drg <= 90 Then
+ardjaname = "moshtary"
+ElseIf drg >= 90 And drg <= 100 Then
+ardjaname = "zohal"
+ElseIf drg > 100 And drg <= 110 Then
+ardjaname = "qamar"
+ElseIf drg > 110 And drg <= 120 Then
+ardjaname = "otared"
+ElseIf drg >= 120 And drg <= 130 Then
+ardjaname = "zohre"
+ElseIf drg > 130 And drg <= 140 Then
+ardjaname = "shams"
+ElseIf drg > 140 And drg <= 150 Then
+ardjaname = "merikh"
+ElseIf drg >= 150 And drg <= 160 Then
+ardjaname = "moshtary"
+ElseIf drg > 160 And drg <= 170 Then
+ardjaname = "zohal"
+ElseIf drg > 170 And drg <= 180 Then
+ardjaname = "qamar"
+ElseIf drg >= 180 And drg <= 190 Then
+ardjaname = "otared"
+ElseIf drg > 190 And drg <= 200 Then
+ardjaname = "zohre"
+ElseIf drg > 200 And drg <= 210 Then
+ardjaname = "shams"
+ElseIf drg > 210 And drg <= 220 Then
+ardjaname = "merikh"
+ElseIf drg > 220 And drg <= 230 Then
+ardjaname = "moshtary"
+ElseIf drg > 230 And drg <= 240 Then
+ardjaname = "zohal"
+ElseIf drg >= 240 And drg <= 250 Then
+ardjaname = "qamar"
+ElseIf drg > 250 And drg <= 260 Then
+ardjaname = "otared"
+ElseIf drg > 260 And drg <= 270 Then
+ardjaname = "zohre"
+ElseIf drg >= 270 And drg <= 280 Then
+ardjaname = "shams"
+ElseIf drg > 280 And drg <= 290 Then
+ardjaname = "merikh"
+ElseIf drg > 290 And drg <= 300 Then
+ardjaname = "moshtary"
+ElseIf drg >= 300 And drg <= 310 Then
+ardjaname = "zohal"
+ElseIf drg > 310 And drg <= 320 Then
+ardjaname = "qamar"
+ElseIf drg > 320 And drg <= 330 Then
+ardjaname = "otared"
+ElseIf drg >= 330 And drg <= 340 Then
+ardjaname = "zohre"
+ElseIf drg > 340 And drg <= 350 Then
+ardjaname = "shams"
+ElseIf drg > 350 And drg <= 360 Then
+ardjaname = "merikh"
+End If
+
+End Function
+
+
+Public Function nimbahrame(drg As Double)
+If drg >= 0 And drg <= 15 Then
+nimbahrame = "shams"
+ElseIf drg > 15 And drg <= 30 Then
+nimbahrame = "qamar"
+ElseIf drg > 30 And drg <= 45 Then
+nimbahrame = "qamar"
+ElseIf drg > 45 And drg <= 60 Then
+nimbahrame = "shams"
+ElseIf drg > 60 And drg <= 75 Then
+nimbahrame = "shams"
+ElseIf drg > 75 And drg <= 90 Then
+nimbahrame = "qamar"
+ElseIf drg > 90 And drg <= 105 Then
+nimbahrame = "qamar"
+ElseIf drg > 105 And drg <= 120 Then
+nimbahrame = "shams"
+ElseIf drg > 120 And drg <= 135 Then
+nimbahrame = "shams"
+ElseIf drg > 135 And drg <= 150 Then
+nimbahrame = "qamar"
+ElseIf drg > 150 And drg <= 165 Then
+nimbahrame = "qamar"
+ElseIf drg > 165 And drg <= 180 Then
+nimbahrame = "shams"
+ElseIf drg > 180 And drg <= 195 Then
+nimbahrame = "shams"
+ElseIf drg > 195 And drg <= 210 Then
+nimbahrame = "qamar"
+ElseIf drg > 210 And drg <= 225 Then
+nimbahrame = "qamar"
+ElseIf drg > 225 And drg <= 240 Then
+nimbahrame = "shams"
+ElseIf drg > 240 And drg <= 255 Then
+nimbahrame = "shams"
+ElseIf drg > 255 And drg <= 270 Then
+nimbahrame = "qamar"
+ElseIf drg > 270 And drg <= 285 Then
+nimbahrame = "qamar"
+ElseIf drg > 285 And drg <= 300 Then
+nimbahrame = "shams"
+ElseIf drg > 300 And drg <= 315 Then
+nimbahrame = "shams"
+ElseIf drg > 315 And drg <= 330 Then
+nimbahrame = "qamar"
+ElseIf drg > 330 And drg <= 345 Then
+nimbahrame = "qamar"
+ElseIf drg > 345 And drg <= 360 Then
+nimbahrame = "shams"
+End If
+End Function
+Public Function nohbahrame(drg As Double)
+If drg >= 0 And drg <= (20 / 60) + 3 Then
+nohbahrame = "merikh"
+ElseIf drg > (20 / 60) + 3 And drg <= 2 * ((20 / 60) + 3) Then
+nohbahrame = "zohre"
+ElseIf drg > 2 * ((20 / 60) + 3) And drg <= 3 * ((20 / 60) + 3) Then
+nohbahrame = "otared"
+ElseIf drg > 3 * ((20 / 60) + 3) And drg <= 4 * ((20 / 60) + 3) Then
+nohbahrame = "qamar"
+ElseIf drg > 4 * ((20 / 60) + 3) And drg <= 5 * ((20 / 60) + 3) Then
+nohbahrame = "shams"
+ElseIf drg > 5 * ((20 / 60) + 3) And drg <= 6 * ((20 / 60) + 3) Then
+nohbahrame = "otared"
+ElseIf drg > 6 * ((20 / 60) + 3) And drg <= 7 * ((20 / 60) + 3) Then
+nohbahrame = "zohre"
+ElseIf drg > 7 * ((20 / 60) + 3) And drg <= 8 * ((20 / 60) + 3) Then
+nohbahrame = "merikh"
+ElseIf drg > 8 * ((20 / 60) + 3) And drg <= 9 * ((20 / 60) + 3) Then
+nohbahrame = "moshtary"
+ElseIf drg > 9 * ((20 / 60) + 3) And drg <= 10 * ((20 / 60) + 3) Then
+nohbahrame = "zohal"
+ElseIf drg > 10 * ((20 / 60) + 3) And drg <= 11 * ((20 / 60) + 3) Then
+nohbahrame = "zohal"
+ElseIf drg > 11 * ((20 / 60) + 3) And drg <= 12 * ((20 / 60) + 3) Then
+nohbahrame = "moshtary"
+ElseIf drg > 12 * ((20 / 60) + 3) And drg <= 13 * ((20 / 60) + 3) Then
+nohbahrame = "merikh"
+ElseIf drg > 13 * ((20 / 60) + 3) And drg <= 14 * ((20 / 60) + 3) Then
+nohbahrame = "zohre"
+ElseIf drg > 14 * ((20 / 60) + 3) And drg <= 15 * ((20 / 60) + 3) Then
+nohbahrame = "otared"
+ElseIf drg > 15 * ((20 / 60) + 3) And drg <= 16 * ((20 / 60) + 3) Then
+nohbahrame = "qamar"
+ElseIf drg > 16 * ((20 / 60) + 3) And drg <= 17 * ((20 / 60) + 3) Then
+nohbahrame = "shams"
+ElseIf drg > 17 * ((20 / 60) + 3) And drg <= 18 * ((20 / 60) + 3) Then
+nohbahrame = "otared"
+ElseIf drg > 18 * ((20 / 60) + 3) And drg <= 19 * ((20 / 60) + 3) Then
+nohbahrame = "zohre"
+ElseIf drg > 19 * ((20 / 60) + 3) And drg <= 20 * ((20 / 60) + 3) Then
+nohbahrame = "merikh"
+ElseIf drg > 20 * ((20 / 60) + 3) And drg <= 21 * ((20 / 60) + 3) Then
+nohbahrame = "mostary"
+ElseIf drg > 21 * ((20 / 60) + 3) And drg <= 22 * ((20 / 60) + 3) Then
+nohbahrame = "zohal"
+ElseIf drg > 22 * ((20 / 60) + 3) And drg <= 23 * ((20 / 60) + 3) Then
+nohbahrame = "zohal"
+ElseIf drg > 23 * ((20 / 60) + 3) And drg <= 24 * ((20 / 60) + 3) Then
+nohbahrame = "moshtary"
+ElseIf drg > 24 * ((20 / 60) + 3) And drg <= 25 * ((20 / 60) + 3) Then
+nohbahrame = "merikh"
+ElseIf drg > 25 * ((20 / 60) + 3) And drg <= 26 * ((20 / 60) + 3) Then
+nohbahrame = "zohre"
+ElseIf drg > 26 * ((20 / 60) + 3) And drg <= 27 * ((20 / 60) + 3) Then
+nohbahrame = "otared"
+ElseIf drg > 27 * ((20 / 60) + 3) And drg <= 28 * ((20 / 60) + 3) Then
+nohbahrame = "qamar"
+ElseIf drg > 28 * ((20 / 60) + 3) And drg <= 29 * ((20 / 60) + 3) Then
+nohbahrame = "shams"
+ElseIf drg > 29 * ((20 / 60) + 3) And drg <= 30 * ((20 / 60) + 3) Then
+nohbahrame = "otared"
+ElseIf drg > 30 * ((20 / 60) + 3) And drg <= 31 * ((20 / 60) + 3) Then
+nohbahrame = "zohre"
+ElseIf drg > 31 * ((20 / 60) + 3) And drg <= 32 * ((20 / 60) + 3) Then
+nohbahrame = "merikh"
+ElseIf drg > 32 * ((20 / 60) + 3) And drg <= 33 * ((20 / 60) + 3) Then
+nohbahrame = "moshtary"
+ElseIf drg > 33 * ((20 / 60) + 3) And drg <= 34 * ((20 / 60) + 3) Then
+nohbahrame = "zohal"
+ElseIf drg > 34 * ((20 / 60) + 3) And drg <= 35 * ((20 / 60) + 3) Then
+nohbahrame = "zohal"
+ElseIf drg > 35 * ((20 / 60) + 3) And drg <= 36 * ((20 / 60) + 3) Then
+nohbahrame = "moshtary"
+ElseIf drg > 36 * ((20 / 60) + 3) And drg <= 37 * ((20 / 60) + 3) Then
+nohbahrame = "merikh"
+ElseIf drg > 37 * ((20 / 60) + 3) And drg <= 38 * ((20 / 60) + 3) Then
+nohbahrame = "zohre"
+ElseIf drg > 38 * ((20 / 60) + 3) And drg <= 39 * ((20 / 60) + 3) Then
+nohbahrame = "otared"
+ElseIf drg > 39 * ((20 / 60) + 3) And drg <= 40 * ((20 / 60) + 3) Then
+nohbahrame = "qamar"
+ElseIf drg > 40 * ((20 / 60) + 3) And drg <= 41 * ((20 / 60) + 3) Then
+nohbahrame = "shams"
+ElseIf drg > 41 * ((20 / 60) + 3) And drg <= 42 * ((20 / 60) + 3) Then
+nohbahrame = "otared"
+ElseIf drg > 42 * ((20 / 60) + 3) And drg <= 43 * ((20 / 60) + 3) Then
+nohbahrame = "zohre"
+ElseIf drg > 43 * ((20 / 60) + 3) And drg <= 44 * ((20 / 60) + 3) Then
+nohbahrame = "merikh"
+ElseIf drg > 44 * ((20 / 60) + 3) And drg <= 45 * ((20 / 60) + 3) Then
+nohbahrame = "moshtary"
+ElseIf drg > 45 * ((20 / 60) + 3) And drg <= 46 * ((20 / 60) + 3) Then
+nohbahrame = "zohal"
+ElseIf drg > 46 * ((20 / 60) + 3) And drg <= 47 * ((20 / 60) + 3) Then
+nohbahrame = "zohal"
+ElseIf drg > 47 * ((20 / 60) + 3) And drg <= 48 * ((20 / 60) + 3) Then
+nohbahrame = "moshtary"
+ElseIf drg > 48 * ((20 / 60) + 3) And drg <= 49 * ((20 / 60) + 3) Then
+nohbahrame = "merikh"
+ElseIf drg > 49 * ((20 / 60) + 3) And drg <= 50 * ((20 / 60) + 3) Then
+nohbahrame = "zohre"
+ElseIf drg > 50 * ((20 / 60) + 3) And drg <= 51 * ((20 / 60) + 3) Then
+nohbahrame = "otared"
+ElseIf drg > 51 * ((20 / 60) + 3) And drg <= 52 * ((20 / 60) + 3) Then
+nohbahrame = "qamar"
+ElseIf drg > 52 * ((20 / 60) + 3) And drg <= 53 * ((20 / 60) + 3) Then
+nohbahrame = "shams"
+ElseIf drg > 53 * ((20 / 60) + 3) And drg <= 54 * ((20 / 60) + 3) Then
+nohbahrame = "otared"
+ElseIf drg > 54 * ((20 / 60) + 3) And drg <= 55 * ((20 / 60) + 3) Then
+nohbahrame = "zohre"
+ElseIf drg > 55 * ((20 / 60) + 3) And drg <= 56 * ((20 / 60) + 3) Then
+nohbahrame = "merikh"
+ElseIf drg > 56 * ((20 / 60) + 3) And drg <= 57 * ((20 / 60) + 3) Then
+nohbahrame = "moshtary"
+ElseIf drg > 57 * ((20 / 60) + 3) And drg <= 58 * ((20 / 60) + 3) Then
+nohbahrame = "zohal"
+ElseIf drg > 58 * ((20 / 60) + 3) And drg <= 59 * ((20 / 60) + 3) Then
+nohbahrame = "zohal"
+ElseIf drg > 59 * ((20 / 60) + 3) And drg <= 60 * ((20 / 60) + 3) Then
+nohbahrame = "moshtary"
+ElseIf drg > 60 * ((20 / 60) + 3) And drg <= 61 * ((20 / 60) + 3) Then
+nohbahrame = "merikh"
+ElseIf drg > 61 * ((20 / 60) + 3) And drg <= 62 * ((20 / 60) + 3) Then
+nohbahrame = "zohre"
+ElseIf drg > 62 * ((20 / 60) + 3) And drg <= 63 * ((20 / 60) + 3) Then
+nohbahrame = "otared"
+ElseIf drg > 63 * ((20 / 60) + 3) And drg <= 64 * ((20 / 60) + 3) Then
+nohbahrame = "qamar"
+ElseIf drg > 64 * ((20 / 60) + 3) And drg <= 65 * ((20 / 60) + 3) Then
+nohbahrame = "shams"
+ElseIf drg > 65 * ((20 / 60) + 3) And drg <= 66 * ((20 / 60) + 3) Then
+nohbahrame = "otared"
+ElseIf drg > 66 * ((20 / 60) + 3) And drg <= 67 * ((20 / 60) + 3) Then
+nohbahrame = "zohre"
+ElseIf drg > 67 * ((20 / 60) + 3) And drg <= 68 * ((20 / 60) + 3) Then
+nohbahrame = "merikh"
+ElseIf drg > 68 * ((20 / 60) + 3) And drg <= 69 * ((20 / 60) + 3) Then
+nohbahrame = "moshtary"
+ElseIf drg > 69 * ((20 / 60) + 3) And drg <= 70 * ((20 / 60) + 3) Then
+nohbahrame = "zohal"
+ElseIf drg > 70 * ((20 / 60) + 3) And drg <= 71 * ((20 / 60) + 3) Then
+nohbahrame = "zohal"
+ElseIf drg > 71 * ((20 / 60) + 3) And drg <= 72 * ((20 / 60) + 3) Then
+nohbahrame = "moshtary"
+ElseIf drg > 72 * ((20 / 60) + 3) And drg <= 73 * ((20 / 60) + 3) Then
+nohbahrame = "merikh"
+ElseIf drg > 73 * ((20 / 60) + 3) And drg <= 74 * ((20 / 60) + 3) Then
+nohbahrame = "zohre"
+ElseIf drg > 74 * ((20 / 60) + 3) And drg <= 75 * ((20 / 60) + 3) Then
+nohbahrame = "otared"
+ElseIf drg > 75 * ((20 / 60) + 3) And drg <= 76 * ((20 / 60) + 3) Then
+nohbahrame = "qamar"
+ElseIf drg > 76 * ((20 / 60) + 3) And drg <= 77 * ((20 / 60) + 3) Then
+nohbahrame = "shams"
+ElseIf drg > 77 * ((20 / 60) + 3) And drg <= 78 * ((20 / 60) + 3) Then
+nohbahrame = "otared"
+ElseIf drg > 78 * ((20 / 60) + 3) And drg <= 79 * ((20 / 60) + 3) Then
+nohbahrame = "zohre"
+ElseIf drg > 79 * ((20 / 60) + 3) And drg <= 80 * ((20 / 60) + 3) Then
+nohbahrame = "merikh"
+ElseIf drg > 80 * ((20 / 60) + 3) And drg <= 81 * ((20 / 60) + 3) Then
+nohbahrame = "moshtary"
+ElseIf drg > 81 * ((20 / 60) + 3) And drg <= 82 * ((20 / 60) + 3) Then
+nohbahrame = "zohal"
+ElseIf drg > 82 * ((20 / 60) + 3) And drg <= 83 * ((20 / 60) + 3) Then
+nohbahrame = "zohal"
+ElseIf drg > 83 * ((20 / 60) + 3) And drg <= 84 * ((20 / 60) + 3) Then
+nohbahrame = "moshtary"
+ElseIf drg > 84 * ((20 / 60) + 3) And drg <= 85 * ((20 / 60) + 3) Then
+nohbahrame = "merikh"
+ElseIf drg > 85 * ((20 / 60) + 3) And drg <= 86 * ((20 / 60) + 3) Then
+nohbahrame = "zohre"
+ElseIf drg > 86 * ((20 / 60) + 3) And drg <= 87 * ((20 / 60) + 3) Then
+nohbahrame = "otared"
+ElseIf drg > 87 * ((20 / 60) + 3) And drg <= 88 * ((20 / 60) + 3) Then
+nohbahrame = "qamar"
+ElseIf drg > 88 * ((20 / 60) + 3) And drg <= 89 * ((20 / 60) + 3) Then
+nohbahrame = "shams"
+ElseIf drg > 89 * ((20 / 60) + 3) And drg <= 90 * ((20 / 60) + 3) Then
+nohbahrame = "otared"
+ElseIf drg > 90 * ((20 / 60) + 3) And drg <= 91 * ((20 / 60) + 3) Then
+nohbahrame = "zohre"
+ElseIf drg > 91 * ((20 / 60) + 3) And drg <= 92 * ((20 / 60) + 3) Then
+nohbahrame = "merikh"
+ElseIf drg > 92 * ((20 / 60) + 3) And drg <= 93 * ((20 / 60) + 3) Then
+nohbahrame = "moshtary"
+ElseIf drg > 93 * ((20 / 60) + 3) And drg <= 94 * ((20 / 60) + 3) Then
+nohbahrame = "zohal"
+ElseIf drg > 94 * ((20 / 60) + 3) And drg <= 95 * ((20 / 60) + 3) Then
+nohbahrame = "zohal"
+ElseIf drg > 95 * ((20 / 60) + 3) And drg <= 96 * ((20 / 60) + 3) Then
+nohbahrame = "moshtary"
+ElseIf drg > 96 * ((20 / 60) + 3) And drg <= 97 * ((20 / 60) + 3) Then
+nohbahrame = "merikh"
+ElseIf drg > 97 * ((20 / 60) + 3) And drg <= 98 * ((20 / 60) + 3) Then
+nohbahrame = "zohre"
+ElseIf drg > 98 * ((20 / 60) + 3) And drg <= 99 * ((20 / 60) + 3) Then
+nohbahrame = "otared"
+ElseIf drg > 99 * ((20 / 60) + 3) And drg <= 100 * ((20 / 60) + 3) Then
+nohbahrame = "qamar"
+ElseIf drg > 100 * ((20 / 60) + 3) And drg <= 101 * ((20 / 60) + 3) Then
+nohbahrame = "shams"
+ElseIf drg > 101 * ((20 / 60) + 3) And drg <= 102 * ((20 / 60) + 3) Then
+nohbahrame = "otared"
+ElseIf drg > 102 * ((20 / 60) + 3) And drg <= 103 * ((20 / 60) + 3) Then
+nohbahrame = "zohre"
+ElseIf drg > 103 * ((20 / 60) + 3) And drg <= 104 * ((20 / 60) + 3) Then
+nohbahrame = "merikh"
+ElseIf drg > 104 * ((20 / 60) + 3) And drg <= 105 * ((20 / 60) + 3) Then
+nohbahrame = "moshtary"
+ElseIf drg > 105 * ((20 / 60) + 3) And drg <= 106 * ((20 / 60) + 3) Then
+nohbahrame = "zohal"
+ElseIf drg > 106 * ((20 / 60) + 3) And drg <= 107 * ((20 / 60) + 3) Then
+nohbahrame = "zohal"
+ElseIf drg > 107 * ((20 / 60) + 3) And drg <= 108 * ((20 / 60) + 3) Then
+nohbahrame = "moshtary"
+End If
+
+
+End Function
+Public Function haftbahrame(drg As Double)
+If drg >= 0 And drg <= (17 / 60) + 4 Then
+haftbahrame = "merikh"
+ElseIf drg > (17 / 60) + 4 And drg <= 2 * ((17 / 60) + 4) Then
+haftbahrame = "shams"
+ElseIf drg > 2 * ((17 / 60) + 4) And drg <= 3 * ((17 / 60) + 4) Then
+haftbahrame = "zohre"
+ElseIf drg > 3 * ((17 / 60) + 4) And drg <= 4 * ((17 / 60) + 4) Then
+haftbahrame = "otared"
+ElseIf drg > 4 * ((17 / 60) + 4) And drg <= 5 * ((17 / 60) + 4) Then
+haftbahrame = "qamar"
+ElseIf drg > 5 * ((17 / 60) + 4) And drg <= 6 * ((17 / 60) + 4) Then
+haftbahrame = "zohal"
+ElseIf drg > 6 * ((17 / 60) + 4) And drg <= 7 * ((17 / 60) + 4) Then
+haftbahrame = "moshtary"
+ElseIf drg > 7 * ((17 / 60) + 4) And drg <= 8 * ((17 / 60) + 4) Then
+haftbahrame = "zohre"
+ElseIf drg > 8 * ((17 / 60) + 4) And drg <= 9 * ((17 / 60) + 4) Then
+haftbahrame = "otared"
+ElseIf drg > 9 * ((17 / 60) + 4) And drg <= 10 * ((17 / 60) + 4) Then
+haftbahrame = "qamar"
+ElseIf drg > 10 * ((17 / 60) + 4) And drg <= 11 * ((17 / 60) + 4) Then
+haftbahrame = "zohal"
+ElseIf drg > 11 * ((17 / 60) + 4) And drg <= 12 * ((17 / 60) + 4) Then
+haftbahrame = "moshtary"
+ElseIf drg > 12 * ((17 / 60) + 4) And drg <= 13 * ((17 / 60) + 4) Then
+haftbahrame = "merikh"
+ElseIf drg > 13 * ((17 / 60) + 4) And drg <= 14 * ((17 / 60) + 4) Then
+haftbahrame = "shams"
+ElseIf drg > 14 * ((17 / 60) + 4) And drg <= 15 * ((17 / 60) + 4) Then
+haftbahrame = "otared"
+ElseIf drg > 15 * ((17 / 60) + 4) And drg <= 16 * ((17 / 60) + 4) Then
+haftbahrame = "qamar"
+ElseIf drg > 16 * ((17 / 60) + 4) And drg <= 17 * ((17 / 60) + 4) Then
+haftbahrame = "zohal"
+ElseIf drg > 17 * ((17 / 60) + 4) And drg <= 18 * ((17 / 60) + 4) Then
+haftbahrame = "mohtary"
+ElseIf drg > 18 * ((17 / 60) + 4) And drg <= 19 * ((17 / 60) + 4) Then
+haftbahrame = "merikh"
+ElseIf drg > 19 * ((17 / 60) + 4) And drg <= 20 * ((17 / 60) + 4) Then
+haftbahrame = "shams"
+ElseIf drg > 20 * ((17 / 60) + 4) And drg <= 21 * ((17 / 60) + 4) Then
+haftbahrame = "zohre"
+ElseIf drg > 21 * ((17 / 60) + 4) And drg <= 22 * ((17 / 60) + 4) Then
+haftbahrame = "qamar"
+ElseIf drg > 22 * ((17 / 60) + 4) And drg <= 23 * ((17 / 60) + 4) Then
+haftbahrame = "zohal"
+ElseIf drg > 23 * ((17 / 60) + 4) And drg <= 24 * ((17 / 60) + 4) Then
+haftbahrame = "moshtary"
+ElseIf drg > 24 * ((17 / 60) + 4) And drg <= 25 * ((17 / 60) + 4) Then
+haftbahrame = "merikh"
+ElseIf drg > 25 * ((17 / 60) + 4) And drg <= 26 * ((17 / 60) + 4) Then
+haftbahrame = "shams"
+ElseIf drg > 26 * ((17 / 60) + 4) And drg <= 27 * ((17 / 60) + 4) Then
+haftbahrame = "zohre"
+ElseIf drg > 27 * ((17 / 60) + 4) And drg <= 28 * ((17 / 60) + 4) Then
+haftbahrame = "otared"
+ElseIf drg > 28 * ((17 / 60) + 4) And drg <= 29 * ((17 / 60) + 4) Then
+haftbahrame = "shams"
+ElseIf drg > 29 * ((17 / 60) + 4) And drg <= 30 * ((17 / 60) + 4) Then
+haftbahrame = "zohre"
+ElseIf drg > 30 * ((17 / 60) + 4) And drg <= 31 * ((17 / 60) + 4) Then
+haftbahrame = "otared"
+ElseIf drg > 31 * ((17 / 60) + 4) And drg <= 32 * ((17 / 60) + 4) Then
+haftbahrame = "qamar"
+ElseIf drg > 32 * ((17 / 60) + 4) And drg <= 33 * ((17 / 60) + 4) Then
+haftbahrame = "zohal"
+ElseIf drg > 33 * ((17 / 60) + 4) And drg <= 34 * ((17 / 60) + 4) Then
+haftbahrame = "moshtary"
+ElseIf drg > 34 * ((17 / 60) + 4) And drg <= 35 * ((17 / 60) + 4) Then
+haftbahrame = "merikh"
+ElseIf drg > 35 * ((17 / 60) + 4) And drg <= 36 * ((17 / 60) + 4) Then
+haftbahrame = "otared"
+ElseIf drg > 36 * ((17 / 60) + 4) And drg <= 37 * ((17 / 60) + 4) Then
+haftbahrame = "qamar"
+ElseIf drg > 37 * ((17 / 60) + 4) And drg <= 38 * ((17 / 60) + 4) Then
+haftbahrame = "zohal"
+ElseIf drg > 38 * ((17 / 60) + 4) And drg <= 39 * ((17 / 60) + 4) Then
+haftbahrame = "moshtary"
+ElseIf drg > 39 * ((17 / 60) + 4) And drg <= 40 * ((17 / 60) + 4) Then
+haftbahrame = "merikh"
+ElseIf drg > 40 * ((17 / 60) + 4) And drg <= 41 * ((17 / 60) + 4) Then
+haftbahrame = "shams"
+ElseIf drg > 41 * ((17 / 60) + 4) And drg <= 42 * ((17 / 60) + 4) Then
+haftbahrame = "zohre"
+ElseIf drg > 42 * ((17 / 60) + 4) And drg <= 43 * ((17 / 60) + 4) Then
+haftbahrame = "zohre"
+ElseIf drg > 43 * ((17 / 60) + 4) And drg <= 44 * ((17 / 60) + 4) Then
+haftbahrame = "otared"
+ElseIf drg > 44 * ((17 / 60) + 4) And drg <= 45 * ((17 / 60) + 4) Then
+haftbahrame = "qamar"
+ElseIf drg > 45 * ((17 / 60) + 4) And drg <= 46 * ((17 / 60) + 4) Then
+haftbahrame = "zohal"
+ElseIf drg > 46 * ((17 / 60) + 4) And drg <= 47 * ((17 / 60) + 4) Then
+haftbahrame = "moshtary"
+ElseIf drg > 47 * ((17 / 60) + 4) And drg <= 48 * ((17 / 60) + 4) Then
+haftbahrame = "merikh"
+ElseIf drg > 48 * ((17 / 60) + 4) And drg <= 49 * ((17 / 60) + 4) Then
+haftbahrame = "shams"
+ElseIf drg > 49 * ((17 / 60) + 4) And drg <= 50 * ((17 / 60) + 4) Then
+haftbahrame = "merikh"
+ElseIf drg > 50 * ((17 / 60) + 4) And drg <= 51 * ((17 / 60) + 4) Then
+haftbahrame = "shams"
+ElseIf drg > 51 * ((17 / 60) + 4) And drg <= 52 * ((17 / 60) + 4) Then
+haftbahrame = "zohre"
+ElseIf drg > 52 * ((17 / 60) + 4) And drg <= 53 * ((17 / 60) + 4) Then
+haftbahrame = "otared"
+ElseIf drg > 53 * ((17 / 60) + 4) And drg <= 54 * ((17 / 60) + 4) Then
+haftbahrame = "qamar"
+ElseIf drg > 54 * ((17 / 60) + 4) And drg <= 55 * ((17 / 60) + 4) Then
+haftbahrame = "zohal"
+ElseIf drg > 55 * ((17 / 60) + 4) And drg <= 56 * ((17 / 60) + 4) Then
+haftbahrame = "moshtary"
+ElseIf drg > 56 * ((17 / 60) + 4) And drg <= 57 * ((17 / 60) + 4) Then
+haftbahrame = "moshtary"
+ElseIf drg > 57 * ((17 / 60) + 4) And drg <= 58 * ((17 / 60) + 4) Then
+haftbahrame = "merikh"
+ElseIf drg > 58 * ((17 / 60) + 4) And drg <= 59 * ((17 / 60) + 4) Then
+haftbahrame = "shams"
+ElseIf drg > 59 * ((17 / 60) + 4) And drg <= 60 * ((17 / 60) + 4) Then
+haftbahrame = "zohre"
+ElseIf drg > 60 * ((17 / 60) + 4) And drg <= 61 * ((17 / 60) + 4) Then
+haftbahrame = "otared"
+ElseIf drg > 61 * ((17 / 60) + 4) And drg <= 62 * ((17 / 60) + 4) Then
+haftbahrame = "qamar"
+ElseIf drg > 62 * ((17 / 60) + 4) And drg <= 63 * ((17 / 60) + 4) Then
+haftbahrame = "zohal"
+ElseIf drg > 63 * ((17 / 60) + 4) And drg <= 64 * ((17 / 60) + 4) Then
+haftbahrame = "zohal"
+ElseIf drg > 64 * ((17 / 60) + 4) And drg <= 65 * ((17 / 60) + 4) Then
+haftbahrame = "moshtary"
+ElseIf drg > 65 * ((17 / 60) + 4) And drg <= 66 * ((17 / 60) + 4) Then
+haftbahrame = "merikh"
+ElseIf drg > 66 * ((17 / 60) + 4) And drg <= 67 * ((17 / 60) + 4) Then
+haftbahrame = "shams"
+ElseIf drg > 67 * ((17 / 60) + 4) And drg <= 68 * ((17 / 60) + 4) Then
+haftbahrame = "zohre"
+ElseIf drg > 68 * ((17 / 60) + 4) And drg <= 69 * ((17 / 60) + 4) Then
+haftbahrame = "otared"
+ElseIf drg > 69 * ((17 / 60) + 4) And drg <= 70 * ((17 / 60) + 4) Then
+haftbahrame = "qamar"
+ElseIf drg > 70 * ((17 / 60) + 4) And drg <= 71 * ((17 / 60) + 4) Then
+haftbahrame = "zohal"
+ElseIf drg > 71 * ((17 / 60) + 4) And drg <= 72 * ((17 / 60) + 4) Then
+haftbahrame = "moshtary"
+ElseIf drg > 72 * ((17 / 60) + 4) And drg <= 73 * ((17 / 60) + 4) Then
+haftbahrame = "merikh"
+ElseIf drg > 73 * ((17 / 60) + 4) And drg <= 74 * ((17 / 60) + 4) Then
+haftbahrame = "shams"
+ElseIf drg > 74 * ((17 / 60) + 4) And drg <= 75 * ((17 / 60) + 4) Then
+haftbahrame = "zohre"
+ElseIf drg > 75 * ((17 / 60) + 4) And drg <= 76 * ((17 / 60) + 4) Then
+haftbahrame = "otared"
+ElseIf drg > 76 * ((17 / 60) + 4) And drg <= 77 * ((17 / 60) + 4) Then
+haftbahrame = "qamar"
+ElseIf drg > 77 * ((17 / 60) + 4) And drg <= 78 * ((17 / 60) + 4) Then
+haftbahrame = "moshtary"
+ElseIf drg > 78 * ((17 / 60) + 4) And drg <= 79 * ((17 / 60) + 4) Then
+haftbahrame = "merikh"
+ElseIf drg > 79 * ((17 / 60) + 4) And drg <= 80 * ((17 / 60) + 4) Then
+haftbahrame = "shams"
+ElseIf drg > 80 * ((17 / 60) + 4) And drg <= 81 * ((17 / 60) + 4) Then
+haftbahrame = "zohre"
+ElseIf drg > 81 * ((17 / 60) + 4) And drg <= 82 * ((17 / 60) + 4) Then
+haftbahrame = "otared"
+ElseIf drg > 82 * ((17 / 60) + 4) And drg <= 83 * ((17 / 60) + 4) Then
+haftbahrame = "qamar"
+ElseIf drg > 83 * ((17 / 60) + 4) And drg <= 84 * ((17 / 60) + 4) Then
+haftbahrame = "zohal"
+End If
+End Function
+
+Public Function saatame(n As Integer, saat As Integer)
+If n = 1 And saat = 1 Then
+saatame = "shams"
+ElseIf n = 1 And saat = 2 Then
+saatame = "zohre"
+ElseIf n = 1 And saat = 3 Then
+saatame = "otared"
+ElseIf n = 1 And saat = 4 Then
+saatame = "qamar"
+ElseIf n = 1 And saat = 5 Then
+saatame = "zohal"
+ElseIf n = 1 And saat = 6 Then
+saatame = "moshtary"
+ElseIf n = 1 And saat = 7 Then
+saatame = "merikh"
+ElseIf n = 1 And saat = 8 Then
+saatame = "shams"
+ElseIf n = 1 And saat = 9 Then
+saatame = "zohre"
+ElseIf n = 1 And saat = 10 Then
+saatame = "otared"
+ElseIf n = 1 And saat = 11 Then
+saatame = "qamar"
+ElseIf n = 1 And saat = 12 Then
+saatame = "zohal"
+ElseIf n = 1 And saat = 13 Then
+saatame = "moshtary"
+ElseIf n = 1 And saat = 14 Then
+saatame = "merikh"
+ElseIf n = 1 And saat = 15 Then
+saatame = "shams"
+ElseIf n = 1 And saat = 16 Then
+saatame = "zohre"
+ElseIf n = 1 And saat = 17 Then
+saatame = "otared"
+ElseIf n = 1 And saat = 18 Then
+saatame = "qamar"
+ElseIf n = 1 And saat = 19 Then
+saatame = "zohal"
+ElseIf n = 1 And saat = 20 Then
+saatame = "moshtary"
+ElseIf n = 1 And saat = 21 Then
+saatame = "merikh"
+ElseIf n = 1 And saat = 22 Then
+saatame = "shams"
+ElseIf n = 1 And saat = 23 Then
+saatame = "zohre"
+ElseIf n = 1 And saat = 24 Then
+saatame = "otared"
+ElseIf n = 2 And saat = 1 Then
+saatame = "qamar"
+ElseIf n = 2 And saat = 2 Then
+saatame = "zohal"
+ElseIf n = 2 And saat = 3 Then
+saatame = "moshtary"
+ElseIf n = 2 And saat = 4 Then
+saatame = "merikh"
+ElseIf n = 2 And saat = 5 Then
+saatame = "shams"
+ElseIf n = 2 And saat = 6 Then
+saatame = "zohre"
+ElseIf n = 2 And saat = 7 Then
+saatame = "otared"
+ElseIf n = 2 And saat = 8 Then
+saatame = "qamar"
+ElseIf n = 2 And saat = 9 Then
+saatame = "zohal"
+ElseIf n = 2 And saat = 10 Then
+saatame = "moshtary"
+ElseIf n = 2 And saat = 11 Then
+saatame = "merikh"
+ElseIf n = 2 And saat = 12 Then
+saatame = "shams"
+ElseIf n = 2 And saat = 13 Then
+saatame = "zohre"
+ElseIf n = 2 And saat = 14 Then
+saatame = "otared"
+ElseIf n = 2 And saat = 15 Then
+saatame = "qamar"
+ElseIf n = 2 And saat = 16 Then
+saatame = "zohal"
+ElseIf n = 2 And saat = 17 Then
+saatame = "moshtary"
+ElseIf n = 2 And saat = 18 Then
+saatame = "merikh"
+ElseIf n = 2 And saat = 19 Then
+saatame = "shams"
+ElseIf n = 2 And saat = 20 Then
+saatame = "zohre"
+ElseIf n = 2 And saat = 21 Then
+saatame = "otared"
+ElseIf n = 2 And saat = 22 Then
+saatame = "qamar"
+ElseIf n = 2 And saat = 23 Then
+saatame = "zohal"
+ElseIf n = 2 And saat = 24 Then
+saatame = "moshtry"
+ElseIf n = 3 And saat = 1 Then
+saatame = "merikh"
+ElseIf n = 3 And saat = 2 Then
+saatame = "shams"
+ElseIf n = 3 And saat = 3 Then
+saatame = "zohre"
+ElseIf n = 3 And saat = 4 Then
+saatame = "otared"
+ElseIf n = 3 And saat = 5 Then
+saatame = "qamar"
+ElseIf n = 3 And saat = 6 Then
+saatame = "zohal"
+ElseIf n = 3 And saat = 7 Then
+saatame = "moshtary"
+ElseIf n = 3 And saat = 8 Then
+saatame = "merikh"
+ElseIf n = 3 And saat = 9 Then
+saatame = "shams"
+ElseIf n = 3 And saat = 10 Then
+saatame = "zohre"
+ElseIf n = 3 And saat = 11 Then
+saatame = "otared"
+ElseIf n = 3 And saat = 12 Then
+saatame = "qamar"
+ElseIf n = 3 And saat = 13 Then
+saatame = "zohal"
+ElseIf n = 3 And saat = 14 Then
+saatame = "moshtary"
+ElseIf n = 3 And saat = 15 Then
+saatame = "merikh"
+ElseIf n = 3 And saat = 16 Then
+saatame = "shams"
+ElseIf n = 3 And saat = 17 Then
+saatame = "zohre"
+ElseIf n = 3 And saat = 18 Then
+saatame = "otared"
+ElseIf n = 3 And saat = 19 Then
+saatame = "qamar"
+ElseIf n = 3 And saat = 20 Then
+saatame = "zohal"
+ElseIf n = 3 And saat = 21 Then
+saatame = "moshtary"
+ElseIf n = 3 And saat = 22 Then
+saatame = "merikh"
+ElseIf n = 3 And saat = 23 Then
+saatame = "shams"
+ElseIf n = 3 And saat = 24 Then
+saatame = "zohre"
+ElseIf n = 4 And saat = 1 Then
+saatame = "otared"
+ElseIf n = 4 And saat = 2 Then
+saatame = "qamar"
+ElseIf n = 4 And saat = 3 Then
+saatame = "zohal"
+ElseIf n = 4 And saat = 4 Then
+saatame = "moshtary"
+ElseIf n = 4 And saat = 5 Then
+saatame = "merikh"
+ElseIf n = 4 And saat = 6 Then
+saatame = "shams"
+ElseIf n = 4 And saat = 7 Then
+saatame = "zohre"
+ElseIf n = 4 And saat = 8 Then
+saatame = "otared"
+ElseIf n = 4 And saat = 9 Then
+saatame = "qamar"
+ElseIf n = 4 And saat = 10 Then
+saatame = "zohal"
+ElseIf n = 4 And saat = 11 Then
+saatame = "moshtary"
+ElseIf n = 4 And saat = 12 Then
+saatame = "merikh"
+ElseIf n = 4 And saat = 13 Then
+saatame = "shams"
+ElseIf n = 4 And saat = 14 Then
+saatame = "zohre"
+ElseIf n = 4 And saat = 15 Then
+saatame = "otared"
+ElseIf n = 4 And saat = 16 Then
+saatame = "qamar"
+ElseIf n = 4 And saat = 17 Then
+saatame = "zohal"
+ElseIf n = 4 And saat = 18 Then
+saatame = "moshtary"
+ElseIf n = 4 And saat = 19 Then
+saatame = "merikh"
+ElseIf n = 4 And saat = 20 Then
+saatame = "shams"
+ElseIf n = 4 And saat = 21 Then
+saatame = "zohre"
+ElseIf n = 4 And saat = 22 Then
+saatame = "otared"
+ElseIf n = 4 And saat = 23 Then
+saatame = "qamar"
+ElseIf n = 4 And saat = 24 Then
+saatame = "zohal"
+ElseIf n = 5 And saat = 1 Then
+saatame = "moshtary"
+ElseIf n = 5 And saat = 2 Then
+saatame = "merikh"
+ElseIf n = 5 And saat = 3 Then
+saatame = "shams"
+ElseIf n = 5 And saat = 4 Then
+saatame = "zohre"
+ElseIf n = 5 And saat = 5 Then
+saatame = "otared"
+ElseIf n = 5 And saat = 6 Then
+saatame = "qamar"
+ElseIf n = 5 And saat = 7 Then
+saatame = "zohal"
+ElseIf n = 5 And saat = 8 Then
+saatame = "moshtary"
+ElseIf n = 5 And saat = 9 Then
+saatame = "merikh"
+ElseIf n = 5 And saat = 10 Then
+saatame = "shams"
+ElseIf n = 5 And saat = 11 Then
+saatame = "zohre"
+ElseIf n = 5 And saat = 12 Then
+saatame = "otared"
+ElseIf n = 5 And saat = 13 Then
+saatame = "qamar"
+ElseIf n = 5 And saat = 14 Then
+saatame = "zohal"
+ElseIf n = 5 And saat = 15 Then
+saatame = "moshtary"
+ElseIf n = 5 And saat = 16 Then
+saatame = "merikh"
+ElseIf n = 5 And saat = 17 Then
+saatame = "shams"
+ElseIf n = 5 And saat = 18 Then
+saatame = "zohre"
+ElseIf n = 5 And saat = 19 Then
+saatame = "otared"
+ElseIf n = 5 And saat = 20 Then
+saatame = "qamar"
+ElseIf n = 5 And saat = 21 Then
+saatame = "zohal"
+ElseIf n = 5 And saat = 22 Then
+saatame = "moshtary"
+ElseIf n = 5 And saat = 23 Then
+saatame = "merikh"
+ElseIf n = 5 And saat = 24 Then
+saatame = "shams"
+ElseIf n = 6 And saat = 1 Then
+saatame = "zohre"
+ElseIf n = 6 And saat = 2 Then
+saatame = "otared"
+ElseIf n = 6 And saat = 3 Then
+saatame = "qamar"
+ElseIf n = 6 And saat = 4 Then
+saatame = "zohal"
+ElseIf n = 6 And saat = 5 Then
+saatame = "moshtary"
+ElseIf n = 6 And saat = 6 Then
+saatame = "merikh"
+ElseIf n = 6 And saat = 7 Then
+saatame = "shams"
+ElseIf n = 6 And saat = 8 Then
+saatame = "zohre"
+ElseIf n = 6 And saat = 9 Then
+saatame = "otared"
+ElseIf n = 6 And saat = 10 Then
+saatame = "qamar"
+ElseIf n = 6 And saat = 11 Then
+saatame = "zohal"
+ElseIf n = 6 And saat = 12 Then
+saatame = "moshtary"
+ElseIf n = 6 And saat = 13 Then
+saatame = "merikh"
+ElseIf n = 6 And saat = 14 Then
+saatame = "shams"
+ElseIf n = 6 And saat = 15 Then
+saatame = "zohre"
+ElseIf n = 6 And saat = 16 Then
+saatame = "otared"
+ElseIf n = 6 And saat = 17 Then
+saatame = "qamar"
+ElseIf n = 6 And saat = 18 Then
+saatame = "zohal"
+ElseIf n = 6 And saat = 19 Then
+saatame = "moshtary"
+ElseIf n = 6 And saat = 20 Then
+saatame = "merikh"
+ElseIf n = 6 And saat = 21 Then
+saatame = "shams"
+ElseIf n = 6 And saat = 22 Then
+saatame = "zohre"
+ElseIf n = 6 And saat = 23 Then
+saatame = "otared"
+ElseIf n = 6 And saat = 24 Then
+saatame = "qamar"
+ElseIf n = 7 And saat = 1 Then
+saatame = "zohal"
+ElseIf n = 7 And saat = 2 Then
+saatame = "moshtary"
+ElseIf n = 7 And saat = 3 Then
+saatame = "merikh"
+ElseIf n = 7 And saat = 4 Then
+saatame = "shams"
+ElseIf n = 7 And saat = 5 Then
+saatame = "zohre"
+ElseIf n = 7 And saat = 6 Then
+saatame = "otared"
+ElseIf n = 7 And saat = 7 Then
+saatame = "qamar"
+ElseIf n = 7 And saat = 8 Then
+saatame = "zohal"
+ElseIf n = 7 And saat = 9 Then
+saatame = "moshtary"
+ElseIf n = 7 And saat = 10 Then
+saatame = "merikh"
+ElseIf n = 7 And saat = 11 Then
+saatame = "shams"
+ElseIf n = 7 And saat = 12 Then
+saatame = "zohre"
+ElseIf n = 7 And saat = 13 Then
+saatame = "otared"
+ElseIf n = 7 And saat = 14 Then
+saatame = "qamar"
+ElseIf n = 7 And saat = 15 Then
+saatame = "zohal"
+ElseIf n = 7 And saat = 16 Then
+saatame = "moshtary"
+ElseIf n = 7 And saat = 17 Then
+saatame = "merikh"
+ElseIf n = 7 And saat = 18 Then
+saatame = "shams"
+ElseIf n = 7 And saat = 19 Then
+saatame = "zohre"
+ElseIf n = 7 And saat = 20 Then
+saatame = "otared"
+ElseIf n = 7 And saat = 21 Then
+saatame = "qamar"
+ElseIf n = 7 And saat = 22 Then
+saatame = "zohal"
+ElseIf n = 7 And saat = 23 Then
+saatame = "moshtary"
+ElseIf n = 7 And saat = 24 Then
+saatame = "merikh"
+End If
+
+
+End Function
+
+
+
+Public Function entaazam(sal As Integer, mah As Integer, rooz As Double, mbtool As Double) As Double
+
+Dim e As Double
+Dim f As Double
+Dim g As Double
+e = 327.3065277778
+f = 365.2422002636
+g = e / f
+
+Dim zaman As Double
+zaman = 185237 - g
+Dim x As Double
+x = 354.3670926
+Dim y As Double
+y = (sal - 1) * x
+Dim z As Double
+z = Int(mah / 2) * 30 + (mah - 1 - Int(mah / 2)) * 29
+Dim a As Double
+a = Int(y + z + rooz)
+Dim b As Double
+b = (a / x) + 1
+Dim c As Double
+c = b - 1251
+Dim d As Double
+d = zaman + c
+entaazam = ((d / 12000) - Int(d / 12000)) * 360
+End Function
+
+
+
+Public Function entakbar(sal As Integer, mah As Integer, rooz As Double, mbtool As Double) As Double
+Dim e As Double
+Dim f As Double
+Dim g As Double
+e = 327.3065277778
+f = 365.2422002636
+g = e / f
+
+Dim zaman As Double
+zaman = 185237 - g
+Dim x As Double
+x = 354.3670926
+Dim y As Double
+y = (sal - 1) * x
+Dim z As Double
+z = Int(mah / 2) * 30 + (mah - 1 - Int(mah / 2)) * 29
+Dim a As Double
+a = Int(y + z + rooz)
+Dim b As Double
+b = (a / x) + 1
+Dim c As Double
+c = b - 1251
+Dim d As Double
+d = zaman + c
+entakbar = ((d / 1200) - Int(d / 1200)) * 360
+
+
+End Function
+Public Function entavsat(sal As Integer, mah As Integer, rooz As Double, mbtool As Double) As Double
+Dim e As Double
+Dim f As Double
+Dim g As Double
+e = 327.3065277778
+f = 365.2422002636
+g = e / f
+
+Dim zaman As Double
+zaman = 185237 - g
+Dim x As Double
+x = 354.3670926
+Dim y As Double
+y = (sal - 1) * x
+Dim z As Double
+z = Int(mah / 2) * 30 + (mah - 1 - Int(mah / 2)) * 29
+Dim a As Double
+a = Int(y + z + rooz)
+Dim b As Double
+b = (a / x) + 1
+Dim c As Double
+c = b - 1251
+Dim d As Double
+d = zaman + c
+entavsat = ((d / 120) - Int(d / 120)) * 360
+
+End Function
+
+Public Function entasqar(sal As Integer, mah As Integer, rooz As Double, mbtool As Double) As Double
+Dim e As Double
+Dim f As Double
+Dim g As Double
+e = 327.3065277778
+f = 365.2422002636
+g = e / f
+
+Dim zaman As Double
+zaman = 185237 - g
+Dim x As Double
+x = 354.3670926
+Dim y As Double
+y = (sal - 1) * x
+Dim z As Double
+z = Int(mah / 2) * 30 + (mah - 1 - Int(mah / 2)) * 29
+Dim a As Double
+a = Int(y + z + rooz)
+Dim b As Double
+b = (a / x) + 1
+Dim c As Double
+c = b - 1251
+Dim d As Double
+d = zaman + c
+entasqar = ((d / 12) - Int(d / 12)) * 360
+End Function
+
+
+Public Function movajjeh(sal As Integer, mah As Integer, rooz As Double, saat As Double, toolb As Double, arzb As Double) As Double
+Dim toloo As Double
+Dim qoroob As Double
+Dim meqdarsrooz As Double
+Dim meqdarsshab As Double
+Dim sat1 As Double
+Dim sat2 As Double
+Dim sat3 As Double
+Dim sat4 As Double
+Dim sat5 As Double
+Dim sat6 As Double
+Dim sat7 As Double
+Dim sat8 As Double
+Dim sat9 As Double
+Dim sat10 As Double
+Dim sat11 As Double
+Dim sat12 As Double
+Dim sat13 As Double
+Dim sat14 As Double
+Dim sat15 As Double
+Dim sat16 As Double
+Dim sat17 As Double
+Dim sat18 As Double
+Dim sat19 As Double
+Dim sat20 As Double
+Dim sat21 As Double
+Dim sat22 As Double
+Dim sat23 As Double
+Dim sat24 As Double
+
+toloo = vtoloo(sal, mah, rooz, toolb, arzb)
+qoroob = vqoroob(sal, mah, rooz, toolb, arzb)
+meqdarsrooz = (qoroob - toloo) / 12
+meqdarsshab = 2 - meqdarsrooz
+sat1 = toloo
+
+If (toloo + (meqdarsrooz * 1)) < 24 Then
+sat2 = (toloo + (meqdarsrooz * 1))
+Else
+sat2 = (toloo + (meqdarsrooz * 1)) - 24
+End If
+If (toloo + (meqdarsrooz * 2)) < 24 Then
+sat3 = (toloo + (meqdarsrooz * 2))
+Else
+sat3 = (toloo + (meqdarsrooz * 2)) - 24
+End If
+If (toloo + (meqdarsrooz * 3)) < 24 Then
+sat4 = (toloo + (meqdarsrooz * 3))
+Else
+sat4 = (toloo + (meqdarsrooz * 3)) - 24
+End If
+If (toloo + (meqdarsrooz * 4)) < 24 Then
+sat5 = (toloo + (meqdarsrooz * 4))
+Else
+sat5 = (toloo + (meqdarsrooz * 4)) - 24
+End If
+If (toloo + (meqdarsrooz * 5)) < 24 Then
+sat6 = (toloo + (meqdarsrooz * 5))
+Else
+sat6 = (toloo + (meqdarsrooz * 5)) - 24
+End If
+If (toloo + (meqdarsrooz * 6)) < 24 Then
+sat7 = (toloo + (meqdarsrooz * 6))
+Else
+sat7 = (toloo + (meqdarsrooz * 6)) - 24
+End If
+If (toloo + (meqdarsrooz * 7)) < 24 Then
+sat8 = (toloo + (meqdarsrooz * 7))
+Else
+sat8 = (toloo + (meqdarsrooz * 7)) - 24
+End If
+If (toloo + (meqdarsrooz * 8)) < 24 Then
+sat9 = (toloo + (meqdarsrooz * 8))
+Else
+sat9 = (toloo + (meqdarsrooz * 8)) - 24
+End If
+If (toloo + (meqdarsrooz * 9)) < 24 Then
+sat10 = (toloo + (meqdarsrooz * 9))
+Else
+sat10 = (toloo + (meqdarsrooz * 9)) - 24
+End If
+If (toloo + (meqdarsrooz * 10)) < 24 Then
+sat11 = (toloo + (meqdarsrooz * 10))
+Else
+sat11 = (toloo + (meqdarsrooz * 10)) - 24
+End If
+If (toloo + (meqdarsrooz * 11)) < 24 Then
+sat12 = (toloo + (meqdarsrooz * 11))
+Else
+sat12 = (toloo + (meqdarsrooz * 11)) - 24
+End If
+sat13 = qoroob
+
+If (qoroob + (meqdarsshab) * 1) < 24 Then
+sat14 = (qoroob + (meqdarsshab) * 1)
+Else
+sat14 = (qoroob + (meqdarsshab) * 1) - 24
+End If
+If (qoroob + ((2 - meqdarsrooz) * 2)) < 24 Then
+sat15 = (qoroob + ((2 - meqdarsrooz) * 2))
+Else
+sat15 = (qoroob + ((2 - meqdarsrooz) * 2)) - 24
+End If
+If (qoroob + ((2 - meqdarsrooz) * 3)) < 24 Then
+sat16 = (qoroob + ((2 - meqdarsrooz) * 3))
+Else
+sat16 = (qoroob + ((2 - meqdarsrooz) * 3)) - 24
+End If
+If (qoroob + ((2 - meqdarsrooz) * 4)) < 24 Then
+sat17 = (qoroob + ((2 - meqdarsrooz) * 4))
+Else
+sat17 = (qoroob + ((2 - meqdarsrooz) * 4)) - 24
+End If
+If (qoroob + ((2 - meqdarsrooz) * 5)) < 24 Then
+sat18 = (qoroob + ((2 - meqdarsrooz) * 5))
+Else
+sat18 = (qoroob + ((2 - meqdarsrooz) * 5)) - 24
+End If
+If (qoroob + ((2 - meqdarsrooz) * 6)) < 24 Then
+sat19 = (qoroob + ((2 - meqdarsrooz) * 6))
+Else
+sat19 = (qoroob + ((2 - meqdarsrooz) * 6)) - 24
+End If
+If (qoroob + ((2 - meqdarsrooz) * 7)) < 24 Then
+sat20 = (qoroob + ((2 - meqdarsrooz) * 7))
+Else
+sat20 = (qoroob + ((2 - meqdarsrooz) * 7)) - 24
+End If
+If (qoroob + ((2 - meqdarsrooz) * 8)) < 24 Then
+sat21 = (qoroob + ((2 - meqdarsrooz) * 8))
+Else
+sat21 = (qoroob + ((2 - meqdarsrooz) * 8)) - 24
+End If
+If (qoroob + ((2 - meqdarsrooz) * 9)) < 24 Then
+sat22 = (qoroob + ((2 - meqdarsrooz) * 9))
+Else
+sat22 = (qoroob + ((2 - meqdarsrooz) * 9)) - 24
+End If
+If (qoroob + ((2 - meqdarsrooz) * 10)) < 24 Then
+sat23 = (qoroob + ((2 - meqdarsrooz) * 10))
+Else
+sat23 = (qoroob + ((2 - meqdarsrooz) * 10)) - 24
+End If
+If (qoroob + ((2 - meqdarsrooz) * 11)) < 24 Then
+sat24 = (qoroob + ((2 - meqdarsrooz) * 11))
+Else
+sat24 = (qoroob + ((2 - meqdarsrooz) * 11)) - 24
+End If
+
+If sat2 > sat1 And saat >= sat1 And saat < sat2 Then
+movajjeh = 1
+ElseIf sat2 < sat1 And (saat >= sat1 Or saat < sat2) Then
+movajjeh = 1
+
+ElseIf sat3 > sat2 And saat >= sat2 And saat < sat3 Then
+movajjeh = 2
+ElseIf sat3 < sat2 And (saat >= sat2 Or saat < sat3) Then
+movajjeh = 2
+
+ElseIf sat4 > sat3 And saat >= sat3 And saat < sat4 Then
+movajjeh = 3
+ElseIf sat4 < sat3 And (saat >= sat3 Or saat < sat4) Then
+movajjeh = 3
+
+ElseIf sat5 > sat4 And saat >= sat4 And saat < sat5 Then
+movajjeh = 4
+ElseIf sat5 < sat4 And (saat >= sat4 Or saat < sat5) Then
+movajjeh = 4
+
+ElseIf sat6 > sat5 And saat >= sat5 And saat < sat6 Then
+movajjeh = 5
+ElseIf sat6 < sat5 And (saat >= sat5 Or saat < sat6) Then
+movajjeh = 5
+
+ElseIf sat7 > sat6 And saat >= sat6 And saat < sat7 Then
+movajjeh = 6
+ElseIf sat7 < sat6 And (saat >= sat6 Or saat < sat7) Then
+movajjeh = 6
+
+ElseIf sat8 > sat7 And saat >= sat7 And saat < sat8 Then
+movajjeh = 7
+ElseIf sat8 < sat7 And (saat >= sat7 Or saat < sat8) Then
+movajjeh = 7
+
+ElseIf sat9 > sat8 And saat >= sat8 And saat < sat9 Then
+movajjeh = 8
+ElseIf sat9 < sat8 And (saat >= sat8 Or saat < sat9) Then
+movajjeh = 8
+
+ElseIf sat10 > sat9 And saat >= sat9 And saat < sat10 Then
+movajjeh = 9
+ElseIf sat10 < sat9 And (saat >= sat9 Or saat < sat10) Then
+movajjeh = 9
+
+ElseIf sat11 > sat10 And saat >= sat10 And saat < sat11 Then
+movajjeh = 10
+ElseIf sat11 < sat10 And (saat >= sat10 Or saat < sat11) Then
+movajjeh = 10
+
+ElseIf sat12 > sat11 And saat >= sat11 And saat < sat12 Then
+movajjeh = 11
+ElseIf sat12 < sat11 And (saat >= sat11 Or saat < sat12) Then
+movajjeh = 11
+
+ElseIf sat13 > sat12 And saat >= sat12 And saat < sat13 Then
+movajjeh = 12
+ElseIf sat13 < sat12 And (saat >= sat12 Or saat < sat13) Then
+movajjeh = 12
+
+ElseIf sat14 > sat13 And saat >= sat13 And saat < sat14 Then
+movajjeh = 13
+ElseIf sat14 < sat13 And (saat >= sat13 Or saat < sat14) Then
+movajjeh = 13
+
+ElseIf sat15 > sat14 And saat >= sat14 And saat < sat15 Then
+movajjeh = 14
+ElseIf sat15 < sat14 And (saat >= sat14 Or saat < sat15) Then
+movajjeh = 14
+
+ElseIf sat16 > sat15 And saat >= sat15 And saat < sat16 Then
+movajjeh = 15
+ElseIf sat16 < sat15 And (saat >= sat15 Or saat < sat16) Then
+movajjeh = 15
+
+ElseIf sat17 > sat16 And saat >= sat16 And saat < sat17 Then
+movajjeh = 16
+ElseIf sat17 < sat16 And (saat >= sat16 Or saat < sat17) Then
+movajjeh = 16
+
+ElseIf sat18 > sat17 And saat >= sat17 And saat < sat18 Then
+movajjeh = 17
+ElseIf sat18 < sat17 And (saat >= sat17 Or saat < sat18) Then
+movajjeh = 17
+
+ElseIf sat19 > sat18 And saat >= sat18 And saat < sat19 Then
+movajjeh = 18
+ElseIf sat19 < sat18 And (saat >= sat18 Or saat < sat19) Then
+movajjeh = 18
+
+ElseIf sat20 > sat19 And saat >= sat19 And saat < sat20 Then
+movajjeh = 19
+ElseIf sat20 < sat19 And (saat >= sat19 Or saat < sat20) Then
+movajjeh = 19
+
+ElseIf sat21 > sat20 And saat >= sat20 And saat < sat21 Then
+movajjeh = 20
+ElseIf sat21 < sat20 And (saat >= sat20 Or saat < sat21) Then
+movajjeh = 20
+
+ElseIf sat22 > sat21 And saat >= sat21 And saat < sat22 Then
+movajjeh = 21
+ElseIf sat22 < sat21 And (saat >= sat21 Or saat < sat22) Then
+movajjeh = 21
+
+ElseIf sat23 > sat22 And saat >= sat22 And saat < sat23 Then
+movajjeh = 22
+ElseIf sat23 < sat22 And (saat >= sat22 Or saat < sat23) Then
+movajjeh = 22
+
+ElseIf sat24 > sat23 And saat >= sat23 And saat < sat24 Then
+movajjeh = 23
+ElseIf sat24 < sat23 And (saat >= sat23 Or saat < sat24) Then
+movajjeh = 23
+
+ElseIf sat1 > sat24 And saat >= sat24 And saat < sat1 Then
+movajjeh = 24
+ElseIf sat1 < sat24 And (saat >= sat24 Or saat < sat1) Then
+movajjeh = 24
+End If
+
+
+
+End Function
+
+Public Function mostavieh(sal As Integer, mah As Integer, rooz As Double, saatmovajjeh As Double, toolb As Double, arzb As Double) As Double
+Dim toloo As Double
+Dim qoroob As Double
+Dim meqdarsatrooz As Double
+Dim meqdarsatshab As Double
+
+toloo = vtoloo(sal, mah, rooz, toolb, arzb)
+qoroob = vqoroob(sal, mah, rooz, toolb, arzb)
+meqdarsatrooz = (qoroob - toloo) / 12
+meqdarsatshab = 2 - meqdarsatrooz
+If saatmovajjeh < 13 Then
+mostavieh = toloo + ((saatmovajjeh - 1) * meqdarsatrooz)
+Else
+mostavieh = qoroob + ((saatmovajjeh - 13) * meqdarsatshab)
+End If
+If mostavieh < 24 Then
+mostavieh = mostavieh
+Else
+mostavieh = mostavieh - 24
+End If
+
+
+End Function
+
+
+Public Function atit(sal As Integer, mah As Integer, rooz As Double) As Double
+Dim harkat1rooz As Double
+harkat1rooz = (((((((((0 / 60) + 39) / 60) + 39) / 60) + 24) / 60) + 0) / 60) + 0
+Dim harkat1salkab As Double
+harkat1salkab = harkat1rooz * 355
+Dim harkat1salqkab As Double
+harkat1salqkab = harkat1rooz * 354
+Dim a As Double
+a = modd(sal - 1250, 30)
+Dim b As Double
+b = Abs(sal - 1251)
+Dim c As Double
+c = Abs(sal - 1251)
+Dim das As Integer
+If sal >= 1251 Then
+das = modd(sal - 1251, 30)
+Else
+das = 30 - modd(sal - 1251, 30) - 1
+End If
+Dim e As Double
+e = Int(Abs(sal - 1251) / 30)
+Dim q As Double
+q = e * 11
+Dim w As Double
+If sal >= 1251 Then
+w = kab(das)
+Else
+w = 11 - kab(das)
+End If
+Dim r As Double
+If sal >= 1251 Then
+r = w
+Else
+r = 11 - w
+End If
+Dim t As Double
+t = r + q
+Dim y As Double
+If sal >= 1251 Then
+y = c - t
+Else
+y = c - t - 1
+End If
+Dim u As Double
+If (a = 1) Or (a = 4) Or (a = 6) Or (a = 9) Or (a = 12) Or (a = 15) Or (a = 17) Or (a = 20) Or (a = 23) Or (a = 25) Or (a = 28) Then
+u = 355
+Else
+u = 354
+End If
+Dim o As Double
+o = (Int(mah / 2) * 30) + ((mah - 1 - Int(mah / 2)) * 29)
+Dim p As Double
+p = rooz - 1
+Dim s As Double
+s = o - p
+Dim f As Double
+f = u - s
+Dim g As Double
+g = y * harkat1salqkab
+Dim h As Double
+h = harkat1salkab * t
+Dim k As Double
+If sal >= 1251 Then
+k = (o + p) * harkat1rooz
+Else
+k = f * harkat1rooz
+End If
+Dim j As Double
+j = modd(k + h + g, 360)
+Dim mabda As Double
+mabda = (((2 / 60) + 29) / 60) + 351
+Dim qablmabda As Double
+If mabda + j < 360 Then
+qablmabda = mabda + j
+Else
+qablmabda = mabda + j - 360
+End If
+Dim baadmabda As Double
+If mabda > j Then
+baadmabda = mabda - j
+Else
+baadmabda = mabda - j + 360
+End If
+If sal >= 1251 Then
+atit = baadmabda
+Else
+atit = qablmabda
+End If
+
+End Function
+Public Function qarnam(sal As Integer, mah As Integer, rooz As Double) As Double
+Dim harkat1rooz As Double
+harkat1rooz = (((((((((0 / 60) + 39) / 60) + 39) / 60) + 24) / 60) + 0) / 60) + 0
+Dim harkat1salkab As Double
+harkat1salkab = harkat1rooz * 355
+Dim harkat1salqkab As Double
+harkat1salqkab = harkat1rooz * 354
+Dim a As Double
+a = modd(sal - 1250, 30)
+Dim b As Double
+b = Abs(sal - 1251)
+Dim c As Double
+c = Abs(sal - 1251)
+Dim das As Integer
+If sal >= 1251 Then
+das = modd(sal - 1251, 30)
+Else
+das = 30 - modd(sal - 1251, 30) - 1
+End If
+Dim e As Double
+e = Int(Abs(sal - 1251) / 30)
+Dim q As Double
+q = e * 11
+Dim w As Double
+If sal >= 1251 Then
+w = kab(das)
+Else
+w = 11 - kab(das)
+End If
+Dim r As Double
+If sal >= 1251 Then
+r = w
+Else
+r = 11 - w
+End If
+Dim t As Double
+t = r + q
+Dim y As Double
+If sal >= 1251 Then
+y = c - t
+Else
+y = c - t - 1
+End If
+Dim u As Double
+If (a = 1) Or (a = 4) Or (a = 6) Or (a = 9) Or (a = 12) Or (a = 15) Or (a = 17) Or (a = 20) Or (a = 23) Or (a = 25) Or (a = 28) Then
+u = 355
+Else
+u = 354
+End If
+Dim o As Double
+o = (Int(mah / 2) * 30) + ((mah - 1 - Int(mah / 2)) * 29)
+Dim p As Double
+p = rooz - 1
+Dim s As Double
+s = o - p
+Dim f As Double
+f = u - s
+Dim g As Double
+g = y * harkat1salqkab
+Dim h As Double
+h = harkat1salkab * t
+Dim k As Double
+If sal >= 1251 Then
+k = (o + p) * harkat1rooz
+Else
+k = f * harkat1rooz
+End If
+Dim j As Double
+j = modd(k + h + g, 360)
+Dim mabda As Double
+mabda = (((2 / 60) + 13) / 60) + 8
+Dim qablmabda As Double
+If mabda + j < 360 Then
+qablmabda = mabda + j
+Else
+qablmabda = mabda + j - 360
+End If
+Dim baadmabda As Double
+If mabda > j Then
+baadmabda = mabda - j
+Else
+baadmabda = mabda - j + 360
+End If
+If sal >= 1251 Then
+qarnam = baadmabda
+Else
+qarnam = qablmabda
+End If
+
+End Function
+Public Function sarmoosh(sal As Integer, mah As Integer, rooz As Double) As Double
+Dim harkat1rooz As Double
+harkat1rooz = (((((((((0 / 60) + 39) / 60) + 39) / 60) + 24) / 60) + 0) / 60) + 0
+Dim harkat1salkab As Double
+harkat1salkab = harkat1rooz * 355
+Dim harkat1salqkab As Double
+harkat1salqkab = harkat1rooz * 354
+Dim a As Double
+a = modd(sal - 1250, 30)
+Dim b As Double
+b = Abs(sal - 1251)
+Dim c As Double
+c = Abs(sal - 1251)
+Dim das As Integer
+If sal >= 1251 Then
+das = modd(sal - 1251, 30)
+Else
+das = 30 - modd(sal - 1251, 30) - 1
+End If
+Dim e As Double
+e = Int(Abs(sal - 1251) / 30)
+Dim q As Double
+q = e * 11
+Dim w As Double
+If sal >= 1251 Then
+w = kab(das)
+Else
+w = 11 - kab(das)
+End If
+Dim r As Double
+If sal >= 1251 Then
+r = w
+Else
+r = 11 - w
+End If
+Dim t As Double
+t = r + q
+Dim y As Double
+If sal >= 1251 Then
+y = c - t
+Else
+y = c - t - 1
+End If
+Dim u As Double
+If (a = 1) Or (a = 4) Or (a = 6) Or (a = 9) Or (a = 12) Or (a = 15) Or (a = 17) Or (a = 20) Or (a = 23) Or (a = 25) Or (a = 28) Then
+u = 355
+Else
+u = 354
+End If
+Dim o As Double
+o = (Int(mah / 2) * 30) + ((mah - 1 - Int(mah / 2)) * 29)
+Dim p As Double
+p = rooz - 1
+Dim s As Double
+s = o - p
+Dim f As Double
+f = u - s
+Dim g As Double
+g = y * harkat1salqkab
+Dim h As Double
+h = harkat1salkab * t
+Dim k As Double
+If sal >= 1251 Then
+k = (o + p) * harkat1rooz
+Else
+k = f * harkat1rooz
+End If
+Dim j As Double
+j = modd(k + h + g, 360)
+Dim mabda As Double
+mabda = (((2 / 60) + 46) / 60) + 215
+Dim qablmabda As Double
+If mabda + j < 360 Then
+qablmabda = mabda + j
+Else
+qablmabda = mabda + j - 360
+End If
+Dim baadmabda As Double
+If mabda > j Then
+baadmabda = mabda - j
+Else
+baadmabda = mabda - j + 360
+End If
+If sal >= 1251 Then
+sarmoosh = baadmabda
+Else
+sarmoosh = qablmabda
+End If
+
+End Function
+Public Function kelab(sal As Integer, mah As Integer, rooz As Double) As Double
+Dim harkat1rooz As Double
+harkat1rooz = (((((((((0 / 60) + 39) / 60) + 39) / 60) + 24) / 60) + 0) / 60) + 0
+Dim harkat1salkab As Double
+harkat1salkab = harkat1rooz * 355
+Dim harkat1salqkab As Double
+harkat1salqkab = harkat1rooz * 354
+Dim a As Double
+a = modd(sal - 1250, 30)
+Dim b As Double
+b = Abs(sal - 1251)
+Dim c As Double
+c = Abs(sal - 1251)
+Dim das As Integer
+If sal >= 1251 Then
+das = modd(sal - 1251, 30)
+Else
+das = 30 - modd(sal - 1251, 30) - 1
+End If
+Dim e As Double
+e = Int(Abs(sal - 1251) / 30)
+Dim q As Double
+q = e * 11
+Dim w As Double
+If sal >= 1251 Then
+w = kab(das)
+Else
+w = 11 - kab(das)
+End If
+Dim r As Double
+If sal >= 1251 Then
+r = w
+Else
+r = 11 - w
+End If
+Dim t As Double
+t = r + q
+Dim y As Double
+If sal >= 1251 Then
+y = c - t
+Else
+y = c - t - 1
+End If
+Dim u As Double
+If (a = 1) Or (a = 4) Or (a = 6) Or (a = 9) Or (a = 12) Or (a = 15) Or (a = 17) Or (a = 20) Or (a = 23) Or (a = 25) Or (a = 28) Then
+u = 355
+Else
+u = 354
+End If
+Dim o As Double
+o = (Int(mah / 2) * 30) + ((mah - 1 - Int(mah / 2)) * 29)
+Dim p As Double
+p = rooz - 1
+Dim s As Double
+s = o - p
+Dim f As Double
+f = u - s
+Dim g As Double
+g = y * harkat1salqkab
+Dim h As Double
+h = harkat1salkab * t
+Dim k As Double
+If sal >= 1251 Then
+k = (o + p) * harkat1rooz
+Else
+k = f * harkat1rooz
+End If
+Dim j As Double
+j = modd(k + h + g, 360)
+Dim mabda As Double
+mabda = (((2 / 60) + 18) / 60) + 258
+Dim qablmabda As Double
+If mabda + j < 360 Then
+qablmabda = mabda + j
+Else
+qablmabda = mabda + j - 360
+End If
+Dim baadmabda As Double
+If mabda > j Then
+baadmabda = mabda - j
+Else
+baadmabda = mabda - j + 360
+End If
+If sal >= 1251 Then
+kelab = baadmabda
+Else
+kelab = qablmabda
+End If
+
+End Function
+
+Public Function zoozoabeh(sal As Integer, mah As Integer, rooz As Double) As Double
+Dim harkat1rooz As Double
+harkat1rooz = (((((((((0 / 60) + 39) / 60) + 39) / 60) + 24) / 60) + 0) / 60) + 0
+Dim harkat1salkab As Double
+harkat1salkab = harkat1rooz * 355
+Dim harkat1salqkab As Double
+harkat1salqkab = harkat1rooz * 354
+Dim a As Double
+a = modd(sal - 1250, 30)
+Dim b As Double
+b = Abs(sal - 1251)
+Dim c As Double
+c = Abs(sal - 1251)
+Dim das As Integer
+If sal >= 1251 Then
+das = modd(sal - 1251, 30)
+Else
+das = 30 - modd(sal - 1251, 30) - 1
+End If
+Dim e As Double
+e = Int(Abs(sal - 1251) / 30)
+Dim q As Double
+q = e * 11
+Dim w As Double
+If sal >= 1251 Then
+w = kab(das)
+Else
+w = 11 - kab(das)
+End If
+Dim r As Double
+If sal >= 1251 Then
+r = w
+Else
+r = 11 - w
+End If
+Dim t As Double
+t = r + q
+Dim y As Double
+If sal >= 1251 Then
+y = c - t
+Else
+y = c - t - 1
+End If
+Dim u As Double
+If (a = 1) Or (a = 4) Or (a = 6) Or (a = 9) Or (a = 12) Or (a = 15) Or (a = 17) Or (a = 20) Or (a = 23) Or (a = 25) Or (a = 28) Then
+u = 355
+Else
+u = 354
+End If
+Dim o As Double
+o = (Int(mah / 2) * 30) + ((mah - 1 - Int(mah / 2)) * 29)
+Dim p As Double
+p = rooz - 1
+Dim s As Double
+s = o - p
+Dim f As Double
+f = u - s
+Dim g As Double
+g = y * harkat1salqkab
+Dim h As Double
+h = harkat1salkab * t
+Dim k As Double
+If sal >= 1251 Then
+k = (o + p) * harkat1rooz
+Else
+k = f * harkat1rooz
+End If
+Dim j As Double
+j = modd(k + h + g, 360)
+Dim mabda As Double
+mabda = (((2 / 60) + 47) / 60) + 256
+Dim qablmabda As Double
+If mabda + j < 360 Then
+qablmabda = mabda + j
+Else
+qablmabda = mabda + j - 360
+End If
+Dim baadmabda As Double
+If mabda > j Then
+baadmabda = mabda - j
+Else
+baadmabda = mabda - j + 360
+End If
+If sal >= 1251 Then
+zoozoabeh = baadmabda
+Else
+zoozoabeh = qablmabda
+End If
+
+End Function
+Public Function lehyani(sal As Integer, mah As Integer, rooz As Double) As Double
+Dim harkat1rooz As Double
+harkat1rooz = (((((((((0 / 60) + 39) / 60) + 39) / 60) + 24) / 60) + 0) / 60) + 0
+Dim harkat1salkab As Double
+harkat1salkab = harkat1rooz * 355
+Dim harkat1salqkab As Double
+harkat1salqkab = harkat1rooz * 354
+Dim a As Double
+a = modd(sal - 1250, 30)
+Dim b As Double
+b = Abs(sal - 1251)
+Dim c As Double
+c = Abs(sal - 1251)
+Dim das As Integer
+If sal >= 1251 Then
+das = modd(sal - 1251, 30)
+Else
+das = 30 - modd(sal - 1251, 30) - 1
+End If
+Dim e As Double
+e = Int(Abs(sal - 1251) / 30)
+Dim q As Double
+q = e * 11
+Dim w As Double
+If sal >= 1251 Then
+w = kab(das)
+Else
+w = 11 - kab(das)
+End If
+Dim r As Double
+If sal >= 1251 Then
+r = w
+Else
+r = 11 - w
+End If
+Dim t As Double
+t = r + q
+Dim y As Double
+If sal >= 1251 Then
+y = c - t
+Else
+y = c - t - 1
+End If
+Dim u As Double
+If (a = 1) Or (a = 4) Or (a = 6) Or (a = 9) Or (a = 12) Or (a = 15) Or (a = 17) Or (a = 20) Or (a = 23) Or (a = 25) Or (a = 28) Then
+u = 355
+Else
+u = 354
+End If
+Dim o As Double
+o = (Int(mah / 2) * 30) + ((mah - 1 - Int(mah / 2)) * 29)
+Dim p As Double
+p = rooz - 1
+Dim s As Double
+s = o - p
+Dim f As Double
+f = u - s
+Dim g As Double
+g = y * harkat1salqkab
+Dim h As Double
+h = harkat1salkab * t
+Dim k As Double
+If sal >= 1251 Then
+k = (o + p) * harkat1rooz
+Else
+k = f * harkat1rooz
+End If
+Dim j As Double
+j = modd(k + h + g, 360)
+Dim mabda As Double
+mabda = (((2 / 60) + 46) / 60) + 152
+Dim qablmabda As Double
+If mabda + j < 360 Then
+qablmabda = mabda + j
+Else
+qablmabda = mabda + j - 360
+End If
+Dim baadmabda As Double
+If mabda > j Then
+baadmabda = mabda - j
+Else
+baadmabda = mabda - j + 360
+End If
+If sal >= 1251 Then
+lehyani = baadmabda
+Else
+lehyani = qablmabda
+End If
+
+End Function
+Public Function keyd(sal As Integer, mah As Integer, rooz As Double) As Double
+Dim harkat1rooz As Double
+harkat1rooz = (((((((((0 / 60) + 39) / 60) + 39) / 60) + 24) / 60) + 0) / 60) + 0
+Dim harkat1salkab As Double
+harkat1salkab = harkat1rooz * 355
+Dim harkat1salqkab As Double
+harkat1salqkab = harkat1rooz * 354
+Dim a As Double
+a = modd(sal - 1250, 30)
+Dim b As Double
+b = Abs(sal - 1251)
+Dim c As Double
+c = Abs(sal - 1251)
+Dim das As Integer
+If sal >= 1251 Then
+das = modd(sal - 1251, 30)
+Else
+das = 30 - modd(sal - 1251, 30) - 1
+End If
+Dim e As Double
+e = Int(Abs(sal - 1251) / 30)
+Dim q As Double
+q = e * 11
+Dim w As Double
+If sal >= 1251 Then
+w = kab(das)
+Else
+w = 11 - kab(das)
+End If
+Dim r As Double
+If sal >= 1251 Then
+r = w
+Else
+r = 11 - w
+End If
+Dim t As Double
+t = r + q
+Dim y As Double
+If sal >= 1251 Then
+y = c - t
+Else
+y = c - t - 1
+End If
+Dim u As Double
+If (a = 1) Or (a = 4) Or (a = 6) Or (a = 9) Or (a = 12) Or (a = 15) Or (a = 17) Or (a = 20) Or (a = 23) Or (a = 25) Or (a = 28) Then
+u = 355
+Else
+u = 354
+End If
+Dim o As Double
+o = (Int(mah / 2) * 30) + ((mah - 1 - Int(mah / 2)) * 29)
+Dim p As Double
+p = rooz - 1
+Dim s As Double
+s = o - p
+Dim f As Double
+f = u - s
+Dim g As Double
+g = y * harkat1salqkab
+Dim h As Double
+h = harkat1salkab * t
+Dim k As Double
+If sal >= 1251 Then
+k = (o + p) * harkat1rooz
+Else
+k = f * harkat1rooz
+End If
+Dim j As Double
+j = modd(k + h + g, 360)
+Dim mabda As Double
+mabda = (((52 / 60) + 43) / 60) + 95
+Dim qablmabda As Double
+If mabda + j < 360 Then
+qablmabda = mabda + j
+Else
+qablmabda = mabda + j - 360
+End If
+Dim baadmabda As Double
+If mabda > j Then
+baadmabda = mabda - j
+Else
+baadmabda = mabda - j + 360
+End If
+If sal >= 1251 Then
+keyd = baadmabda
+Else
+keyd = qablmabda
+End If
+
+End Function
+
+Public Function fazldorsal(saltahvyl As Integer, salasly As Integer) As Double
+fazldorsal = (87.4299807099) * (saltahvyl - salasly - 1)
+End Function
+Public Function fazldorrooz(saltahvyl As Integer, salasly As Integer) As Double
+fazldorrooz = (87.4299807099 + 360) / 365.2422002636
+End Function
+Public Function mozeentehsanavi(sal2 As Integer, mah2 As Integer, rooz2 As Double, mbtol As Double) As Double
+
+Dim sal1 As Integer
+Dim mah1 As Integer
+Dim rooz1 As Double
+sal1 = 1251
+mah1 = 12
+rooz1 = 3
+
+Dim roozasly As Double
+roozasly = ((sal1 - 1) * 354.36709259259) + (((Int(mah1 / 2) * 30 + (mah1 - 1 - Int(mah1 / 2)) * 29))) + rooz1
+Dim rooztahvily As Double
+rooztahvily = ((sal2 - 1) * 354.36709259259) + (((Int(mah2 / 2) * 30 + (mah2 - 1 - Int(mah2 / 2)) * 29))) + rooz2
+Dim fazl As Double
+fazl = (Int(rooztahvily) / 365.2422002636) - (Int(roozasly) / 365.2422002636)
+Dim bagy As Double
+bagy = modd((fazl * 30), 360)
+mozeentehsanavi = modd(bagy + taqsh(sal1, mah1, rooz1, mbtol), 360)
+End Function
+
+Public Function hesayamsanavi(sal2 As Integer, mah2 As Integer, rooz2 As Double, mbtol As Double) As Double
+
+Dim sal1 As Integer
+Dim mah1 As Integer
+Dim rooz1 As Double
+sal1 = 1251
+mah1 = 12
+rooz1 = 3
+
+Dim roozasly As Double
+roozasly = ((sal1 - 1) * 354.36709259259) + (((Int(mah1 / 2) * 30 + (mah1 - 1 - Int(mah1 / 2)) * 29))) + rooz1
+Dim rooztahvily As Double
+rooztahvily = ((sal2 - 1) * 354.36709259259) + (((Int(mah2 / 2) * 30 + (mah2 - 1 - Int(mah2 / 2)) * 29))) + rooz2
+Dim fazl As Double
+fazl = (Int(rooztahvily) / 365.2422002636) - (Int(roozasly) / 365.2422002636)
+Dim bagy As Double
+bagy = modd((fazl * 30), 360)
+Dim mozeentehsanavy As Double
+mozeentehsanavy = modd(bagy + taqsh(sal1, mah1, rooz1, mbtol), 360)
+hesayamsanavi = modd(mozeentehsanavy, 30)
+End Function
+
+Public Function mozeentehshohoori(sal2 As Integer, mah2 As Integer, rooz2 As Double, mbtol As Double) As Double
+
+Dim sal1 As Integer
+Dim mah1 As Integer
+Dim rooz1 As Double
+sal1 = 1251
+mah1 = 12
+rooz1 = 3
+
+Dim roozasly As Double
+roozasly = ((sal1 - 1) * 354.36709259259) + (((Int(mah1 / 2) * 30 + (mah1 - 1 - Int(mah1 / 2)) * 29))) + rooz1
+Dim rooztahvily As Double
+rooztahvily = ((sal2 - 1) * 354.36709259259) + (((Int(mah2 / 2) * 30 + (mah2 - 1 - Int(mah2 / 2)) * 29))) + rooz2
+Dim fazl As Double
+fazl = (Int(rooztahvily) / 365.2422002636) - (Int(roozasly) / 365.2422002636)
+Dim bagy As Double
+bagy = modd(fazl * 390, 390)
+mozeentehshohoori = modd(bagy + taqsh(sal1, mah1, rooz1, mbtol), 390)
+End Function
+
+Public Function hesayamshoori(sal2 As Integer, mah2 As Integer, rooz2 As Double, mbtol As Double) As Double
+
+Dim sal1 As Integer
+Dim mah1 As Integer
+Dim rooz1 As Double
+sal1 = 1251
+mah1 = 12
+rooz1 = 3
+
+Dim roozasly As Double
+roozasly = ((sal1 - 1) * 354.36709259259) + (((Int(mah1 / 2) * 30 + (mah1 - 1 - Int(mah1 / 2)) * 29))) + rooz1
+Dim rooztahvily As Double
+rooztahvily = ((sal2 - 1) * 354.36709259259) + (((Int(mah2 / 2) * 30 + (mah2 - 1 - Int(mah2 / 2)) * 29))) + rooz2
+Dim fazl As Double
+fazl = (Int(rooztahvily) / 365.2422002636) - (Int(roozasly) / 365.2422002636)
+Dim bagy As Double
+bagy = modd(fazl * 390, 390)
+Dim mozeentehshohoory As Double
+mozeentehshohoory = modd(bagy + taqsh(sal1, mah1, rooz1, mbtol), 390)
+hesayamshoori = modd(mozeentehshohoory, 30)
+End Function
+
+Public Function atayaame(salsh As Double)
+Dim asl As Double
+asl = 189827
+Dim mabda As Double
+mabda = salsh - 1215
+Dim p As Double
+p = asl + mabda
+Dim k As Double
+k = modd(p, 4590)
+Dim sh As Double
+sh = 1461
+Dim zoh As Double
+zoh = 1151
+Dim ota As Double
+ota = 480
+Dim qmr As Double
+qmr = 520
+Dim zh As Double
+zh = 265
+Dim mosh As Double
+mosh = 429
+Dim mer As Double
+mer = 284
+Dim q As Double
+q = sh
+Dim w As Double
+w = q + zoh
+Dim e As Double
+e = w + ota
+Dim r As Double
+r = e + qmr
+Dim t As Double
+t = r + zh
+Dim y As Double
+y = t + mosh
+Dim u As Double
+u = y + mer
+If k <= q Then
+atayaame = "shams"
+ElseIf k <= w Then
+atayaame = "zohre"
+ElseIf k <= e Then
+atayaame = "otared"
+ElseIf k <= r Then
+atayaame = "qamar"
+ElseIf k <= t Then
+atayaame = "zohal"
+ElseIf k <= y Then
+atayaame = "moshtary"
+ElseIf k <= u Then
+atayaame = "merikh"
+End If
+End Function
+
+Public Function fasladvarame(salsh As Double)
+Dim asl As Double
+asl = 5383.42739
+Dim x As Double
+x = asl + salsh - 1215
+Dim y As Double
+y = modd(x, 360)
+Dim w As Double
+w = y / 90
+If w < 1 Then
+fasladvarame = "fasl 1"
+ElseIf w < 2 Then
+fasladvarame = "fasl 2"
+ElseIf w < 3 Then
+fasladvarame = "fasl 3"
+Else
+fasladvarame = "fasl 4"
+End If
+End Function
+Public Function saladvarame(salsh As Double)
+Dim asl As Double
+asl = 5383.42739
+Dim x As Double
+x = asl + salsh - 1215
+saladvarame = modd(x, 360)
+End Function
+
+
+
+
+

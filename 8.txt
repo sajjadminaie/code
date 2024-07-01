@@ -1,0 +1,4016 @@
+Public Function zarzmer(hesse As Double) As Double
+Dim qayat As Double
+qayat = (((5 / 60) + 51) / 60) + 1
+zarzmer = Abs(asn(sn(qayat) * sn(hesse) / 60))
+End Function
+Public Function tmer2(hesse As Double) As Double
+Dim a As Double
+a = acs(60 * csn(hesse) / csn(Abs(zarzmer(hesse))))
+If hesse < 180 Then
+tmer2 = a - hesse
+Else
+tmer2 = 360 - a - hesse
+End If
+End Function
+Public Function zarzmosh(hesse As Double) As Double
+Dim qayat As Double
+qayat = (((26 / 60) + 19) / 60) + 1
+zarzmosh = Abs(asn(sn(qayat) * sn(hesse) / 60))
+End Function
+Public Function zarzzohal(hesse As Double) As Double
+Dim qayat1 As Double
+qayat1 = 2.5025
+Dim qayat2 As Double
+qayat2 = 2.561111111
+If hesse <= 180 Then
+zarzzohal = Abs(asn(sn(hesse) * sn(qayat1) / 60))
+Else
+zarzzohal = Abs(asn(sn(hesse) * sn(qayat2) / 60))
+End If
+End Function
+Public Function tmosh2(hesse As Double) As Double
+Dim a As Double
+a = acs(60 * csn(hesse) / csn(Abs(zarzmosh(hesse))))
+If hesse < 180 Then
+tmosh2 = a - hesse
+Else
+tmosh2 = 360 - a - hesse
+End If
+If hesse <= 90 Or (hesse > 180 And hesse <= 270) Then
+tmosh2 = tmosh2 * -1
+Else
+tmosh2 = tmosh2
+End If
+End Function
+Public Function zarzzohre(hesse As Double) As Double
+Dim qayat As Double
+qayat = (((20 / 60) + 23) / 60) + 3
+zarzzohre = Abs(asn(sn(qayat) * sn(hesse) / 60))
+End Function
+Public Function tzohre2(hesse As Double) As Double
+Dim a As Double
+a = acs(60 * csn(hesse) / csn(Abs(zarzzohre(hesse))))
+If hesse < 180 Then
+tzohre2 = a - hesse
+Else
+tzohre2 = 360 - a - hesse
+End If
+End Function
+Public Function zarzota(hesse As Double) As Double
+Dim qayat As Double
+qayat = (((13 / 60) + 52) / 60) + 6
+zarzota = Abs(asn(sn(qayat) * sn(hesse) / 60))
+End Function
+Public Function tota2(hesse As Double) As Double
+Dim a As Double
+a = acs(60 * csn(hesse) / csn(Abs(zarzota(hesse))))
+If hesse < 180 Then
+tota2 = a - hesse
+Else
+tota2 = 360 - a - hesse
+End If
+End Function
+Public Function tzohal2(hesse As Double) As Double
+Dim zarzzohal As Double
+zarzzohal = (((40 / 60) + 33) / 60) + 2
+Dim a As Double
+a = hesse - (acj(ctn(hesse) * 60 / csn(zarzzohal)))
+If hesse < 180 Then
+tzohal2 = a * -1
+Else
+tzohal2 = (a - 180) * -1
+End If
+End Function
+Public Function taqmosh(sal As Integer, mah As Integer, rooz As Double, mbtool As Double) As Double
+Dim markazm As Double
+If wasatmosh(sal, mah, rooz, mbtool) < oujmosh(sal, mah, rooz, mbtool) Then
+markazm = (wasatmosh(sal, mah, rooz, mbtool) + 360) - oujmosh(sal, mah, rooz, mbtool)
+Else
+markazm = wasatmosh(sal, mah, rooz, mbtool) - oujmosh(sal, mah, rooz, mbtool)
+End If
+Dim a1 As Double
+a1 = tq(wasatmosh(sal, mah, rooz, mbtool) + tmosh1(markazm))
+Dim b1 As Double
+b1 = tq(markazm + tmosh1(markazm))
+Dim hesarz As Double
+If a1 < rasmosh(sal, mah, rooz, mbtool) Then
+hesarz = (a1 + 360) - rasmosh(sal, mah, rooz, mbtool)
+Else
+hesarz = a1 - rasmosh(sal, mah, rooz, mbtool)
+End If
+Dim a2 As Double
+a2 = a1 + tmosh2(hesarz)
+Dim b2 As Double
+b2 = b1 + tmosh2(hesarz)
+Dim nazir As Double
+If taqsh(sal, mah, rooz, mbtool) < 180 Then
+nazir = taqsh(sal, mah, rooz, mbtool) + 180
+Else
+nazir = taqsh(sal, mah, rooz, mbtool) - 180
+End If
+Dim zavsh As Double
+If a2 < nazir Then
+zavsh = (a2 + 360) - nazir
+Else
+zavsh = (a2 - nazir)
+End If
+Dim c As Double
+c = zavsh / 2
+Dim monaqah As Double
+If c < 90 Then
+monaqah = 90 - c
+Else
+monaqah = 90 - (180 - c)
+End If
+Dim d As Double
+d = csn(zarzmosh(hesarz))
+Dim g As Double
+g = bmosh(b2) * d
+Dim k As Double
+k = g / bshams(mtash(sal, mah, rooz, mbtool))
+Dim e As Double
+e = atj(k)
+Dim n As Double
+If e - 45 > 0 Then
+n = e - 45
+Else
+n = (e + 360) - 45
+End If
+Dim m As Double
+m = (tn(n) * tn(monaqah)) / 60
+Dim zavarz As Double
+zavarz = monaqah + atj(m)
+Dim r As Double
+If zavsh < 180 Then
+If (taqsh(sal, mah, rooz, mbtool) < zavarz) Then
+r = (taqsh(sal, mah, rooz, mbtool) + 360) - zavarz
+Else
+r = taqsh(sal, mah, rooz, mbtool) - zavarz
+End If
+Else
+r = tq(taqsh(sal, mah, rooz, mbtool) + zavarz)
+End If
+If r < 360 Then
+taqmosh = r
+Else
+taqmosh = r - 360
+End If
+End Function
+Public Function arzmosh(sal As Integer, mah As Integer, rooz As Double, mbtool As Double) As Double
+Dim markazm As Double
+If wasatmosh(sal, mah, rooz, mbtool) < oujmosh(sal, mah, rooz, mbtool) Then
+markazm = (wasatmosh(sal, mah, rooz, mbtool) + 360) - oujmosh(sal, mah, rooz, mbtool)
+Else
+markazm = wasatmosh(sal, mah, rooz, mbtool) - oujmosh(sal, mah, rooz, mbtool)
+End If
+Dim a1 As Double
+a1 = tq(wasatmosh(sal, mah, rooz, mbtool) + tmosh1(markazm))
+Dim b1 As Double
+b1 = tq(markazm + tmosh1(markazm))
+Dim hesarz As Double
+If a1 < rasmosh(sal, mah, rooz, mbtool) Then
+hesarz = (a1 + 360) - rasmosh(sal, mah, rooz, mbtool)
+Else
+hesarz = a1 - rasmosh(sal, mah, rooz, mbtool)
+End If
+Dim a2 As Double
+a2 = a1 + tmosh2(hesarz)
+Dim b2 As Double
+b2 = b1 + tmosh2(hesarz)
+Dim nazir As Double
+If taqsh(sal, mah, rooz, mbtool) < 180 Then
+nazir = taqsh(sal, mah, rooz, mbtool) + 180
+Else
+nazir = taqsh(sal, mah, rooz, mbtool) - 180
+End If
+Dim zavsh As Double
+If a2 < nazir Then
+zavsh = (a2 + 360) - nazir
+Else
+zavsh = (a2 - nazir)
+End If
+Dim c As Double
+c = zavsh / 2
+Dim monaqah As Double
+If c < 90 Then
+monaqah = 90 - c
+Else
+monaqah = 90 - (180 - c)
+End If
+Dim d As Double
+d = csn(zarzmosh(hesarz))
+Dim g As Double
+g = bmosh(b2) * d
+Dim k As Double
+k = g / bshams(mtash(sal, mah, rooz, mbtool))
+Dim e As Double
+e = atj(k)
+Dim n As Double
+If e - 45 > 0 Then
+n = e - 45
+Else
+n = (e + 360) - 45
+End If
+Dim m As Double
+m = (tn(n) * tn(monaqah)) / 60
+Dim zavarz As Double
+zavarz = monaqah + atj(m)
+Dim x As Double
+If zavarz < 90 Then
+x = zavarz
+Else
+x = 180 - zavarz
+End If
+Dim y As Double
+y = sn(x) * tn(zarzmosh(hesarz))
+Dim z As Double
+z = y / Abs(sn(zavsh))
+If hesarz <= 180 Then
+arzmosh = atj(z)
+Else
+arzmosh = atj(z) * -1
+End If
+End Function
+Public Function taqmer(sal As Integer, mah As Integer, rooz As Double, mbtool As Double) As Double
+Dim markazm As Double
+If wasatmer(sal, mah, rooz, mbtool) < oujmer(sal, mah, rooz, mbtool) Then
+markazm = (wasatmer(sal, mah, rooz, mbtool) + 360) - oujmer(sal, mah, rooz, mbtool)
+Else
+markazm = wasatmer(sal, mah, rooz, mbtool) - oujmer(sal, mah, rooz, mbtool)
+End If
+Dim a1 As Double
+a1 = tq(wasatmer(sal, mah, rooz, mbtool) + tmer1(markazm))
+Dim b1 As Double
+b1 = tq(markazm + tmer1(markazm))
+Dim hesarz As Double
+If a1 < rasmer(sal, mah, rooz, mbtool) Then
+hesarz = (a1 + 360) - rasmer(sal, mah, rooz, mbtool)
+Else
+hesarz = a1 - rasmer(sal, mah, rooz, mbtool)
+End If
+Dim a2 As Double
+a2 = a1 + tmer2(hesarz)
+Dim b2 As Double
+b2 = b1 + tmer2(hesarz)
+Dim nazir As Double
+If taqsh(sal, mah, rooz, mbtool) < 180 Then
+nazir = taqsh(sal, mah, rooz, mbtool) + 180
+Else
+nazir = taqsh(sal, mah, rooz, mbtool) - 180
+End If
+Dim zavsh As Double
+If a2 < nazir Then
+zavsh = (a2 + 360) - nazir
+Else
+zavsh = (a2 - nazir)
+End If
+Dim c As Double
+c = zavsh / 2
+Dim monaqah As Double
+If c < 90 Then
+monaqah = 90 - c
+Else
+monaqah = 90 - (180 - c)
+End If
+Dim d As Double
+d = csn(zarzmer(hesarz))
+Dim g As Double
+g = bmer(b2) * d
+Dim k As Double
+k = g / bshams(mtash(sal, mah, rooz, mbtool))
+Dim e As Double
+e = atj(k)
+Dim n As Double
+If e - 45 > 0 Then
+n = e - 45
+Else
+n = (e + 360) - 45
+End If
+Dim m As Double
+m = (tn(n) * tn(monaqah)) / 60
+Dim zavarz As Double
+zavarz = monaqah + atj(m)
+Dim r As Double
+If zavsh < 180 Then
+If (taqsh(sal, mah, rooz, mbtool) < zavarz) Then
+r = (taqsh(sal, mah, rooz, mbtool) + 360) - zavarz
+Else
+r = taqsh(sal, mah, rooz, mbtool) - zavarz
+End If
+Else
+r = tq(taqsh(sal, mah, rooz, mbtool) + zavarz)
+End If
+If r < 360 Then
+taqmer = r
+Else
+taqmer = r - 360
+End If
+End Function
+Public Function arzmer(sal As Integer, mah As Integer, rooz As Double, mbtool As Double) As Double
+Dim markazm As Double
+If wasatmer(sal, mah, rooz, mbtool) < oujmer(sal, mah, rooz, mbtool) Then
+markazm = (wasatmer(sal, mah, rooz, mbtool) + 360) - oujmer(sal, mah, rooz, mbtool)
+Else
+markazm = wasatmer(sal, mah, rooz, mbtool) - oujmer(sal, mah, rooz, mbtool)
+End If
+Dim a1 As Double
+a1 = tq(wasatmer(sal, mah, rooz, mbtool) + tmer1(markazm))
+Dim b1 As Double
+b1 = tq(markazm + tmer1(markazm))
+Dim hesarz As Double
+If a1 < rasmer(sal, mah, rooz, mbtool) Then
+hesarz = (a1 + 360) - rasmer(sal, mah, rooz, mbtool)
+Else
+hesarz = a1 - rasmer(sal, mah, rooz, mbtool)
+End If
+Dim a2 As Double
+a2 = a1 + tmer2(hesarz)
+Dim b2 As Double
+b2 = b1 + tmer2(hesarz)
+Dim nazir As Double
+If taqsh(sal, mah, rooz, mbtool) < 180 Then
+nazir = taqsh(sal, mah, rooz, mbtool) + 180
+Else
+nazir = taqsh(sal, mah, rooz, mbtool) - 180
+End If
+Dim zavsh As Double
+If a2 < nazir Then
+zavsh = (a2 + 360) - nazir
+Else
+zavsh = (a2 - nazir)
+End If
+Dim c As Double
+c = zavsh / 2
+Dim monaqah As Double
+If c < 90 Then
+monaqah = 90 - c
+Else
+monaqah = 90 - (180 - c)
+End If
+Dim d As Double
+d = csn(zarzmer(hesarz))
+Dim g As Double
+g = bmer(b2) * d
+Dim k As Double
+k = g / bshams(mtash(sal, mah, rooz, mbtool))
+Dim e As Double
+e = atj(k)
+Dim n As Double
+If e - 45 > 0 Then
+n = e - 45
+Else
+n = (e + 360) - 45
+End If
+Dim m As Double
+m = (tn(n) * tn(monaqah)) / 60
+Dim zavarz As Double
+zavarz = monaqah + atj(m)
+Dim x As Double
+If zavarz < 90 Then
+x = zavarz
+Else
+x = 180 - zavarz
+End If
+Dim y As Double
+y = sn(x) * tn(zarzmer(hesarz))
+Dim z As Double
+z = y / Abs(sn(zavsh))
+If hesarz <= 180 Then
+arzmer = atj(z)
+Else
+arzmer = atj(z) * -1
+End If
+End Function
+Public Function taqota(sal As Integer, mah As Integer, rooz As Double, mbtool As Double) As Double
+Dim markazm As Double
+If wasatott(sal, mah, rooz, mbtool) < oujott(sal, mah, rooz, mbtool) Then
+markazm = (wasatott(sal, mah, rooz, mbtool) + 360) - oujott(sal, mah, rooz, mbtool)
+Else
+markazm = wasatott(sal, mah, rooz, mbtool) - oujott(sal, mah, rooz, mbtool)
+End If
+Dim a1 As Double
+a1 = tq(wasatott(sal, mah, rooz, mbtool) + tota1(markazm))
+Dim b1 As Double
+b1 = tq(markazm + tota1(markazm))
+Dim hesarz As Double
+If a1 < rasott(sal, mah, rooz, mbtool) Then
+hesarz = (a1 + 360) - rasott(sal, mah, rooz, mbtool)
+Else
+hesarz = a1 - rasott(sal, mah, rooz, mbtool)
+End If
+Dim a2 As Double
+a2 = a1 + tota2(hesarz)
+Dim b2 As Double
+b2 = b1 + tota2(hesarz)
+Dim nazir As Double
+If taqsh(sal, mah, rooz, mbtool) < 180 Then
+nazir = taqsh(sal, mah, rooz, mbtool) + 180
+Else
+nazir = taqsh(sal, mah, rooz, mbtool) - 180
+End If
+Dim zavsh As Double
+If a2 < nazir Then
+zavsh = (a2 + 360) - nazir
+Else
+zavsh = (a2 - nazir)
+End If
+Dim c As Double
+c = zavsh / 2
+Dim monaqah As Double
+If c < 90 Then
+monaqah = 90 - c
+Else
+monaqah = 90 - (180 - c)
+End If
+Dim d As Double
+d = csn(zarzota(hesarz))
+Dim g As Double
+g = bota(b2) * d
+Dim k As Double
+k = ((bshams(mtash(sal, mah, rooz, mbtool)) * 60) / g) * 60
+Dim e As Double
+e = atj(k)
+Dim n As Double
+If e - 45 > 0 Then
+n = e - 45
+Else
+n = (e + 360) - 45
+End If
+Dim m As Double
+m = (tn(n) * tn(monaqah)) / 60
+Dim zavarz As Double
+zavarz = tq(monaqah - atj(m))
+Dim r As Double
+If zavsh < 180 Then
+If (taqsh(sal, mah, rooz, mbtool) < zavarz) Then
+r = (taqsh(sal, mah, rooz, mbtool) + 360) - zavarz
+Else
+r = taqsh(sal, mah, rooz, mbtool) - zavarz
+End If
+Else
+r = tq(taqsh(sal, mah, rooz, mbtool) + zavarz)
+End If
+If r < 360 Then
+taqota = r
+Else
+taqota = r - 360
+End If
+End Function
+Public Function arzota(sal As Integer, mah As Integer, rooz As Double, mbtool As Double) As Double
+Dim markazm As Double
+If wasatott(sal, mah, rooz, mbtool) < oujott(sal, mah, rooz, mbtool) Then
+markazm = (wasatott(sal, mah, rooz, mbtool) + 360) - oujott(sal, mah, rooz, mbtool)
+Else
+markazm = wasatott(sal, mah, rooz, mbtool) - oujott(sal, mah, rooz, mbtool)
+End If
+Dim a1 As Double
+a1 = tq(wasatott(sal, mah, rooz, mbtool) + tota1(markazm))
+Dim b1 As Double
+b1 = tq(markazm + tota1(markazm))
+Dim hesarz As Double
+If a1 < rasott(sal, mah, rooz, mbtool) Then
+hesarz = (a1 + 360) - rasott(sal, mah, rooz, mbtool)
+Else
+hesarz = a1 - rasott(sal, mah, rooz, mbtool)
+End If
+Dim a2 As Double
+a2 = a1 + tota2(hesarz)
+Dim b2 As Double
+b2 = b1 + tota2(hesarz)
+Dim nazir As Double
+If taqsh(sal, mah, rooz, mbtool) < 180 Then
+nazir = taqsh(sal, mah, rooz, mbtool) + 180
+Else
+nazir = taqsh(sal, mah, rooz, mbtool) - 180
+End If
+Dim zavsh As Double
+If a2 < nazir Then
+zavsh = (a2 + 360) - nazir
+Else
+zavsh = (a2 - nazir)
+End If
+Dim c As Double
+c = zavsh / 2
+Dim monaqah As Double
+If c < 90 Then
+monaqah = 90 - c
+Else
+monaqah = 90 - (180 - c)
+End If
+Dim d As Double
+d = csn(zarzota(hesarz))
+Dim g As Double
+g = bota(b2) * d
+Dim k As Double
+k = ((bshams(mtash(sal, mah, rooz, mbtool)) * 60) / g) * 60
+Dim e As Double
+e = atj(k)
+Dim n As Double
+If e - 45 > 0 Then
+n = e - 45
+Else
+n = (e + 360) - 45
+End If
+Dim m As Double
+m = (tn(n) * tn(monaqah)) / 60
+Dim zavarz As Double
+zavarz = tq(monaqah - atj(m))
+Dim y As Double
+y = sn(zavarz) * tn(zarzota(hesarz))
+Dim z As Double
+z = y / Abs(sn(zavsh))
+If hesarz <= 180 Then
+arzota = atj(z)
+Else
+arzota = atj(z) * -1
+End If
+End Function
+Public Function taqzohal(sal As Integer, mah As Integer, rooz As Double, mbtool As Double) As Double
+Dim markazm As Double
+If wasatzo(sal, mah, rooz, mbtool) < oujzo(sal, mah, rooz, mbtool) Then
+markazm = (wasatzo(sal, mah, rooz, mbtool) + 360) - oujzo(sal, mah, rooz, mbtool)
+Else
+markazm = wasatzo(sal, mah, rooz, mbtool) - oujzo(sal, mah, rooz, mbtool)
+End If
+Dim a1 As Double
+a1 = tq(wasatzo(sal, mah, rooz, mbtool) + tzohal1(markazm))
+Dim b1 As Double
+b1 = tq(markazm + tzohal1(markazm))
+Dim hesarz As Double
+If a1 < raszo(sal, mah, rooz, mbtool) Then
+hesarz = (a1 + 360) - raszo(sal, mah, rooz, mbtool)
+Else
+hesarz = a1 - raszo(sal, mah, rooz, mbtool)
+End If
+Dim u As Double
+u = tarasz(hesarz) + raszo(sal, mah, rooz, mbtool)
+Dim q As Double
+If a1 - u > 0 Then
+q = a1 - u
+Else
+q = (a1 + 360) - u
+End If
+Dim a2 As Double
+a2 = a1 + tzohal2(hesarz)
+Dim b2 As Double
+b2 = b1 + tzohal2(hesarz)
+Dim nazir As Double
+If taqsh(sal, mah, rooz, mbtool) < 180 Then
+nazir = taqsh(sal, mah, rooz, mbtool) + 180
+Else
+nazir = taqsh(sal, mah, rooz, mbtool) - 180
+End If
+Dim zavsh As Double
+If a2 < nazir Then
+zavsh = (a2 + 360) - nazir
+Else
+zavsh = (a2 - nazir)
+End If
+Dim c As Double
+c = zavsh / 2
+Dim monaqah As Double
+If c < 90 Then
+monaqah = 90 - c
+Else
+monaqah = 90 - (180 - c)
+End If
+Dim d As Double
+d = csn(zarzzohal(q))
+Dim g As Double
+g = bzohal(b2) * d
+Dim k As Double
+k = g / bshams(mtash(sal, mah, rooz, mbtool))
+Dim e As Double
+e = atj(k)
+Dim n As Double
+If e - 45 > 0 Then
+n = e - 45
+Else
+n = (e + 360) - 45
+End If
+Dim m As Double
+m = (tn(n) * tn(monaqah)) / 60
+Dim zavarz As Double
+If monaqah + atj(m) < 360 Then
+zavarz = monaqah + atj(m)
+Else
+zavarz = (monaqah + atj(m)) - 360
+End If
+Dim r As Double
+If zavsh < 180 Then
+If (taqsh(sal, mah, rooz, mbtool) < zavarz) Then
+r = (taqsh(sal, mah, rooz, mbtool) + 360) - zavarz
+Else
+r = taqsh(sal, mah, rooz, mbtool) - zavarz
+End If
+Else
+r = tq(taqsh(sal, mah, rooz, mbtool) + zavarz)
+End If
+If r < 360 Then
+taqzohal = r
+Else
+taqzohal = r - 360
+End If
+End Function
+Public Function arzzohal(sal As Integer, mah As Integer, rooz As Double, mbtool As Double) As Double
+Dim markazm As Double
+If wasatzo(sal, mah, rooz, mbtool) < oujzo(sal, mah, rooz, mbtool) Then
+markazm = (wasatzo(sal, mah, rooz, mbtool) + 360) - oujzo(sal, mah, rooz, mbtool)
+Else
+markazm = wasatzo(sal, mah, rooz, mbtool) - oujzo(sal, mah, rooz, mbtool)
+End If
+Dim a1 As Double
+a1 = tq(wasatzo(sal, mah, rooz, mbtool) + tzohal1(markazm))
+Dim b1 As Double
+b1 = tq(markazm + tzohal1(markazm))
+Dim hesarz As Double
+If a1 < raszo(sal, mah, rooz, mbtool) Then
+hesarz = (a1 + 360) - raszo(sal, mah, rooz, mbtool)
+Else
+hesarz = a1 - raszo(sal, mah, rooz, mbtool)
+End If
+Dim u As Double
+u = tarasz(hesarz) + raszo(sal, mah, rooz, mbtool)
+Dim q As Double
+If a1 - u > 0 Then
+q = a1 - u
+Else
+q = (a1 + 360) - u
+End If
+Dim a2 As Double
+a2 = a1 + tzohal2(hesarz)
+Dim b2 As Double
+b2 = b1 + tzohal2(hesarz)
+Dim nazir As Double
+If taqsh(sal, mah, rooz, mbtool) < 180 Then
+nazir = taqsh(sal, mah, rooz, mbtool) + 180
+Else
+nazir = taqsh(sal, mah, rooz, mbtool) - 180
+End If
+Dim zavsh As Double
+If a2 < nazir Then
+zavsh = (a2 + 360) - nazir
+Else
+zavsh = (a2 - nazir)
+End If
+Dim c As Double
+c = zavsh / 2
+Dim monaqah As Double
+If c < 90 Then
+monaqah = 90 - c
+Else
+monaqah = 90 - (180 - c)
+End If
+Dim d As Double
+d = csn(zarzzohal(q))
+Dim g As Double
+g = bzohal(b2) * d
+Dim k As Double
+k = g / bshams(mtash(sal, mah, rooz, mbtool))
+Dim e As Double
+e = atj(k)
+Dim n As Double
+If e - 45 > 0 Then
+n = e - 45
+Else
+n = (e + 360) - 45
+End If
+Dim m As Double
+m = (tn(n) * tn(monaqah)) / 60
+Dim zavarz As Double
+If monaqah + atj(m) < 360 Then
+zavarz = monaqah + atj(m)
+Else
+zavarz = (monaqah + atj(m)) - 360
+End If
+Dim y As Double
+y = sn(zavarz) * tn(zarzzohal(q))
+Dim z As Double
+z = y / Abs(sn(zavsh))
+If q <= 180 Then
+arzzohal = atj(z)
+Else
+arzzohal = atj(z) * -1
+End If
+End Function
+Public Function taqzohre(sal As Integer, mah As Integer, rooz As Double, mbtool As Double) As Double
+Dim markazm As Double
+If wasatzh(sal, mah, rooz, mbtool) < oujzh(sal, mah, rooz, mbtool) Then
+markazm = (wasatzh(sal, mah, rooz, mbtool) + 360) - oujzh(sal, mah, rooz, mbtool)
+Else
+markazm = wasatzh(sal, mah, rooz, mbtool) - oujzh(sal, mah, rooz, mbtool)
+End If
+Dim a1 As Double
+a1 = tq(wasatzh(sal, mah, rooz, mbtool) + tzohre1(markazm))
+Dim b1 As Double
+b1 = tq(markazm + tzohre1(markazm))
+Dim hesarz As Double
+If a1 < raszh(sal, mah, rooz, mbtool) Then
+hesarz = (a1 + 360) - raszh(sal, mah, rooz, mbtool)
+Else
+hesarz = a1 - raszh(sal, mah, rooz, mbtool)
+End If
+Dim a2 As Double
+a2 = a1 + tzohre2(hesarz)
+Dim b2 As Double
+b2 = b1 + tzohre2(hesarz)
+Dim nazir As Double
+If taqsh(sal, mah, rooz, mbtool) < 180 Then
+nazir = taqsh(sal, mah, rooz, mbtool) + 180
+Else
+nazir = taqsh(sal, mah, rooz, mbtool) - 180
+End If
+Dim zavsh As Double
+If a2 < nazir Then
+zavsh = (a2 + 360) - nazir
+Else
+zavsh = (a2 - nazir)
+End If
+Dim c As Double
+c = zavsh / 2
+Dim monaqah As Double
+If c < 90 Then
+monaqah = 90 - c
+Else
+monaqah = 90 - (180 - c)
+End If
+Dim d As Double
+d = csn(zarzzohre(hesarz))
+Dim g As Double
+g = bzohre(b2) * d
+Dim k As Double
+k = ((bshams(mtash(sal, mah, rooz, mbtool)) * 60) / g) * 60
+Dim e As Double
+e = atj(k)
+Dim n As Double
+If e - 45 > 0 Then
+n = e - 45
+Else
+n = (e + 360) - 45
+End If
+Dim m As Double
+m = (tn(n) * tn(monaqah)) / 60
+Dim zavarz As Double
+zavarz = tq(monaqah - atj(m))
+Dim r As Double
+If zavsh < 180 Then
+If (taqsh(sal, mah, rooz, mbtool) < zavarz) Then
+r = (taqsh(sal, mah, rooz, mbtool) + 360) - zavarz
+Else
+r = taqsh(sal, mah, rooz, mbtool) - zavarz
+End If
+Else
+r = tq(taqsh(sal, mah, rooz, mbtool) + zavarz)
+End If
+If r < 360 Then
+taqzohre = r
+Else
+taqzohre = r - 360
+End If
+End Function
+Public Function arzzohre(sal As Integer, mah As Integer, rooz As Double, mbtool As Double) As Double
+Dim markazm As Double
+If wasatzh(sal, mah, rooz, mbtool) < oujzh(sal, mah, rooz, mbtool) Then
+markazm = (wasatzh(sal, mah, rooz, mbtool) + 360) - oujzh(sal, mah, rooz, mbtool)
+Else
+markazm = wasatzh(sal, mah, rooz, mbtool) - oujzh(sal, mah, rooz, mbtool)
+End If
+Dim a1 As Double
+a1 = tq(wasatzh(sal, mah, rooz, mbtool) + tzohre1(markazm))
+Dim b1 As Double
+b1 = tq(markazm + tzohre1(markazm))
+Dim hesarz As Double
+If a1 < raszh(sal, mah, rooz, mbtool) Then
+hesarz = (a1 + 360) - raszh(sal, mah, rooz, mbtool)
+Else
+hesarz = a1 - raszh(sal, mah, rooz, mbtool)
+End If
+Dim a2 As Double
+a2 = a1 + tzohre2(hesarz)
+Dim b2 As Double
+b2 = b1 + tzohre2(hesarz)
+Dim nazir As Double
+If taqsh(sal, mah, rooz, mbtool) < 180 Then
+nazir = taqsh(sal, mah, rooz, mbtool) + 180
+Else
+nazir = taqsh(sal, mah, rooz, mbtool) - 180
+End If
+Dim zavsh As Double
+If a2 < nazir Then
+zavsh = (a2 + 360) - nazir
+Else
+zavsh = (a2 - nazir)
+End If
+Dim c As Double
+c = zavsh / 2
+Dim monaqah As Double
+If c < 90 Then
+monaqah = 90 - c
+Else
+monaqah = 90 - (180 - c)
+End If
+Dim d As Double
+d = csn(zarzzohre(hesarz))
+Dim g As Double
+g = bzohre(b2) * d
+Dim k As Double
+k = ((bshams(mtash(sal, mah, rooz, mbtool)) * 60) / g) * 60
+Dim e As Double
+e = atj(k)
+Dim n As Double
+If e - 45 > 0 Then
+n = e - 45
+Else
+n = (e + 360) - 45
+End If
+Dim m As Double
+m = (tn(n) * tn(monaqah)) / 60
+Dim zavarz As Double
+zavarz = tq(monaqah - atj(m))
+Dim y As Double
+y = sn(zavarz) * tn(zarzzohre(hesarz))
+Dim z As Double
+z = y / Abs(sn(zavsh))
+If hesarz <= 180 Then
+arzzohre = atj(z)
+Else
+arzzohre = atj(z) * -1
+End If
+End Function
+Public Function bmer1(m As Double) As Double
+Dim a As Double
+Dim c As Double
+If m >= 0 And m <= 180 Then
+a = m
+ElseIf m > 180 Then
+a = 360 - m
+End If
+
+If a = 0 Then
+c = (((51 / 60) + 53) / 60) + (39) + (1 * 60)
+
+ElseIf a = 1 Then
+c = (((2 / 60) + 53) / 60) + (39) + (1 * 60)
+
+ElseIf a = 2 Then
+c = (((50 / 60) + 52) / 60) + (39) + (1 * 60)
+
+ElseIf a = 3 Then
+c = (((24 / 60) + 52) / 60) + (39) + (1 * 60)
+
+ElseIf a = 4 Then
+c = (((52 / 60) + 51) / 60) + (39) + (1 * 60)
+
+ElseIf a = 5 Then
+c = (((53 / 60) + 50) / 60) + (39) + (1 * 60)
+
+ElseIf a = 6 Then
+c = (((28 / 60) + 49) / 60) + (39) + (1 * 60)
+
+ElseIf a = 7 Then
+c = (((5 / 60) + 48) / 60) + (39) + (1 * 60)
+
+ElseIf a = 8 Then
+c = (((34 / 60) + 46) / 60) + (39) + (1 * 60)
+
+ElseIf a = 9 Then
+c = (((54 / 60) + 44) / 60) + (39) + (1 * 60)
+
+ElseIf a = 10 Then
+c = (((12 / 60) + 43) / 60) + (39) + (1 * 60)
+
+ElseIf a = 11 Then
+c = (((26 / 60) + 41) / 60) + (39) + (1 * 60)
+
+ElseIf a = 12 Then
+c = (((38 / 60) + 39) / 60) + (39) + (1 * 60)
+
+ElseIf a = 13 Then
+c = (((28 / 60) + 37) / 60) + (39) + (1 * 60)
+
+ElseIf a = 14 Then
+c = (((18 / 60) + 35) / 60) + (39) + (1 * 60)
+
+ElseIf a = 15 Then
+c = (((45 / 60) + 32) / 60) + (39) + (1 * 60)
+
+ElseIf a = 16 Then
+c = (((16 / 60) + 30) / 60) + (39) + (1 * 60)
+
+ElseIf a = 17 Then
+c = (((5 / 60) + 27) / 60) + (39) + (1 * 60)
+
+ElseIf a = 18 Then
+c = (((1 / 60) + 24) / 60) + (39) + (1 * 60)
+
+ElseIf a = 19 Then
+c = (((26 / 60) + 20) / 60) + (39) + (1 * 60)
+
+ElseIf a = 20 Then
+c = (((35 / 60) + 16) / 60) + (39) + (1 * 60)
+
+ElseIf a = 21 Then
+c = (((38 / 60) + 12) / 60) + (39) + (1 * 60)
+
+ElseIf a = 22 Then
+c = (((52 / 60) + 8) / 60) + (39) + (1 * 60)
+
+ElseIf a = 23 Then
+c = (((21 / 60) + 4) / 60) + (39) + (1 * 60)
+
+ElseIf a = 24 Then
+c = (((2 / 60) + 0) / 60) + (39) + (1 * 60)
+
+ElseIf a = 25 Then
+c = (((43 / 60) + 55) / 60) + (38) + (1 * 60)
+
+ElseIf a = 26 Then
+c = (((16 / 60) + 51) / 60) + (38) + (1 * 60)
+
+ElseIf a = 27 Then
+c = (((57 / 60) + 46) / 60) + (38) + (1 * 60)
+
+ElseIf a = 28 Then
+c = (((46 / 60) + 42) / 60) + (38) + (1 * 60)
+
+ElseIf a = 29 Then
+c = (((32 / 60) + 37) / 60) + (38) + (1 * 60)
+
+ElseIf a = 30 Then
+c = (((29 / 60) + 32) / 60) + (38) + (1 * 60)
+
+ElseIf a = 31 Then
+c = (((34 / 60) + 27) / 60) + (38) + (1 * 60)
+
+ElseIf a = 32 Then
+c = (((40 / 60) + 21) / 60) + (38) + (1 * 60)
+
+ElseIf a = 33 Then
+c = (((5 / 60) + 16) / 60) + (38) + (1 * 60)
+
+ElseIf a = 34 Then
+c = (((34 / 60) + 10) / 60) + (38) + (1 * 60)
+
+ElseIf a = 35 Then
+c = (((56 / 60) + 4) / 60) + (38) + (1 * 60)
+
+ElseIf a = 36 Then
+c = (((0 / 60) + 59) / 60) + (37) + (1 * 60)
+
+ElseIf a = 37 Then
+c = (((41 / 60) + 52) / 60) + (37) + (1 * 60)
+
+ElseIf a = 38 Then
+c = (((21 / 60) + 46) / 60) + (37) + (1 * 60)
+
+ElseIf a = 39 Then
+c = (((42 / 60) + 39) / 60) + (37) + (1 * 60)
+
+ElseIf a = 40 Then
+c = (((1 / 60) + 33) / 60) + (37) + (1 * 60)
+
+ElseIf a = 41 Then
+c = (((44 / 60) + 26) / 60) + (37) + (1 * 60)
+
+ElseIf a = 42 Then
+c = (((23 / 60) + 19) / 60) + (37) + (1 * 60)
+
+ElseIf a = 43 Then
+c = (((34 / 60) + 12) / 60) + (37) + (1 * 60)
+
+ElseIf a = 44 Then
+c = (((40 / 60) + 5) / 60) + (37) + (1 * 60)
+
+ElseIf a = 45 Then
+c = (((41 / 60) + 58) / 60) + (36) + (1 * 60)
+
+ElseIf a = 46 Then
+c = (((51 / 60) + 51) / 60) + (36) + (1 * 60)
+
+ElseIf a = 47 Then
+c = (((40 / 60) + 44) / 60) + (36) + (1 * 60)
+
+ElseIf a = 48 Then
+c = (((28 / 60) + 37) / 60) + (36) + (1 * 60)
+
+ElseIf a = 49 Then
+c = (((9 / 60) + 30) / 60) + (36) + (1 * 60)
+
+ElseIf a = 50 Then
+c = (((42 / 60) + 22) / 60) + (36) + (1 * 60)
+
+ElseIf a = 51 Then
+c = (((8 / 60) + 15) / 60) + (36) + (1 * 60)
+
+ElseIf a = 52 Then
+c = (((21 / 60) + 7) / 60) + (36) + (1 * 60)
+
+ElseIf a = 53 Then
+c = (((33 / 60) + 59) / 60) + (35) + (1 * 60)
+
+ElseIf a = 54 Then
+c = (((33 / 60) + 51) / 60) + (35) + (1 * 60)
+
+ElseIf a = 55 Then
+c = (((26 / 60) + 43) / 60) + (35) + (1 * 60)
+
+ElseIf a = 56 Then
+c = (((26 / 60) + 35) / 60) + (35) + (1 * 60)
+
+ElseIf a = 57 Then
+c = (((52 / 60) + 29) / 60) + (35) + (1 * 60)
+
+ElseIf a = 58 Then
+c = (((36 / 60) + 17) / 60) + (35) + (1 * 60)
+
+ElseIf a = 59 Then
+c = (((20 / 60) + 10) / 60) + (35) + (1 * 60)
+
+ElseIf a = 60 Then
+c = (((28 / 60) + 2) / 60) + (35) + (1 * 60)
+
+
+ElseIf a = 61 Then
+c = (((25 / 60) + 53) / 60) + (34) + (1 * 60)
+
+ElseIf a = 62 Then
+c = (((57 / 60) + 44) / 60) + (34) + (1 * 60)
+
+ElseIf a = 63 Then
+c = (((3 / 60) + 36) / 60) + (34) + (1 * 60)
+
+ElseIf a = 64 Then
+c = (((44 / 60) + 27) / 60) + (34) + (1 * 60)
+
+ElseIf a = 65 Then
+c = (((4 / 60) + 19) / 60) + (34) + (1 * 60)
+
+ElseIf a = 66 Then
+c = (((34 / 60) + 10) / 60) + (34) + (1 * 60)
+
+ElseIf a = 67 Then
+c = (((56 / 60) + 13) / 60) + (34) + (1 * 60)
+
+ElseIf a = 68 Then
+c = (((32 / 60) + 53) / 60) + (33) + (1 * 60)
+
+ElseIf a = 69 Then
+c = (((32 / 60) + 44) / 60) + (33) + (1 * 60)
+
+ElseIf a = 70 Then
+c = (((39 / 60) + 35) / 60) + (33) + (1 * 60)
+
+ElseIf a = 71 Then
+c = (((4 / 60) + 27) / 60) + (33) + (1 * 60)
+
+ElseIf a = 72 Then
+c = (((7 / 60) + 18) / 60) + (33) + (1 * 60)
+
+ElseIf a = 73 Then
+c = (((16 / 60) + 9) / 60) + (33) + (1 * 60)
+
+ElseIf a = 74 Then
+c = (((22 / 60) + 0) / 60) + (33) + (1 * 60)
+
+ElseIf a = 75 Then
+c = (((37 / 60) + 51) / 60) + (32) + (1 * 60)
+
+ElseIf a = 76 Then
+c = (((37 / 60) + 42) / 60) + (32) + (1 * 60)
+
+ElseIf a = 77 Then
+c = (((36 / 60) + 33) / 60) + (32) + (1 * 60)
+
+ElseIf a = 78 Then
+c = (((36 / 60) + 24) / 60) + (32) + (1 * 60)
+
+ElseIf a = 79 Then
+c = (((42 / 60) + 15) / 60) + (32) + (1 * 60)
+
+ElseIf a = 80 Then
+c = (((46 / 60) + 6) / 60) + (32) + (1 * 60)
+
+ElseIf a = 81 Then
+c = (((57 / 60) + 57) / 60) + (31) + (1 * 60)
+
+ElseIf a = 82 Then
+c = (((1 / 60) + 49) / 60) + (31) + (1 * 60)
+
+ElseIf a = 83 Then
+c = (((29 / 60) + 40) / 60) + (31) + (1 * 60)
+
+ElseIf a = 84 Then
+c = (((10 / 60) + 31) / 60) + (31) + (1 * 60)
+
+ElseIf a = 85 Then
+c = (((12 / 60) + 22) / 60) + (31) + (1 * 60)
+
+ElseIf a = 86 Then
+c = (((12 / 60) + 13) / 60) + (31) + (1 * 60)
+
+ElseIf a = 87 Then
+c = (((19 / 60) + 4) / 60) + (31) + (1 * 60)
+
+ElseIf a = 88 Then
+c = (((22 / 60) + 55) / 60) + (30) + (1 * 60)
+
+ElseIf a = 89 Then
+c = (((26 / 60) + 46) / 60) + (30) + (1 * 60)
+
+ElseIf a = 90 Then
+c = (((36 / 60) + 37) / 60) + (30) + (1 * 60)
+
+
+
+
+ElseIf a = 91 Then
+c = (((47 / 60) + 28) / 60) + (30) + (1 * 60)
+
+ElseIf a = 92 Then
+c = (((57 / 60) + 19) / 60) + (30) + (1 * 60)
+
+ElseIf a = 93 Then
+c = (((12 / 60) + 11) / 60) + (30) + (1 * 60)
+
+ElseIf a = 94 Then
+c = (((30 / 60) + 2) / 60) + (30) + (1 * 60)
+
+ElseIf a = 95 Then
+c = (((30 / 60) + 53) / 60) + (29) + (1 * 60)
+
+ElseIf a = 96 Then
+c = (((18 / 60) + 46) / 60) + (29) + (1 * 60)
+
+ElseIf a = 97 Then
+c = (((3 / 60) + 37) / 60) + (29) + (1 * 60)
+
+ElseIf a = 98 Then
+c = (((0 / 60) + 28) / 60) + (29) + (1 * 60)
+
+ElseIf a = 99 Then
+c = (((32 / 60) + 19) / 60) + (29) + (1 * 60)
+
+ElseIf a = 100 Then
+c = (((5 / 60) + 11) / 60) + (29) + (1 * 60)
+
+ElseIf a = 101 Then
+c = (((35 / 60) + 2) / 60) + (29) + (1 * 60)
+
+ElseIf a = 102 Then
+c = (((13 / 60) + 54) / 60) + (28) + (1 * 60)
+
+ElseIf a = 103 Then
+c = (((0 / 60) + 46) / 60) + (28) + (1 * 60)
+
+ElseIf a = 104 Then
+c = (((3 / 60) + 37) / 60) + (28) + (1 * 60)
+
+ElseIf a = 105 Then
+c = (((59 / 60) + 29) / 60) + (28) + (1 * 60)
+
+ElseIf a = 106 Then
+c = (((47 / 60) + 21) / 60) + (28) + (1 * 60)
+
+ElseIf a = 107 Then
+c = (((52 / 60) + 13) / 60) + (28) + (1 * 60)
+
+ElseIf a = 108 Then
+c = (((52 / 60) + 5) / 60) + (28) + (1 * 60)
+
+ElseIf a = 109 Then
+c = (((14 / 60) + 58) / 60) + (27) + (1 * 60)
+
+ElseIf a = 110 Then
+c = (((23 / 60) + 50) / 60) + (27) + (1 * 60)
+
+ElseIf a = 111 Then
+c = (((46 / 60) + 42) / 60) + (27) + (1 * 60)
+
+ElseIf a = 112 Then
+c = (((54 / 60) + 34) / 60) + (27) + (1 * 60)
+
+ElseIf a = 113 Then
+c = (((42 / 60) + 27) / 60) + (27) + (1 * 60)
+
+ElseIf a = 114 Then
+c = (((8 / 60) + 20) / 60) + (27) + (1 * 60)
+
+ElseIf a = 115 Then
+c = (((38 / 60) + 12) / 60) + (27) + (1 * 60)
+
+ElseIf a = 116 Then
+c = (((18 / 60) + 5) / 60) + (27) + (1 * 60)
+
+ElseIf a = 117 Then
+c = (((3 / 60) + 58) / 60) + (26) + (1 * 60)
+
+ElseIf a = 118 Then
+c = (((48 / 60) + 50) / 60) + (26) + (1 * 60)
+
+ElseIf a = 119 Then
+c = (((40 / 60) + 43) / 60) + (26) + (1 * 60)
+
+ElseIf a = 120 Then
+c = (((35 / 60) + 36) / 60) + (26) + (1 * 60)
+
+
+ElseIf a = 121 Then
+c = (((37 / 60) + 29) / 60) + (26) + (1 * 60)
+
+ElseIf a = 122 Then
+c = (((35 / 60) + 21) / 60) + (26) + (1 * 60)
+
+ElseIf a = 123 Then
+c = (((0 / 60) + 16) / 60) + (26) + (1 * 60)
+
+ElseIf a = 124 Then
+c = (((18 / 60) + 9) / 60) + (26) + (1 * 60)
+
+ElseIf a = 125 Then
+c = (((44 / 60) + 2) / 60) + (26) + (1 * 60)
+
+ElseIf a = 126 Then
+c = (((5 / 60) + 54) / 60) + (25) + (1 * 60)
+
+ElseIf a = 127 Then
+c = (((50 / 60) + 49) / 60) + (25) + (1 * 60)
+
+ElseIf a = 128 Then
+c = (((32 / 60) + 43) / 60) + (25) + (1 * 60)
+
+ElseIf a = 129 Then
+c = (((21 / 60) + 37) / 60) + (25) + (1 * 60)
+
+ElseIf a = 130 Then
+c = (((43 / 60) + 31) / 60) + (25) + (1 * 60)
+
+ElseIf a = 131 Then
+c = (((32 / 60) + 25) / 60) + (25) + (1 * 60)
+
+ElseIf a = 132 Then
+c = (((39 / 60) + 19) / 60) + (25) + (1 * 60)
+
+ElseIf a = 133 Then
+c = (((1 / 60) + 14) / 60) + (25) + (1 * 60)
+
+ElseIf a = 134 Then
+c = (((30 / 60) + 8) / 60) + (25) + (1 * 60)
+
+ElseIf a = 135 Then
+c = (((59 / 60) + 2) / 60) + (25) + (1 * 60)
+
+ElseIf a = 136 Then
+c = (((34 / 60) + 57) / 60) + (24) + (1 * 60)
+
+ElseIf a = 137 Then
+c = (((10 / 60) + 52) / 60) + (24) + (1 * 60)
+
+ElseIf a = 138 Then
+c = (((13 / 60) + 46) / 60) + (24) + (1 * 60)
+
+ElseIf a = 139 Then
+c = (((44 / 60) + 41) / 60) + (24) + (1 * 60)
+
+ElseIf a = 140 Then
+c = (((41 / 60) + 36) / 60) + (24) + (1 * 60)
+
+ElseIf a = 141 Then
+c = (((48 / 60) + 31) / 60) + (24) + (1 * 60)
+
+ElseIf a = 142 Then
+c = (((1 / 60) + 27) / 60) + (24) + (1 * 60)
+
+ElseIf a = 143 Then
+c = (((21 / 60) + 22) / 60) + (24) + (1 * 60)
+
+ElseIf a = 144 Then
+c = (((51 / 60) + 17) / 60) + (24) + (1 * 60)
+
+ElseIf a = 145 Then
+c = (((17 / 60) + 13) / 60) + (24) + (1 * 60)
+
+ElseIf a = 146 Then
+c = (((4 / 60) + 9) / 60) + (24) + (1 * 60)
+
+ElseIf a = 147 Then
+c = (((53 / 60) + 4) / 60) + (24) + (1 * 60)
+
+ElseIf a = 148 Then
+c = (((59 / 60) + 0) / 60) + (24) + (1 * 60)
+
+ElseIf a = 149 Then
+c = (((54 / 60) + 56) / 60) + (23) + (1 * 60)
+
+ElseIf a = 150 Then
+c = (((56 / 60) + 52) / 60) + (23) + (1 * 60)
+
+
+ElseIf a = 151 Then
+c = (((58 / 60) + 48) / 60) + (23) + (1 * 60)
+
+ElseIf a = 152 Then
+c = (((30 / 60) + 45) / 60) + (23) + (1 * 60)
+
+ElseIf a = 153 Then
+c = (((52 / 60) + 42) / 60) + (23) + (1 * 60)
+
+ElseIf a = 154 Then
+c = (((48 / 60) + 38) / 60) + (23) + (1 * 60)
+
+ElseIf a = 155 Then
+c = (((14 / 60) + 35) / 60) + (23) + (1 * 60)
+
+ElseIf a = 156 Then
+c = (((28 / 60) + 32) / 60) + (23) + (1 * 60)
+
+ElseIf a = 157 Then
+c = (((42 / 60) + 29) / 60) + (23) + (1 * 60)
+
+ElseIf a = 158 Then
+c = (((34 / 60) + 26) / 60) + (23) + (1 * 60)
+
+ElseIf a = 159 Then
+c = (((50 / 60) + 23) / 60) + (23) + (1 * 60)
+
+ElseIf a = 160 Then
+c = (((9 / 60) + 21) / 60) + (23) + (1 * 60)
+
+ElseIf a = 161 Then
+c = (((48 / 60) + 18) / 60) + (23) + (1 * 60)
+
+ElseIf a = 162 Then
+c = (((32 / 60) + 16) / 60) + (23) + (1 * 60)
+
+ElseIf a = 163 Then
+c = (((28 / 60) + 14) / 60) + (23) + (1 * 60)
+
+ElseIf a = 164 Then
+c = (((34 / 60) + 12) / 60) + (23) + (1 * 60)
+
+ElseIf a = 165 Then
+c = (((42 / 60) + 10) / 60) + (23) + (1 * 60)
+
+ElseIf a = 166 Then
+c = (((57 / 60) + 8) / 60) + (23) + (1 * 60)
+
+ElseIf a = 167 Then
+c = (((31 / 60) + 7) / 60) + (23) + (1 * 60)
+
+ElseIf a = 168 Then
+c = (((8 / 60) + 6) / 60) + (23) + (1 * 60)
+
+ElseIf a = 169 Then
+c = (((45 / 60) + 4) / 60) + (23) + (1 * 60)
+
+ElseIf a = 170 Then
+c = (((40 / 60) + 3) / 60) + (23) + (1 * 60)
+
+ElseIf a = 171 Then
+c = (((39 / 60) + 2) / 60) + (23) + (1 * 60)
+
+ElseIf a = 172 Then
+c = (((41 / 60) + 1) / 60) + (23) + (1 * 60)
+
+ElseIf a = 173 Then
+c = (((54 / 60) + 0) / 60) + (23) + (1 * 60)
+
+ElseIf a = 174 Then
+c = (((58 / 60) + 59) / 60) + (22) + (1 * 60)
+
+ElseIf a = 175 Then
+c = (((3 / 60) + 59) / 60) + (22) + (1 * 60)
+
+ElseIf a = 176 Then
+c = (((12 / 60) + 58) / 60) + (22) + (1 * 60)
+
+ElseIf a = 177 Then
+c = (((22 / 60) + 57) / 60) + (22) + (1 * 60)
+
+ElseIf a = 178 Then
+c = (((32 / 60) + 56) / 60) + (22) + (1 * 60)
+
+ElseIf a = 179 Then
+c = (((59 / 60) + 15) / 60) + (22) + (1 * 60)
+
+ElseIf a = 180 Then
+c = (((45 / 60) + 55) / 60) + (22) + (1 * 60)
+
+End If
+bmer1 = c
+End Function
+Public Function bmer(m As Double)
+Dim a1 As Double
+a1 = 1
+Dim x As Double
+x = Int(m / a1) * a1
+Dim y As Double
+If m = x Then
+y = bmer1(x)
+ElseIf m > x Then
+y = bmer1(x) + (((bmer1(x + a1) - bmer1(x)) / a1) * ((m) - x))
+End If
+bmer = y
+End Function
+Public Function bzohre1(m As Double) As Double
+Dim a As Double
+Dim c As Double
+If m >= 0 And m <= 180 Then
+a = m
+ElseIf m > 180 Then
+a = 360 - m
+End If
+
+If a = 0 Then
+c = (((40 / 60) + 41) / 60) + (43)
+
+ElseIf a = 1 Then
+c = (((40 / 60) + 41) / 60) + (43)
+
+ElseIf a = 2 Then
+c = (((39 / 60) + 41) / 60) + (43)
+
+ElseIf a = 3 Then
+c = (((39 / 60) + 41) / 60) + (43)
+
+ElseIf a = 4 Then
+c = (((38 / 60) + 41) / 60) + (43)
+
+ElseIf a = 5 Then
+c = (((38 / 60) + 41) / 60) + (43)
+
+ElseIf a = 6 Then
+c = (((37 / 60) + 41) / 60) + (43)
+
+ElseIf a = 7 Then
+c = (((36 / 60) + 41) / 60) + (43)
+
+ElseIf a = 8 Then
+c = (((35 / 60) + 41) / 60) + (43)
+
+ElseIf a = 9 Then
+c = (((34 / 60) + 41) / 60) + (43)
+
+ElseIf a = 10 Then
+c = (((32 / 60) + 41) / 60) + (43)
+
+ElseIf a = 11 Then
+c = (((31 / 60) + 41) / 60) + (43)
+
+ElseIf a = 12 Then
+c = (((30 / 60) + 41) / 60) + (43)
+
+ElseIf a = 13 Then
+c = (((28 / 60) + 41) / 60) + (43)
+
+ElseIf a = 14 Then
+c = (((27 / 60) + 41) / 60) + (43)
+
+ElseIf a = 15 Then
+c = (((25 / 60) + 41) / 60) + (43)
+
+ElseIf a = 16 Then
+c = (((22 / 60) + 41) / 60) + (43)
+
+ElseIf a = 17 Then
+c = (((19 / 60) + 41) / 60) + (43)
+
+ElseIf a = 18 Then
+c = (((15 / 60) + 41) / 60) + (43)
+
+ElseIf a = 19 Then
+c = (((10 / 60) + 41) / 60) + (43)
+
+ElseIf a = 20 Then
+c = (((5 / 60) + 41) / 60) + (43)
+
+ElseIf a = 21 Then
+c = (((59 / 60) + 40) / 60) + (43)
+
+ElseIf a = 22 Then
+c = (((52 / 60) + 40) / 60) + (43)
+
+ElseIf a = 23 Then
+c = (((43 / 60) + 40) / 60) + (43)
+
+ElseIf a = 24 Then
+c = (((33 / 60) + 40) / 60) + (43)
+
+ElseIf a = 25 Then
+c = (((22 / 60) + 40) / 60) + (43)
+
+ElseIf a = 26 Then
+c = (((10 / 60) + 40) / 60) + (43)
+
+ElseIf a = 27 Then
+c = (((58 / 60) + 39) / 60) + (43)
+
+ElseIf a = 28 Then
+c = (((47 / 60) + 39) / 60) + (43)
+
+ElseIf a = 29 Then
+c = (((35 / 60) + 39) / 60) + (43)
+
+ElseIf a = 30 Then
+c = (((24 / 60) + 39) / 60) + (43)
+
+ElseIf a = 31 Then
+c = (((12 / 60) + 39) / 60) + (43)
+
+ElseIf a = 32 Then
+c = (((0 / 60) + 39) / 60) + (43)
+
+ElseIf a = 33 Then
+c = (((47 / 60) + 38) / 60) + (43)
+
+ElseIf a = 34 Then
+c = (((35 / 60) + 38) / 60) + (43)
+
+ElseIf a = 35 Then
+c = (((23 / 60) + 38) / 60) + (43)
+
+ElseIf a = 36 Then
+c = (((10 / 60) + 38) / 60) + (43)
+
+ElseIf a = 37 Then
+c = (((58 / 60) + 37) / 60) + (43)
+
+ElseIf a = 38 Then
+c = (((46 / 60) + 37) / 60) + (43)
+
+ElseIf a = 39 Then
+c = (((34 / 60) + 37) / 60) + (43)
+
+ElseIf a = 40 Then
+c = (((21 / 60) + 37) / 60) + (43)
+
+ElseIf a = 41 Then
+c = (((7 / 60) + 37) / 60) + (43)
+
+ElseIf a = 42 Then
+c = (((54 / 60) + 36) / 60) + (43)
+
+ElseIf a = 43 Then
+c = (((40 / 60) + 36) / 60) + (43)
+
+ElseIf a = 44 Then
+c = (((26 / 60) + 36) / 60) + (43)
+
+ElseIf a = 45 Then
+c = (((12 / 60) + 36) / 60) + (43)
+
+ElseIf a = 46 Then
+c = (((57 / 60) + 35) / 60) + (43)
+
+ElseIf a = 47 Then
+c = (((42 / 60) + 35) / 60) + (43)
+
+ElseIf a = 48 Then
+c = (((27 / 60) + 35) / 60) + (43)
+
+ElseIf a = 49 Then
+c = (((12 / 60) + 35) / 60) + (43)
+
+ElseIf a = 50 Then
+c = (((57 / 60) + 34) / 60) + (43)
+
+ElseIf a = 51 Then
+c = (((43 / 60) + 34) / 60) + (43)
+
+ElseIf a = 52 Then
+c = (((28 / 60) + 34) / 60) + (43)
+
+ElseIf a = 53 Then
+c = (((14 / 60) + 34) / 60) + (43)
+
+ElseIf a = 54 Then
+c = (((59 / 60) + 33) / 60) + (43)
+
+ElseIf a = 55 Then
+c = (((44 / 60) + 33) / 60) + (43)
+
+ElseIf a = 56 Then
+c = (((30 / 60) + 33) / 60) + (43)
+
+ElseIf a = 57 Then
+c = (((15 / 60) + 33) / 60) + (43)
+
+ElseIf a = 58 Then
+c = (((0 / 60) + 33) / 60) + (43)
+
+ElseIf a = 59 Then
+c = (((44 / 60) + 32) / 60) + (43)
+
+ElseIf a = 60 Then
+c = (((29 / 60) + 32) / 60) + (43)
+
+
+ElseIf a = 61 Then
+c = (((14 / 60) + 32) / 60) + (43)
+
+ElseIf a = 62 Then
+c = (((57 / 60) + 31) / 60) + (43)
+
+ElseIf a = 63 Then
+c = (((39 / 60) + 31) / 60) + (43)
+
+ElseIf a = 64 Then
+c = (((21 / 60) + 31) / 60) + (43)
+
+ElseIf a = 65 Then
+c = (((3 / 60) + 31) / 60) + (43)
+
+ElseIf a = 66 Then
+c = (((44 / 60) + 30) / 60) + (43)
+
+ElseIf a = 67 Then
+c = (((26 / 60) + 30) / 60) + (43)
+
+ElseIf a = 68 Then
+c = (((7 / 60) + 30) / 60) + (43)
+
+ElseIf a = 69 Then
+c = (((59 / 60) + 29) / 60) + (43)
+
+ElseIf a = 70 Then
+c = (((30 / 60) + 29) / 60) + (43)
+
+ElseIf a = 71 Then
+c = (((12 / 60) + 29) / 60) + (43)
+
+ElseIf a = 72 Then
+c = (((54 / 60) + 28) / 60) + (43)
+
+ElseIf a = 73 Then
+c = (((36 / 60) + 28) / 60) + (43)
+
+ElseIf a = 74 Then
+c = (((18 / 60) + 28) / 60) + (43)
+
+ElseIf a = 75 Then
+c = (((0 / 60) + 28) / 60) + (43)
+
+ElseIf a = 76 Then
+c = (((42 / 60) + 27) / 60) + (43)
+
+ElseIf a = 77 Then
+c = (((24 / 60) + 27) / 60) + (43)
+
+ElseIf a = 78 Then
+c = (((6 / 60) + 27) / 60) + (43)
+
+ElseIf a = 79 Then
+c = (((48 / 60) + 26) / 60) + (43)
+
+ElseIf a = 80 Then
+c = (((31 / 60) + 26) / 60) + (43)
+
+ElseIf a = 81 Then
+c = (((13 / 60) + 26) / 60) + (43)
+
+ElseIf a = 82 Then
+c = (((55 / 60) + 25) / 60) + (43)
+
+ElseIf a = 83 Then
+c = (((37 / 60) + 25) / 60) + (43)
+
+ElseIf a = 84 Then
+c = (((9 / 60) + 25) / 60) + (43)
+
+ElseIf a = 85 Then
+c = (((1 / 60) + 25) / 60) + (43)
+
+ElseIf a = 86 Then
+c = (((43 / 60) + 24) / 60) + (43)
+
+ElseIf a = 87 Then
+c = (((25 / 60) + 24) / 60) + (43)
+
+ElseIf a = 88 Then
+c = (((7 / 60) + 24) / 60) + (43)
+
+ElseIf a = 89 Then
+c = (((48 / 60) + 23) / 60) + (43)
+
+ElseIf a = 90 Then
+c = (((29 / 60) + 23) / 60) + (43)
+
+
+
+
+ElseIf a = 91 Then
+c = (((10 / 60) + 23) / 60) + (43)
+
+ElseIf a = 92 Then
+c = (((50 / 60) + 22) / 60) + (43)
+
+ElseIf a = 93 Then
+c = (((29 / 60) + 22) / 60) + (43)
+
+ElseIf a = 94 Then
+c = (((9 / 60) + 22) / 60) + (43)
+
+ElseIf a = 95 Then
+c = (((48 / 60) + 21) / 60) + (43)
+
+ElseIf a = 96 Then
+c = (((27 / 60) + 21) / 60) + (43)
+
+ElseIf a = 97 Then
+c = (((6 / 60) + 21) / 60) + (43)
+
+ElseIf a = 98 Then
+c = (((45 / 60) + 20) / 60) + (43)
+
+ElseIf a = 99 Then
+c = (((24 / 60) + 20) / 60) + (43)
+
+ElseIf a = 100 Then
+c = (((4 / 60) + 20) / 60) + (43)
+
+ElseIf a = 101 Then
+c = (((44 / 60) + 19) / 60) + (43)
+
+ElseIf a = 102 Then
+c = (((25 / 60) + 19) / 60) + (43)
+
+ElseIf a = 103 Then
+c = (((7 / 60) + 19) / 60) + (43)
+
+ElseIf a = 104 Then
+c = (((48 / 60) + 18) / 60) + (43)
+
+ElseIf a = 105 Then
+c = (((30 / 60) + 18) / 60) + (43)
+
+ElseIf a = 106 Then
+c = (((12 / 60) + 18) / 60) + (43)
+
+ElseIf a = 107 Then
+c = (((54 / 60) + 17) / 60) + (43)
+
+ElseIf a = 108 Then
+c = (((36 / 60) + 17) / 60) + (43)
+
+ElseIf a = 109 Then
+c = (((18 / 60) + 17) / 60) + (43)
+
+ElseIf a = 110 Then
+c = (((0 / 60) + 17) / 60) + (43)
+
+ElseIf a = 111 Then
+c = (((42 / 60) + 16) / 60) + (43)
+
+ElseIf a = 112 Then
+c = (((25 / 60) + 16) / 60) + (43)
+
+ElseIf a = 113 Then
+c = (((6 / 60) + 16) / 60) + (43)
+
+ElseIf a = 114 Then
+c = (((49 / 60) + 15) / 60) + (43)
+
+ElseIf a = 115 Then
+c = (((31 / 60) + 15) / 60) + (43)
+
+ElseIf a = 116 Then
+c = (((14 / 60) + 15) / 60) + (43)
+
+ElseIf a = 117 Then
+c = (((56 / 60) + 14) / 60) + (43)
+
+ElseIf a = 118 Then
+c = (((39 / 60) + 14) / 60) + (43)
+
+ElseIf a = 119 Then
+c = (((21 / 60) + 14) / 60) + (43)
+
+ElseIf a = 120 Then
+c = (((4 / 60) + 14) / 60) + (43)
+
+
+ElseIf a = 121 Then
+c = (((48 / 60) + 13) / 60) + (43)
+
+ElseIf a = 122 Then
+c = (((33 / 60) + 13) / 60) + (43)
+
+ElseIf a = 123 Then
+c = (((18 / 60) + 13) / 60) + (43)
+
+ElseIf a = 124 Then
+c = (((4 / 60) + 13) / 60) + (43)
+
+ElseIf a = 125 Then
+c = (((49 / 60) + 12) / 60) + (43)
+
+ElseIf a = 126 Then
+c = (((35 / 60) + 12) / 60) + (43)
+
+ElseIf a = 127 Then
+c = (((10 / 60) + 12) / 60) + (43)
+
+ElseIf a = 128 Then
+c = (((5 / 60) + 12) / 60) + (43)
+
+ElseIf a = 129 Then
+c = (((50 / 60) + 11) / 60) + (43)
+
+ElseIf a = 130 Then
+c = (((36 / 60) + 11) / 60) + (43)
+
+ElseIf a = 131 Then
+c = (((21 / 60) + 11) / 60) + (43)
+
+ElseIf a = 132 Then
+c = (((6 / 60) + 11) / 60) + (43)
+
+ElseIf a = 133 Then
+c = (((52 / 60) + 10) / 60) + (43)
+
+ElseIf a = 134 Then
+c = (((37 / 60) + 10) / 60) + (43)
+
+ElseIf a = 135 Then
+c = (((22 / 60) + 10) / 60) + (43)
+
+ElseIf a = 136 Then
+c = (((7 / 60) + 10) / 60) + (43)
+
+ElseIf a = 137 Then
+c = (((52 / 60) + 9) / 60) + (43)
+
+ElseIf a = 138 Then
+c = (((38 / 60) + 9) / 60) + (43)
+
+ElseIf a = 139 Then
+c = (((25 / 60) + 9) / 60) + (43)
+
+ElseIf a = 140 Then
+c = (((12 / 60) + 9) / 60) + (43)
+
+ElseIf a = 141 Then
+c = (((0 / 60) + 9) / 60) + (43)
+
+ElseIf a = 142 Then
+c = (((49 / 60) + 8) / 60) + (43)
+
+ElseIf a = 143 Then
+c = (((38 / 60) + 8) / 60) + (43)
+
+ElseIf a = 144 Then
+c = (((27 / 60) + 8) / 60) + (43)
+
+ElseIf a = 145 Then
+c = (((16 / 60) + 8) / 60) + (43)
+
+ElseIf a = 146 Then
+c = (((6 / 60) + 8) / 60) + (43)
+
+ElseIf a = 147 Then
+c = (((56 / 60) + 7) / 60) + (43)
+
+ElseIf a = 148 Then
+c = (((46 / 60) + 7) / 60) + (43)
+
+ElseIf a = 149 Then
+c = (((37 / 60) + 7) / 60) + (43)
+
+ElseIf a = 150 Then
+c = (((28 / 60) + 7) / 60) + (43)
+
+
+ElseIf a = 151 Then
+c = (((20 / 60) + 7) / 60) + (43)
+
+ElseIf a = 152 Then
+c = (((12 / 60) + 7) / 60) + (43)
+
+ElseIf a = 153 Then
+c = (((4 / 60) + 7) / 60) + (43)
+
+ElseIf a = 154 Then
+c = (((57 / 60) + 6) / 60) + (43)
+
+ElseIf a = 155 Then
+c = (((50 / 60) + 6) / 60) + (43)
+
+ElseIf a = 156 Then
+c = (((43 / 60) + 6) / 60) + (43)
+
+ElseIf a = 157 Then
+c = (((36 / 60) + 6) / 60) + (43)
+
+ElseIf a = 158 Then
+c = (((29 / 60) + 6) / 60) + (43)
+
+ElseIf a = 159 Then
+c = (((22 / 60) + 6) / 60) + (43)
+
+ElseIf a = 160 Then
+c = (((15 / 60) + 6) / 60) + (43)
+
+ElseIf a = 161 Then
+c = (((9 / 60) + 6) / 60) + (43)
+
+ElseIf a = 162 Then
+c = (((3 / 60) + 6) / 60) + (43)
+
+ElseIf a = 163 Then
+c = (((57 / 60) + 5) / 60) + (43)
+
+ElseIf a = 164 Then
+c = (((51 / 60) + 5) / 60) + (43)
+
+ElseIf a = 165 Then
+c = (((46 / 60) + 5) / 60) + (43)
+
+ElseIf a = 166 Then
+c = (((40 / 60) + 5) / 60) + (43)
+
+ElseIf a = 167 Then
+c = (((35 / 60) + 5) / 60) + (43)
+
+ElseIf a = 168 Then
+c = (((30 / 60) + 5) / 60) + (43)
+
+ElseIf a = 169 Then
+c = (((26 / 60) + 5) / 60) + (43)
+
+ElseIf a = 170 Then
+c = (((23 / 60) + 5) / 60) + (43)
+
+ElseIf a = 171 Then
+c = (((20 / 60) + 5) / 60) + (43)
+
+ElseIf a = 172 Then
+c = (((18 / 60) + 5) / 60) + (43)
+
+ElseIf a = 173 Then
+c = (((16 / 60) + 5) / 60) + (43)
+
+ElseIf a = 174 Then
+c = (((15 / 60) + 5) / 60) + (43)
+
+ElseIf a = 175 Then
+c = (((14 / 60) + 5) / 60) + (43)
+
+ElseIf a = 176 Then
+c = (((13 / 60) + 5) / 60) + (43)
+
+ElseIf a = 177 Then
+c = (((12 / 60) + 5) / 60) + (43)
+
+ElseIf a = 178 Then
+c = (((12 / 60) + 5) / 60) + (43)
+
+ElseIf a = 179 Then
+c = (((11 / 60) + 5) / 60) + (43)
+
+ElseIf a = 180 Then
+c = (((11 / 60) + 5) / 60) + (43)
+End If
+bzohre1 = c
+End Function
+Public Function bzohre(m As Double)
+Dim a1 As Double
+a1 = 1
+Dim x As Double
+x = Int(m / a1) * a1
+Dim y As Double
+If m = x Then
+y = bzohre1(x)
+ElseIf m > x Then
+y = bzohre1(x) + (((bzohre1(x + a1) - bzohre1(x)) / a1) * ((m) - x))
+End If
+bzohre = y
+End Function
+Public Function tzohre(m As Double) As Double
+Dim a As Double
+Dim c As Double
+If m >= 0 And m <= 180 Then
+a = m
+ElseIf m > 180 Then
+a = 360 - m
+End If
+If a = (0 / 60) + 0 Then
+c = (((0 / 60) + 0) / 60) + 0
+ElseIf a = (15 / 60) + 0 Then
+c = (((13 / 60) + 0) / 60) + 0
+ElseIf a = (30 / 60) + 0 Then
+c = (((26 / 60) + 0) / 60) + 0
+ElseIf a = (45 / 60) + 0 Then
+c = (((39 / 60) + 0) / 60) + 0
+
+ElseIf a = (0 / 60) + 1 Then
+c = (((52 / 60) + 0) / 60) + 0
+ElseIf a = (15 / 60) + 1 Then
+c = (((5 / 60) + 1) / 60) + 0
+ElseIf a = (30 / 60) + 1 Then
+c = (((19 / 60) + 1) / 60) + 0
+ElseIf a = (45 / 60) + 1 Then
+c = (((32 / 60) + 1) / 60) + 0
+
+
+ElseIf a = (0 / 60) + 2 Then
+c = (((44 / 60) + 1) / 60) + 0
+ElseIf a = (15 / 60) + 2 Then
+c = (((57 / 60) + 1) / 60) + 0
+ElseIf a = (30 / 60) + 2 Then
+c = (((10 / 60) + 2) / 60) + 0
+ElseIf a = (45 / 60) + 2 Then
+c = (((22 / 60) + 2) / 60) + 0
+
+ElseIf a = (0 / 60) + 3 Then
+c = (((35 / 60) + 2) / 60) + 0
+ElseIf a = (15 / 60) + 3 Then
+c = (((48 / 60) + 2) / 60) + 0
+ElseIf a = (30 / 60) + 3 Then
+c = (((0 / 60) + 3) / 60) + 0
+ElseIf a = (45 / 60) + 3 Then
+c = (((13 / 60) + 3) / 60) + 0
+
+
+
+ElseIf a = (0 / 60) + 4 Then
+c = (((26 / 60) + 3) / 60) + 0
+ElseIf a = (15 / 60) + 4 Then
+c = (((39 / 60) + 3) / 60) + 0
+ElseIf a = (30 / 60) + 4 Then
+c = (((51 / 60) + 3) / 60) + 0
+ElseIf a = (45 / 60) + 4 Then
+c = (((4 / 60) + 4) / 60) + 0
+
+
+
+ElseIf a = (0 / 60) + 5 Then
+c = (((16 / 60) + 4) / 60) + 0
+ElseIf a = (15 / 60) + 5 Then
+c = (((29 / 60) + 4) / 60) + 0
+ElseIf a = (30 / 60) + 5 Then
+c = (((41 / 60) + 4) / 60) + 0
+ElseIf a = (45 / 60) + 5 Then
+c = (((54 / 60) + 4) / 60) + 0
+
+
+ElseIf a = (0 / 60) + 6 Then
+c = (((7 / 60) + 5) / 60) + 0
+ElseIf a = (15 / 60) + 6 Then
+c = (((20 / 60) + 5) / 60) + 0
+ElseIf a = (30 / 60) + 6 Then
+c = (((32 / 60) + 5) / 60) + 0
+ElseIf a = (45 / 60) + 6 Then
+c = (((45 / 60) + 5) / 60) + 0
+
+
+
+
+ElseIf a = (0 / 60) + 7 Then
+c = (((57 / 60) + 5) / 60) + 0
+ElseIf a = (15 / 60) + 7 Then
+c = (((9 / 60) + 6) / 60) + 0
+ElseIf a = (30 / 60) + 7 Then
+c = (((22 / 60) + 6) / 60) + 0
+ElseIf a = (45 / 60) + 7 Then
+c = (((35 / 60) + 6) / 60) + 0
+
+
+ElseIf a = (0 / 60) + 8 Then
+c = (((47 / 60) + 6) / 60) + 0
+ElseIf a = (15 / 60) + 8 Then
+c = (((59 / 60) + 6) / 60) + 0
+ElseIf a = (30 / 60) + 8 Then
+c = (((12 / 60) + 7) / 60) + 0
+ElseIf a = (45 / 60) + 8 Then
+c = (((25 / 60) + 7) / 60) + 0
+
+
+ElseIf a = (0 / 60) + 9 Then
+c = (((37 / 60) + 7) / 60) + 0
+ElseIf a = (15 / 60) + 9 Then
+c = (((49 / 60) + 7) / 60) + 0
+ElseIf a = (30 / 60) + 9 Then
+c = (((2 / 60) + 8) / 60) + 0
+ElseIf a = (45 / 60) + 9 Then
+c = (((14 / 60) + 8) / 60) + 0
+
+
+
+ElseIf a = (0 / 60) + 10 Then
+c = (((27 / 60) + 8) / 60) + 0
+ElseIf a = (15 / 60) + 10 Then
+c = (((39 / 60) + 8) / 60) + 0
+ElseIf a = (30 / 60) + 10 Then
+c = (((52 / 60) + 8) / 60) + 0
+ElseIf a = (45 / 60) + 10 Then
+c = (((5 / 60) + 9) / 60) + 0
+
+
+
+ElseIf a = (0 / 60) + 11 Then
+c = (((18 / 60) + 9) / 60) + 0
+ElseIf a = (15 / 60) + 11 Then
+c = (((30 / 60) + 9) / 60) + 0
+ElseIf a = (30 / 60) + 11 Then
+c = (((43 / 60) + 9) / 60) + 0
+ElseIf a = (45 / 60) + 11 Then
+c = (((56 / 60) + 9) / 60) + 0
+
+
+ElseIf a = (0 / 60) + 12 Then
+c = (((8 / 60) + 10) / 60) + 0
+ElseIf a = (15 / 60) + 12 Then
+c = (((20 / 60) + 10) / 60) + 0
+ElseIf a = (30 / 60) + 12 Then
+c = (((33 / 60) + 10) / 60) + 0
+ElseIf a = (45 / 60) + 12 Then
+c = (((46 / 60) + 10) / 60) + 0
+
+ElseIf a = (0 / 60) + 13 Then
+c = (((58 / 60) + 10) / 60) + 0
+ElseIf a = (15 / 60) + 13 Then
+c = (((11 / 60) + 11) / 60) + 0
+ElseIf a = (30 / 60) + 13 Then
+c = (((23 / 60) + 11) / 60) + 0
+ElseIf a = (45 / 60) + 13 Then
+c = (((36 / 60) + 11) / 60) + 0
+
+
+
+ElseIf a = (0 / 60) + 14 Then
+c = (((48 / 60) + 11) / 60) + 0
+ElseIf a = (15 / 60) + 14 Then
+c = (((0 / 60) + 12) / 60) + 0
+ElseIf a = (30 / 60) + 14 Then
+c = (((13 / 60) + 12) / 60) + 0
+ElseIf a = (45 / 60) + 14 Then
+c = (((25 / 60) + 12) / 60) + 0
+
+
+
+ElseIf a = (0 / 60) + 15 Then
+c = (((37 / 60) + 12) / 60) + 0
+ElseIf a = (15 / 60) + 15 Then
+c = (((49 / 60) + 12) / 60) + 0
+ElseIf a = (30 / 60) + 15 Then
+c = (((2 / 60) + 13) / 60) + 0
+ElseIf a = (45 / 60) + 15 Then
+c = (((14 / 60) + 13) / 60) + 0
+
+
+ElseIf a = (0 / 60) + 16 Then
+c = (((26 / 60) + 13) / 60) + 0
+ElseIf a = (15 / 60) + 16 Then
+c = (((38 / 60) + 13) / 60) + 0
+ElseIf a = (30 / 60) + 16 Then
+c = (((51 / 60) + 13) / 60) + 0
+ElseIf a = (45 / 60) + 16 Then
+c = (((3 / 60) + 14) / 60) + 0
+
+
+
+
+ElseIf a = (0 / 60) + 17 Then
+c = (((15 / 60) + 14) / 60) + 0
+ElseIf a = (15 / 60) + 17 Then
+c = (((27 / 60) + 14) / 60) + 0
+ElseIf a = (30 / 60) + 17 Then
+c = (((40 / 60) + 14) / 60) + 0
+ElseIf a = (45 / 60) + 17 Then
+c = (((52 / 60) + 14) / 60) + 0
+
+
+ElseIf a = (0 / 60) + 18 Then
+c = (((4 / 60) + 15) / 60) + 0
+ElseIf a = (15 / 60) + 18 Then
+c = (((16 / 60) + 15) / 60) + 0
+ElseIf a = (30 / 60) + 18 Then
+c = (((29 / 60) + 15) / 60) + 0
+ElseIf a = (45 / 60) + 18 Then
+c = (((41 / 60) + 15) / 60) + 0
+
+
+ElseIf a = (0 / 60) + 19 Then
+c = (((53 / 60) + 15) / 60) + 0
+ElseIf a = (15 / 60) + 19 Then
+c = (((5 / 60) + 16) / 60) + 0
+ElseIf a = (30 / 60) + 19 Then
+c = (((16 / 60) + 16) / 60) + 0
+ElseIf a = (45 / 60) + 19 Then
+c = (((28 / 60) + 16) / 60) + 0
+
+
+
+ElseIf a = (0 / 60) + 20 Then
+c = (((39 / 60) + 16) / 60) + 0
+ElseIf a = (15 / 60) + 20 Then
+c = (((50 / 60) + 16) / 60) + 0
+ElseIf a = (30 / 60) + 20 Then
+c = (((2 / 60) + 17) / 60) + 0
+ElseIf a = (45 / 60) + 20 Then
+c = (((13 / 60) + 17) / 60) + 0
+
+ElseIf a = (0 / 60) + 21 Then
+c = (((25 / 60) + 17) / 60) + 0
+ElseIf a = (15 / 60) + 21 Then
+c = (((37 / 60) + 17) / 60) + 0
+ElseIf a = (30 / 60) + 21 Then
+c = (((48 / 60) + 17) / 60) + 0
+ElseIf a = (45 / 60) + 21 Then
+c = (((0 / 60) + 18) / 60) + 0
+
+
+ElseIf a = (0 / 60) + 22 Then
+c = (((12 / 60) + 18) / 60) + 0
+ElseIf a = (15 / 60) + 22 Then
+c = (((24 / 60) + 48) / 60) + 0
+ElseIf a = (30 / 60) + 22 Then
+c = (((35 / 60) + 18) / 60) + 0
+ElseIf a = (45 / 60) + 22 Then
+c = (((47 / 60) + 18) / 60) + 0
+
+ElseIf a = (0 / 60) + 23 Then
+c = (((59 / 60) + 18) / 60) + 0
+ElseIf a = (15 / 60) + 23 Then
+c = (((11 / 60) + 19) / 60) + 0
+ElseIf a = (30 / 60) + 23 Then
+c = (((22 / 60) + 19) / 60) + 0
+ElseIf a = (45 / 60) + 23 Then
+c = (((34 / 60) + 19) / 60) + 0
+
+
+
+ElseIf a = (0 / 60) + 24 Then
+c = (((46 / 60) + 19) / 60) + 0
+ElseIf a = (15 / 60) + 24 Then
+c = (((58 / 60) + 19) / 60) + 0
+ElseIf a = (30 / 60) + 24 Then
+c = (((9 / 60) + 20) / 60) + 0
+ElseIf a = (45 / 60) + 24 Then
+c = (((21 / 60) + 20) / 60) + 0
+
+
+
+ElseIf a = (0 / 60) + 25 Then
+c = (((33 / 60) + 20) / 60) + 0
+ElseIf a = (15 / 60) + 25 Then
+c = (((45 / 60) + 20) / 60) + 0
+ElseIf a = (30 / 60) + 25 Then
+c = (((56 / 60) + 20) / 60) + 0
+ElseIf a = (45 / 60) + 25 Then
+c = (((8 / 60) + 21) / 60) + 0
+
+
+ElseIf a = (0 / 60) + 26 Then
+c = (((20 / 60) + 21) / 60) + 0
+ElseIf a = (15 / 60) + 26 Then
+c = (((32 / 60) + 21) / 60) + 0
+ElseIf a = (30 / 60) + 26 Then
+c = (((43 / 60) + 21) / 60) + 0
+ElseIf a = (45 / 60) + 26 Then
+c = (((55 / 60) + 21) / 60) + 0
+
+
+
+
+ElseIf a = (0 / 60) + 27 Then
+c = (((7 / 60) + 22) / 60) + 0
+ElseIf a = (15 / 60) + 27 Then
+c = (((19 / 60) + 22) / 60) + 0
+ElseIf a = (30 / 60) + 27 Then
+c = (((30 / 60) + 22) / 60) + 0
+ElseIf a = (45 / 60) + 27 Then
+c = (((42 / 60) + 22) / 60) + 0
+
+
+ElseIf a = (0 / 60) + 28 Then
+c = (((54 / 60) + 22) / 60) + 0
+ElseIf a = (15 / 60) + 28 Then
+c = (((6 / 60) + 23) / 60) + 0
+ElseIf a = (30 / 60) + 28 Then
+c = (((17 / 60) + 23) / 60) + 0
+ElseIf a = (45 / 60) + 28 Then
+c = (((29 / 60) + 23) / 60) + 0
+
+
+ElseIf a = (0 / 60) + 29 Then
+c = (((41 / 60) + 23) / 60) + 0
+ElseIf a = (15 / 60) + 29 Then
+c = (((52 / 60) + 23) / 60) + 0
+ElseIf a = (30 / 60) + 29 Then
+c = (((4 / 60) + 24) / 60) + 0
+ElseIf a = (45 / 60) + 29 Then
+c = (((15 / 60) + 24) / 60) + 0
+
+
+ElseIf a = (0 / 60) + 30 Then
+c = (((27 / 60) + 24) / 60) + 0
+ElseIf a = (15 / 60) + 30 Then
+c = (((38 / 60) + 24) / 60) + 0
+ElseIf a = (30 / 60) + 30 Then
+c = (((50 / 60) + 24) / 60) + 0
+ElseIf a = (45 / 60) + 30 Then
+c = (((1 / 60) + 25) / 60) + 0
+
+ElseIf a = (0 / 60) + 31 Then
+c = (((13 / 60) + 25) / 60) + 0
+ElseIf a = (15 / 60) + 31 Then
+c = (((24 / 60) + 25) / 60) + 0
+ElseIf a = (30 / 60) + 31 Then
+c = (((35 / 60) + 25) / 60) + 0
+ElseIf a = (45 / 60) + 31 Then
+c = (((47 / 60) + 25) / 60) + 0
+
+
+ElseIf a = (0 / 60) + 32 Then
+c = (((58 / 60) + 25) / 60) + 0
+ElseIf a = (15 / 60) + 32 Then
+c = (((9 / 60) + 26) / 60) + 0
+ElseIf a = (30 / 60) + 32 Then
+c = (((21 / 60) + 26) / 60) + 0
+ElseIf a = (45 / 60) + 32 Then
+c = (((32 / 60) + 26) / 60) + 0
+
+ElseIf a = (0 / 60) + 33 Then
+c = (((43 / 60) + 26) / 60) + 0
+ElseIf a = (15 / 60) + 33 Then
+c = (((54 / 60) + 26) / 60) + 0
+ElseIf a = (30 / 60) + 33 Then
+c = (((5 / 60) + 27) / 60) + 0
+ElseIf a = (45 / 60) + 33 Then
+c = (((16 / 60) + 27) / 60) + 0
+
+
+
+ElseIf a = (0 / 60) + 34 Then
+c = (((27 / 60) + 27) / 60) + 0
+ElseIf a = (15 / 60) + 34 Then
+c = (((38 / 60) + 27) / 60) + 0
+ElseIf a = (30 / 60) + 34 Then
+c = (((48 / 60) + 27) / 60) + 0
+ElseIf a = (45 / 60) + 34 Then
+c = (((59 / 60) + 27) / 60) + 0
+
+
+
+ElseIf a = (0 / 60) + 35 Then
+c = (((10 / 60) + 28) / 60) + 0
+ElseIf a = (15 / 60) + 35 Then
+c = (((21 / 60) + 28) / 60) + 0
+ElseIf a = (30 / 60) + 35 Then
+c = (((31 / 60) + 28) / 60) + 0
+ElseIf a = (45 / 60) + 35 Then
+c = (((42 / 60) + 28) / 60) + 0
+
+
+ElseIf a = (0 / 60) + 36 Then
+c = (((52 / 60) + 28) / 60) + 0
+ElseIf a = (15 / 60) + 36 Then
+c = (((3 / 60) + 29) / 60) + 0
+ElseIf a = (30 / 60) + 36 Then
+c = (((13 / 60) + 29) / 60) + 0
+ElseIf a = (45 / 60) + 36 Then
+c = (((24 / 60) + 29) / 60) + 0
+
+
+
+
+ElseIf a = (0 / 60) + 37 Then
+c = (((34 / 60) + 29) / 60) + 0
+ElseIf a = (15 / 60) + 37 Then
+c = (((45 / 60) + 29) / 60) + 0
+ElseIf a = (30 / 60) + 37 Then
+c = (((55 / 60) + 29) / 60) + 0
+ElseIf a = (45 / 60) + 37 Then
+c = (((5 / 60) + 30) / 60) + 0
+
+
+ElseIf a = (0 / 60) + 38 Then
+c = (((15 / 60) + 30) / 60) + 0
+ElseIf a = (15 / 60) + 38 Then
+c = (((25 / 60) + 30) / 60) + 0
+ElseIf a = (30 / 60) + 38 Then
+c = (((36 / 60) + 30) / 60) + 0
+ElseIf a = (45 / 60) + 38 Then
+c = (((46 / 60) + 30) / 60) + 0
+
+
+ElseIf a = (0 / 60) + 39 Then
+c = (((56 / 60) + 30) / 60) + 0
+ElseIf a = (15 / 60) + 39 Then
+c = (((6 / 60) + 31) / 60) + 0
+ElseIf a = (30 / 60) + 39 Then
+c = (((16 / 60) + 31) / 60) + 0
+ElseIf a = (45 / 60) + 39 Then
+c = (((25 / 60) + 31) / 60) + 0
+
+
+
+ElseIf a = (0 / 60) + 40 Then
+c = (((35 / 60) + 31) / 60) + 0
+ElseIf a = (15 / 60) + 40 Then
+c = (((45 / 60) + 31) / 60) + 0
+ElseIf a = (30 / 60) + 40 Then
+c = (((54 / 60) + 31) / 60) + 0
+ElseIf a = (45 / 60) + 40 Then
+c = (((4 / 60) + 32) / 60) + 0
+
+
+
+ElseIf a = (0 / 60) + 41 Then
+c = (((13 / 60) + 32) / 60) + 0
+ElseIf a = (15 / 60) + 41 Then
+c = (((22 / 60) + 32) / 60) + 0
+ElseIf a = (30 / 60) + 41 Then
+c = (((32 / 60) + 32) / 60) + 0
+ElseIf a = (45 / 60) + 41 Then
+c = (((41 / 60) + 32) / 60) + 0
+
+
+ElseIf a = (0 / 60) + 42 Then
+c = (((50 / 60) + 32) / 60) + 0
+ElseIf a = (15 / 60) + 42 Then
+c = (((59 / 60) + 32) / 60) + 0
+ElseIf a = (30 / 60) + 42 Then
+c = (((9 / 60) + 33) / 60) + 0
+ElseIf a = (45 / 60) + 42 Then
+c = (((18 / 60) + 33) / 60) + 0
+
+ElseIf a = (0 / 60) + 43 Then
+c = (((27 / 60) + 33) / 60) + 0
+ElseIf a = (15 / 60) + 43 Then
+c = (((36 / 60) + 33) / 60) + 0
+ElseIf a = (30 / 60) + 43 Then
+c = (((46 / 60) + 33) / 60) + 0
+ElseIf a = (45 / 60) + 43 Then
+c = (((55 / 60) + 33) / 60) + 0
+
+
+
+ElseIf a = (0 / 60) + 44 Then
+c = (((4 / 60) + 34) / 60) + 0
+ElseIf a = (15 / 60) + 44 Then
+c = (((13 / 60) + 34) / 60) + 0
+ElseIf a = (30 / 60) + 44 Then
+c = (((22 / 60) + 34) / 60) + 0
+ElseIf a = (45 / 60) + 44 Then
+c = (((31 / 60) + 34) / 60) + 0
+
+
+
+ElseIf a = (0 / 60) + 45 Then
+c = (((40 / 60) + 34) / 60) + 0
+ElseIf a = (15 / 60) + 45 Then
+c = (((50 / 60) + 34) / 60) + 0
+ElseIf a = (30 / 60) + 45 Then
+c = (((59 / 60) + 34) / 60) + 0
+ElseIf a = (45 / 60) + 45 Then
+c = (((8 / 60) + 35) / 60) + 0
+
+
+ElseIf a = (0 / 60) + 46 Then
+c = (((17 / 60) + 35) / 60) + 0
+ElseIf a = (15 / 60) + 46 Then
+c = (((26 / 60) + 35) / 60) + 0
+ElseIf a = (30 / 60) + 46 Then
+c = (((35 / 60) + 35) / 60) + 0
+ElseIf a = (45 / 60) + 46 Then
+c = (((44 / 60) + 35) / 60) + 0
+
+
+
+
+ElseIf a = (0 / 60) + 47 Then
+c = (((53 / 60) + 35) / 60) + 0
+ElseIf a = (15 / 60) + 47 Then
+c = (((2 / 60) + 36) / 60) + 0
+ElseIf a = (30 / 60) + 47 Then
+c = (((11 / 60) + 36) / 60) + 0
+ElseIf a = (45 / 60) + 47 Then
+c = (((20 / 60) + 36) / 60) + 0
+
+
+ElseIf a = (0 / 60) + 48 Then
+c = (((28 / 60) + 36) / 60) + 0
+ElseIf a = (15 / 60) + 48 Then
+c = (((37 / 60) + 36) / 60) + 0
+ElseIf a = (30 / 60) + 48 Then
+c = (((46 / 60) + 36) / 60) + 0
+ElseIf a = (45 / 60) + 48 Then
+c = (((54 / 60) + 36) / 60) + 0
+
+
+ElseIf a = (0 / 60) + 49 Then
+c = (((3 / 60) + 37) / 60) + 0
+ElseIf a = (15 / 60) + 49 Then
+c = (((11 / 60) + 37) / 60) + 0
+ElseIf a = (30 / 60) + 49 Then
+c = (((20 / 60) + 37) / 60) + 0
+ElseIf a = (45 / 60) + 49 Then
+c = (((28 / 60) + 37) / 60) + 0
+
+
+
+ElseIf a = (0 / 60) + 50 Then
+c = (((37 / 60) + 37) / 60) + 0
+ElseIf a = (15 / 60) + 50 Then
+c = (((46 / 60) + 37) / 60) + 0
+ElseIf a = (30 / 60) + 50 Then
+c = (((54 / 60) + 37) / 60) + 0
+ElseIf a = (45 / 60) + 50 Then
+c = (((2 / 60) + 38) / 60) + 0
+
+ElseIf a = (0 / 60) + 51 Then
+c = (((11 / 60) + 38) / 60) + 0
+ElseIf a = (15 / 60) + 51 Then
+c = (((19 / 60) + 38) / 60) + 0
+ElseIf a = (30 / 60) + 51 Then
+c = (((27 / 60) + 38) / 60) + 0
+ElseIf a = (45 / 60) + 51 Then
+c = (((35 / 60) + 38) / 60) + 0
+
+
+ElseIf a = (0 / 60) + 52 Then
+c = (((43 / 60) + 38) / 60) + 0
+ElseIf a = (15 / 60) + 52 Then
+c = (((51 / 60) + 38) / 60) + 0
+ElseIf a = (30 / 60) + 52 Then
+c = (((58 / 60) + 38) / 60) + 0
+ElseIf a = (45 / 60) + 52 Then
+c = (((6 / 60) + 39) / 60) + 0
+
+ElseIf a = (0 / 60) + 53 Then
+c = (((14 / 60) + 39) / 60) + 0
+ElseIf a = (15 / 60) + 53 Then
+c = (((22 / 60) + 39) / 60) + 0
+ElseIf a = (30 / 60) + 53 Then
+c = (((29 / 60) + 39) / 60) + 0
+ElseIf a = (45 / 60) + 53 Then
+c = (((37 / 60) + 39) / 60) + 0
+
+
+
+ElseIf a = (0 / 60) + 54 Then
+c = (((44 / 60) + 39) / 60) + 0
+ElseIf a = (15 / 60) + 54 Then
+c = (((52 / 60) + 39) / 60) + 0
+ElseIf a = (30 / 60) + 54 Then
+c = (((59 / 60) + 39) / 60) + 0
+ElseIf a = (45 / 60) + 54 Then
+c = (((7 / 60) + 40) / 60) + 0
+
+
+
+ElseIf a = (0 / 60) + 55 Then
+c = (((13 / 60) + 40) / 60) + 0
+ElseIf a = (15 / 60) + 55 Then
+c = (((21 / 60) + 40) / 60) + 0
+ElseIf a = (30 / 60) + 55 Then
+c = (((29 / 60) + 40) / 60) + 0
+ElseIf a = (45 / 60) + 55 Then
+c = (((36 / 60) + 40) / 60) + 0
+
+
+ElseIf a = (0 / 60) + 56 Then
+c = (((44 / 60) + 40) / 60) + 0
+ElseIf a = (15 / 60) + 56 Then
+c = (((51 / 60) + 40) / 60) + 0
+ElseIf a = (30 / 60) + 56 Then
+c = (((58 / 60) + 40) / 60) + 0
+ElseIf a = (45 / 60) + 56 Then
+c = (((5 / 60) + 41) / 60) + 0
+
+
+
+
+ElseIf a = (0 / 60) + 57 Then
+c = (((13 / 60) + 41) / 60) + 0
+ElseIf a = (15 / 60) + 57 Then
+c = (((20 / 60) + 41) / 60) + 0
+ElseIf a = (30 / 60) + 57 Then
+c = (((27 / 60) + 41) / 60) + 0
+ElseIf a = (45 / 60) + 57 Then
+c = (((35 / 60) + 41) / 60) + 0
+
+
+ElseIf a = (0 / 60) + 58 Then
+c = (((42 / 60) + 41) / 60) + 0
+ElseIf a = (15 / 60) + 58 Then
+c = (((49 / 60) + 41) / 60) + 0
+ElseIf a = (30 / 60) + 58 Then
+c = (((56 / 60) + 41) / 60) + 0
+ElseIf a = (45 / 60) + 58 Then
+c = (((3 / 60) + 42) / 60) + 0
+
+
+ElseIf a = (0 / 60) + 59 Then
+c = (((9 / 60) + 42) / 60) + 0
+ElseIf a = (15 / 60) + 59 Then
+c = (((16 / 60) + 42) / 60) + 0
+ElseIf a = (30 / 60) + 59 Then
+c = (((22 / 60) + 42) / 60) + 0
+ElseIf a = (45 / 60) + 59 Then
+c = (((29 / 60) + 42) / 60) + 0
+
+
+ElseIf a = (0 / 60) + 60 Then
+c = (((35 / 60) + 42) / 60) + 0
+ElseIf a = (15 / 60) + 60 Then
+c = (((42 / 60) + 42) / 60) + 0
+ElseIf a = (30 / 60) + 60 Then
+c = (((48 / 60) + 42) / 60) + 0
+ElseIf a = (45 / 60) + 60 Then
+c = (((55 / 60) + 42) / 60) + 0
+
+ElseIf a = (0 / 60) + 61 Then
+c = (((1 / 60) + 43) / 60) + 0
+ElseIf a = (15 / 60) + 61 Then
+c = (((7 / 60) + 43) / 60) + 0
+ElseIf a = (30 / 60) + 61 Then
+c = (((14 / 60) + 43) / 60) + 0
+ElseIf a = (45 / 60) + 61 Then
+c = (((20 / 60) + 43) / 60) + 0
+
+
+ElseIf a = (0 / 60) + 62 Then
+c = (((26 / 60) + 43) / 60) + 0
+ElseIf a = (15 / 60) + 62 Then
+c = (((32 / 60) + 43) / 60) + 0
+ElseIf a = (30 / 60) + 62 Then
+c = (((38 / 60) + 43) / 60) + 0
+ElseIf a = (45 / 60) + 62 Then
+c = (((44 / 60) + 43) / 60) + 0
+
+ElseIf a = (0 / 60) + 63 Then
+c = (((50 / 60) + 43) / 60) + 0
+ElseIf a = (15 / 60) + 63 Then
+c = (((56 / 60) + 43) / 60) + 0
+ElseIf a = (30 / 60) + 63 Then
+c = (((2 / 60) + 44) / 60) + 0
+ElseIf a = (45 / 60) + 63 Then
+c = (((8 / 60) + 44) / 60) + 0
+
+
+
+ElseIf a = (0 / 60) + 64 Then
+c = (((14 / 60) + 44) / 60) + 0
+ElseIf a = (15 / 60) + 64 Then
+c = (((21 / 60) + 44) / 60) + 0
+ElseIf a = (30 / 60) + 64 Then
+c = (((27 / 60) + 44) / 60) + 0
+ElseIf a = (45 / 60) + 64 Then
+c = (((33 / 60) + 44) / 60) + 0
+
+
+
+ElseIf a = (0 / 60) + 65 Then
+c = (((39 / 60) + 44) / 60) + 0
+ElseIf a = (15 / 60) + 65 Then
+c = (((45 / 60) + 44) / 60) + 0
+ElseIf a = (30 / 60) + 65 Then
+c = (((50 / 60) + 44) / 60) + 0
+ElseIf a = (45 / 60) + 65 Then
+c = (((56 / 60) + 44) / 60) + 0
+
+
+ElseIf a = (0 / 60) + 66 Then
+c = (((2 / 60) + 45) / 60) + 0
+ElseIf a = (15 / 60) + 66 Then
+c = (((8 / 60) + 45) / 60) + 0
+ElseIf a = (30 / 60) + 66 Then
+c = (((13 / 60) + 45) / 60) + 0
+ElseIf a = (45 / 60) + 66 Then
+c = (((18 / 60) + 45) / 60) + 0
+
+
+
+
+ElseIf a = (0 / 60) + 67 Then
+c = (((24 / 60) + 45) / 60) + 0
+ElseIf a = (15 / 60) + 67 Then
+c = (((30 / 60) + 45) / 60) + 0
+ElseIf a = (30 / 60) + 67 Then
+c = (((35 / 60) + 45) / 60) + 0
+ElseIf a = (45 / 60) + 67 Then
+c = (((40 / 60) + 45) / 60) + 0
+
+
+ElseIf a = (0 / 60) + 68 Then
+c = (((46 / 60) + 45) / 60) + 0
+ElseIf a = (15 / 60) + 68 Then
+c = (((52 / 60) + 45) / 60) + 0
+ElseIf a = (30 / 60) + 68 Then
+c = (((57 / 60) + 45) / 60) + 0
+ElseIf a = (45 / 60) + 68 Then
+c = (((2 / 60) + 46) / 60) + 0
+
+
+ElseIf a = (0 / 60) + 69 Then
+c = (((8 / 60) + 46) / 60) + 0
+ElseIf a = (15 / 60) + 69 Then
+c = (((13 / 60) + 46) / 60) + 0
+ElseIf a = (30 / 60) + 69 Then
+c = (((19 / 60) + 46) / 60) + 0
+ElseIf a = (45 / 60) + 69 Then
+c = (((24 / 60) + 46) / 60) + 0
+
+
+
+ElseIf a = (0 / 60) + 70 Then
+c = (((29 / 60) + 46) / 60) + 0
+ElseIf a = (15 / 60) + 70 Then
+c = (((34 / 60) + 46) / 60) + 0
+ElseIf a = (30 / 60) + 70 Then
+c = (((39 / 60) + 46) / 60) + 0
+ElseIf a = (45 / 60) + 70 Then
+c = (((44 / 60) + 46) / 60) + 0
+
+
+
+ElseIf a = (0 / 60) + 71 Then
+c = (((49 / 60) + 46) / 60) + 0
+ElseIf a = (15 / 60) + 71 Then
+c = (((54 / 60) + 46) / 60) + 0
+ElseIf a = (30 / 60) + 71 Then
+c = (((59 / 60) + 46) / 60) + 0
+ElseIf a = (45 / 60) + 71 Then
+c = (((4 / 60) + 47) / 60) + 0
+
+
+ElseIf a = (0 / 60) + 72 Then
+c = (((8 / 60) + 47) / 60) + 0
+ElseIf a = (15 / 60) + 72 Then
+c = (((13 / 60) + 47) / 60) + 0
+ElseIf a = (30 / 60) + 72 Then
+c = (((17 / 60) + 47) / 60) + 0
+ElseIf a = (45 / 60) + 72 Then
+c = (((22 / 60) + 47) / 60) + 0
+
+ElseIf a = (0 / 60) + 73 Then
+c = (((26 / 60) + 47) / 60) + 0
+ElseIf a = (15 / 60) + 73 Then
+c = (((31 / 60) + 47) / 60) + 0
+ElseIf a = (30 / 60) + 73 Then
+c = (((35 / 60) + 47) / 60) + 0
+ElseIf a = (45 / 60) + 73 Then
+c = (((39 / 60) + 47) / 60) + 0
+
+
+
+ElseIf a = (0 / 60) + 74 Then
+c = (((44 / 60) + 47) / 60) + 0
+ElseIf a = (15 / 60) + 74 Then
+c = (((48 / 60) + 47) / 60) + 0
+ElseIf a = (30 / 60) + 74 Then
+c = (((52 / 60) + 47) / 60) + 0
+ElseIf a = (45 / 60) + 74 Then
+c = (((56 / 60) + 47) / 60) + 0
+
+
+
+ElseIf a = (0 / 60) + 75 Then
+c = (((0 / 60) + 48) / 60) + 0
+ElseIf a = (15 / 60) + 75 Then
+c = (((4 / 60) + 48) / 60) + 0
+ElseIf a = (30 / 60) + 75 Then
+c = (((7 / 60) + 48) / 60) + 0
+ElseIf a = (45 / 60) + 75 Then
+c = (((11 / 60) + 48) / 60) + 0
+
+
+ElseIf a = (0 / 60) + 76 Then
+c = (((15 / 60) + 48) / 60) + 0
+ElseIf a = (15 / 60) + 76 Then
+c = (((18 / 60) + 48) / 60) + 0
+ElseIf a = (30 / 60) + 76 Then
+c = (((22 / 60) + 48) / 60) + 0
+ElseIf a = (45 / 60) + 76 Then
+c = (((26 / 60) + 48) / 60) + 0
+
+
+
+
+ElseIf a = (0 / 60) + 77 Then
+c = (((29 / 60) + 48) / 60) + 0
+ElseIf a = (15 / 60) + 77 Then
+c = (((32 / 60) + 48) / 60) + 0
+ElseIf a = (30 / 60) + 77 Then
+c = (((36 / 60) + 48) / 60) + 0
+ElseIf a = (45 / 60) + 77 Then
+c = (((39 / 60) + 48) / 60) + 0
+
+
+ElseIf a = (0 / 60) + 78 Then
+c = (((42 / 60) + 48) / 60) + 0
+ElseIf a = (15 / 60) + 78 Then
+c = (((45 / 60) + 48) / 60) + 0
+ElseIf a = (30 / 60) + 78 Then
+c = (((48 / 60) + 48) / 60) + 0
+ElseIf a = (45 / 60) + 78 Then
+c = (((51 / 60) + 48) / 60) + 0
+
+
+ElseIf a = (0 / 60) + 79 Then
+c = (((54 / 60) + 48) / 60) + 0
+ElseIf a = (15 / 60) + 79 Then
+c = (((57 / 60) + 48) / 60) + 0
+ElseIf a = (30 / 60) + 79 Then
+c = (((59 / 60) + 48) / 60) + 0
+ElseIf a = (45 / 60) + 79 Then
+c = (((2 / 60) + 49) / 60) + 0
+
+
+
+ElseIf a = (0 / 60) + 80 Then
+c = (((5 / 60) + 49) / 60) + 0
+ElseIf a = (15 / 60) + 80 Then
+c = (((8 / 60) + 49) / 60) + 0
+ElseIf a = (30 / 60) + 80 Then
+c = (((10 / 60) + 49) / 60) + 0
+ElseIf a = (45 / 60) + 80 Then
+c = (((13 / 60) + 49) / 60) + 0
+
+ElseIf a = (0 / 60) + 81 Then
+c = (((15 / 60) + 49) / 60) + 0
+ElseIf a = (15 / 60) + 81 Then
+c = (((18 / 60) + 49) / 60) + 0
+ElseIf a = (30 / 60) + 81 Then
+c = (((20 / 60) + 49) / 60) + 0
+ElseIf a = (45 / 60) + 81 Then
+c = (((23 / 60) + 49) / 60) + 0
+
+
+ElseIf a = (0 / 60) + 82 Then
+c = (((25 / 60) + 49) / 60) + 0
+ElseIf a = (15 / 60) + 82 Then
+c = (((27 / 60) + 49) / 60) + 0
+ElseIf a = (30 / 60) + 82 Then
+c = (((30 / 60) + 49) / 60) + 0
+ElseIf a = (45 / 60) + 82 Then
+c = (((32 / 60) + 49) / 60) + 0
+
+ElseIf a = (0 / 60) + 83 Then
+c = (((34 / 60) + 49) / 60) + 0
+ElseIf a = (15 / 60) + 83 Then
+c = (((36 / 60) + 49) / 60) + 0
+ElseIf a = (30 / 60) + 83 Then
+c = (((39 / 60) + 49) / 60) + 0
+ElseIf a = (45 / 60) + 83 Then
+c = (((41 / 60) + 49) / 60) + 0
+
+
+
+ElseIf a = (0 / 60) + 84 Then
+c = (((43 / 60) + 49) / 60) + 0
+ElseIf a = (15 / 60) + 84 Then
+c = (((45 / 60) + 49) / 60) + 0
+ElseIf a = (30 / 60) + 84 Then
+c = (((48 / 60) + 49) / 60) + 0
+ElseIf a = (45 / 60) + 84 Then
+c = (((50 / 60) + 49) / 60) + 0
+
+
+
+ElseIf a = (0 / 60) + 85 Then
+c = (((52 / 60) + 49) / 60) + 0
+ElseIf a = (15 / 60) + 85 Then
+c = (((54 / 60) + 49) / 60) + 0
+ElseIf a = (30 / 60) + 85 Then
+c = (((56 / 60) + 49) / 60) + 0
+ElseIf a = (45 / 60) + 85 Then
+c = (((57 / 60) + 49) / 60) + 0
+
+
+ElseIf a = (0 / 60) + 86 Then
+c = (((59 / 60) + 49) / 60) + 0
+ElseIf a = (15 / 60) + 86 Then
+c = (((1 / 60) + 50) / 60) + 0
+ElseIf a = (30 / 60) + 86 Then
+c = (((2 / 60) + 50) / 60) + 0
+ElseIf a = (45 / 60) + 86 Then
+c = (((4 / 60) + 50) / 60) + 0
+
+
+
+ElseIf a = (0 / 60) + 87 Then
+c = (((5 / 60) + 50) / 60) + 0
+ElseIf a = (15 / 60) + 87 Then
+c = (((7 / 60) + 50) / 60) + 0
+ElseIf a = (30 / 60) + 87 Then
+c = (((8 / 60) + 50) / 60) + 0
+ElseIf a = (45 / 60) + 87 Then
+c = (((9 / 60) + 50) / 60) + 0
+
+
+ElseIf a = (0 / 60) + 88 Then
+c = (((10 / 60) + 50) / 60) + 0
+ElseIf a = (15 / 60) + 88 Then
+c = (((11 / 60) + 50) / 60) + 0
+ElseIf a = (30 / 60) + 88 Then
+c = (((12 / 60) + 50) / 60) + 0
+ElseIf a = (45 / 60) + 88 Then
+c = (((12 / 60) + 50) / 60) + 0
+
+
+ElseIf a = (0 / 60) + 89 Then
+c = (((13 / 60) + 50) / 60) + 0
+ElseIf a = (15 / 60) + 89 Then
+c = (((14 / 60) + 50) / 60) + 0
+ElseIf a = (30 / 60) + 89 Then
+c = (((14 / 60) + 50) / 60) + 0
+ElseIf a = (45 / 60) + 89 Then
+c = (((15 / 60) + 50) / 60) + 0
+
+
+
+ElseIf a = (0 / 60) + 90 Then
+c = (((15 / 60) + 50) / 60) + 0
+ElseIf a = (15 / 60) + 90 Then
+c = (((15 / 60) + 50) / 60) + 0
+ElseIf a = (30 / 60) + 90 Then
+c = (((16 / 60) + 50) / 60) + 0
+ElseIf a = (45 / 60) + 90 Then
+c = (((16 / 60) + 50) / 60) + 0
+
+ElseIf a = (0 / 60) + 91 Then
+c = (((16 / 60) + 50) / 60) + 0
+ElseIf a = (15 / 60) + 91 Then
+c = (((16 / 60) + 50) / 60) + 0
+ElseIf a = (30 / 60) + 91 Then
+c = (((16 / 60) + 50) / 60) + 0
+ElseIf a = (45 / 60) + 91 Then
+c = (((15 / 60) + 50) / 60) + 0
+
+
+ElseIf a = (0 / 60) + 92 Then
+c = (((15 / 60) + 50) / 60) + 0
+ElseIf a = (15 / 60) + 92 Then
+c = (((14 / 60) + 50) / 60) + 0
+ElseIf a = (30 / 60) + 92 Then
+c = (((14 / 60) + 50) / 60) + 0
+ElseIf a = (45 / 60) + 92 Then
+c = (((13 / 60) + 50) / 60) + 0
+
+ElseIf a = (0 / 60) + 93 Then
+c = (((13 / 60) + 50) / 60) + 0
+ElseIf a = (15 / 60) + 93 Then
+c = (((12 / 60) + 50) / 60) + 0
+ElseIf a = (30 / 60) + 93 Then
+c = (((12 / 60) + 50) / 60) + 0
+ElseIf a = (45 / 60) + 93 Then
+c = (((11 / 60) + 50) / 60) + 0
+
+
+
+ElseIf a = (0 / 60) + 94 Then
+c = (((11 / 60) + 50) / 60) + 0
+ElseIf a = (15 / 60) + 94 Then
+c = (((10 / 60) + 50) / 60) + 0
+ElseIf a = (30 / 60) + 94 Then
+c = (((9 / 60) + 50) / 60) + 0
+ElseIf a = (45 / 60) + 94 Then
+c = (((8 / 60) + 50) / 60) + 0
+
+
+
+ElseIf a = (0 / 60) + 95 Then
+c = (((6 / 60) + 50) / 60) + 0
+ElseIf a = (15 / 60) + 95 Then
+c = (((5 / 60) + 50) / 60) + 0
+ElseIf a = (30 / 60) + 95 Then
+c = (((3 / 60) + 50) / 60) + 0
+ElseIf a = (45 / 60) + 95 Then
+c = (((2 / 60) + 50) / 60) + 0
+
+
+ElseIf a = (0 / 60) + 96 Then
+c = (((0 / 60) + 50) / 60) + 0
+ElseIf a = (15 / 60) + 96 Then
+c = (((59 / 60) + 49) / 60) + 0
+ElseIf a = (30 / 60) + 96 Then
+c = (((57 / 60) + 49) / 60) + 0
+ElseIf a = (45 / 60) + 96 Then
+c = (((56 / 60) + 49) / 60) + 0
+
+
+
+
+ElseIf a = (0 / 60) + 97 Then
+c = (((53 / 60) + 49) / 60) + 0
+ElseIf a = (15 / 60) + 97 Then
+c = (((52 / 60) + 49) / 60) + 0
+ElseIf a = (30 / 60) + 97 Then
+c = (((50 / 60) + 49) / 60) + 0
+ElseIf a = (45 / 60) + 97 Then
+c = (((47 / 60) + 49) / 60) + 0
+
+
+ElseIf a = (0 / 60) + 98 Then
+c = (((45 / 60) + 49) / 60) + 0
+ElseIf a = (15 / 60) + 98 Then
+c = (((43 / 60) + 49) / 60) + 0
+ElseIf a = (30 / 60) + 98 Then
+c = (((41 / 60) + 49) / 60) + 0
+ElseIf a = (45 / 60) + 98 Then
+c = (((38 / 60) + 49) / 60) + 0
+
+
+ElseIf a = (0 / 60) + 99 Then
+c = (((36 / 60) + 49) / 60) + 0
+ElseIf a = (15 / 60) + 99 Then
+c = (((34 / 60) + 49) / 60) + 0
+ElseIf a = (30 / 60) + 99 Then
+c = (((32 / 60) + 49) / 60) + 0
+ElseIf a = (45 / 60) + 99 Then
+c = (((30 / 60) + 49) / 60) + 0
+
+
+
+ElseIf a = (0 / 60) + 100 Then
+c = (((27 / 60) + 49) / 60) + 0
+ElseIf a = (15 / 60) + 100 Then
+c = (((24 / 60) + 49) / 60) + 0
+ElseIf a = (30 / 60) + 100 Then
+c = (((22 / 60) + 49) / 60) + 0
+ElseIf a = (45 / 60) + 100 Then
+c = (((20 / 60) + 49) / 60) + 0
+
+
+
+ElseIf a = (0 / 60) + 101 Then
+c = (((17 / 60) + 49) / 60) + 0
+ElseIf a = (15 / 60) + 101 Then
+c = (((14 / 60) + 49) / 60) + 0
+ElseIf a = (30 / 60) + 101 Then
+c = (((12 / 60) + 49) / 60) + 0
+ElseIf a = (45 / 60) + 101 Then
+c = (((9 / 60) + 49) / 60) + 0
+
+
+ElseIf a = (0 / 60) + 102 Then
+c = (((6 / 60) + 49) / 60) + 0
+ElseIf a = (15 / 60) + 102 Then
+c = (((3 / 60) + 49) / 60) + 0
+ElseIf a = (30 / 60) + 102 Then
+c = (((1 / 60) + 49) / 60) + 0
+ElseIf a = (45 / 60) + 102 Then
+c = (((58 / 60) + 48) / 60) + 0
+
+ElseIf a = (0 / 60) + 103 Then
+c = (((55 / 60) + 48) / 60) + 0
+ElseIf a = (15 / 60) + 103 Then
+c = (((52 / 60) + 48) / 60) + 0
+ElseIf a = (30 / 60) + 103 Then
+c = (((49 / 60) + 48) / 60) + 0
+ElseIf a = (45 / 60) + 103 Then
+c = (((46 / 60) + 48) / 60) + 0
+
+
+
+ElseIf a = (0 / 60) + 104 Then
+c = (((43 / 60) + 48) / 60) + 0
+ElseIf a = (15 / 60) + 104 Then
+c = (((40 / 60) + 48) / 60) + 0
+ElseIf a = (30 / 60) + 104 Then
+c = (((36 / 60) + 48) / 60) + 0
+ElseIf a = (45 / 60) + 104 Then
+c = (((33 / 60) + 48) / 60) + 0
+
+
+
+ElseIf a = (0 / 60) + 105 Then
+c = (((30 / 60) + 48) / 60) + 0
+ElseIf a = (15 / 60) + 105 Then
+c = (((27 / 60) + 48) / 60) + 0
+ElseIf a = (30 / 60) + 105 Then
+c = (((23 / 60) + 48) / 60) + 0
+ElseIf a = (45 / 60) + 105 Then
+c = (((20 / 60) + 48) / 60) + 0
+
+
+ElseIf a = (0 / 60) + 106 Then
+c = (((17 / 60) + 48) / 60) + 0
+ElseIf a = (15 / 60) + 106 Then
+c = (((13 / 60) + 48) / 60) + 0
+ElseIf a = (30 / 60) + 106 Then
+c = (((9 / 60) + 48) / 60) + 0
+ElseIf a = (45 / 60) + 106 Then
+c = (((6 / 60) + 48) / 60) + 0
+
+
+
+
+ElseIf a = (0 / 60) + 107 Then
+c = (((2 / 60) + 48) / 60) + 0
+ElseIf a = (15 / 60) + 107 Then
+c = (((58 / 60) + 47) / 60) + 0
+ElseIf a = (30 / 60) + 107 Then
+c = (((54 / 60) + 47) / 60) + 0
+ElseIf a = (45 / 60) + 107 Then
+c = (((50 / 60) + 47) / 60) + 0
+
+
+ElseIf a = (0 / 60) + 108 Then
+c = (((46 / 60) + 47) / 60) + 0
+ElseIf a = (15 / 60) + 108 Then
+c = (((42 / 60) + 47) / 60) + 0
+ElseIf a = (30 / 60) + 108 Then
+c = (((38 / 60) + 47) / 60) + 0
+ElseIf a = (45 / 60) + 108 Then
+c = (((33 / 60) + 47) / 60) + 0
+
+
+ElseIf a = (0 / 60) + 109 Then
+c = (((29 / 60) + 47) / 60) + 0
+ElseIf a = (15 / 60) + 109 Then
+c = (((24 / 60) + 47) / 60) + 0
+ElseIf a = (30 / 60) + 109 Then
+c = (((19 / 60) + 47) / 60) + 0
+ElseIf a = (45 / 60) + 109 Then
+c = (((15 / 60) + 47) / 60) + 0
+
+
+
+ElseIf a = (0 / 60) + 110 Then
+c = (((10 / 60) + 47) / 60) + 0
+ElseIf a = (15 / 60) + 110 Then
+c = (((5 / 60) + 47) / 60) + 0
+ElseIf a = (30 / 60) + 110 Then
+c = (((0 / 60) + 47) / 60) + 0
+ElseIf a = (45 / 60) + 110 Then
+c = (((56 / 60) + 46) / 60) + 0
+
+ElseIf a = (0 / 60) + 111 Then
+c = (((51 / 60) + 46) / 60) + 0
+ElseIf a = (15 / 60) + 111 Then
+c = (((46 / 60) + 46) / 60) + 0
+ElseIf a = (30 / 60) + 111 Then
+c = (((41 / 60) + 46) / 60) + 0
+ElseIf a = (45 / 60) + 111 Then
+c = (((36 / 60) + 46) / 60) + 0
+
+ElseIf a = (0 / 60) + 112 Then
+c = (((31 / 60) + 46) / 60) + 0
+ElseIf a = (15 / 60) + 112 Then
+c = (((26 / 60) + 46) / 60) + 0
+ElseIf a = (30 / 60) + 112 Then
+c = (((21 / 60) + 46) / 60) + 0
+ElseIf a = (45 / 60) + 112 Then
+c = (((16 / 60) + 46) / 60) + 0
+
+ElseIf a = (0 / 60) + 113 Then
+c = (((11 / 60) + 46) / 60) + 0
+ElseIf a = (15 / 60) + 113 Then
+c = (((5 / 60) + 46) / 60) + 0
+ElseIf a = (30 / 60) + 113 Then
+c = (((0 / 60) + 46) / 60) + 0
+ElseIf a = (45 / 60) + 113 Then
+c = (((55 / 60) + 45) / 60) + 0
+
+
+
+ElseIf a = (0 / 60) + 114 Then
+c = (((49 / 60) + 45) / 60) + 0
+ElseIf a = (15 / 60) + 114 Then
+c = (((44 / 60) + 45) / 60) + 0
+ElseIf a = (30 / 60) + 114 Then
+c = (((38 / 60) + 45) / 60) + 0
+ElseIf a = (45 / 60) + 114 Then
+c = (((33 / 60) + 45) / 60) + 0
+
+
+
+ElseIf a = (0 / 60) + 115 Then
+c = (((27 / 60) + 45) / 60) + 0
+ElseIf a = (15 / 60) + 115 Then
+c = (((22 / 60) + 45) / 60) + 0
+ElseIf a = (30 / 60) + 115 Then
+c = (((16 / 60) + 45) / 60) + 0
+ElseIf a = (45 / 60) + 115 Then
+c = (((10 / 60) + 45) / 60) + 0
+
+
+ElseIf a = (0 / 60) + 116 Then
+c = (((4 / 60) + 45) / 60) + 0
+ElseIf a = (15 / 60) + 116 Then
+c = (((58 / 60) + 44) / 60) + 0
+ElseIf a = (30 / 60) + 116 Then
+c = (((52 / 60) + 44) / 60) + 0
+ElseIf a = (45 / 60) + 116 Then
+c = (((46 / 60) + 44) / 60) + 0
+
+
+
+
+ElseIf a = (0 / 60) + 117 Then
+c = (((40 / 60) + 44) / 60) + 0
+ElseIf a = (15 / 60) + 117 Then
+c = (((34 / 60) + 44) / 60) + 0
+ElseIf a = (30 / 60) + 117 Then
+c = (((27 / 60) + 44) / 60) + 0
+ElseIf a = (45 / 60) + 117 Then
+c = (((21 / 60) + 44) / 60) + 0
+
+
+ElseIf a = (0 / 60) + 118 Then
+c = (((15 / 60) + 44) / 60) + 0
+ElseIf a = (15 / 60) + 118 Then
+c = (((9 / 60) + 44) / 60) + 0
+ElseIf a = (30 / 60) + 118 Then
+c = (((2 / 60) + 44) / 60) + 0
+ElseIf a = (45 / 60) + 118 Then
+c = (((56 / 60) + 43) / 60) + 0
+
+
+ElseIf a = (0 / 60) + 119 Then
+c = (((50 / 60) + 43) / 60) + 0
+ElseIf a = (15 / 60) + 119 Then
+c = (((44 / 60) + 43) / 60) + 0
+ElseIf a = (30 / 60) + 119 Then
+c = (((37 / 60) + 43) / 60) + 0
+ElseIf a = (45 / 60) + 119 Then
+c = (((30 / 60) + 43) / 60) + 0
+
+
+
+
+ElseIf a = (0 / 60) + 120 Then
+c = (((24 / 60) + 43) / 60) + 0
+ElseIf a = (15 / 60) + 120 Then
+c = (((17 / 60) + 43) / 60) + 0
+ElseIf a = (30 / 60) + 120 Then
+c = (((11 / 60) + 43) / 60) + 0
+ElseIf a = (45 / 60) + 120 Then
+c = (((4 / 60) + 43) / 60) + 0
+
+ElseIf a = (0 / 60) + 121 Then
+c = (((57 / 60) + 42) / 60) + 0
+ElseIf a = (15 / 60) + 121 Then
+c = (((50 / 60) + 42) / 60) + 0
+ElseIf a = (30 / 60) + 121 Then
+c = (((43 / 60) + 42) / 60) + 0
+ElseIf a = (45 / 60) + 121 Then
+c = (((36 / 60) + 42) / 60) + 0
+
+
+ElseIf a = (0 / 60) + 122 Then
+c = (((30 / 60) + 42) / 60) + 0
+ElseIf a = (15 / 60) + 122 Then
+c = (((23 / 60) + 42) / 60) + 0
+ElseIf a = (30 / 60) + 122 Then
+c = (((16 / 60) + 42) / 60) + 0
+ElseIf a = (45 / 60) + 122 Then
+c = (((9 / 60) + 42) / 60) + 0
+
+ElseIf a = (0 / 60) + 123 Then
+c = (((3 / 60) + 42) / 60) + 0
+ElseIf a = (15 / 60) + 123 Then
+c = (((56 / 60) + 41) / 60) + 0
+ElseIf a = (30 / 60) + 123 Then
+c = (((49 / 60) + 41) / 60) + 0
+ElseIf a = (45 / 60) + 123 Then
+c = (((42 / 60) + 41) / 60) + 0
+
+
+
+ElseIf a = (0 / 60) + 124 Then
+c = (((35 / 60) + 41) / 60) + 0
+ElseIf a = (15 / 60) + 124 Then
+c = (((28 / 60) + 41) / 60) + 0
+ElseIf a = (30 / 60) + 124 Then
+c = (((21 / 60) + 41) / 60) + 0
+ElseIf a = (45 / 60) + 124 Then
+c = (((14 / 60) + 41) / 60) + 0
+
+
+
+ElseIf a = (0 / 60) + 125 Then
+c = (((7 / 60) + 41) / 60) + 0
+ElseIf a = (15 / 60) + 125 Then
+c = (((0 / 60) + 41) / 60) + 0
+ElseIf a = (30 / 60) + 125 Then
+c = (((53 / 60) + 40) / 60) + 0
+ElseIf a = (45 / 60) + 125 Then
+c = (((45 / 60) + 40) / 60) + 0
+
+
+ElseIf a = (0 / 60) + 126 Then
+c = (((38 / 60) + 40) / 60) + 0
+ElseIf a = (15 / 60) + 126 Then
+c = (((30 / 60) + 40) / 60) + 0
+ElseIf a = (30 / 60) + 126 Then
+c = (((22 / 60) + 40) / 60) + 0
+ElseIf a = (45 / 60) + 126 Then
+c = (((15 / 60) + 40) / 60) + 0
+
+
+
+ElseIf a = (0 / 60) + 127 Then
+c = (((7 / 60) + 40) / 60) + 0
+ElseIf a = (15 / 60) + 127 Then
+c = (((59 / 60) + 39) / 60) + 0
+ElseIf a = (30 / 60) + 127 Then
+c = (((52 / 60) + 39) / 60) + 0
+ElseIf a = (45 / 60) + 127 Then
+c = (((44 / 60) + 39) / 60) + 0
+
+
+ElseIf a = (0 / 60) + 128 Then
+c = (((36 / 60) + 39) / 60) + 0
+ElseIf a = (15 / 60) + 128 Then
+c = (((28 / 60) + 39) / 60) + 0
+ElseIf a = (30 / 60) + 128 Then
+c = (((20 / 60) + 39) / 60) + 0
+ElseIf a = (45 / 60) + 128 Then
+c = (((12 / 60) + 39) / 60) + 0
+
+
+ElseIf a = (0 / 60) + 129 Then
+c = (((4 / 60) + 39) / 60) + 0
+ElseIf a = (15 / 60) + 129 Then
+c = (((56 / 60) + 38) / 60) + 0
+ElseIf a = (30 / 60) + 129 Then
+c = (((47 / 60) + 38) / 60) + 0
+ElseIf a = (45 / 60) + 129 Then
+c = (((39 / 60) + 38) / 60) + 0
+
+
+
+ElseIf a = (0 / 60) + 130 Then
+c = (((31 / 60) + 38) / 60) + 0
+ElseIf a = (15 / 60) + 130 Then
+c = (((22 / 60) + 38) / 60) + 0
+ElseIf a = (30 / 60) + 130 Then
+c = (((14 / 60) + 38) / 60) + 0
+ElseIf a = (45 / 60) + 130 Then
+c = (((6 / 60) + 38) / 60) + 0
+
+
+
+ElseIf a = (0 / 60) + 131 Then
+c = (((57 / 60) + 37) / 60) + 0
+ElseIf a = (15 / 60) + 131 Then
+c = (((48 / 60) + 37) / 60) + 0
+ElseIf a = (30 / 60) + 131 Then
+c = (((40 / 60) + 37) / 60) + 0
+ElseIf a = (45 / 60) + 131 Then
+c = (((31 / 60) + 37) / 60) + 0
+
+
+ElseIf a = (0 / 60) + 132 Then
+c = (((22 / 60) + 37) / 60) + 0
+ElseIf a = (15 / 60) + 132 Then
+c = (((13 / 60) + 37) / 60) + 0
+ElseIf a = (30 / 60) + 132 Then
+c = (((5 / 60) + 37) / 60) + 0
+ElseIf a = (45 / 60) + 132 Then
+c = (((56 / 60) + 36) / 60) + 0
+
+ElseIf a = (0 / 60) + 133 Then
+c = (((47 / 60) + 36) / 60) + 0
+ElseIf a = (15 / 60) + 133 Then
+c = (((38 / 60) + 36) / 60) + 0
+ElseIf a = (30 / 60) + 133 Then
+c = (((29 / 60) + 36) / 60) + 0
+ElseIf a = (45 / 60) + 133 Then
+c = (((20 / 60) + 36) / 60) + 0
+
+
+
+ElseIf a = (0 / 60) + 134 Then
+c = (((11 / 60) + 36) / 60) + 0
+ElseIf a = (15 / 60) + 134 Then
+c = (((2 / 60) + 36) / 60) + 0
+ElseIf a = (30 / 60) + 134 Then
+c = (((53 / 60) + 35) / 60) + 0
+ElseIf a = (45 / 60) + 134 Then
+c = (((43 / 60) + 35) / 60) + 0
+
+
+
+ElseIf a = (0 / 60) + 135 Then
+c = (((34 / 60) + 35) / 60) + 0
+ElseIf a = (15 / 60) + 135 Then
+c = (((25 / 60) + 35) / 60) + 0
+ElseIf a = (30 / 60) + 135 Then
+c = (((15 / 60) + 35) / 60) + 0
+ElseIf a = (45 / 60) + 135 Then
+c = (((5 / 60) + 35) / 60) + 0
+
+
+ElseIf a = (0 / 60) + 136 Then
+c = (((56 / 60) + 34) / 60) + 0
+ElseIf a = (15 / 60) + 136 Then
+c = (((46 / 60) + 34) / 60) + 0
+ElseIf a = (30 / 60) + 136 Then
+c = (((37 / 60) + 34) / 60) + 0
+ElseIf a = (45 / 60) + 136 Then
+c = (((27 / 60) + 34) / 60) + 0
+
+
+
+
+ElseIf a = (0 / 60) + 137 Then
+c = (((18 / 60) + 34) / 60) + 0
+ElseIf a = (15 / 60) + 137 Then
+c = (((8 / 60) + 34) / 60) + 0
+ElseIf a = (30 / 60) + 137 Then
+c = (((59 / 60) + 33) / 60) + 0
+ElseIf a = (45 / 60) + 137 Then
+c = (((49 / 60) + 33) / 60) + 0
+
+
+ElseIf a = (0 / 60) + 138 Then
+c = (((39 / 60) + 33) / 60) + 0
+ElseIf a = (15 / 60) + 138 Then
+c = (((29 / 60) + 33) / 60) + 0
+ElseIf a = (30 / 60) + 138 Then
+c = (((19 / 60) + 33) / 60) + 0
+ElseIf a = (45 / 60) + 138 Then
+c = (((9 / 60) + 33) / 60) + 0
+
+
+ElseIf a = (0 / 60) + 139 Then
+c = (((59 / 60) + 32) / 60) + 0
+ElseIf a = (15 / 60) + 139 Then
+c = (((49 / 60) + 32) / 60) + 0
+ElseIf a = (30 / 60) + 139 Then
+c = (((39 / 60) + 32) / 60) + 0
+ElseIf a = (45 / 60) + 139 Then
+c = (((29 / 60) + 32) / 60) + 0
+
+
+
+ElseIf a = (0 / 60) + 140 Then
+c = (((19 / 60) + 32) / 60) + 0
+ElseIf a = (15 / 60) + 140 Then
+c = (((9 / 60) + 32) / 60) + 0
+ElseIf a = (30 / 60) + 140 Then
+c = (((59 / 60) + 31) / 60) + 0
+ElseIf a = (45 / 60) + 140 Then
+c = (((49 / 60) + 31) / 60) + 0
+
+ElseIf a = (0 / 60) + 141 Then
+c = (((39 / 60) + 31) / 60) + 0
+ElseIf a = (15 / 60) + 141 Then
+c = (((29 / 60) + 31) / 60) + 0
+ElseIf a = (30 / 60) + 141 Then
+c = (((19 / 60) + 31) / 60) + 0
+ElseIf a = (45 / 60) + 141 Then
+c = (((8 / 60) + 31) / 60) + 0
+
+
+ElseIf a = (0 / 60) + 142 Then
+c = (((58 / 60) + 30) / 60) + 0
+ElseIf a = (15 / 60) + 142 Then
+c = (((48 / 60) + 30) / 60) + 0
+ElseIf a = (30 / 60) + 142 Then
+c = (((37 / 60) + 30) / 60) + 0
+ElseIf a = (45 / 60) + 142 Then
+c = (((26 / 60) + 30) / 60) + 0
+
+ElseIf a = (0 / 60) + 143 Then
+c = (((16 / 60) + 30) / 60) + 0
+ElseIf a = (15 / 60) + 143 Then
+c = (((5 / 60) + 30) / 60) + 0
+ElseIf a = (30 / 60) + 143 Then
+c = (((55 / 60) + 29) / 60) + 0
+ElseIf a = (45 / 60) + 143 Then
+c = (((44 / 60) + 29) / 60) + 0
+
+
+
+ElseIf a = (0 / 60) + 144 Then
+c = (((34 / 60) + 29) / 60) + 0
+ElseIf a = (15 / 60) + 144 Then
+c = (((23 / 60) + 29) / 60) + 0
+ElseIf a = (30 / 60) + 144 Then
+c = (((13 / 60) + 29) / 60) + 0
+ElseIf a = (45 / 60) + 144 Then
+c = (((2 / 60) + 29) / 60) + 0
+
+
+
+ElseIf a = (0 / 60) + 145 Then
+c = (((51 / 60) + 28) / 60) + 0
+ElseIf a = (15 / 60) + 145 Then
+c = (((40 / 60) + 28) / 60) + 0
+ElseIf a = (30 / 60) + 145 Then
+c = (((30 / 60) + 28) / 60) + 0
+ElseIf a = (45 / 60) + 145 Then
+c = (((19 / 60) + 28) / 60) + 0
+
+
+ElseIf a = (0 / 60) + 146 Then
+c = (((8 / 60) + 28) / 60) + 0
+ElseIf a = (15 / 60) + 146 Then
+c = (((57 / 60) + 27) / 60) + 0
+ElseIf a = (30 / 60) + 146 Then
+c = (((46 / 60) + 27) / 60) + 0
+ElseIf a = (45 / 60) + 146 Then
+c = (((35 / 60) + 27) / 60) + 0
+
+
+
+
+ElseIf a = (0 / 60) + 147 Then
+c = (((24 / 60) + 27) / 60) + 0
+ElseIf a = (15 / 60) + 147 Then
+c = (((13 / 60) + 27) / 60) + 0
+ElseIf a = (30 / 60) + 147 Then
+c = (((2 / 60) + 27) / 60) + 0
+ElseIf a = (45 / 60) + 147 Then
+c = (((51 / 60) + 26) / 60) + 0
+
+
+ElseIf a = (0 / 60) + 148 Then
+c = (((40 / 60) + 26) / 60) + 0
+ElseIf a = (15 / 60) + 148 Then
+c = (((29 / 60) + 26) / 60) + 0
+ElseIf a = (30 / 60) + 148 Then
+c = (((18 / 60) + 26) / 60) + 0
+ElseIf a = (45 / 60) + 148 Then
+c = (((7 / 60) + 26) / 60) + 0
+
+
+ElseIf a = (0 / 60) + 149 Then
+c = (((56 / 60) + 25) / 60) + 0
+ElseIf a = (15 / 60) + 149 Then
+c = (((45 / 60) + 25) / 60) + 0
+ElseIf a = (30 / 60) + 149 Then
+c = (((34 / 60) + 25) / 60) + 0
+ElseIf a = (45 / 60) + 149 Then
+c = (((23 / 60) + 25) / 60) + 0
+
+
+
+
+
+ElseIf a = (0 / 60) + 150 Then
+c = (((12 / 60) + 25) / 60) + 0
+ElseIf a = (15 / 60) + 150 Then
+c = (((1 / 60) + 25) / 60) + 0
+ElseIf a = (30 / 60) + 150 Then
+c = (((50 / 60) + 24) / 60) + 0
+ElseIf a = (45 / 60) + 150 Then
+c = (((39 / 60) + 24) / 60) + 0
+
+ElseIf a = (0 / 60) + 151 Then
+c = (((28 / 60) + 24) / 60) + 0
+ElseIf a = (15 / 60) + 151 Then
+c = (((17 / 60) + 24) / 60) + 0
+ElseIf a = (30 / 60) + 151 Then
+c = (((5 / 60) + 24) / 60) + 0
+ElseIf a = (45 / 60) + 151 Then
+c = (((54 / 60) + 23) / 60) + 0
+
+
+ElseIf a = (0 / 60) + 152 Then
+c = (((43 / 60) + 23) / 60) + 0
+ElseIf a = (15 / 60) + 152 Then
+c = (((31 / 60) + 23) / 60) + 0
+ElseIf a = (30 / 60) + 152 Then
+c = (((20 / 60) + 23) / 60) + 0
+ElseIf a = (45 / 60) + 152 Then
+c = (((9 / 60) + 23) / 60) + 0
+
+ElseIf a = (0 / 60) + 153 Then
+c = (((57 / 60) + 22) / 60) + 0
+ElseIf a = (15 / 60) + 153 Then
+c = (((45 / 60) + 22) / 60) + 0
+ElseIf a = (30 / 60) + 153 Then
+c = (((34 / 60) + 22) / 60) + 0
+ElseIf a = (45 / 60) + 153 Then
+c = (((22 / 60) + 22) / 60) + 0
+
+
+
+ElseIf a = (0 / 60) + 154 Then
+c = (((11 / 60) + 22) / 60) + 0
+ElseIf a = (15 / 60) + 154 Then
+c = (((59 / 60) + 21) / 60) + 0
+ElseIf a = (30 / 60) + 154 Then
+c = (((48 / 60) + 21) / 60) + 0
+ElseIf a = (45 / 60) + 154 Then
+c = (((36 / 60) + 21) / 60) + 0
+
+
+
+ElseIf a = (0 / 60) + 155 Then
+c = (((25 / 60) + 21) / 60) + 0
+ElseIf a = (15 / 60) + 155 Then
+c = (((13 / 60) + 21) / 60) + 0
+ElseIf a = (30 / 60) + 155 Then
+c = (((2 / 60) + 21) / 60) + 0
+ElseIf a = (45 / 60) + 155 Then
+c = (((50 / 60) + 20) / 60) + 0
+
+
+ElseIf a = (0 / 60) + 156 Then
+c = (((39 / 60) + 20) / 60) + 0
+ElseIf a = (15 / 60) + 156 Then
+c = (((27 / 60) + 20) / 60) + 0
+ElseIf a = (30 / 60) + 156 Then
+c = (((16 / 60) + 20) / 60) + 0
+ElseIf a = (45 / 60) + 156 Then
+c = (((4 / 60) + 20) / 60) + 0
+
+
+
+
+ElseIf a = (0 / 60) + 157 Then
+c = (((52 / 60) + 19) / 60) + 0
+ElseIf a = (15 / 60) + 157 Then
+c = (((40 / 60) + 19) / 60) + 0
+ElseIf a = (30 / 60) + 157 Then
+c = (((28 / 60) + 19) / 60) + 0
+ElseIf a = (45 / 60) + 157 Then
+c = (((16 / 60) + 19) / 60) + 0
+
+
+ElseIf a = (0 / 60) + 158 Then
+c = (((4 / 60) + 19) / 60) + 0
+ElseIf a = (15 / 60) + 158 Then
+c = (((52 / 60) + 18) / 60) + 0
+ElseIf a = (30 / 60) + 158 Then
+c = (((40 / 60) + 18) / 60) + 0
+ElseIf a = (45 / 60) + 158 Then
+c = (((28 / 60) + 18) / 60) + 0
+
+
+ElseIf a = (0 / 60) + 159 Then
+c = (((16 / 60) + 18) / 60) + 0
+ElseIf a = (15 / 60) + 159 Then
+c = (((4 / 60) + 18) / 60) + 0
+ElseIf a = (30 / 60) + 159 Then
+c = (((52 / 60) + 17) / 60) + 0
+ElseIf a = (45 / 60) + 159 Then
+c = (((40 / 60) + 17) / 60) + 0
+
+
+
+ElseIf a = (0 / 60) + 160 Then
+c = (((28 / 60) + 17) / 60) + 0
+ElseIf a = (15 / 60) + 160 Then
+c = (((16 / 60) + 17) / 60) + 0
+ElseIf a = (30 / 60) + 160 Then
+c = (((4 / 60) + 17) / 60) + 0
+ElseIf a = (45 / 60) + 160 Then
+c = (((52 / 60) + 16) / 60) + 0
+
+
+
+ElseIf a = (0 / 60) + 161 Then
+c = (((40 / 60) + 16) / 60) + 0
+ElseIf a = (15 / 60) + 161 Then
+c = (((28 / 60) + 16) / 60) + 0
+ElseIf a = (30 / 60) + 161 Then
+c = (((16 / 60) + 16) / 60) + 0
+ElseIf a = (45 / 60) + 161 Then
+c = (((3 / 60) + 16) / 60) + 0
+
+
+ElseIf a = (0 / 60) + 162 Then
+c = (((51 / 60) + 15) / 60) + 0
+ElseIf a = (15 / 60) + 162 Then
+c = (((39 / 60) + 15) / 60) + 0
+ElseIf a = (30 / 60) + 162 Then
+c = (((26 / 60) + 15) / 60) + 0
+ElseIf a = (45 / 60) + 162 Then
+c = (((14 / 60) + 15) / 60) + 0
+
+ElseIf a = (0 / 60) + 163 Then
+c = (((2 / 60) + 15) / 60) + 0
+ElseIf a = (15 / 60) + 163 Then
+c = (((49 / 60) + 14) / 60) + 0
+ElseIf a = (30 / 60) + 163 Then
+c = (((37 / 60) + 14) / 60) + 0
+ElseIf a = (45 / 60) + 163 Then
+c = (((24 / 60) + 14) / 60) + 0
+
+
+
+ElseIf a = (0 / 60) + 164 Then
+c = (((12 / 60) + 14) / 60) + 0
+ElseIf a = (15 / 60) + 164 Then
+c = (((59 / 60) + 13) / 60) + 0
+ElseIf a = (30 / 60) + 164 Then
+c = (((47 / 60) + 13) / 60) + 0
+ElseIf a = (45 / 60) + 164 Then
+c = (((34 / 60) + 13) / 60) + 0
+
+
+
+ElseIf a = (0 / 60) + 165 Then
+c = (((21 / 60) + 13) / 60) + 0
+ElseIf a = (15 / 60) + 165 Then
+c = (((8 / 60) + 13) / 60) + 0
+ElseIf a = (30 / 60) + 165 Then
+c = (((56 / 60) + 12) / 60) + 0
+ElseIf a = (45 / 60) + 165 Then
+c = (((43 / 60) + 12) / 60) + 0
+
+
+ElseIf a = (0 / 60) + 166 Then
+c = (((31 / 60) + 12) / 60) + 0
+ElseIf a = (15 / 60) + 166 Then
+c = (((18 / 60) + 12) / 60) + 0
+ElseIf a = (30 / 60) + 166 Then
+c = (((6 / 60) + 12) / 60) + 0
+ElseIf a = (45 / 60) + 166 Then
+c = (((53 / 60) + 11) / 60) + 0
+
+
+
+
+ElseIf a = (0 / 60) + 167 Then
+c = (((41 / 60) + 11) / 60) + 0
+ElseIf a = (15 / 60) + 167 Then
+c = (((28 / 60) + 11) / 60) + 0
+ElseIf a = (30 / 60) + 167 Then
+c = (((15 / 60) + 11) / 60) + 0
+ElseIf a = (45 / 60) + 167 Then
+c = (((2 / 60) + 11) / 60) + 0
+
+
+ElseIf a = (0 / 60) + 168 Then
+c = (((49 / 60) + 10) / 60) + 0
+ElseIf a = (15 / 60) + 168 Then
+c = (((35 / 60) + 10) / 60) + 0
+ElseIf a = (30 / 60) + 168 Then
+c = (((22 / 60) + 10) / 60) + 0
+ElseIf a = (45 / 60) + 168 Then
+c = (((9 / 60) + 10) / 60) + 0
+
+
+ElseIf a = (0 / 60) + 169 Then
+c = (((57 / 60) + 9) / 60) + 0
+ElseIf a = (15 / 60) + 169 Then
+c = (((44 / 60) + 9) / 60) + 0
+ElseIf a = (30 / 60) + 169 Then
+c = (((31 / 60) + 9) / 60) + 0
+ElseIf a = (45 / 60) + 169 Then
+c = (((18 / 60) + 9) / 60) + 0
+
+
+
+ElseIf a = (0 / 60) + 170 Then
+c = (((5 / 60) + 9) / 60) + 0
+ElseIf a = (15 / 60) + 170 Then
+c = (((52 / 60) + 8) / 60) + 0
+ElseIf a = (30 / 60) + 170 Then
+c = (((39 / 60) + 8) / 60) + 0
+ElseIf a = (45 / 60) + 170 Then
+c = (((25 / 60) + 8) / 60) + 0
+
+ElseIf a = (0 / 60) + 171 Then
+c = (((12 / 60) + 8) / 60) + 0
+ElseIf a = (15 / 60) + 171 Then
+c = (((59 / 60) + 7) / 60) + 0
+ElseIf a = (30 / 60) + 171 Then
+c = (((46 / 60) + 7) / 60) + 0
+ElseIf a = (45 / 60) + 171 Then
+c = (((32 / 60) + 7) / 60) + 0
+
+
+ElseIf a = (0 / 60) + 172 Then
+c = (((19 / 60) + 7) / 60) + 0
+ElseIf a = (15 / 60) + 172 Then
+c = (((6 / 60) + 7) / 60) + 0
+ElseIf a = (30 / 60) + 172 Then
+c = (((53 / 60) + 6) / 60) + 0
+ElseIf a = (45 / 60) + 172 Then
+c = (((39 / 60) + 6) / 60) + 0
+
+ElseIf a = (0 / 60) + 173 Then
+c = (((26 / 60) + 6) / 60) + 0
+ElseIf a = (15 / 60) + 173 Then
+c = (((13 / 60) + 6) / 60) + 0
+ElseIf a = (30 / 60) + 173 Then
+c = (((0 / 60) + 6) / 60) + 0
+ElseIf a = (45 / 60) + 173 Then
+c = (((46 / 60) + 5) / 60) + 0
+
+
+
+ElseIf a = (0 / 60) + 174 Then
+c = (((33 / 60) + 5) / 60) + 0
+ElseIf a = (15 / 60) + 174 Then
+c = (((19 / 60) + 5) / 60) + 0
+ElseIf a = (30 / 60) + 174 Then
+c = (((6 / 60) + 5) / 60) + 0
+ElseIf a = (45 / 60) + 174 Then
+c = (((52 / 60) + 4) / 60) + 0
+
+
+
+ElseIf a = (0 / 60) + 175 Then
+c = (((39 / 60) + 4) / 60) + 0
+ElseIf a = (15 / 60) + 175 Then
+c = (((25 / 60) + 4) / 60) + 0
+ElseIf a = (30 / 60) + 175 Then
+c = (((12 / 60) + 4) / 60) + 0
+ElseIf a = (45 / 60) + 175 Then
+c = (((58 / 60) + 3) / 60) + 0
+
+
+ElseIf a = (0 / 60) + 176 Then
+c = (((44 / 60) + 3) / 60) + 0
+ElseIf a = (15 / 60) + 176 Then
+c = (((30 / 60) + 3) / 60) + 0
+ElseIf a = (30 / 60) + 176 Then
+c = (((16 / 60) + 3) / 60) + 0
+ElseIf a = (45 / 60) + 176 Then
+c = (((2 / 60) + 3) / 60) + 0
+
+
+
+
+ElseIf a = (0 / 60) + 177 Then
+c = (((48 / 60) + 2) / 60) + 0
+ElseIf a = (15 / 60) + 177 Then
+c = (((34 / 60) + 2) / 60) + 0
+ElseIf a = (30 / 60) + 177 Then
+c = (((20 / 60) + 2) / 60) + 0
+ElseIf a = (45 / 60) + 177 Then
+c = (((6 / 60) + 2) / 60) + 0
+
+
+ElseIf a = (0 / 60) + 178 Then
+c = (((52 / 60) + 1) / 60) + 0
+ElseIf a = (15 / 60) + 178 Then
+c = (((38 / 60) + 1) / 60) + 0
+ElseIf a = (30 / 60) + 178 Then
+c = (((24 / 60) + 1) / 60) + 0
+ElseIf a = (45 / 60) + 178 Then
+c = (((10 / 60) + 1) / 60) + 0
+
+
+ElseIf a = (0 / 60) + 179 Then
+c = (((56 / 60) + 0) / 60) + 0
+ElseIf a = (15 / 60) + 179 Then
+c = (((42 / 60) + 0) / 60) + 0
+ElseIf a = (30 / 60) + 179 Then
+c = (((28 / 60) + 0) / 60) + 0
+ElseIf a = (45 / 60) + 179 Then
+c = (((14 / 60) + 0) / 60) + 0
+End If
+tzohre = c
+End Function
+Public Function tzohre1(m As Double) As Double
+Dim a1 As Double
+a1 = (15 / 60)
+Dim x As Double
+x = Int(m / a1) * a1
+Dim j As Double
+If m >= 0 And m <= 180 Then
+j = -1
+ElseIf m > 180 Then
+j = 1
+End If
+Dim y As Double
+If m = x Then
+y = tzohre(x)
+ElseIf m > x Then
+y = tzohre(x) + (((tzohre((x) + (a1)) - tzohre(x)) / (a1)) * (m - (x)))
+End If
+tzohre1 = y * j
+End Function
+
+Public Function jahatmerame(sal As Integer, mah As Integer, rooz As Double, mbtool As Double)
+Dim markazm As Double
+If wasatmer(sal, mah, rooz, mbtool) < oujmer(sal, mah, rooz, mbtool) Then
+markazm = (wasatmer(sal, mah, rooz, mbtool) + 360) - oujmer(sal, mah, rooz, mbtool)
+Else
+markazm = wasatmer(sal, mah, rooz, mbtool) - oujmer(sal, mah, rooz, mbtool)
+End If
+Dim a1 As Double
+a1 = tq(wasatmer(sal, mah, rooz, mbtool) + tmer1(markazm))
+Dim b1 As Double
+b1 = tq(markazm + tmer1(markazm))
+Dim hesarz As Double
+If a1 < rasmer(sal, mah, rooz, mbtool) Then
+hesarz = (a1 + 360) - rasmer(sal, mah, rooz, mbtool)
+Else
+hesarz = a1 - rasmer(sal, mah, rooz, mbtool)
+End If
+If hesarz <= 90 Then
+jahatmerame = "sh-saed-zaed"
+ElseIf 90 < hesarz And hesarz <= 180 Then
+jahatmerame = "sh-habet-naqes"
+ElseIf 10 < hesarz And hesarz <= 270 Then
+jahatmerame = "jo-habet-zaed"
+Else
+jahatmerame = "jo-saed-naqes"
+End If
+End Function
+Public Function jahatotaame(sal As Integer, mah As Integer, rooz As Double, mbtool As Double)
+Dim markazm As Double
+If wasatott(sal, mah, rooz, mbtool) < oujott(sal, mah, rooz, mbtool) Then
+markazm = (wasatott(sal, mah, rooz, mbtool) + 360) - oujott(sal, mah, rooz, mbtool)
+Else
+markazm = wasatott(sal, mah, rooz, mbtool) - oujott(sal, mah, rooz, mbtool)
+End If
+Dim a1 As Double
+a1 = tq(wasatott(sal, mah, rooz, mbtool) + tota1(markazm))
+Dim b1 As Double
+b1 = tq(markazm + tota1(markazm))
+Dim hesarz As Double
+If a1 < rasott(sal, mah, rooz, mbtool) Then
+hesarz = (a1 + 360) - rasott(sal, mah, rooz, mbtool)
+Else
+hesarz = a1 - rasott(sal, mah, rooz, mbtool)
+End If
+If hesarz <= 90 Then
+jahatotaame = "sh-saed-zaed"
+ElseIf 90 < hesarz And hesarz <= 180 Then
+jahatotaame = "sh-habet-naqes"
+ElseIf 10 < hesarz And hesarz <= 270 Then
+jahatotaame = "jo-habet-zaed"
+Else
+jahatotaame = "jo-saed-naqes"
+End If
+End Function
+Public Function jahatzohalame(sal As Integer, mah As Integer, rooz As Double, mbtool As Double)
+Dim markazm As Double
+If wasatzo(sal, mah, rooz, mbtool) < oujzo(sal, mah, rooz, mbtool) Then
+markazm = (wasatzo(sal, mah, rooz, mbtool) + 360) - oujzo(sal, mah, rooz, mbtool)
+Else
+markazm = wasatzo(sal, mah, rooz, mbtool) - oujzo(sal, mah, rooz, mbtool)
+End If
+Dim a1 As Double
+a1 = tq(wasatzo(sal, mah, rooz, mbtool) + tzohal1(markazm))
+Dim b1 As Double
+b1 = tq(markazm + tzohal1(markazm))
+Dim hesarz As Double
+If a1 < raszo(sal, mah, rooz, mbtool) Then
+hesarz = (a1 + 360) - raszo(sal, mah, rooz, mbtool)
+Else
+hesarz = a1 - raszo(sal, mah, rooz, mbtool)
+End If
+If hesarz <= 90 Then
+jahatzohalame = "sh-saed-zaed"
+ElseIf 90 < hesarz And hesarz <= 180 Then
+jahatzohalame = "sh-habet-naqes"
+ElseIf 10 < hesarz And hesarz <= 270 Then
+jahatzohalame = "jo-habet-zaed"
+Else
+jahatzohalame = "jo-saed-naqes"
+End If
+End Function
+Public Function jahatzohreame(sal As Integer, mah As Integer, rooz As Double, mbtool As Double)
+Dim markazm As Double
+If wasatzh(sal, mah, rooz, mbtool) < oujzh(sal, mah, rooz, mbtool) Then
+markazm = (wasatzh(sal, mah, rooz, mbtool) + 360) - oujzh(sal, mah, rooz, mbtool)
+Else
+markazm = wasatzh(sal, mah, rooz, mbtool) - oujzh(sal, mah, rooz, mbtool)
+End If
+Dim a1 As Double
+a1 = tq(wasatzh(sal, mah, rooz, mbtool) + tzohre1(markazm))
+Dim b1 As Double
+b1 = tq(markazm + tzohre1(markazm))
+Dim hesarz As Double
+If a1 < raszh(sal, mah, rooz, mbtool) Then
+hesarz = (a1 + 360) - raszh(sal, mah, rooz, mbtool)
+Else
+hesarz = a1 - raszh(sal, mah, rooz, mbtool)
+End If
+If hesarz <= 90 Then
+jahatzohreame = "sh-saed-zaed"
+ElseIf 90 < hesarz And hesarz <= 180 Then
+jahatzohreame = "sh-habet-naqes"
+ElseIf 10 < hesarz And hesarz <= 270 Then
+jahatzohreame = "jo-habet-zaed"
+Else
+jahatzohreame = "jo-saed-naqes"
+End If
+End Function
+Public Function jahatmoshame(sal As Integer, mah As Integer, rooz As Double, mbtool As Double)
+Dim markazm As Double
+If wasatmosh(sal, mah, rooz, mbtool) < oujmosh(sal, mah, rooz, mbtool) Then
+markazm = (wasatmosh(sal, mah, rooz, mbtool) + 360) - oujmosh(sal, mah, rooz, mbtool)
+Else
+markazm = wasatmosh(sal, mah, rooz, mbtool) - oujmosh(sal, mah, rooz, mbtool)
+End If
+Dim a1 As Double
+a1 = tq(wasatmosh(sal, mah, rooz, mbtool) + tmosh1(markazm))
+Dim b1 As Double
+b1 = tq(markazm + tmosh1(markazm))
+Dim hesarz As Double
+If a1 < rasmosh(sal, mah, rooz, mbtool) Then
+hesarz = (a1 + 360) - rasmosh(sal, mah, rooz, mbtool)
+Else
+hesarz = a1 - rasmosh(sal, mah, rooz, mbtool)
+End If
+If hesarz <= 90 Then
+jahatmoshame = "sh-saed-zaed"
+ElseIf 90 < hesarz And hesarz <= 180 Then
+jahatmoshame = "sh-habet-naqes"
+ElseIf 10 < hesarz And hesarz <= 270 Then
+jahatmoshame = "jo-habet-zaed"
+Else
+jahatmoshame = "jo-saed-naqes"
+End If
+End Function
+
+
+

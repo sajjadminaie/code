@@ -1,0 +1,331 @@
+Public Function tafavot(sal As Integer, mah As Integer, mbtool As Double, arzb As Double) As Double
+Dim a As Double
+a = taqsha(sal, mah, 0, mbtool)
+Dim b As Double
+b = qsn(ml(sal, a), arzb) / 30
+Dim c As Double
+c = taqqa(sal, mah, roz(0, b, 0, 0), mbtool)
+Dim d As Double
+d = taqsha(sal, mah, roz(0, b, 0, 0), mbtool)
+Dim e As Double
+If c - d > 0 Then
+e = c - d
+Else
+e = c - d + 360
+End If
+Dim k As Double
+k = taqsha(sal, mah, 1, mbtool)
+Dim o As Double
+o = qsn(ml(sal, k), arzb) / 30
+Dim p As Double
+p = taqqa(sal, mah, roz(1, o, 0, 0), mbtool)
+Dim s As Double
+s = taqsha(sal, mah, roz(1, o, 0, 0), mbtool)
+Dim f As Double
+If p - s > 0 Then
+f = p - s
+Else
+f = p - s + 360
+End If
+Dim aa As Double
+aa = taqsha(sal, mah, 2, mbtool)
+Dim bb As Double
+bb = qsn(ml(sal, aa), arzb) / 30
+Dim cc As Double
+cc = taqqa(sal, mah, roz(2, bb, 0, 0), mbtool)
+Dim dd As Double
+dd = taqsha(sal, mah, roz(2, bb, 0, 0), mbtool)
+Dim tt As Double
+If cc - dd > 0 Then
+tt = cc - dd
+Else
+tt = cc - dd + 360
+End If
+If e >= 10 And e < 30 Then
+tafavot = 0
+ElseIf f >= 10 And f < 30 Then
+tafavot = 1
+ElseIf tt >= 10 And tt < 30 Then
+tafavot = 2
+Else
+tafavot = 3
+End If
+End Function
+Public Function rozhaq(rooz As Double, tafavott As Double) As Double
+rozhaq = rooz + tafavott
+End Function
+Public Function sat(sal As Integer, mah As Integer, rozhaq As Double, mbtool As Double, arzb As Double) As Double
+Dim q As Double
+q = taqsha(sal, mah, rozhaq, mbtool)
+sat = qsn(ml(sal, q), arzb) / 30
+End Function
+Public Function tadqroob(sal As Integer, mah As Integer, rozhaq As Double, sat As Double, mbtool As Double, arzb As Double) As Double
+Dim arzq As Double
+arzq = arzqmr(hesseh(sal, mah, roz(rozhaq, sat, 0, 0), mbtool))
+Dim taqvimsh2 As Double
+taqvimsh2 = taqsha(sal, mah, roz(rozhaq, sat, 0, 0), mbtool)
+Dim talevaqt As Double
+talevaqt = tale3(sal, arzb, taqvimsh2, sat)
+Dim ertfmaree As Double
+ertfmaree = ertmaree(sal, mah, rozhaq, sat, mbtool, arzb)
+Dim taqvimq2 As Double
+taqvimq2 = taqqa(sal, mah, roz(rozhaq, sat, 0, 0), mbtool)
+Dim arzmary As Double
+arzmary = arzmaree(sal, arzb, taqvimq2, arzq, talevaqt, ertfmaree)
+Dim ektool As Double
+ektool = ekhtoolq(sal, arzb, taqvimq2, arzq, talevaqt, ertfmaree)
+Dim ektarz As Double
+ektarz = ekharzq(arzq, arzmary)
+Dim ashere As Double
+ashere = asher(sal, talevaqt, arzb)
+Dim a As Double
+a = ml(sal, mtb(sal, taqvimsh2, arzb))
+Dim arzeq As Double
+arzeq = Arzr2(sal, ashere, a, arzb)
+tadqroob = asn(tn((arzmary)) * 60 / ctn(arzeq))
+End Function
+Public Function qamarmoadal1(sal As Integer, mah As Integer, rozhaq As Double, sat As Double, mbtool As Double, arzb As Double) As Double
+Dim arzq As Double
+arzq = arzqmr(hesseha(sal, mah, roz(rozhaq, sat, 0, 0), mbtool))
+Dim taqvimsh2 As Double
+taqvimsh2 = taqsha(sal, mah, roz(rozhaq, sat, 0, 0), mbtool)
+Dim talevaqt As Double
+talevaqt = tale3(sal, arzb, taqvimsh2, sat)
+Dim ertfmaree As Double
+ertfmaree = ertmaree(sal, mah, rozhaq, sat, mbtool, arzb)
+Dim taqvimq2 As Double
+taqvimq2 = taqqa(sal, mah, roz(rozhaq, sat, 0, 0), mbtool)
+Dim arzmary As Double
+arzmary = arzmaree(sal, arzb, taqvimq2, arzq, talevaqt, ertfmaree)
+Dim ektool As Double
+ektool = ekhtoolq(sal, arzb, taqvimq2, arzq, talevaqt, ertfmaree)
+Dim taqtatale As Double
+taqtatale = 180 - taqtasa(taqvimq2, talevaqt)
+Dim taqvimmaree As Double
+taqvimmaree = taqmaree(taqvimq2, taqtatale, ektool)
+If arzmary > 0 Then
+qamarmoadal1 = taqvimmaree + Abs(tadqroob(sal, mah, rozhaq, sat, mbtool, arzb))
+Else
+qamarmoadal1 = taqvimmaree - Abs(tadqroob(sal, mah, rozhaq, sat, mbtool, arzb))
+End If
+End Function
+Public Function enheraf(sal As Integer, mah As Integer, rozhaq As Double, sat As Double, mbtool As Double, arzb As Double) As Double
+Dim arzq As Double
+arzq = arzqmr(hesseha(sal, mah, roz(rozhaq, sat, 0, 0), mbtool))
+enheraf = (arzq) * (36 / 60)
+End Function
+Public Function qamarmoadal2(sal As Integer, mah As Integer, rozhaq As Double, sat As Double, mbtool As Double, arzb As Double) As Double
+Dim arzq As Double
+arzq = arzqmr(hesseha(sal, mah, roz(rozhaq, sat, 0, 0), mbtool))
+Dim taqvimsh2 As Double
+taqvimsh2 = taqsha(sal, mah, roz(rozhaq, sat, 0, 0), mbtool)
+Dim talevaqt As Double
+talevaqt = tale3(sal, arzb, taqvimsh2, sat)
+Dim ertfmaree As Double
+ertfmaree = ertmaree(sal, mah, rozhaq, sat, mbtool, arzb)
+Dim taqvimq2 As Double
+taqvimq2 = taqqa(sal, mah, roz(rozhaq, sat, 0, 0), mbtool)
+Dim arzmary As Double
+arzmary = arzmaree(sal, arzb, taqvimq2, arzq, talevaqt, ertfmaree)
+Dim ektool As Double
+ektool = ekhtoolq(sal, arzb, taqvimq2, arzq, talevaqt, ertfmaree)
+Dim taqtatale As Double
+taqtatale = 180 - taqtasa(taqvimq2, talevaqt)
+Dim taqvimmaree As Double
+taqvimmaree = taqmaree(taqvimq2, taqtatale, ektool)
+Dim enheraf As Double
+enheraf = (arzq) * (36 / 60)
+qamarmoadal2 = enheraf + taqvimmaree
+
+End Function
+Public Function bodmoadal(sal As Integer, mah As Integer, rozhaq As Double, sat As Double, mbtool As Double, arzb As Double) As Double
+Dim arzq As Double
+arzq = arzqmr(hesseha(sal, mah, roz(rozhaq, sat, 0, 0), mbtool))
+Dim taqvimsh2 As Double
+taqvimsh2 = taqsha(sal, mah, roz(rozhaq, sat, 0, 0), mbtool)
+Dim talevaqt As Double
+talevaqt = tale3(sal, arzb, taqvimsh2, sat)
+Dim ertfmaree As Double
+ertfmaree = ertmaree(sal, mah, rozhaq, sat, mbtool, arzb)
+Dim taqvimq2 As Double
+taqvimq2 = taqqa(sal, mah, roz(rozhaq, sat, 0, 0), mbtool)
+Dim arzmary As Double
+arzmary = arzmaree(sal, arzb, taqvimq2, arzq, talevaqt, ertfmaree)
+Dim ektool As Double
+ektool = ekhtoolq(sal, arzb, taqvimq2, arzq, talevaqt, ertfmaree)
+Dim taqtatale As Double
+taqtatale = 180 - taqtasa(taqvimq2, talevaqt)
+Dim taqvimmaree As Double
+taqvimmaree = taqmaree(taqvimq2, taqtatale, ektool)
+Dim qamarmoadal1 As Double
+If arzmary > 0 Then
+qamarmoadal1 = Abs(tadqroob(sal, mah, rozhaq, sat, mbtool, arzb)) + taqvimmaree
+Else
+qamarmoadal1 = taqvimmaree - Abs(tadqroob(sal, mah, rozhaq, sat, mbtool, arzb))
+End If
+Dim jozenazirsh As Double
+If taqvimsh2 < 180 Then
+jozenazirsh = taqvimsh2 + 180
+Else
+jozenazirsh = taqvimsh2 - 180
+End If
+Dim jozenazirq As Double
+If qamarmoadal1 < 180 Then
+jozenazirq = qamarmoadal1 + 180
+Else
+jozenazirq = qamarmoadal1 - 180
+End If
+Dim x As Double
+x = mtb(sal, jozenazirsh, arzb)
+Dim y As Double
+y = mtb(sal, jozenazirq, arzb)
+If y - x >= -180 Then
+bodmoadal = y - x
+Else
+bodmoadal = y + 360 - x
+End If
+End Function
+Public Function bodsava(sal As Integer, mah As Integer, rozhaq As Double, sat As Double, mbtool As Double, arzb As Double) As Double
+Dim arzq As Double
+arzq = arzqmr(hesseha(sal, mah, roz(rozhaq, sat, 0, 0), mbtool))
+Dim taqvimsh2 As Double
+taqvimsh2 = taqsha(sal, mah, roz(rozhaq, sat, 0, 0), mbtool)
+Dim talevaqt As Double
+talevaqt = tale3(sal, arzb, taqvimsh2, sat)
+Dim ertfmaree As Double
+ertfmaree = ertmaree(sal, mah, rozhaq, sat, mbtool, arzb)
+Dim taqvimq2 As Double
+taqvimq2 = taqqa(sal, mah, roz(rozhaq, sat, 0, 0), mbtool)
+Dim arzmary As Double
+arzmary = arzmaree(sal, arzb, taqvimq2, arzq, talevaqt, ertfmaree)
+Dim ektool As Double
+ektool = ekhtoolq(sal, arzb, taqvimq2, arzq, talevaqt, ertfmaree)
+Dim taqtatale As Double
+taqtatale = 180 - taqtasa(taqvimq2, talevaqt)
+Dim taqvimmaree As Double
+taqvimmaree = taqmaree(taqvimq2, taqtatale, ektool)
+If taqvimmaree - taqvimsh2 >= -180 Then
+bodsava = taqvimmaree - taqvimsh2
+Else
+bodsava = taqvimmaree + 360 - taqvimsh2
+End If
+End Function
+Public Function royathelalame(sal As Integer, mah As Integer, rozhaq As Double, sat As Double, mbtool As Double, arzb As Double)
+If (bodmoadal(sal, mah, rozhaq, sat, mbtool, arzb) <= 10) Or (bodsava(sal, mah, rozhaq, sat, mbtool, arzb) <= 10) Then
+royathelalame = "?CE? ???E ???E ?C? ?? ????"
+ElseIf ((10 < bodmoadal(sal, mah, rozhaq, sat, mbtool, arzb) And bodmoadal(sal, mah, rozhaq, sat, mbtool, arzb) <= 12)) And (bodsava(sal, mah, rozhaq, sat, mbtool, arzb) > 10) Then
+royathelalame = "?C? EC??? I?I? ?? O?I ?C? 29 ????"
+ElseIf ((12 < bodmoadal(sal, mah, rozhaq, sat, mbtool, arzb) And bodmoadal(sal, mah, rozhaq, sat, mbtool, arzb) <= 14)) And (bodsava(sal, mah, rozhaq, sat, mbtool, arzb) > 10) Then
+royathelalame = "?C? ??EI? I?I? ?? O?I ?C? 29 ????"
+ElseIf (bodmoadal(sal, mah, rozhaq, sat, mbtool, arzb) > 14) And (bodsava(sal, mah, rozhaq, sat, mbtool, arzb) > 10) Then
+royathelalame = "?C? E??? ?UC?? I?I? ?? O?I ?C? 29 ????  "
+End If
+End Function
+Public Function tedadrooz(sal As Integer, mah As Integer, rozhaq As Double, sat As Double, mbtool As Double, arzb As Double) As Double
+If (bodmoadal(sal, mah, rozhaq, sat, mbtool, arzb) >= 10) And (bodsava(sal, mah, rozhaq, sat, mbtool, arzb) >= 10) Then
+tedadrooz = "29"
+Else
+tedadrooz = "30"
+End If
+End Function
+Public Function majmoo(sal As Integer, rooz As Double, mbtool As Double, arzb As Double) As Double
+Dim tafavotta As Double
+tafavotta = tafavot(sal, 1, mbtool, arzb)
+Dim tafavottb As Double
+tafavottb = tafavot(sal, 2, mbtool, arzb)
+Dim tafavottc As Double
+tafavottc = tafavot(sal, 3, mbtool, arzb)
+Dim tafavottd As Double
+tafavottd = tafavot(sal, 4, mbtool, arzb)
+Dim tafavotte As Double
+tafavotte = tafavot(sal, 5, mbtool, arzb)
+Dim tafavottj As Double
+tafavottj = tafavot(sal, 6, mbtool, arzb)
+Dim tafavottg As Double
+tafavottg = tafavot(sal, 7, mbtool, arzb)
+Dim tafavottk As Double
+tafavottk = tafavot(sal, 8, mbtool, arzb)
+Dim tafavottl As Double
+tafavottl = tafavot(sal, 9, mbtool, arzb)
+Dim tafavottm As Double
+tafavottm = tafavot(sal, 10, mbtool, arzb)
+Dim tafavottn As Double
+tafavottn = tafavot(sal, 11, mbtool, arzb)
+Dim tafavottf As Double
+tafavottf = tafavot(sal, 12, mbtool, arzb)
+Dim rooza As Double
+rooza = rozhaq(rooz, tafavotta)
+Dim roozb As Double
+roozb = rozhaq(rooz, tafavottb)
+Dim roozc As Double
+roozc = rozhaq(rooz, tafavottc)
+Dim roozd As Double
+roozd = rozhaq(rooz, tafavottd)
+Dim rooze As Double
+rooze = rozhaq(rooz, tafavotte)
+Dim roozj As Double
+roozj = rozhaq(rooz, tafavottj)
+Dim roozg As Double
+roozg = rozhaq(rooz, tafavottg)
+Dim roozk As Double
+roozk = rozhaq(rooz, tafavottk)
+Dim roozl As Double
+roozl = rozhaq(rooz, tafavottl)
+Dim roozm As Double
+roozm = rozhaq(rooz, tafavottm)
+Dim roozn As Double
+roozn = rozhaq(rooz, tafavottn)
+Dim roozf As Double
+roozf = rozhaq(rooz, tafavottf)
+Dim saata As Double
+saata = sat(sal, 1, rooza, mbtool, arzb)
+Dim saatb As Double
+saatb = sat(sal, 2, roozb, mbtool, arzb)
+Dim saatc As Double
+saatc = sat(sal, 3, roozc, mbtool, arzb)
+Dim saatd As Double
+saatd = sat(sal, 4, roozd, mbtool, arzb)
+Dim saate As Double
+saate = sat(sal, 5, rooze, mbtool, arzb)
+Dim saatj As Double
+saatj = sat(sal, 6, roozj, mbtool, arzb)
+Dim saatg As Double
+saatg = sat(sal, 7, roozg, mbtool, arzb)
+Dim saatk As Double
+saatk = sat(sal, 8, roozk, mbtool, arzb)
+Dim saatl As Double
+saatl = sat(sal, 9, roozl, mbtool, arzb)
+Dim saatm As Double
+saatm = sat(sal, 10, roozm, mbtool, arzb)
+Dim saatn As Double
+saatn = sat(sal, 11, roozn, mbtool, arzb)
+Dim saatf As Double
+saatf = sat(sal, 12, roozf, mbtool, arzb)
+Dim a As Double
+a = tedadrooz(sal, 1, rooza, saata, mbtool, arzb)
+Dim b As Double
+b = tedadrooz(sal, 2, roozb, saatb, mbtool, arzb)
+Dim c As Double
+c = tedadrooz(sal, 3, roozc, saatc, mbtool, arzb)
+Dim d As Double
+d = tedadrooz(sal, 4, roozd, saatd, mbtool, arzb)
+Dim e As Double
+e = tedadrooz(sal, 5, rooze, saate, mbtool, arzb)
+Dim j As Double
+j = tedadrooz(sal, 6, roozj, saatj, mbtool, arzb)
+Dim g As Double
+g = tedadrooz(sal, 7, roozg, saatg, mbtool, arzb)
+Dim k As Double
+k = tedadrooz(sal, 8, roozk, saatk, mbtool, arzb)
+Dim l As Double
+l = tedadrooz(sal, 9, roozl, saatl, mbtool, arzb)
+Dim m As Double
+m = tedadrooz(sal, 10, roozm, saatm, mbtool, arzb)
+Dim n As Double
+n = tedadrooz(sal, 11, roozn, saatn, mbtool, arzb)
+Dim f As Double
+f = tedadrooz(sal, 12, roozf, saatf, mbtool, arzb)
+majmoo = a + b + c + d + e + j + g + k + l + m + n + f
+End Function
+
+

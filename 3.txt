@@ -1,0 +1,3971 @@
+Public Function esteqbal(sal As Integer, mah As Integer, roz As Double, mbtool As Double)
+
+Dim bohtmq As Double
+bohtmq = bohtqa(sal, mah, roz, mbtool) - bohtsha(sal, mah, roz, mbtool)
+Dim baq1 As Double
+baq1 = tq(taqsha(sal, mah, roz, mbtool) - taqqa(sal, mah, roz, mbtool))
+Dim ajzaeboad As Double
+ajzaeboad = tq(baq1 - 180)
+
+Dim saatboadesteq As Double
+saatboadesteq = ajzaeboad * 24 / bohtmq
+
+Dim tafazol As Double
+tafazol = taqsha(sal, mah, roz + (saatboadesteq / 24), mbtool) - tq(taqqa(sal, mah, roz + (saatboadesteq / 24), mbtool) + 180)
+Dim sabqq As Double
+sabqq = qadrsaatq(markaz3a(sal, mah, roz + (saatboadesteq / 24), mbtool)) - qadrsaatsh(mtasha(sal, mah, roz + (saatboadesteq / 24), mbtool))
+Dim x As Double
+x = tafazol / sabqq
+
+esteqbal = saatboadesteq + x
+
+End Function
+
+Public Function smostavi(sal As Integer, mah As Integer, roz As Double, mbtool As Double)
+
+Dim bohtmq As Double
+bohtmq = bohtqa(sal, mah, roz, mbtool) - bohtsha(sal, mah, roz, mbtool)
+Dim baq1 As Double
+baq1 = tq(taqsha(sal, mah, roz, mbtool) - taqqa(sal, mah, roz, mbtool))
+Dim ajzaeboad As Double
+ajzaeboad = tq(baq1 - 180)
+
+Dim saatboadesteq As Double
+saatboadesteq = ajzaeboad * 24 / bohtmq
+
+Dim tafazol As Double
+tafazol = taqsha(sal, mah, roz + (saatboadesteq / 24), mbtool) - tq(taqqa(sal, mah, roz + (saatboadesteq / 24), mbtool) + 180)
+Dim sabqq As Double
+sabqq = qadrsaatq(markaz3a(sal, mah, roz + (saatboadesteq / 24), mbtool)) - qadrsaatsh(mtasha(sal, mah, roz + (saatboadesteq / 24), mbtool))
+Dim x As Double
+x = tafazol / sabqq
+
+Dim vasatesteq As Double
+vasatesteq = saatboadesteq + x
+
+Dim taqsh2 As Double
+Dim taqq2 As Double
+
+taqsh2 = taqsha(sal, mah, roz + (vasatesteq / 24), mbtool)
+taqq2 = taqqa(sal, mah, roz + (vasatesteq / 24), mbtool)
+
+smostavi = vasatesteq - taam(wasata(sal, mah, roz + (vasatesteq / 24), mbtool))
+End Function
+
+
+
+Public Function emkaname(sal As Integer, mah As Integer, rooz As Double, saatesteqbal As Double, mbtool As Double, arzb As Double)
+Dim maill As Double
+Dim qoroob As Double
+Dim toloo As Double
+Dim x As Double
+Dim y As Double
+Dim a As Double
+
+maill = ml(sal, taqsh(sal, mah, roz(rooz, saatesteqbal, 0, 0), mbtool))
+qoroob = qsn(maill, arzb) / 30
+toloo = 24 - qoroob
+x = toloo + (2 + (4 / 60))
+y = qoroob - (2 + (4 / 60))
+If saatesteqbal < x And saatesteqbal > y Then
+a = 1
+Else
+a = 2
+End If
+
+
+Dim taqras As Double
+taqras = taqrasq(sal, mah, rooz + (saatesteqbal / 24), mbtool)
+Dim taqzanab As Double
+If taqras + 180 < 360 Then
+taqzanab = taqras + 180
+Else
+taqzanab = taqras - 180
+End If
+Dim taq As Double
+taq = taqqa(sal, mah, rooz + saatesteqbal / 24, mbtool)
+Dim z As Double
+
+If Abs(taq - taqzanab) < 180 Then
+z = Abs(taq - taqzanab)
+Else
+z = 360 - Abs(taq - taqzanab)
+End If
+Dim t As Double
+
+If Abs(taq - taqras) < 180 Then
+t = Abs(taq - taqras)
+Else
+t = 360 - Abs(taq - taqras)
+End If
+Dim k As Double
+If t < z Then
+k = t
+Else
+k = z
+End If
+Dim m As Double
+If k < 12.466666666 Then
+m = 1
+Else
+m = -1
+End If
+If a = 1 And m = 1 Then
+emkaname = "yes"
+Else
+emkaname = "no"
+End If
+
+End Function
+
+
+
+
+Public Function vasatkhosoof(sal As Integer, mah As Integer, roz As Double, saatesteqbal As Double, mbtool As Double, arzb As Double)
+
+
+Dim arz As Double
+arz = arzhaqiqi(sal, mah, roz, saatesteqbal, mbtool, arzb)
+Dim asqarz As Double
+asqarz = asqar(qadrsaatsh(mtasha(sal, mah, roz + (saatesteqbal / 24), mbtool)), qadrsaatq(markaz3a(sal, mah, roz + (saatesteqbal / 24), mbtool)))
+Dim baqyzav As Double
+baqyzav = aazam(hesseha(sal, mah, roz + (saatesteqbal / 24), mbtool)) - asqarz
+Dim arzhaqyqy As Double
+arzhaqyqy = asn(sn(baqyzav) * sn(arz) / 60)
+Dim kharej As Double
+kharej = (sn(arzhaqyqy) * sn(90 - baqyzav) / 60) / sabqq(sal, mah, roz + (saatesteqbal / 24), mbtool)
+
+If hesseha(sal, mah, roz + (saatesteqbal / 24), mbtool) < 30 Then
+vasatkhosoof = smostavi(sal, mah, roz, mbtool) - kharej
+ElseIf 180 < hesseha(sal, mah, roz + (saatesteqbal / 24), mbtool) And hesseha(sal, mah, roz + (saatesteqbal / 24), mbtool) <= 210 Then
+vasatkhosoof = smostavi(sal, mah, roz, mbtool) - kharej
+Else
+vasatkhosoof = smostavi(sal, mah, roz, mbtool) + kharej
+End If
+
+End Function
+
+
+
+Public Function arzhaqiqi(sal As Integer, mah As Integer, roz As Double, saatesteqbal As Double, mbtool As Double, arzb As Double)
+
+Dim arz As Double
+arz = arzq(hesseha(sal, mah, roz + (saatesteqbal / 24), mbtool))
+Dim asqarz As Double
+asqarz = asqar(qadrsaatsh(mtasha(sal, mah, roz + (saatesteqbal / 24), mbtool)), qadrsaatq(markaz3a(sal, mah, roz + (saatesteqbal / 24), mbtool)))
+Dim baqyzav As Double
+baqyzav = aazam(hesseha(sal, mah, roz + (saatesteqbal / 24), mbtool)) - asqarz
+arzhaqiqi = asn(sn(baqyzav) * sn(arz) / 60)
+
+End Function
+
+Public Function bodovkhosoof(sal As Integer, mah As Integer, roz As Double, saatesteqbal As Double, mbtool As Double, arzb As Double)
+
+Dim arz As Double
+arz = (arzhaqiqi(sal, mah, roz, saatesteqbal, mbtool, arzb))
+Dim baqyouj As Double
+baqyouj = tq(oujqa(sal, mah, roz + (saatesteqbal / 24), mbtool) - taqsha(sal, mah, roz + (saatesteqbal / 24), mbtool))
+Dim ekhtmanzmoadal As Double
+ekhtmanzmoadal = ekhtmanzofoq(markaz3a(sal, mah, roz + (saatesteqbal / 24), mbtool)) + tadm1(baqyouj, markaz3a(sal, mah, roz + (saatesteqbal / 24), mbtool))
+Dim nesfqtrzel As Double
+nesfqtrzel = (ekhtmanzmoadal - (qtrsh(mtasha(sal, mah, roz + (saatesteqbal / 24), mbtool)) / 2)) + (1 / 60)
+Dim nesfmoadalq  As Double
+nesfmoadalq = (qtrq(markaz3a(sal, mah, roz + (saatesteqbal / 24), mbtool)) + tadq1(baqyouj, markaz3a(sal, mah, roz + (saatesteqbal / 24), mbtool))) / 2
+Dim majmoo As Double
+majmoo = nesfmoadalq + nesfqtrzel
+Dim fazl As Double
+fazl = ((majmoo * majmoo) - (arz * arz))
+Dim saatsoqoot As Double
+saatsoqoot = Sqr(fazl) / sabqq(sal, mah, roz + (saatesteqbal / 24), mbtool)
+If vasatkhosoof(sal, mah, roz, saatesteqbal, mbtool, arzb) - saatsoqoot > 0 Then
+bodovkhosoof = vasatkhosoof(sal, mah, roz, saatesteqbal, mbtool, arzb) - saatsoqoot
+Else
+bodovkhosoof = vasatkhosoof(sal, mah, roz, saatesteqbal, mbtool, arzb) - saatsoqoot + 24
+End If
+End Function
+
+Public Function enjelakhosoof(sal As Integer, mah As Integer, roz As Double, saatesteqbal As Double, mbtool As Double, arzb As Double)
+
+Dim arz As Double
+arz = (arzhaqiqi(sal, mah, roz, saatesteqbal, mbtool, arzb))
+Dim baqyouj As Double
+baqyouj = tq(oujqa(sal, mah, roz + (saatesteqbal / 24), mbtool) - taqsha(sal, mah, roz + (saatesteqbal / 24), mbtool))
+Dim ekhtmanzmoadal As Double
+ekhtmanzmoadal = ekhtmanzofoq(markaz3a(sal, mah, roz + (saatesteqbal / 24), mbtool)) + tadm1(baqyouj, markaz3a(sal, mah, roz + (saatesteqbal / 24), mbtool))
+Dim nesfqtrzel As Double
+nesfqtrzel = (ekhtmanzmoadal - (qtrsh(mtasha(sal, mah, roz + (saatesteqbal / 24), mbtool)) / 2)) + (1 / 60)
+Dim nesfmoadalq  As Double
+nesfmoadalq = (qtrq(markaz3a(sal, mah, roz + (saatesteqbal / 24), mbtool)) + tadq1(baqyouj, markaz3a(sal, mah, roz + (saatesteqbal / 24), mbtool))) / 2
+Dim majmoo As Double
+majmoo = nesfmoadalq + nesfqtrzel
+Dim fazl As Double
+fazl = ((majmoo * majmoo) - (arz * arz))
+Dim saatsoqoot As Double
+saatsoqoot = Sqr(fazl) / sabqq(sal, mah, roz + (saatesteqbal / 24), mbtool)
+
+Dim bodovkhosoof As Double
+If vasatkhosoof(sal, mah, roz, saatesteqbal, mbtool, arzb) - saatsoqoot > 0 Then
+bodovkhosoof = vasatkhosoof(sal, mah, roz, saatesteqbal, mbtool, arzb) - saatsoqoot
+Else
+bodovkhosoof = vasatkhosoof(sal, mah, roz, saatesteqbal, mbtool, arzb) - saatsoqoot + 24
+End If
+If vasatkhosoof(sal, mah, roz, saatesteqbal, mbtool, arzb) + saatsoqoot < 24 Then
+enjelakhosoof = vasatkhosoof(sal, mah, roz, saatesteqbal, mbtool, arzb) + saatsoqoot
+Else
+enjelakhosoof = vasatkhosoof(sal, mah, roz, saatesteqbal, mbtool, arzb) + saatsoqoot - 24
+End If
+
+End Function
+
+Public Function modatkhosoof(sal As Integer, mah As Integer, roz As Double, saatesteqbal As Double, mbtool As Double, arzb As Double)
+
+Dim arz As Double
+arz = (arzhaqiqi(sal, mah, roz, saatesteqbal, mbtool, arzb))
+Dim baqyouj As Double
+baqyouj = tq(oujqa(sal, mah, roz + (saatesteqbal / 24), mbtool) - taqsha(sal, mah, roz + (saatesteqbal / 24), mbtool))
+Dim ekhtmanzmoadal As Double
+ekhtmanzmoadal = ekhtmanzofoq(markaz3a(sal, mah, roz + (saatesteqbal / 24), mbtool)) + tadm1(baqyouj, markaz3a(sal, mah, roz + (saatesteqbal / 24), mbtool))
+Dim nesfqtrzel As Double
+nesfqtrzel = (ekhtmanzmoadal - (qtrsh(mtasha(sal, mah, roz + (saatesteqbal / 24), mbtool)) / 2)) + (1 / 60)
+Dim nesfmoadalq  As Double
+nesfmoadalq = (qtrq(markaz3a(sal, mah, roz + (saatesteqbal / 24), mbtool)) + tadq1(baqyouj, markaz3a(sal, mah, roz + (saatesteqbal / 24), mbtool))) / 2
+Dim majmoo As Double
+majmoo = nesfmoadalq + nesfqtrzel
+Dim fazl As Double
+fazl = ((majmoo * majmoo) - (arz * arz))
+Dim saatsoqoot As Double
+saatsoqoot = Sqr(fazl) / sabqq(sal, mah, roz + (saatesteqbal / 24), mbtool)
+modatkhosoof = 2 * saatsoqoot
+
+End Function
+
+
+Public Function jozeikolli(sal As Integer, mah As Integer, roz As Double, saatesteqbal As Double, mbtool As Double, arzb As Double)
+
+Dim arz As Double
+arz = arzq(hesseha(sal, mah, roz + (saatesteqbal / 24), mbtool))
+Dim baqyouj As Double
+baqyouj = tq(oujqa(sal, mah, roz + (saatesteqbal / 24), mbtool) - taqsha(sal, mah, roz + (saatesteqbal / 24), mbtool))
+Dim ekhtmanzmoadal As Double
+ekhtmanzmoadal = ekhtmanzofoq(markaz3a(sal, mah, roz + (saatesteqbal / 24), mbtool)) + tadm1(baqyouj, markaz3a(sal, mah, roz + (saatesteqbal / 24), mbtool))
+Dim nesfqtrzel As Double
+nesfqtrzel = (ekhtmanzmoadal - (qtrsh(mtasha(sal, mah, roz + (saatesteqbal / 24), mbtool)) / 2)) + (1 / 60)
+Dim nesfmoadalq  As Double
+nesfmoadalq = (qtrq(markaz3a(sal, mah, roz + (saatesteqbal / 24), mbtool)) + tadq1(baqyouj, markaz3a(sal, mah, roz + (saatesteqbal / 24), mbtool))) / 2
+tafazol = nesfqtrzel - nesfmoadalq
+If tafazol < Abs(arz) Then
+jozeikolli = "jozei"
+Else
+jozeikolli = "kolli"
+End If
+
+End Function
+
+
+Public Function asabeqotrkh(sal As Integer, mah As Integer, roz As Double, saatesteqbal As Double, mbtool As Double, arzb As Double)
+
+Dim arz As Double
+arz = sn(arzhaqiqi(sal, mah, roz, saatesteqbal, mbtool, arzb))
+Dim baqyouj As Double
+baqyouj = tq(oujqa(sal, mah, roz + (saatesteqbal / 24), mbtool) - taqsha(sal, mah, roz + (saatesteqbal / 24), mbtool))
+Dim ekhtmanzmoadal As Double
+ekhtmanzmoadal = ekhtmanzofoq(markaz3a(sal, mah, roz + (saatesteqbal / 24), mbtool)) + tadm1(baqyouj, markaz3a(sal, mah, roz + (saatesteqbal / 24), mbtool))
+Dim nesfqtrzel As Double
+nesfqtrzel = (ekhtmanzmoadal - (qtrsh(mtasha(sal, mah, roz + (saatesteqbal / 24), mbtool)) / 2)) + (1 / 60)
+Dim nesfmoadalq  As Double
+nesfmoadalq = (qtrq(markaz3a(sal, mah, roz + (saatesteqbal / 24), mbtool)) + tadq1(baqyouj, markaz3a(sal, mah, roz + (saatesteqbal / 24), mbtool))) / 2
+Dim majmoo As Double
+majmoo = nesfmoadalq + nesfqtrzel
+
+Dim daqkhosoof As Double
+daqkhosoof = Abs(majmoo - Abs(arzhaqiqi(sal, mah, roz, saatesteqbal, mbtool, arzb)))
+asabeqotrkh = (daqkhosoof * 12) / (qtrq(markaz3a(sal, mah, roz + (saatesteqbal / 24), mbtool)) + tadq1(baqyouj, markaz3a(sal, mah, roz + (saatesteqbal / 24), mbtool)))
+
+End Function
+
+
+Public Function asabejermkh(sal As Integer, mah As Integer, roz As Double, saatesteqbal As Double, mbtool As Double, arzb As Double)
+
+Dim arz As Double
+arz = (arzhaqiqi(sal, mah, roz, saatesteqbal, mbtool, arzb))
+Dim baqyouj As Double
+baqyouj = tq(oujqa(sal, mah, roz + (saatesteqbal / 24), mbtool) - taqsha(sal, mah, roz + (saatesteqbal / 24), mbtool))
+Dim ekhtmanzmoadal As Double
+ekhtmanzmoadal = ekhtmanzofoq(markaz3a(sal, mah, roz + (saatesteqbal / 24), mbtool)) + tadm1(baqyouj, markaz3a(sal, mah, roz + (saatesteqbal / 24), mbtool))
+Dim nesfqtrzel As Double
+nesfqtrzel = (ekhtmanzmoadal - (qtrsh(mtasha(sal, mah, roz + (saatesteqbal / 24), mbtool)) / 2)) + (1 / 60)
+Dim nesfmoadalq  As Double
+nesfmoadalq = (qtrq(markaz3a(sal, mah, roz + (saatesteqbal / 24), mbtool)) + tadq1(baqyouj, markaz3a(sal, mah, roz + (saatesteqbal / 24), mbtool))) / 2
+Dim majmoo As Double
+majmoo = nesfmoadalq + nesfqtrzel
+
+Dim daqkhosoof As Double
+daqkhosoof = Abs(majmoo - Abs(arzhaqiqi(sal, mah, roz, saatesteqbal, mbtool, arzb)))
+
+
+Dim qmoadal As Double
+qmoadal = qtrq(markaz3a(sal, mah, roz + (saatesteqbal / 24), mbtool)) + tadq1(baqyouj, markaz3a(sal, mah, roz + (saatesteqbal / 24), mbtool))
+Dim masahatdaerq As Double
+masahatdaerq = (11 * (qmoadal * qmoadal)) / 14
+Dim maqsoom As Double
+maqsoom = ((nesfqtrzel * 2) - daqkhosoof) * daqkhosoof
+Dim maqsoomalayh As Double
+maqsoomalayh = Abs(((nesfmoadalq * 2) - daqkhosoof)) + Abs(((nesfqtrzel * 2) - daqkhosoof))
+Dim sahmmonkhasaf As Double
+sahmmonkhasaf = maqsoom / maqsoomalayh
+Dim sahmmonjaly As Double
+sahmmonjaly = Abs((nesfmoadalq * 2) - sahmmonkhasaf)
+Dim f As Double
+f = Sqr(sahmmonkhasaf * sahmmonjaly)
+Dim qos As Double
+qos = asn((f * 60) / (qtrq(markaz3a(sal, mah, roz + (saatesteqbal / 24), mbtool)) / 2))
+
+Dim qosq As Double
+If qos <= (qtrq(markaz3a(sal, mah, roz + (saatesteqbal / 24), mbtool)) / 2) Then
+qosq = qos
+Else
+qosq = 180 - qos
+End If
+Dim qoszel As Double
+qoszel = asn((f * 60) / nesfqtrzel)
+Dim qetaq As Double
+qetaq = qosq * ((qtrq(markaz3a(sal, mah, roz + (saatesteqbal / 24), mbtool)) / 2) * (qtrq(markaz3a(sal, mah, roz + (saatesteqbal / 24), mbtool)) / 2)) / 60
+Dim qetazel As Double
+qetazel = qoszel * (nesfqtrzel * nesfqtrzel) / 60
+Dim masmosalasqetaq As Double
+masmosalasqetaq = f * Abs(((qtrq(markaz3a(sal, mah, roz + (saatesteqbal / 24), mbtool)) / 2) - sahmmonjaly))
+Dim masahatqeteq As Double
+If qosq < 90 Then
+masahatqeteq = qetaq - masmosalasqetaq
+Else
+masahatqeteq = qetaq + masmosalasqetaq
+End If
+
+Dim masmosalasqetezel As Double
+masmosalasqetezel = f * ((nesfqtrzel) - sahmmonjaly)
+Dim qetezel As Double
+qetezel = qetazel - masmosalasqetezel
+Dim qadrmonkhasaf As Double
+qadrmonkhasaf = qetezel + masahatqeteq
+asabejermkh = (qadrmonkhasaf * 12) / masahatdaerq
+End Function
+
+
+Public Function saatmakskh(sal As Integer, mah As Integer, roz As Double, saatesteqbal As Double, mbtool As Double, arzb As Double)
+
+Dim arz As Double
+arz = sn(arzhaqiqi(sal, mah, roz, saatesteqbal, mbtool, arzb))
+Dim baqyouj As Double
+baqyouj = tq(oujqa(sal, mah, roz + (saatesteqbal / 24), mbtool) - taqsha(sal, mah, roz + (saatesteqbal / 24), mbtool))
+Dim ekhtmanzmoadal As Double
+ekhtmanzmoadal = ekhtmanzofoq(markaz3a(sal, mah, roz + (saatesteqbal / 24), mbtool)) + tadm1(baqyouj, markaz3a(sal, mah, roz + (saatesteqbal / 24), mbtool))
+Dim nesfqtrzel As Double
+nesfqtrzel = (ekhtmanzmoadal - (qtrsh(mtasha(sal, mah, roz + (saatesteqbal / 24), mbtool)) / 2)) + (1 / 60)
+Dim nesfmoadalq  As Double
+nesfmoadalq = (qtrq(markaz3a(sal, mah, roz + (saatesteqbal / 24), mbtool)) + tadq1(baqyouj, markaz3a(sal, mah, roz + (saatesteqbal / 24), mbtool))) / 2
+
+saatmakskh = Sqr(Abs(((nesfmoadalq - nesfqtrzel) * (nesfmoadalq - nesfqtrzel)) - (arz * arz))) / arz
+
+End Function
+
+
+
+
+Public Function bodovmakskh(vasatkhosoof As Double, saatmaks As Double)
+If vasatkhosoof - saatmaks > 0 Then
+bodovmakskh = vasatkhosoof - saatmaks
+Else
+bodovmakskh = vasatkhosoof - saatmaks + 24
+End If
+End Function
+
+Public Function enjelamakskh(vasatkhosoof As Double, saatmaks As Double)
+
+If vasatkhosoof + saatmaks < 24 Then
+tenjelamakskh = vasatkhosoof + saatmaks
+Else
+enjelamakskh = vasatkhosoof + saatmaks - 24
+End If
+End Function
+Public Function oqdeh(hesseh As Double)
+If hesseh < 90 Or hesseh > 270 Then
+oqdeh = "ras"
+Else
+oqdeh = "zanab"
+End If
+
+End Function
+
+
+
+Public Function tasirkh(modatkhosoof As Double) As Double
+tasirkh = modatkhosoof / (2 / 60)
+End Function
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Public Function asabeqotrr(x As Double, y As Double)
+Dim a As Double
+a = x * 60
+Dim b As Double
+b = y * 6
+Dim c As Double
+If a = 0 And b = ((50 / 60) + 11) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 2 And b = ((50 / 60) + 11) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 4 And b = ((50 / 60) + 11) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 6 And b = ((50 / 60) + 11) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 8 And b = ((50 / 60) + 11) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 10 And b = ((50 / 60) + 11) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 12 And b = ((50 / 60) + 11) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 14 And b = ((50 / 60) + 11) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 16 And b = ((50 / 60) + 11) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 18 And b = ((50 / 60) + 11) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 20 And b = ((50 / 60) + 11) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 22 And b = ((50 / 60) + 11) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 24 And b = ((50 / 60) + 11) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 26 And b = ((50 / 60) + 11) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 28 And b = ((50 / 60) + 11) * 6 Then
+c = (43 / 60) + 11
+ElseIf a = 30 And b = ((50 / 60) + 11) * 6 Then
+c = (19 / 60) + 11
+ElseIf a = 32 And b = ((50 / 60) + 11) * 6 Then
+c = (56 / 60) + 10
+ElseIf a = 34 And b = ((50 / 60) + 11) * 6 Then
+c = (10 / 60) + 10
+ElseIf a = 36 And b = ((50 / 60) + 11) * 6 Then
+c = (24 / 60) + 9
+ElseIf a = 38 And b = ((50 / 60) + 11) * 6 Then
+c = (37 / 60) + 8
+ElseIf a = 40 And b = ((50 / 60) + 11) * 6 Then
+c = (51 / 60) + 7
+ElseIf a = 42 And b = ((50 / 60) + 11) * 6 Then
+c = (5 / 60) + 7
+ElseIf a = 44 And b = ((50 / 60) + 11) * 6 Then
+c = (19 / 60) + 6
+ElseIf a = 46 And b = ((50 / 60) + 11) * 6 Then
+c = (34 / 60) + 5
+ElseIf a = 48 And b = ((50 / 60) + 11) * 6 Then
+c = (46 / 60) + 4
+ElseIf a = 50 And b = ((50 / 60) + 11) * 6 Then
+c = (0 / 60) + 4
+ElseIf a = 52 And b = ((50 / 60) + 11) * 6 Then
+c = (10 / 60) + 3
+ElseIf a = 54 And b = ((50 / 60) + 11) * 6 Then
+c = (27 / 60) + 2
+ElseIf a = 56 And b = ((50 / 60) + 11) * 6 Then
+c = (40 / 60) + 1
+ElseIf a = 58 And b = ((50 / 60) + 11) * 6 Then
+c = (54 / 60) + 0
+ElseIf a = 60 And b = ((50 / 60) + 11) * 6 Then
+c = (31 / 60) + 0
+ElseIf a = 62 And b = ((50 / 60) + 11) * 6 Then
+c = (6 / 60) + 0
+ElseIf a = 64 And b = ((50 / 60) + 11) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 66 And b = ((50 / 60) + 11) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 68 And b = ((50 / 60) + 11) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 70 And b = ((50 / 60) + 11) * 6 Then
+c = (0 / 60) + 0
+
+ElseIf a = 0 And b = ((10 / 60) + 12) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 2 And b = ((10 / 60) + 12) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 4 And b = ((10 / 60) + 12) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 6 And b = ((10 / 60) + 12) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 8 And b = ((10 / 60) + 12) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 10 And b = ((10 / 60) + 12) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 12 And b = ((10 / 60) + 12) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 14 And b = ((10 / 60) + 12) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 16 And b = ((10 / 60) + 12) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 18 And b = ((10 / 60) + 12) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 20 And b = ((10 / 60) + 12) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 22 And b = ((10 / 60) + 12) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 24 And b = ((10 / 60) + 12) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 26 And b = ((10 / 60) + 12) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 28 And b = ((10 / 60) + 12) * 6 Then
+c = (51 / 60) + 11
+ElseIf a = 30 And b = ((10 / 60) + 12) * 6 Then
+c = (29 / 60) + 11
+ElseIf a = 32 And b = ((10 / 60) + 12) * 6 Then
+c = (6 / 60) + 11
+ElseIf a = 34 And b = ((10 / 60) + 12) * 6 Then
+c = (20 / 60) + 10
+ElseIf a = 36 And b = ((10 / 60) + 12) * 6 Then
+c = (35 / 60) + 9
+ElseIf a = 38 And b = ((10 / 60) + 12) * 6 Then
+c = (50 / 60) + 8
+ElseIf a = 40 And b = ((10 / 60) + 12) * 6 Then
+c = (5 / 60) + 8
+ElseIf a = 42 And b = ((10 / 60) + 12) * 6 Then
+c = (20 / 60) + 7
+ElseIf a = 44 And b = ((10 / 60) + 12) * 6 Then
+c = (34 / 60) + 6
+ElseIf a = 46 And b = ((10 / 60) + 12) * 6 Then
+c = (49 / 60) + 5
+ElseIf a = 48 And b = ((10 / 60) + 12) * 6 Then
+c = (33 / 60) + 5
+ElseIf a = 50 And b = ((10 / 60) + 12) * 6 Then
+c = (18 / 60) + 4
+ElseIf a = 52 And b = ((10 / 60) + 12) * 6 Then
+c = (32 / 60) + 3
+ElseIf a = 54 And b = ((10 / 60) + 12) * 6 Then
+c = (45 / 60) + 2
+ElseIf a = 56 And b = ((10 / 60) + 12) * 6 Then
+c = (59 / 60) + 1
+ElseIf a = 58 And b = ((10 / 60) + 12) * 6 Then
+c = (44 / 60) + 1
+ElseIf a = 60 And b = ((10 / 60) + 12) * 6 Then
+c = (52 / 60) + 0
+ElseIf a = 62 And b = ((10 / 60) + 12) * 6 Then
+c = (29 / 60) + 0
+ElseIf a = 64 And b = ((10 / 60) + 12) * 6 Then
+c = (6 / 60) + 0
+ElseIf a = 66 And b = ((10 / 60) + 12) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 68 And b = ((10 / 60) + 12) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 70 And b = ((10 / 60) + 12) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 0 And b = ((30 / 60) + 12) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 2 And b = ((30 / 60) + 12) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 4 And b = ((30 / 60) + 12) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 6 And b = ((30 / 60) + 12) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 8 And b = ((30 / 60) + 12) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 10 And b = ((30 / 60) + 12) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 12 And b = ((30 / 60) + 12) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 14 And b = ((30 / 60) + 12) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 16 And b = ((30 / 60) + 12) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 18 And b = ((30 / 60) + 12) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 20 And b = ((30 / 60) + 12) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 22 And b = ((30 / 60) + 12) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 24 And b = ((30 / 60) + 12) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 26 And b = ((30 / 60) + 12) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 28 And b = ((30 / 60) + 12) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 30 And b = ((30 / 60) + 12) * 6 Then
+c = (39 / 60) + 11
+ElseIf a = 32 And b = ((30 / 60) + 12) * 6 Then
+c = (17 / 60) + 11
+ElseIf a = 34 And b = ((30 / 60) + 12) * 6 Then
+c = (32 / 60) + 10
+ElseIf a = 36 And b = ((30 / 60) + 12) * 6 Then
+c = (48 / 60) + 9
+ElseIf a = 38 And b = ((30 / 60) + 12) * 6 Then
+c = (3 / 60) + 9
+ElseIf a = 40 And b = ((30 / 60) + 12) * 6 Then
+c = (19 / 60) + 8
+ElseIf a = 42 And b = ((30 / 60) + 12) * 6 Then
+c = (34 / 60) + 7
+ElseIf a = 44 And b = ((30 / 60) + 12) * 6 Then
+c = (50 / 60) + 6
+ElseIf a = 46 And b = ((30 / 60) + 12) * 6 Then
+c = (6 / 60) + 6
+ElseIf a = 48 And b = ((30 / 60) + 12) * 6 Then
+c = (21 / 60) + 5
+ElseIf a = 50 And b = ((30 / 60) + 12) * 6 Then
+c = (36 / 60) + 4
+ElseIf a = 52 And b = ((30 / 60) + 12) * 6 Then
+c = (51 / 60) + 3
+ElseIf a = 54 And b = ((30 / 60) + 12) * 6 Then
+c = (6 / 60) + 3
+ElseIf a = 56 And b = ((30 / 60) + 12) * 6 Then
+c = (32 / 60) + 2
+ElseIf a = 58 And b = ((30 / 60) + 12) * 6 Then
+c = (32 / 60) + 1
+ElseIf a = 60 And b = ((30 / 60) + 12) * 6 Then
+c = (15 / 60) + 1
+ElseIf a = 62 And b = ((30 / 60) + 12) * 6 Then
+c = (53 / 60) + 0
+ElseIf a = 64 And b = ((30 / 60) + 12) * 6 Then
+c = (31 / 60) + 0
+ElseIf a = 66 And b = ((30 / 60) + 12) * 6 Then
+c = (8 / 60) + 0
+ElseIf a = 68 And b = ((30 / 60) + 12) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 70 And b = ((30 / 60) + 12) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 0 And b = ((50 / 60) + 12) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 2 And b = ((50 / 60) + 12) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 4 And b = ((50 / 60) + 12) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 6 And b = ((50 / 60) + 12) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 8 And b = ((50 / 60) + 12) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 10 And b = ((50 / 60) + 12) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 12 And b = ((50 / 60) + 12) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 14 And b = ((50 / 60) + 12) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 16 And b = ((50 / 60) + 12) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 18 And b = ((50 / 60) + 12) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 20 And b = ((50 / 60) + 12) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 22 And b = ((50 / 60) + 12) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 24 And b = ((50 / 60) + 12) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 26 And b = ((50 / 60) + 12) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 28 And b = ((50 / 60) + 12) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 30 And b = ((50 / 60) + 12) * 6 Then
+c = (48 / 60) + 11
+ElseIf a = 32 And b = ((50 / 60) + 12) * 6 Then
+c = (26 / 60) + 11
+ElseIf a = 34 And b = ((50 / 60) + 12) * 6 Then
+c = (12 / 60) + 10
+ElseIf a = 36 And b = ((50 / 60) + 12) * 6 Then
+c = (59 / 60) + 9
+ElseIf a = 38 And b = ((50 / 60) + 12) * 6 Then
+c = (15 / 60) + 9
+ElseIf a = 40 And b = ((50 / 60) + 12) * 6 Then
+c = (7 / 60) + 8
+ElseIf a = 42 And b = ((50 / 60) + 12) * 6 Then
+c = (47 / 60) + 7
+ElseIf a = 44 And b = ((50 / 60) + 12) * 6 Then
+c = (3 / 60) + 7
+ElseIf a = 46 And b = ((50 / 60) + 12) * 6 Then
+c = (20 / 60) + 6
+ElseIf a = 48 And b = ((50 / 60) + 12) * 6 Then
+c = (36 / 60) + 5
+ElseIf a = 50 And b = ((50 / 60) + 12) * 6 Then
+c = (52 / 60) + 4
+ElseIf a = 52 And b = ((50 / 60) + 12) * 6 Then
+c = (8 / 60) + 4
+ElseIf a = 54 And b = ((50 / 60) + 12) * 6 Then
+c = (24 / 60) + 3
+ElseIf a = 56 And b = ((50 / 60) + 12) * 6 Then
+c = (41 / 60) + 2
+ElseIf a = 58 And b = ((50 / 60) + 12) * 6 Then
+c = (57 / 60) + 1
+ElseIf a = 60 And b = ((50 / 60) + 12) * 6 Then
+c = (35 / 60) + 1
+ElseIf a = 62 And b = ((50 / 60) + 12) * 6 Then
+c = (13 / 60) + 1
+ElseIf a = 64 And b = ((50 / 60) + 12) * 6 Then
+c = (51 / 60) + 0
+ElseIf a = 66 And b = ((50 / 60) + 12) * 6 Then
+c = (29 / 60) + 0
+ElseIf a = 68 And b = ((50 / 60) + 12) * 6 Then
+c = (7 / 60) + 0
+ElseIf a = 70 And b = ((50 / 60) + 12) * 6 Then
+c = (0 / 60) + 0
+
+ElseIf a = 0 And b = ((10 / 60) + 13) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 2 And b = ((10 / 60) + 13) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 4 And b = ((10 / 60) + 13) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 6 And b = ((10 / 60) + 13) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 8 And b = ((10 / 60) + 13) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 10 And b = ((10 / 60) + 13) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 12 And b = ((10 / 60) + 13) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 14 And b = ((10 / 60) + 13) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 16 And b = ((10 / 60) + 13) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 18 And b = ((10 / 60) + 13) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 20 And b = ((10 / 60) + 13) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 22 And b = ((10 / 60) + 13) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 24 And b = ((10 / 60) + 13) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 26 And b = ((10 / 60) + 13) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 28 And b = ((10 / 60) + 13) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 30 And b = ((10 / 60) + 13) * 6 Then
+c = (56 / 60) + 11
+ElseIf a = 32 And b = ((10 / 60) + 13) * 6 Then
+c = (35 / 60) + 11
+ElseIf a = 34 And b = ((10 / 60) + 13) * 6 Then
+c = (59 / 60) + 10
+ElseIf a = 36 And b = ((10 / 60) + 13) * 6 Then
+c = (9 / 60) + 10
+ElseIf a = 38 And b = ((10 / 60) + 13) * 6 Then
+c = (26 / 60) + 9
+ElseIf a = 40 And b = ((10 / 60) + 13) * 6 Then
+c = (8 / 60) + 8
+ElseIf a = 42 And b = ((10 / 60) + 13) * 6 Then
+c = (0 / 60) + 8
+ElseIf a = 44 And b = ((10 / 60) + 13) * 6 Then
+c = (17 / 60) + 7
+ElseIf a = 46 And b = ((10 / 60) + 13) * 6 Then
+c = (34 / 60) + 6
+ElseIf a = 48 And b = ((10 / 60) + 13) * 6 Then
+c = (51 / 60) + 5
+ElseIf a = 50 And b = ((10 / 60) + 13) * 6 Then
+c = (8 / 60) + 5
+ElseIf a = 52 And b = ((10 / 60) + 13) * 6 Then
+c = (25 / 60) + 4
+ElseIf a = 54 And b = ((10 / 60) + 13) * 6 Then
+c = (41 / 60) + 3
+ElseIf a = 56 And b = ((10 / 60) + 13) * 6 Then
+c = (57 / 60) + 2
+ElseIf a = 58 And b = ((10 / 60) + 13) * 6 Then
+c = (13 / 60) + 2
+ElseIf a = 60 And b = ((10 / 60) + 13) * 6 Then
+c = (51 / 60) + 1
+ElseIf a = 62 And b = ((10 / 60) + 13) * 6 Then
+c = (31 / 60) + 1
+ElseIf a = 64 And b = ((10 / 60) + 13) * 6 Then
+c = (11 / 60) + 1
+ElseIf a = 66 And b = ((10 / 60) + 13) * 6 Then
+c = (51 / 60) + 0
+ElseIf a = 68 And b = ((10 / 60) + 13) * 6 Then
+c = (30 / 60) + 0
+ElseIf a = 70 And b = ((10 / 60) + 13) * 6 Then
+c = (7 / 60) + 0
+
+ElseIf a = 0 And b = ((30 / 60) + 13) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 2 And b = ((30 / 60) + 13) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 4 And b = ((30 / 60) + 13) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 6 And b = ((30 / 60) + 13) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 8 And b = ((30 / 60) + 13) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 10 And b = ((30 / 60) + 13) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 12 And b = ((30 / 60) + 13) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 14 And b = ((30 / 60) + 13) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 16 And b = ((30 / 60) + 13) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 18 And b = ((30 / 60) + 13) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 20 And b = ((30 / 60) + 13) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 22 And b = ((30 / 60) + 13) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 24 And b = ((30 / 60) + 13) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 26 And b = ((30 / 60) + 13) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 28 And b = ((30 / 60) + 13) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 30 And b = ((30 / 60) + 13) * 6 Then
+c = (43 / 60) + 11
+ElseIf a = 32 And b = ((30 / 60) + 13) * 6 Then
+c = (22 / 60) + 11
+ElseIf a = 34 And b = ((30 / 60) + 13) * 6 Then
+c = (1 / 60) + 11
+ElseIf a = 36 And b = ((30 / 60) + 13) * 6 Then
+c = (19 / 60) + 10
+ElseIf a = 38 And b = ((30 / 60) + 13) * 6 Then
+c = (37 / 60) + 9
+ElseIf a = 40 And b = ((30 / 60) + 13) * 6 Then
+c = (55 / 60) + 8
+ElseIf a = 42 And b = ((30 / 60) + 13) * 6 Then
+c = (13 / 60) + 8
+ElseIf a = 44 And b = ((30 / 60) + 13) * 6 Then
+c = (30 / 60) + 7
+ElseIf a = 46 And b = ((30 / 60) + 13) * 6 Then
+c = (48 / 60) + 6
+ElseIf a = 48 And b = ((30 / 60) + 13) * 6 Then
+c = (5 / 60) + 6
+ElseIf a = 50 And b = ((30 / 60) + 13) * 6 Then
+c = (23 / 60) + 5
+ElseIf a = 52 And b = ((30 / 60) + 13) * 6 Then
+c = (40 / 60) + 4
+ElseIf a = 54 And b = ((30 / 60) + 13) * 6 Then
+c = (58 / 60) + 3
+ElseIf a = 56 And b = ((30 / 60) + 13) * 6 Then
+c = (15 / 60) + 3
+ElseIf a = 58 And b = ((30 / 60) + 13) * 6 Then
+c = (33 / 60) + 2
+ElseIf a = 60 And b = ((30 / 60) + 13) * 6 Then
+c = (12 / 60) + 2
+ElseIf a = 62 And b = ((30 / 60) + 13) * 6 Then
+c = (51 / 60) + 1
+ElseIf a = 64 And b = ((30 / 60) + 13) * 6 Then
+c = (29 / 60) + 1
+ElseIf a = 66 And b = ((30 / 60) + 13) * 6 Then
+c = (8 / 60) + 1
+ElseIf a = 68 And b = ((30 / 60) + 13) * 6 Then
+c = (47 / 60) + 0
+ElseIf a = 70 And b = ((30 / 60) + 13) * 6 Then
+c = (26 / 60) + 0
+ElseIf a = 72 And b = ((30 / 60) + 13) * 6 Then
+c = (5 / 60) + 0
+ElseIf a = 74 And b = ((30 / 60) + 13) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 76 And b = ((30 / 60) + 13) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 78 And b = ((30 / 60) + 13) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 0 And b = ((50 / 60) + 13) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 2 And b = ((50 / 60) + 13) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 4 And b = ((50 / 60) + 13) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 6 And b = ((50 / 60) + 13) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 8 And b = ((50 / 60) + 13) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 10 And b = ((50 / 60) + 13) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 12 And b = ((50 / 60) + 13) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 14 And b = ((50 / 60) + 13) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 16 And b = ((50 / 60) + 13) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 18 And b = ((50 / 60) + 13) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 20 And b = ((50 / 60) + 13) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 22 And b = ((50 / 60) + 13) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 24 And b = ((50 / 60) + 13) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 26 And b = ((50 / 60) + 13) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 28 And b = ((50 / 60) + 13) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 30 And b = ((50 / 60) + 13) * 6 Then
+c = (53 / 60) + 11
+ElseIf a = 32 And b = ((50 / 60) + 13) * 6 Then
+c = (32 / 60) + 11
+ElseIf a = 34 And b = ((50 / 60) + 13) * 6 Then
+c = (10 / 60) + 11
+ElseIf a = 36 And b = ((50 / 60) + 13) * 6 Then
+c = (29 / 60) + 10
+ElseIf a = 38 And b = ((50 / 60) + 13) * 6 Then
+c = (47 / 60) + 9
+ElseIf a = 40 And b = ((50 / 60) + 13) * 6 Then
+c = (6 / 60) + 9
+ElseIf a = 42 And b = ((50 / 60) + 13) * 6 Then
+c = (34 / 60) + 8
+ElseIf a = 44 And b = ((50 / 60) + 13) * 6 Then
+c = (43 / 60) + 7
+ElseIf a = 46 And b = ((50 / 60) + 13) * 6 Then
+c = (2 / 60) + 7
+ElseIf a = 48 And b = ((50 / 60) + 13) * 6 Then
+c = (20 / 60) + 6
+ElseIf a = 50 And b = ((50 / 60) + 13) * 6 Then
+c = (18 / 60) + 5
+ElseIf a = 52 And b = ((50 / 60) + 13) * 6 Then
+c = (57 / 60) + 4
+ElseIf a = 54 And b = ((50 / 60) + 13) * 6 Then
+c = (14 / 60) + 4
+ElseIf a = 56 And b = ((50 / 60) + 13) * 6 Then
+c = (32 / 60) + 3
+ElseIf a = 58 And b = ((30 / 60) + 13) * 6 Then
+c = (49 / 60) + 2
+ElseIf a = 60 And b = ((50 / 60) + 13) * 6 Then
+c = (27 / 60) + 2
+ElseIf a = 62 And b = ((50 / 60) + 13) * 6 Then
+c = (7 / 60) + 2
+ElseIf a = 64 And b = ((50 / 60) + 13) * 6 Then
+c = (47 / 60) + 1
+ElseIf a = 66 And b = ((50 / 60) + 13) * 6 Then
+c = (27 / 60) + 1
+ElseIf a = 68 And b = ((50 / 60) + 13) * 6 Then
+c = (7 / 60) + 1
+ElseIf a = 70 And b = ((50 / 60) + 13) * 6 Then
+c = (47 / 60) + 0
+ElseIf a = 72 And b = ((50 / 60) + 13) * 6 Then
+c = (26 / 60) + 0
+ElseIf a = 74 And b = ((50 / 60) + 13) * 6 Then
+c = (4 / 60) + 0
+ElseIf a = 76 And b = ((50 / 60) + 13) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 78 And b = ((50 / 60) + 13) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 0 And b = ((10 / 60) + 14) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 2 And b = ((10 / 60) + 14) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 4 And b = ((10 / 60) + 14) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 6 And b = ((10 / 60) + 14) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 8 And b = ((10 / 60) + 14) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 10 And b = ((10 / 60) + 14) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 12 And b = ((10 / 60) + 14) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 14 And b = ((10 / 60) + 14) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 16 And b = ((10 / 60) + 14) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 18 And b = ((10 / 60) + 14) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 20 And b = ((10 / 60) + 14) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 22 And b = ((10 / 60) + 14) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 24 And b = ((10 / 60) + 14) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 26 And b = ((10 / 60) + 14) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 28 And b = ((10 / 60) + 14) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 30 And b = ((10 / 60) + 14) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 32 And b = ((10 / 60) + 14) * 6 Then
+c = (41 / 60) + 11
+ElseIf a = 34 And b = ((10 / 60) + 14) * 6 Then
+c = (20 / 60) + 11
+ElseIf a = 36 And b = ((50 / 60) + 13) * 6 Then
+c = (39 / 60) + 10
+ElseIf a = 38 And b = ((10 / 60) + 14) * 6 Then
+c = (58 / 60) + 9
+ElseIf a = 40 And b = ((10 / 60) + 14) * 6 Then
+c = (36 / 60) + 9
+ElseIf a = 42 And b = ((10 / 60) + 14) * 6 Then
+c = (34 / 60) + 8
+ElseIf a = 44 And b = ((10 / 60) + 14) * 6 Then
+c = (53 / 60) + 7
+ElseIf a = 46 And b = ((10 / 60) + 14) * 6 Then
+c = (13 / 60) + 7
+ElseIf a = 48 And b = ((10 / 60) + 14) * 6 Then
+c = (32 / 60) + 6
+ElseIf a = 50 And b = ((10 / 60) + 14) * 6 Then
+c = (51 / 60) + 5
+ElseIf a = 52 And b = ((10 / 60) + 14) * 6 Then
+c = (10 / 60) + 5
+ElseIf a = 54 And b = ((10 / 60) + 14) * 6 Then
+c = (29 / 60) + 5
+ElseIf a = 56 And b = ((10 / 60) + 14) * 6 Then
+c = (50 / 60) + 3
+ElseIf a = 58 And b = ((10 / 60) + 14) * 6 Then
+c = (10 / 60) + 3
+ElseIf a = 60 And b = ((10 / 60) + 14) * 6 Then
+c = (50 / 60) + 2
+ElseIf a = 62 And b = ((10 / 60) + 14) * 6 Then
+c = (30 / 60) + 2
+ElseIf a = 64 And b = ((10 / 60) + 14) * 6 Then
+c = (9 / 60) + 2
+ElseIf a = 66 And b = ((10 / 60) + 14) * 6 Then
+c = (48 / 60) + 1
+ElseIf a = 68 And b = ((10 / 60) + 14) * 6 Then
+c = (27 / 60) + 1
+ElseIf a = 70 And b = ((10 / 60) + 14) * 6 Then
+c = (6 / 60) + 1
+ElseIf a = 72 And b = ((10 / 60) + 14) * 6 Then
+c = (46 / 60) + 0
+ElseIf a = 74 And b = ((10 / 60) + 14) * 6 Then
+c = (23 / 60) + 0
+ElseIf a = 76 And b = ((10 / 60) + 14) * 6 Then
+c = (5 / 60) + 0
+ElseIf a = 78 And b = ((10 / 60) + 14) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 0 And b = ((30 / 60) + 14) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 2 And b = ((30 / 60) + 14) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 4 And b = ((30 / 60) + 14) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 6 And b = ((30 / 60) + 14) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 8 And b = ((30 / 60) + 14) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 10 And b = ((30 / 60) + 14) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 12 And b = ((30 / 60) + 14) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 14 And b = ((30 / 60) + 14) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 16 And b = ((30 / 60) + 14) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 18 And b = ((30 / 60) + 14) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 20 And b = ((30 / 60) + 14) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 22 And b = ((30 / 60) + 14) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 24 And b = ((30 / 60) + 14) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 26 And b = ((30 / 60) + 14) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 28 And b = ((30 / 60) + 14) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 30 And b = ((30 / 60) + 14) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 32 And b = ((30 / 60) + 14) * 6 Then
+c = (46 / 60) + 11
+ElseIf a = 34 And b = ((30 / 60) + 14) * 6 Then
+c = (26 / 60) + 11
+ElseIf a = 36 And b = ((30 / 60) + 13) * 6 Then
+c = (46 / 60) + 10
+ElseIf a = 38 And b = ((30 / 60) + 14) * 6 Then
+c = (6 / 60) + 10
+ElseIf a = 40 And b = ((30 / 60) + 14) * 6 Then
+c = (25 / 60) + 9
+ElseIf a = 42 And b = ((30 / 60) + 14) * 6 Then
+c = (45 / 60) + 8
+ElseIf a = 44 And b = ((30 / 60) + 14) * 6 Then
+c = (5 / 60) + 8
+ElseIf a = 46 And b = ((30 / 60) + 14) * 6 Then
+c = (27 / 60) + 7
+ElseIf a = 48 And b = ((30 / 60) + 14) * 6 Then
+c = (45 / 60) + 6
+ElseIf a = 50 And b = ((30 / 60) + 14) * 6 Then
+c = (4 / 60) + 6
+ElseIf a = 52 And b = ((30 / 60) + 14) * 6 Then
+c = (23 / 60) + 5
+ElseIf a = 54 And b = ((30 / 60) + 14) * 6 Then
+c = (42 / 60) + 4
+ElseIf a = 56 And b = ((30 / 60) + 14) * 6 Then
+c = (2 / 60) + 4
+ElseIf a = 58 And b = ((30 / 60) + 14) * 6 Then
+c = (22 / 60) + 3
+ElseIf a = 60 And b = ((30 / 60) + 14) * 6 Then
+c = (2 / 60) + 3
+ElseIf a = 62 And b = ((30 / 60) + 14) * 6 Then
+c = (42 / 60) + 2
+ElseIf a = 64 And b = ((30 / 60) + 14) * 6 Then
+c = (22 / 60) + 2
+ElseIf a = 66 And b = ((30 / 60) + 14) * 6 Then
+c = (2 / 60) + 2
+ElseIf a = 68 And b = ((30 / 60) + 14) * 6 Then
+c = (52 / 60) + 1
+ElseIf a = 70 And b = ((30 / 60) + 14) * 6 Then
+c = (21 / 60) + 1
+ElseIf a = 72 And b = ((30 / 60) + 14) * 6 Then
+c = (1 / 60) + 1
+ElseIf a = 74 And b = ((30 / 60) + 14) * 6 Then
+c = (40 / 60) + 0
+ElseIf a = 76 And b = ((30 / 60) + 14) * 6 Then
+c = (20 / 60) + 0
+ElseIf a = 78 And b = ((30 / 60) + 14) * 6 Then
+c = (0 / 60) + 0
+
+ElseIf a = 0 And b = ((50 / 60) + 14) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 2 And b = ((50 / 60) + 14) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 4 And b = ((50 / 60) + 14) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 6 And b = ((50 / 60) + 14) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 8 And b = ((50 / 60) + 14) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 10 And b = ((50 / 60) + 14) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 12 And b = ((50 / 60) + 14) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 14 And b = ((50 / 60) + 14) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 16 And b = ((50 / 60) + 14) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 18 And b = ((50 / 60) + 14) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 20 And b = ((50 / 60) + 14) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 22 And b = ((50 / 60) + 14) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 24 And b = ((50 / 60) + 14) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 26 And b = ((50 / 60) + 14) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 28 And b = ((50 / 60) + 14) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 30 And b = ((50 / 60) + 14) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 32 And b = ((50 / 60) + 14) * 6 Then
+c = (50 / 60) + 11
+ElseIf a = 34 And b = ((50 / 60) + 14) * 6 Then
+c = (30 / 60) + 11
+ElseIf a = 36 And b = ((50 / 60) + 13) * 6 Then
+c = (21 / 60) + 10
+ElseIf a = 38 And b = ((50 / 60) + 14) * 6 Then
+c = (11 / 60) + 10
+ElseIf a = 40 And b = ((50 / 60) + 14) * 6 Then
+c = (31 / 60) + 9
+ElseIf a = 42 And b = ((50 / 60) + 14) * 6 Then
+c = (51 / 60) + 8
+ElseIf a = 44 And b = ((50 / 60) + 14) * 6 Then
+c = (11 / 60) + 8
+ElseIf a = 46 And b = ((50 / 60) + 14) * 6 Then
+c = (32 / 60) + 7
+ElseIf a = 48 And b = ((50 / 60) + 14) * 6 Then
+c = (52 / 60) + 6
+ElseIf a = 50 And b = ((50 / 60) + 14) * 6 Then
+c = (12 / 60) + 6
+ElseIf a = 52 And b = ((50 / 60) + 14) * 6 Then
+c = (52 / 60) + 5
+ElseIf a = 54 And b = ((50 / 60) + 14) * 6 Then
+c = (52 / 60) + 4
+ElseIf a = 56 And b = ((50 / 60) + 14) * 6 Then
+c = (12 / 60) + 4
+ElseIf a = 58 And b = ((50 / 60) + 14) * 6 Then
+c = (32 / 60) + 3
+ElseIf a = 60 And b = ((50 / 60) + 14) * 6 Then
+c = (12 / 60) + 3
+ElseIf a = 62 And b = ((50 / 60) + 14) * 6 Then
+c = (57 / 60) + 2
+ElseIf a = 64 And b = ((50 / 60) + 14) * 6 Then
+c = (32 / 60) + 2
+ElseIf a = 66 And b = ((50 / 60) + 14) * 6 Then
+c = (12 / 60) + 2
+ElseIf a = 68 And b = ((50 / 60) + 14) * 6 Then
+c = (52 / 60) + 1
+ElseIf a = 70 And b = ((50 / 60) + 14) * 6 Then
+c = (32 / 60) + 1
+ElseIf a = 72 And b = ((50 / 60) + 14) * 6 Then
+c = (2 / 60) + 1
+ElseIf a = 74 And b = ((50 / 60) + 14) * 6 Then
+c = (52 / 60) + 0
+ElseIf a = 76 And b = ((50 / 60) + 14) * 6 Then
+c = (32 / 60) + 0
+ElseIf a = 78 And b = ((50 / 60) + 14) * 6 Then
+c = (12 / 60) + 0
+End If
+asabeqotrr = c
+End Function
+
+
+Public Function asabeqotrj(arz As Double, boht As Double)
+Dim y As Double
+y = arz * 60
+Dim z As Double
+z = boht * 6
+Dim a As Double
+a = Int(y / 2) * 2
+Dim a1 As Double
+a1 = Int(z)
+Dim a2 As Double
+a2 = a1 / 2
+Dim a3 As Double
+a3 = Int(a2)
+Dim b As Double
+If a2 = a3 Then
+b = a1 - 1
+Else
+b = a1
+End If
+Dim aa As Double
+aa = a + 2
+Dim bb As Double
+bb = b + 2
+Dim c As Double
+c = asabeqotrr(a / 60, b / 6)
+Dim d As Double
+d = asabeqotrr(a / 60, bb / 6)
+Dim e As Double
+e = asabeqotrr(aa / 60, b / 6)
+Dim f As Double
+f = asabeqotrr(aa / 60, bb / 6)
+Dim g As Double
+g = d - c
+Dim h As Double
+h = e - c
+Dim j As Double
+j = ((y - a) * h) / 2
+Dim k As Double
+k = ((z - b) * g) / 2
+Dim m As Double
+m = c + j
+Dim n As Double
+n = c + k
+Dim o As Double
+o = f - e
+Dim p As Double
+p = z - b
+Dim q As Double
+q = aa - a
+Dim r As Double
+r = p * o / q
+Dim s As Double
+s = e + r
+Dim t As Double
+t = s - n
+Dim u As Double
+u = aa - a
+Dim v As Double
+v = y - a
+Dim w As Double
+w = t * v / u
+Dim x As Double
+x = n + w
+Dim xx As Double
+If arz = a Then
+xx = 1
+Else
+xx = 2
+End If
+Dim xy As Double
+If boht = b Then
+xy = 1
+Else
+xy = 2
+End If
+If xy = 1 And xx = 1 Then
+asabeqotrj = c
+ElseIf xx = 2 And xy = 1 Then
+asabeqotrj = m
+ElseIf xx = 1 And xy = 2 Then
+asabeqotrj = n
+Else
+asabeqotrj = x
+asabeqotrj = c
+
+End If
+
+End Function
+
+
+
+
+
+
+Public Function asabejermm(x As Double, y As Double)
+Dim a As Double
+a = x * 60
+Dim b As Double
+b = y * 6
+Dim c As Double
+If a = 0 And b = ((50 / 60) + 11) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 2 And b = ((50 / 60) + 11) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 4 And b = ((50 / 60) + 11) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 6 And b = ((50 / 60) + 11) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 8 And b = ((50 / 60) + 11) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 10 And b = ((50 / 60) + 11) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 12 And b = ((50 / 60) + 11) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 14 And b = ((50 / 60) + 11) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 16 And b = ((50 / 60) + 11) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 18 And b = ((50 / 60) + 11) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 20 And b = ((50 / 60) + 11) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 22 And b = ((50 / 60) + 11) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 24 And b = ((50 / 60) + 11) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 26 And b = ((50 / 60) + 11) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 28 And b = ((50 / 60) + 11) * 6 Then
+c = (50 / 60) + 11
+ElseIf a = 30 And b = ((50 / 60) + 11) * 6 Then
+c = (36 / 60) + 11
+ElseIf a = 32 And b = ((50 / 60) + 11) * 6 Then
+c = (21 / 60) + 11
+ElseIf a = 34 And b = ((50 / 60) + 11) * 6 Then
+c = (37 / 60) + 10
+ElseIf a = 36 And b = ((50 / 60) + 11) * 6 Then
+c = (47 / 60) + 9
+ElseIf a = 38 And b = ((50 / 60) + 11) * 6 Then
+c = (51 / 60) + 8
+ElseIf a = 40 And b = ((50 / 60) + 11) * 6 Then
+c = (54 / 60) + 7
+ElseIf a = 42 And b = ((50 / 60) + 11) * 6 Then
+c = (55 / 60) + 6
+ElseIf a = 44 And b = ((50 / 60) + 11) * 6 Then
+c = (56 / 60) + 5
+ElseIf a = 46 And b = ((50 / 60) + 11) * 6 Then
+c = (57 / 60) + 4
+ElseIf a = 48 And b = ((50 / 60) + 11) * 6 Then
+c = (1 / 60) + 4
+ElseIf a = 50 And b = ((50 / 60) + 11) * 6 Then
+c = (7 / 60) + 3
+ElseIf a = 52 And b = ((50 / 60) + 11) * 6 Then
+c = (39 / 60) + 2
+ElseIf a = 54 And b = ((50 / 60) + 11) * 6 Then
+c = (34 / 60) + 1
+ElseIf a = 56 And b = ((50 / 60) + 11) * 6 Then
+c = (55 / 60) + 0
+ElseIf a = 58 And b = ((50 / 60) + 11) * 6 Then
+c = (23 / 60) + 0
+ElseIf a = 60 And b = ((50 / 60) + 11) * 6 Then
+c = (53 / 60) + 0
+ElseIf a = 62 And b = ((50 / 60) + 11) * 6 Then
+c = (3 / 60) + 0
+ElseIf a = 64 And b = ((50 / 60) + 11) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 66 And b = ((50 / 60) + 11) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 68 And b = ((50 / 60) + 11) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 70 And b = ((50 / 60) + 11) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 0 And b = ((10 / 60) + 12) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 2 And b = ((10 / 60) + 12) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 4 And b = ((10 / 60) + 12) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 6 And b = ((10 / 60) + 12) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 8 And b = ((10 / 60) + 12) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 10 And b = ((10 / 60) + 12) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 12 And b = ((10 / 60) + 12) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 14 And b = ((10 / 60) + 12) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 16 And b = ((10 / 60) + 12) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 18 And b = ((10 / 60) + 12) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 20 And b = ((10 / 60) + 12) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 22 And b = ((10 / 60) + 12) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 24 And b = ((10 / 60) + 12) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 26 And b = ((10 / 60) + 12) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 28 And b = ((10 / 60) + 12) * 6 Then
+c = (55 / 60) + 11
+ElseIf a = 30 And b = ((10 / 60) + 12) * 6 Then
+c = (42 / 60) + 11
+ElseIf a = 32 And b = ((10 / 60) + 12) * 6 Then
+c = (29 / 60) + 11
+ElseIf a = 34 And b = ((10 / 60) + 12) * 6 Then
+c = (47 / 60) + 10
+ElseIf a = 36 And b = ((10 / 60) + 12) * 6 Then
+c = (59 / 60) + 9
+ElseIf a = 38 And b = ((10 / 60) + 12) * 6 Then
+c = (8 / 60) + 9
+ElseIf a = 40 And b = ((10 / 60) + 12) * 6 Then
+c = (11 / 60) + 8
+ElseIf a = 42 And b = ((10 / 60) + 12) * 6 Then
+c = (14 / 60) + 7
+ElseIf a = 44 And b = ((10 / 60) + 12) * 6 Then
+c = (45 / 60) + 7
+ElseIf a = 46 And b = ((10 / 60) + 12) * 6 Then
+c = (58 / 60) + 5
+ElseIf a = 48 And b = ((10 / 60) + 12) * 6 Then
+c = (22 / 60) + 4
+ElseIf a = 50 And b = ((10 / 60) + 12) * 6 Then
+c = (28 / 60) + 3
+ElseIf a = 52 And b = ((10 / 60) + 12) * 6 Then
+c = (38 / 60) + 2
+ElseIf a = 54 And b = ((10 / 60) + 12) * 6 Then
+c = (51 / 60) + 1
+ElseIf a = 56 And b = ((10 / 60) + 12) * 6 Then
+c = (9 / 60) + 1
+ElseIf a = 58 And b = ((10 / 60) + 12) * 6 Then
+c = (36 / 60) + 0
+ElseIf a = 60 And b = ((10 / 60) + 12) * 6 Then
+c = (23 / 60) + 0
+ElseIf a = 62 And b = ((10 / 60) + 12) * 6 Then
+c = (13 / 60) + 0
+ElseIf a = 64 And b = ((10 / 60) + 12) * 6 Then
+c = (3 / 60) + 0
+ElseIf a = 66 And b = ((10 / 60) + 12) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 68 And b = ((10 / 60) + 12) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 70 And b = ((10 / 60) + 12) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 0 And b = ((30 / 60) + 12) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 2 And b = ((30 / 60) + 12) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 4 And b = ((30 / 60) + 12) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 6 And b = ((30 / 60) + 12) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 8 And b = ((30 / 60) + 12) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 10 And b = ((30 / 60) + 12) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 12 And b = ((30 / 60) + 12) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 14 And b = ((30 / 60) + 12) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 16 And b = ((30 / 60) + 12) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 18 And b = ((30 / 60) + 12) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 20 And b = ((30 / 60) + 12) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 22 And b = ((30 / 60) + 12) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 24 And b = ((30 / 60) + 12) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 26 And b = ((30 / 60) + 12) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 28 And b = ((30 / 60) + 12) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 30 And b = ((30 / 60) + 12) * 6 Then
+c = (48 / 60) + 11
+ElseIf a = 32 And b = ((30 / 60) + 12) * 6 Then
+c = (38 / 60) + 11
+ElseIf a = 34 And b = ((30 / 60) + 12) * 6 Then
+c = (58 / 60) + 10
+ElseIf a = 36 And b = ((30 / 60) + 12) * 6 Then
+c = (10 / 60) + 10
+ElseIf a = 38 And b = ((30 / 60) + 12) * 6 Then
+c = (23 / 60) + 9
+ElseIf a = 40 And b = ((30 / 60) + 12) * 6 Then
+c = (29 / 60) + 8
+ElseIf a = 42 And b = ((30 / 60) + 12) * 6 Then
+c = (32 / 60) + 7
+ElseIf a = 44 And b = ((30 / 60) + 12) * 6 Then
+c = (36 / 60) + 6
+ElseIf a = 46 And b = ((30 / 60) + 12) * 6 Then
+c = (39 / 60) + 5
+ElseIf a = 48 And b = ((30 / 60) + 12) * 6 Then
+c = (44 / 60) + 4
+ElseIf a = 50 And b = ((30 / 60) + 12) * 6 Then
+c = (50 / 60) + 3
+ElseIf a = 52 And b = ((30 / 60) + 12) * 6 Then
+c = (58 / 60) + 2
+ElseIf a = 54 And b = ((30 / 60) + 12) * 6 Then
+c = (41 / 60) + 2
+ElseIf a = 56 And b = ((30 / 60) + 12) * 6 Then
+c = (32 / 60) + 1
+ElseIf a = 58 And b = ((30 / 60) + 12) * 6 Then
+c = (53 / 60) + 1
+ElseIf a = 60 And b = ((30 / 60) + 12) * 6 Then
+c = (37 / 60) + 0
+ElseIf a = 62 And b = ((30 / 60) + 12) * 6 Then
+c = (23 / 60) + 0
+ElseIf a = 64 And b = ((30 / 60) + 12) * 6 Then
+c = (13 / 60) + 0
+ElseIf a = 66 And b = ((30 / 60) + 12) * 6 Then
+c = (3 / 60) + 0
+ElseIf a = 68 And b = ((30 / 60) + 12) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 70 And b = ((30 / 60) + 12) * 6 Then
+c = (0 / 60) + 0
+
+ElseIf a = 0 And b = ((50 / 60) + 12) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 2 And b = ((50 / 60) + 12) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 4 And b = ((50 / 60) + 12) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 6 And b = ((50 / 60) + 12) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 8 And b = ((50 / 60) + 12) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 10 And b = ((50 / 60) + 12) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 12 And b = ((50 / 60) + 12) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 14 And b = ((50 / 60) + 12) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 16 And b = ((50 / 60) + 12) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 18 And b = ((50 / 60) + 12) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 20 And b = ((50 / 60) + 12) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 22 And b = ((50 / 60) + 12) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 24 And b = ((50 / 60) + 12) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 26 And b = ((50 / 60) + 12) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 28 And b = ((50 / 60) + 12) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 30 And b = ((50 / 60) + 12) * 6 Then
+c = (53 / 60) + 11
+ElseIf a = 32 And b = ((50 / 60) + 12) * 6 Then
+c = (40 / 60) + 11
+ElseIf a = 34 And b = ((50 / 60) + 12) * 6 Then
+c = (8 / 60) + 11
+ElseIf a = 36 And b = ((50 / 60) + 12) * 6 Then
+c = (27 / 60) + 10
+ElseIf a = 38 And b = ((50 / 60) + 12) * 6 Then
+c = (37 / 60) + 9
+ElseIf a = 40 And b = ((50 / 60) + 12) * 6 Then
+c = (44 / 60) + 8
+ElseIf a = 42 And b = ((50 / 60) + 12) * 6 Then
+c = (49 / 60) + 7
+ElseIf a = 44 And b = ((50 / 60) + 12) * 6 Then
+c = (53 / 60) + 6
+ElseIf a = 46 And b = ((50 / 60) + 12) * 6 Then
+c = (57 / 60) + 5
+ElseIf a = 48 And b = ((50 / 60) + 12) * 6 Then
+c = (2 / 60) + 4
+ElseIf a = 50 And b = ((50 / 60) + 12) * 6 Then
+c = (9 / 60) + 3
+ElseIf a = 52 And b = ((50 / 60) + 12) * 6 Then
+c = (16 / 60) + 2
+ElseIf a = 54 And b = ((50 / 60) + 12) * 6 Then
+c = (30 / 60) + 1
+ElseIf a = 56 And b = ((50 / 60) + 12) * 6 Then
+c = (47 / 60) + 1
+ElseIf a = 58 And b = ((50 / 60) + 12) * 6 Then
+c = (7 / 60) + 0
+ElseIf a = 60 And b = ((50 / 60) + 12) * 6 Then
+c = (51 / 60) + 0
+ElseIf a = 62 And b = ((50 / 60) + 12) * 6 Then
+c = (35 / 60) + 0
+ElseIf a = 64 And b = ((50 / 60) + 12) * 6 Then
+c = (22 / 60) + 0
+ElseIf a = 66 And b = ((50 / 60) + 12) * 6 Then
+c = (13 / 60) + 0
+ElseIf a = 68 And b = ((50 / 60) + 12) * 6 Then
+c = (3 / 60) + 0
+ElseIf a = 70 And b = ((50 / 60) + 12) * 6 Then
+c = (0 / 60) + 0
+
+ElseIf a = 0 And b = ((10 / 60) + 13) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 2 And b = ((10 / 60) + 13) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 4 And b = ((10 / 60) + 13) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 6 And b = ((10 / 60) + 13) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 8 And b = ((10 / 60) + 13) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 10 And b = ((10 / 60) + 13) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 12 And b = ((10 / 60) + 13) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 14 And b = ((10 / 60) + 13) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 16 And b = ((10 / 60) + 13) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 18 And b = ((10 / 60) + 13) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 20 And b = ((10 / 60) + 13) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 22 And b = ((10 / 60) + 13) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 24 And b = ((10 / 60) + 13) * 6 Then
+c = (200 / 60) + 12
+ElseIf a = 26 And b = ((10 / 60) + 13) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 28 And b = ((10 / 60) + 13) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 30 And b = ((10 / 60) + 13) * 6 Then
+c = (58 / 60) + 11
+ElseIf a = 32 And b = ((10 / 60) + 13) * 6 Then
+c = (45 / 60) + 11
+ElseIf a = 34 And b = ((10 / 60) + 13) * 6 Then
+c = (16 / 60) + 11
+ElseIf a = 36 And b = ((10 / 60) + 13) * 6 Then
+c = (36 / 60) + 10
+ElseIf a = 38 And b = ((10 / 60) + 13) * 6 Then
+c = (49 / 60) + 9
+ElseIf a = 40 And b = ((10 / 60) + 13) * 6 Then
+c = (19 / 60) + 8
+ElseIf a = 42 And b = ((10 / 60) + 13) * 6 Then
+c = (5 / 60) + 8
+ElseIf a = 44 And b = ((10 / 60) + 13) * 6 Then
+c = (11 / 60) + 7
+ElseIf a = 46 And b = ((10 / 60) + 13) * 6 Then
+c = (15 / 60) + 6
+ElseIf a = 48 And b = ((10 / 60) + 13) * 6 Then
+c = (20 / 60) + 5
+ElseIf a = 50 And b = ((10 / 60) + 13) * 6 Then
+c = (28 / 60) + 4
+ElseIf a = 52 And b = ((10 / 60) + 13) * 6 Then
+c = (36 / 60) + 3
+ElseIf a = 54 And b = ((10 / 60) + 13) * 6 Then
+c = (46 / 60) + 2
+ElseIf a = 56 And b = ((10 / 60) + 13) * 6 Then
+c = (2 / 60) + 2
+ElseIf a = 58 And b = ((10 / 60) + 13) * 6 Then
+c = (21 / 60) + 1
+ElseIf a = 60 And b = ((10 / 60) + 13) * 6 Then
+c = (3 / 60) + 1
+ElseIf a = 62 And b = ((10 / 60) + 13) * 6 Then
+c = (48 / 60) + 0
+ElseIf a = 64 And b = ((10 / 60) + 13) * 6 Then
+c = (34 / 60) + 0
+ElseIf a = 66 And b = ((10 / 60) + 13) * 6 Then
+c = (24 / 60) + 0
+ElseIf a = 68 And b = ((10 / 60) + 13) * 6 Then
+c = (13 / 60) + 0
+ElseIf a = 70 And b = ((10 / 60) + 13) * 6 Then
+c = (9 / 60) + 0
+
+ElseIf a = 0 And b = ((30 / 60) + 13) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 2 And b = ((30 / 60) + 13) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 4 And b = ((30 / 60) + 13) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 6 And b = ((30 / 60) + 13) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 8 And b = ((30 / 60) + 13) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 10 And b = ((30 / 60) + 13) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 12 And b = ((30 / 60) + 13) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 14 And b = ((30 / 60) + 13) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 16 And b = ((30 / 60) + 13) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 18 And b = ((30 / 60) + 13) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 20 And b = ((30 / 60) + 13) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 22 And b = ((30 / 60) + 13) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 24 And b = ((30 / 60) + 13) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 26 And b = ((30 / 60) + 13) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 28 And b = ((30 / 60) + 13) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 30 And b = ((30 / 60) + 13) * 6 Then
+c = (50 / 60) + 11
+ElseIf a = 32 And b = ((30 / 60) + 13) * 6 Then
+c = (38 / 60) + 11
+ElseIf a = 34 And b = ((30 / 60) + 13) * 6 Then
+c = (26 / 60) + 11
+ElseIf a = 36 And b = ((30 / 60) + 13) * 6 Then
+c = (45 / 60) + 10
+ElseIf a = 38 And b = ((30 / 60) + 13) * 6 Then
+c = (1 / 60) + 10
+ElseIf a = 40 And b = ((30 / 60) + 13) * 6 Then
+c = (14 / 60) + 9
+ElseIf a = 42 And b = ((30 / 60) + 13) * 6 Then
+c = (21 / 60) + 8
+ElseIf a = 44 And b = ((30 / 60) + 13) * 6 Then
+c = (27 / 60) + 7
+ElseIf a = 46 And b = ((30 / 60) + 13) * 6 Then
+c = (33 / 60) + 6
+ElseIf a = 48 And b = ((30 / 60) + 13) * 6 Then
+c = (18 / 60) + 5
+ElseIf a = 50 And b = ((30 / 60) + 13) * 6 Then
+c = (46 / 60) + 4
+ElseIf a = 52 And b = ((30 / 60) + 13) * 6 Then
+c = (44 / 60) + 3
+ElseIf a = 54 And b = ((30 / 60) + 13) * 6 Then
+c = (7 / 60) + 3
+ElseIf a = 56 And b = ((30 / 60) + 13) * 6 Then
+c = (21 / 60) + 2
+ElseIf a = 58 And b = ((30 / 60) + 13) * 6 Then
+c = (40 / 60) + 1
+ElseIf a = 60 And b = ((30 / 60) + 13) * 6 Then
+c = (20 / 60) + 1
+ElseIf a = 62 And b = ((30 / 60) + 13) * 6 Then
+c = (3 / 60) + 0
+ElseIf a = 64 And b = ((30 / 60) + 13) * 6 Then
+c = (46 / 60) + 0
+ElseIf a = 66 And b = ((30 / 60) + 13) * 6 Then
+c = (32 / 60) + 0
+ElseIf a = 68 And b = ((30 / 60) + 13) * 6 Then
+c = (20 / 60) + 0
+ElseIf a = 70 And b = ((30 / 60) + 13) * 6 Then
+c = (11 / 60) + 0
+ElseIf a = 72 And b = ((30 / 60) + 13) * 6 Then
+c = (2 / 60) + 0
+ElseIf a = 74 And b = ((30 / 60) + 13) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 76 And b = ((30 / 60) + 13) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 78 And b = ((30 / 60) + 13) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 0 And b = ((50 / 60) + 13) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 2 And b = ((50 / 60) + 13) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 4 And b = ((50 / 60) + 13) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 6 And b = ((50 / 60) + 13) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 8 And b = ((50 / 60) + 13) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 10 And b = ((50 / 60) + 13) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 12 And b = ((50 / 60) + 13) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 14 And b = ((50 / 60) + 13) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 16 And b = ((50 / 60) + 13) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 18 And b = ((50 / 60) + 13) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 20 And b = ((50 / 60) + 13) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 22 And b = ((50 / 60) + 13) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 24 And b = ((50 / 60) + 13) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 26 And b = ((50 / 60) + 13) * 6 Then
+c = (102 / 60) + 12
+ElseIf a = 28 And b = ((50 / 60) + 13) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 30 And b = ((50 / 60) + 13) * 6 Then
+c = (56 / 60) + 11
+ElseIf a = 32 And b = ((50 / 60) + 13) * 6 Then
+c = (44 / 60) + 11
+ElseIf a = 34 And b = ((50 / 60) + 13) * 6 Then
+c = (31 / 60) + 11
+ElseIf a = 36 And b = ((50 / 60) + 13) * 6 Then
+c = (55 / 60) + 10
+ElseIf a = 38 And b = ((50 / 60) + 13) * 6 Then
+c = (12 / 60) + 10
+ElseIf a = 40 And b = ((50 / 60) + 13) * 6 Then
+c = (27 / 60) + 9
+ElseIf a = 42 And b = ((50 / 60) + 13) * 6 Then
+c = (35 / 60) + 8
+ElseIf a = 44 And b = ((50 / 60) + 13) * 6 Then
+c = (43 / 60) + 7
+ElseIf a = 46 And b = ((50 / 60) + 13) * 6 Then
+c = (51 / 60) + 6
+ElseIf a = 48 And b = ((50 / 60) + 13) * 6 Then
+c = (57 / 60) + 5
+ElseIf a = 50 And b = ((50 / 60) + 13) * 6 Then
+c = (4 / 60) + 5
+ElseIf a = 52 And b = ((50 / 60) + 13) * 6 Then
+c = (13 / 60) + 4
+ElseIf a = 54 And b = ((50 / 60) + 13) * 6 Then
+c = (24 / 60) + 3
+ElseIf a = 56 And b = ((50 / 60) + 13) * 6 Then
+c = (38 / 60) + 2
+ElseIf a = 58 And b = ((50 / 60) + 13) * 6 Then
+c = (55 / 60) + 1
+ElseIf a = 60 And b = ((50 / 60) + 13) * 6 Then
+c = (34 / 60) + 1
+ElseIf a = 62 And b = ((50 / 60) + 13) * 6 Then
+c = (16 / 60) + 1
+ElseIf a = 64 And b = ((50 / 60) + 13) * 6 Then
+c = (0 / 60) + 1
+ElseIf a = 66 And b = ((50 / 60) + 13) * 6 Then
+c = (45 / 60) + 0
+ElseIf a = 68 And b = ((50 / 60) + 13) * 6 Then
+c = (31 / 60) + 0
+ElseIf a = 70 And b = ((50 / 60) + 13) * 6 Then
+c = (20 / 60) + 0
+ElseIf a = 72 And b = ((50 / 60) + 13) * 6 Then
+c = (11 / 60) + 0
+ElseIf a = 74 And b = ((50 / 60) + 13) * 6 Then
+c = (2 / 60) + 0
+ElseIf a = 76 And b = ((50 / 60) + 13) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 78 And b = ((50 / 60) + 13) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 0 And b = ((10 / 60) + 14) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 2 And b = ((10 / 60) + 14) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 4 And b = ((10 / 60) + 14) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 6 And b = ((10 / 60) + 14) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 8 And b = ((10 / 60) + 14) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 10 And b = ((10 / 60) + 14) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 12 And b = ((10 / 60) + 14) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 14 And b = ((10 / 60) + 14) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 16 And b = ((10 / 60) + 14) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 18 And b = ((10 / 60) + 14) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 20 And b = ((10 / 60) + 14) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 22 And b = ((10 / 60) + 14) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 24 And b = ((10 / 60) + 14) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 26 And b = ((10 / 60) + 14) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 28 And b = ((10 / 60) + 14) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 30 And b = ((10 / 60) + 14) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 32 And b = ((10 / 60) + 14) * 6 Then
+c = (49 / 60) + 11
+ElseIf a = 34 And b = ((10 / 60) + 14) * 6 Then
+c = (37 / 60) + 11
+ElseIf a = 36 And b = ((50 / 60) + 14) * 6 Then
+c = (5 / 60) + 11
+ElseIf a = 38 And b = ((10 / 60) + 14) * 6 Then
+c = (26 / 60) + 10
+ElseIf a = 40 And b = ((10 / 60) + 14) * 6 Then
+c = (58 / 60) + 9
+ElseIf a = 42 And b = ((10 / 60) + 14) * 6 Then
+c = (48 / 60) + 8
+ElseIf a = 44 And b = ((10 / 60) + 14) * 6 Then
+c = (57 / 60) + 7
+ElseIf a = 46 And b = ((10 / 60) + 14) * 6 Then
+c = (5 / 60) + 7
+ElseIf a = 48 And b = ((10 / 60) + 14) * 6 Then
+c = (33 / 60) + 6
+ElseIf a = 50 And b = ((10 / 60) + 14) * 6 Then
+c = (20 / 60) + 5
+ElseIf a = 52 And b = ((10 / 60) + 14) * 6 Then
+c = (30 / 60) + 4
+ElseIf a = 54 And b = ((10 / 60) + 14) * 6 Then
+c = (41 / 60) + 3
+ElseIf a = 56 And b = ((10 / 60) + 14) * 6 Then
+c = (57 / 60) + 2
+ElseIf a = 58 And b = ((10 / 60) + 14) * 6 Then
+c = (15 / 60) + 2
+ElseIf a = 60 And b = ((10 / 60) + 14) * 6 Then
+c = (57 / 60) + 1
+ElseIf a = 62 And b = ((10 / 60) + 14) * 6 Then
+c = (36 / 60) + 1
+ElseIf a = 64 And b = ((10 / 60) + 14) * 6 Then
+c = (17 / 60) + 1
+ElseIf a = 66 And b = ((10 / 60) + 14) * 6 Then
+c = (0 / 60) + 1
+ElseIf a = 68 And b = ((10 / 60) + 14) * 6 Then
+c = (45 / 60) + 0
+ElseIf a = 70 And b = ((10 / 60) + 14) * 6 Then
+c = (30 / 60) + 0
+ElseIf a = 72 And b = ((10 / 60) + 14) * 6 Then
+c = (20 / 60) + 0
+ElseIf a = 74 And b = ((10 / 60) + 14) * 6 Then
+c = (11 / 60) + 0
+ElseIf a = 76 And b = ((10 / 60) + 14) * 6 Then
+c = (2 / 60) + 0
+ElseIf a = 78 And b = ((10 / 60) + 14) * 6 Then
+c = (0 / 60) + 0
+
+ElseIf a = 0 And b = ((30 / 60) + 14) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 2 And b = ((30 / 60) + 14) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 4 And b = ((30 / 60) + 14) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 6 And b = ((30 / 60) + 14) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 8 And b = ((30 / 60) + 14) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 10 And b = ((30 / 60) + 14) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 12 And b = ((30 / 60) + 14) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 14 And b = ((30 / 60) + 14) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 16 And b = ((30 / 60) + 14) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 18 And b = ((30 / 60) + 14) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 20 And b = ((30 / 60) + 14) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 22 And b = ((30 / 60) + 14) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 24 And b = ((30 / 60) + 14) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 26 And b = ((30 / 60) + 14) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 28 And b = ((30 / 60) + 14) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 30 And b = ((30 / 60) + 14) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 32 And b = ((30 / 60) + 14) * 6 Then
+c = (52 / 60) + 11
+ElseIf a = 34 And b = ((30 / 60) + 14) * 6 Then
+c = (44 / 60) + 11
+ElseIf a = 36 And b = ((30 / 60) + 13) * 6 Then
+c = (11 / 60) + 11
+ElseIf a = 38 And b = ((30 / 60) + 14) * 6 Then
+c = (33 / 60) + 10
+ElseIf a = 40 And b = ((30 / 60) + 14) * 6 Then
+c = (48 / 60) + 9
+ElseIf a = 42 And b = ((30 / 60) + 14) * 6 Then
+c = (1 / 60) + 9
+ElseIf a = 44 And b = ((30 / 60) + 14) * 6 Then
+c = (11 / 60) + 8
+ElseIf a = 46 And b = ((30 / 60) + 14) * 6 Then
+c = (21 / 60) + 7
+ElseIf a = 48 And b = ((30 / 60) + 14) * 6 Then
+c = (30 / 60) + 6
+ElseIf a = 50 And b = ((30 / 60) + 14) * 6 Then
+c = (36 / 60) + 5
+ElseIf a = 52 And b = ((30 / 60) + 14) * 6 Then
+c = (46 / 60) + 4
+ElseIf a = 54 And b = ((30 / 60) + 14) * 6 Then
+c = (57 / 60) + 3
+ElseIf a = 56 And b = ((30 / 60) + 14) * 6 Then
+c = (9 / 60) + 3
+ElseIf a = 58 And b = ((30 / 60) + 14) * 6 Then
+c = (28 / 60) + 2
+ElseIf a = 60 And b = ((30 / 60) + 14) * 6 Then
+c = (6 / 60) + 2
+ElseIf a = 62 And b = ((30 / 60) + 14) * 6 Then
+c = (48 / 60) + 1
+ElseIf a = 64 And b = ((30 / 60) + 14) * 6 Then
+c = (30 / 60) + 1
+ElseIf a = 66 And b = ((30 / 60) + 14) * 6 Then
+c = (11 / 60) + 1
+ElseIf a = 68 And b = ((30 / 60) + 14) * 6 Then
+c = (56 / 60) + 0
+ElseIf a = 70 And b = ((30 / 60) + 14) * 6 Then
+c = (41 / 60) + 0
+ElseIf a = 72 And b = ((30 / 60) + 14) * 6 Then
+c = (27 / 60) + 0
+ElseIf a = 74 And b = ((30 / 60) + 14) * 6 Then
+c = (17 / 60) + 0
+ElseIf a = 76 And b = ((30 / 60) + 14) * 6 Then
+c = (9 / 60) + 0
+ElseIf a = 78 And b = ((30 / 60) + 14) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 0 And b = ((50 / 60) + 14) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 2 And b = ((50 / 60) + 14) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 4 And b = ((50 / 60) + 14) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 6 And b = ((50 / 60) + 14) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 8 And b = ((50 / 60) + 14) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 10 And b = ((50 / 60) + 14) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 12 And b = ((50 / 60) + 14) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 14 And b = ((50 / 60) + 14) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 16 And b = ((50 / 60) + 14) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 18 And b = ((50 / 60) + 14) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 20 And b = ((50 / 60) + 14) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 22 And b = ((50 / 60) + 14) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 24 And b = ((50 / 60) + 14) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 26 And b = ((50 / 60) + 14) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 28 And b = ((50 / 60) + 14) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 30 And b = ((50 / 60) + 14) * 6 Then
+c = (0 / 60) + 12
+ElseIf a = 32 And b = ((50 / 60) + 14) * 6 Then
+c = (54 / 60) + 11
+ElseIf a = 34 And b = ((50 / 60) + 14) * 6 Then
+c = (43 / 60) + 11
+ElseIf a = 36 And b = ((50 / 60) + 14) * 6 Then
+c = (36 / 60) + 11
+ElseIf a = 38 And b = ((50 / 60) + 14) * 6 Then
+c = (28 / 60) + 10
+ElseIf a = 40 And b = ((50 / 60) + 14) * 6 Then
+c = (55 / 60) + 9
+ElseIf a = 42 And b = ((50 / 60) + 14) * 6 Then
+c = (9 / 60) + 9
+ElseIf a = 44 And b = ((50 / 60) + 14) * 6 Then
+c = (19 / 60) + 8
+ElseIf a = 46 And b = ((50 / 60) + 14) * 6 Then
+c = (30 / 60) + 7
+ElseIf a = 48 And b = ((50 / 60) + 14) * 6 Then
+c = (39 / 60) + 6
+ElseIf a = 50 And b = ((50 / 60) + 14) * 6 Then
+c = (47 / 60) + 5
+ElseIf a = 52 And b = ((50 / 60) + 14) * 6 Then
+c = (57 / 60) + 4
+ElseIf a = 54 And b = ((50 / 60) + 14) * 6 Then
+c = (9 / 60) + 4
+ElseIf a = 56 And b = ((50 / 60) + 14) * 6 Then
+c = (21 / 60) + 3
+ElseIf a = 58 And b = ((50 / 60) + 14) * 6 Then
+c = (18 / 60) + 2
+ElseIf a = 60 And b = ((50 / 60) + 14) * 6 Then
+c = (17 / 60) + 2
+ElseIf a = 62 And b = ((50 / 60) + 14) * 6 Then
+c = (58 / 60) + 1
+ElseIf a = 64 And b = ((50 / 60) + 14) * 6 Then
+c = (39 / 60) + 1
+ElseIf a = 66 And b = ((50 / 60) + 14) * 6 Then
+c = (20 / 60) + 1
+ElseIf a = 68 And b = ((50 / 60) + 14) * 6 Then
+c = (40 / 60) + 1
+ElseIf a = 70 And b = ((50 / 60) + 14) * 6 Then
+c = (49 / 60) + 0
+ElseIf a = 72 And b = ((50 / 60) + 14) * 6 Then
+c = (35 / 60) + 0
+ElseIf a = 74 And b = ((50 / 60) + 14) * 6 Then
+c = (23 / 60) + 0
+ElseIf a = 76 And b = ((50 / 60) + 14) * 6 Then
+c = (14 / 60) + 0
+ElseIf a = 78 And b = ((50 / 60) + 14) * 6 Then
+c = (5 / 60) + 0
+End If
+asabejermm = c
+End Function
+
+
+Public Function asabejerm(arz As Double, boht As Double)
+Dim y As Double
+y = arz * 60
+Dim z As Double
+z = boht * 6
+Dim a As Double
+a = Int(y / 2) * 2
+Dim a1 As Double
+a1 = Int(z)
+Dim a2 As Double
+a2 = a1 / 2
+Dim a3 As Double
+a3 = Int(a2)
+Dim b As Double
+If a2 = a3 Then
+b = a1 - 1
+Else
+b = a1
+End If
+Dim aa As Double
+aa = a + 2
+Dim bb As Double
+bb = b + 2
+Dim c As Double
+c = asabejermm(a / 60, b / 6)
+Dim d As Double
+d = asabejermm(a / 60, bb / 6)
+Dim e As Double
+e = asabejermm(aa / 60, b / 6)
+Dim f As Double
+f = asabejermm(aa / 60, bb / 6)
+Dim g As Double
+g = d - c
+Dim h As Double
+h = e - c
+Dim j As Double
+j = ((y - a) * h) / 2
+Dim k As Double
+k = ((z - b) * g) / 2
+Dim m As Double
+m = c + j
+Dim n As Double
+n = c + k
+Dim o As Double
+o = f - e
+Dim p As Double
+p = z - b
+Dim q As Double
+q = aa - a
+Dim r As Double
+r = p * o / q
+Dim s As Double
+s = e + r
+Dim t As Double
+t = s - n
+Dim u As Double
+u = aa - a
+Dim v As Double
+v = y - a
+Dim w As Double
+w = t * v / u
+Dim x As Double
+x = n + w
+Dim xx As Double
+If arz = a Then
+xx = 1
+Else
+xx = 2
+End If
+Dim xy As Double
+If boht = b Then
+xy = 1
+Else
+xy = 2
+End If
+If xy = 1 And xx = 1 Then
+asabejerm = c
+ElseIf xx = 2 And xy = 1 Then
+asabejerm = m
+ElseIf xx = 1 And xy = 2 Then
+asabejerm = n
+Else
+asabejerm = x
+End If
+
+End Function
+
+
+
+
+
+
+Public Function sasoqoott(arz As Double, boht As Double)
+Dim a As Double
+a = arz * 60
+Dim b As Double
+b = boht * 6
+Dim c As Double
+
+If a = 0 And b = ((50 / 60) + 11) * 6 Then
+c = (4 / 60) + 2
+ElseIf a = 2 And b = ((50 / 60) + 11) * 6 Then
+c = (4 / 60) + 2
+ElseIf a = 4 And b = ((50 / 60) + 11) * 6 Then
+c = (4 / 60) + 2
+ElseIf a = 6 And b = ((50 / 60) + 11) * 6 Then
+c = (3 / 60) + 2
+ElseIf a = 8 And b = ((50 / 60) + 11) * 6 Then
+c = (3 / 60) + 2
+ElseIf a = 10 And b = ((50 / 60) + 11) * 6 Then
+c = (2 / 60) + 2
+ElseIf a = 12 And b = ((50 / 60) + 11) * 6 Then
+c = (1 / 60) + 2
+ElseIf a = 14 And b = ((50 / 60) + 11) * 6 Then
+c = (0 / 60) + 2
+ElseIf a = 16 And b = ((50 / 60) + 11) * 6 Then
+c = (59 / 60) + 1
+ElseIf a = 18 And b = ((50 / 60) + 11) * 6 Then
+c = (58 / 60) + 1
+ElseIf a = 20 And b = ((50 / 60) + 11) * 6 Then
+c = (56 / 60) + 1
+ElseIf a = 22 And b = ((50 / 60) + 11) * 6 Then
+c = (54 / 60) + 1
+ElseIf a = 24 And b = ((50 / 60) + 11) * 6 Then
+c = (52 / 60) + 1
+ElseIf a = 26 And b = ((50 / 60) + 11) * 6 Then
+c = (51 / 60) + 1
+ElseIf a = 28 And b = ((50 / 60) + 11) * 6 Then
+c = (50 / 60) + 1
+ElseIf a = 30 And b = ((50 / 60) + 11) * 6 Then
+c = (49 / 60) + 1
+ElseIf a = 32 And b = ((50 / 60) + 11) * 6 Then
+c = (48 / 60) + 1
+ElseIf a = 34 And b = ((50 / 60) + 11) * 6 Then
+c = (46 / 60) + 1
+ElseIf a = 36 And b = ((50 / 60) + 11) * 6 Then
+c = (43 / 60) + 1
+ElseIf a = 38 And b = ((50 / 60) + 11) * 6 Then
+c = (40 / 60) + 1
+ElseIf a = 40 And b = ((50 / 60) + 11) * 6 Then
+c = (36 / 60) + 1
+ElseIf a = 42 And b = ((50 / 60) + 11) * 6 Then
+c = (32 / 60) + 1
+ElseIf a = 44 And b = ((50 / 60) + 11) * 6 Then
+c = (28 / 60) + 1
+ElseIf a = 46 And b = ((50 / 60) + 11) * 6 Then
+c = (24 / 60) + 1
+ElseIf a = 48 And b = ((50 / 60) + 11) * 6 Then
+c = (18 / 60) + 1
+ElseIf a = 50 And b = ((50 / 60) + 11) * 6 Then
+c = (12 / 60) + 1
+ElseIf a = 52 And b = ((50 / 60) + 11) * 6 Then
+c = (6 / 60) + 1
+ElseIf a = 54 And b = ((50 / 60) + 11) * 6 Then
+c = (18 / 60) + 0
+ElseIf a = 56 And b = ((50 / 60) + 11) * 6 Then
+c = (47 / 60) + 0
+ElseIf a = 58 And b = ((50 / 60) + 11) * 6 Then
+c = (32 / 60) + 0
+ElseIf a = 60 And b = ((50 / 60) + 11) * 6 Then
+c = (24 / 60) + 0
+ElseIf a = 62 And b = ((50 / 60) + 11) * 6 Then
+c = (14 / 60) + 0
+ElseIf a = 64 And b = ((50 / 60) + 11) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 66 And b = ((50 / 60) + 11) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 68 And b = ((50 / 60) + 11) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 70 And b = ((50 / 60) + 11) * 6 Then
+c = (0 / 60) + 0
+
+ElseIf a = 0 And b = ((10 / 60) + 12) * 6 Then
+c = (3 / 60) + 2
+ElseIf a = 2 And b = ((10 / 60) + 12) * 6 Then
+c = (3 / 60) + 2
+ElseIf a = 4 And b = ((10 / 60) + 12) * 6 Then
+c = (3 / 60) + 2
+ElseIf a = 6 And b = ((10 / 60) + 12) * 6 Then
+c = (2 / 60) + 2
+ElseIf a = 8 And b = ((10 / 60) + 12) * 6 Then
+c = (2 / 60) + 2
+ElseIf a = 10 And b = ((10 / 60) + 12) * 6 Then
+c = (1 / 60) + 2
+ElseIf a = 12 And b = ((10 / 60) + 12) * 6 Then
+c = (0 / 60) + 2
+ElseIf a = 14 And b = ((10 / 60) + 12) * 6 Then
+c = (59 / 60) + 1
+ElseIf a = 16 And b = ((10 / 60) + 12) * 6 Then
+c = (58 / 60) + 1
+ElseIf a = 18 And b = ((10 / 60) + 12) * 6 Then
+c = (57 / 60) + 1
+ElseIf a = 20 And b = ((10 / 60) + 12) * 6 Then
+c = (55 / 60) + 1
+ElseIf a = 22 And b = ((10 / 60) + 12) * 6 Then
+c = (53 / 60) + 1
+ElseIf a = 24 And b = ((10 / 60) + 12) * 6 Then
+c = (51 / 60) + 1
+ElseIf a = 26 And b = ((10 / 60) + 12) * 6 Then
+c = (50 / 60) + 1
+ElseIf a = 28 And b = ((10 / 60) + 12) * 6 Then
+c = (49 / 60) + 1
+ElseIf a = 30 And b = ((10 / 60) + 12) * 6 Then
+c = (48 / 60) + 1
+ElseIf a = 32 And b = ((10 / 60) + 12) * 6 Then
+c = (47 / 60) + 1
+ElseIf a = 34 And b = ((10 / 60) + 12) * 6 Then
+c = (44 / 60) + 1
+ElseIf a = 36 And b = ((10 / 60) + 12) * 6 Then
+c = (42 / 60) + 1
+ElseIf a = 38 And b = ((10 / 60) + 12) * 6 Then
+c = (39 / 60) + 1
+ElseIf a = 40 And b = ((10 / 60) + 12) * 6 Then
+c = (37 / 60) + 1
+ElseIf a = 42 And b = ((10 / 60) + 12) * 6 Then
+c = (32 / 60) + 1
+ElseIf a = 44 And b = ((10 / 60) + 12) * 6 Then
+c = (28 / 60) + 1
+ElseIf a = 46 And b = ((10 / 60) + 12) * 6 Then
+c = (23 / 60) + 1
+ElseIf a = 48 And b = ((10 / 60) + 12) * 6 Then
+c = (17 / 60) + 1
+ElseIf a = 50 And b = ((10 / 60) + 12) * 6 Then
+c = (11 / 60) + 1
+ElseIf a = 52 And b = ((10 / 60) + 12) * 6 Then
+c = (5 / 60) + 1
+ElseIf a = 54 And b = ((10 / 60) + 12) * 6 Then
+c = (59 / 60) + 0
+ElseIf a = 56 And b = ((10 / 60) + 12) * 6 Then
+c = (52 / 60) + 0
+ElseIf a = 58 And b = ((10 / 60) + 12) * 6 Then
+c = (41 / 60) + 0
+ElseIf a = 60 And b = ((10 / 60) + 12) * 6 Then
+c = (34 / 60) + 0
+ElseIf a = 62 And b = ((10 / 60) + 12) * 6 Then
+c = (25 / 60) + 0
+ElseIf a = 64 And b = ((10 / 60) + 12) * 6 Then
+c = (12 / 60) + 0
+ElseIf a = 66 And b = ((10 / 60) + 12) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 68 And b = ((10 / 60) + 12) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 70 And b = ((10 / 60) + 12) * 6 Then
+c = (0 / 60) + 0
+
+
+ElseIf a = 0 And b = ((30 / 60) + 12) * 6 Then
+c = (2 / 60) + 2
+ElseIf a = 2 And b = ((30 / 60) + 12) * 6 Then
+c = (2 / 60) + 2
+ElseIf a = 4 And b = ((30 / 60) + 12) * 6 Then
+c = (2 / 60) + 2
+ElseIf a = 6 And b = ((30 / 60) + 12) * 6 Then
+c = (1 / 60) + 2
+ElseIf a = 8 And b = ((30 / 60) + 12) * 6 Then
+c = (1 / 60) + 2
+ElseIf a = 10 And b = ((30 / 60) + 12) * 6 Then
+c = (0 / 60) + 2
+ElseIf a = 12 And b = ((30 / 60) + 12) * 6 Then
+c = (59 / 60) + 1
+ElseIf a = 14 And b = ((30 / 60) + 12) * 6 Then
+c = (58 / 60) + 1
+ElseIf a = 16 And b = ((30 / 60) + 12) * 6 Then
+c = (57 / 60) + 1
+ElseIf a = 18 And b = ((30 / 60) + 12) * 6 Then
+c = (56 / 60) + 1
+ElseIf a = 20 And b = ((30 / 60) + 12) * 6 Then
+c = (54 / 60) + 1
+ElseIf a = 22 And b = ((30 / 60) + 12) * 6 Then
+c = (52 / 60) + 1
+ElseIf a = 24 And b = ((30 / 60) + 12) * 6 Then
+c = (50 / 60) + 1
+ElseIf a = 26 And b = ((30 / 60) + 12) * 6 Then
+c = (49 / 60) + 1
+ElseIf a = 28 And b = ((30 / 60) + 12) * 6 Then
+c = (48 / 60) + 1
+ElseIf a = 30 And b = ((30 / 60) + 12) * 6 Then
+c = (47 / 60) + 1
+ElseIf a = 32 And b = ((30 / 60) + 12) * 6 Then
+c = (46 / 60) + 1
+ElseIf a = 34 And b = ((30 / 60) + 12) * 6 Then
+c = (44 / 60) + 1
+ElseIf a = 36 And b = ((30 / 60) + 12) * 6 Then
+c = (41 / 60) + 1
+ElseIf a = 38 And b = ((30 / 60) + 12) * 6 Then
+c = (38 / 60) + 1
+ElseIf a = 40 And b = ((30 / 60) + 12) * 6 Then
+c = (35 / 60) + 1
+ElseIf a = 42 And b = ((30 / 60) + 12) * 6 Then
+c = (32 / 60) + 1
+ElseIf a = 44 And b = ((30 / 60) + 12) * 6 Then
+c = (28 / 60) + 1
+ElseIf a = 46 And b = ((30 / 60) + 12) * 6 Then
+c = (24 / 60) + 1
+ElseIf a = 48 And b = ((30 / 60) + 12) * 6 Then
+c = (19 / 60) + 1
+ElseIf a = 50 And b = ((30 / 60) + 12) * 6 Then
+c = (14 / 60) + 1
+ElseIf a = 52 And b = ((30 / 60) + 12) * 6 Then
+c = (9 / 60) + 1
+ElseIf a = 54 And b = ((30 / 60) + 12) * 6 Then
+c = (3 / 60) + 1
+ElseIf a = 56 And b = ((30 / 60) + 12) * 6 Then
+c = (57 / 60) + 0
+ElseIf a = 58 And b = ((30 / 60) + 12) * 6 Then
+c = (48 / 60) + 0
+ElseIf a = 60 And b = ((30 / 60) + 12) * 6 Then
+c = (41 / 60) + 0
+ElseIf a = 62 And b = ((30 / 60) + 12) * 6 Then
+c = (33 / 60) + 0
+ElseIf a = 64 And b = ((30 / 60) + 12) * 6 Then
+c = (24 / 60) + 0
+ElseIf a = 66 And b = ((30 / 60) + 12) * 6 Then
+c = (14 / 60) + 0
+ElseIf a = 68 And b = ((30 / 60) + 12) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 70 And b = ((30 / 60) + 12) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 0 And b = ((50 / 60) + 12) * 6 Then
+c = (1 / 60) + 2
+ElseIf a = 2 And b = ((50 / 60) + 12) * 6 Then
+c = (1 / 60) + 2
+ElseIf a = 4 And b = ((50 / 60) + 12) * 6 Then
+c = (1 / 60) + 2
+ElseIf a = 6 And b = ((50 / 60) + 12) * 6 Then
+c = (0 / 60) + 2
+ElseIf a = 8 And b = ((50 / 60) + 12) * 6 Then
+c = (0 / 60) + 2
+ElseIf a = 10 And b = ((50 / 60) + 12) * 6 Then
+c = (59 / 60) + 1
+ElseIf a = 12 And b = ((50 / 60) + 12) * 6 Then
+c = (59 / 60) + 1
+ElseIf a = 14 And b = ((50 / 60) + 12) * 6 Then
+c = (58 / 60) + 1
+ElseIf a = 16 And b = ((50 / 60) + 12) * 6 Then
+c = (57 / 60) + 1
+ElseIf a = 18 And b = ((50 / 60) + 12) * 6 Then
+c = (56 / 60) + 1
+ElseIf a = 20 And b = ((50 / 60) + 12) * 6 Then
+c = (54 / 60) + 1
+ElseIf a = 22 And b = ((50 / 60) + 12) * 6 Then
+c = (53 / 60) + 1
+ElseIf a = 24 And b = ((50 / 60) + 12) * 6 Then
+c = (51 / 60) + 1
+ElseIf a = 26 And b = ((50 / 60) + 12) * 6 Then
+c = (50 / 60) + 1
+ElseIf a = 28 And b = ((50 / 60) + 12) * 6 Then
+c = (49 / 60) + 1
+ElseIf a = 30 And b = ((50 / 60) + 12) * 6 Then
+c = (48 / 60) + 1
+ElseIf a = 32 And b = ((50 / 60) + 12) * 6 Then
+c = (46 / 60) + 1
+ElseIf a = 34 And b = ((50 / 60) + 12) * 6 Then
+c = (45 / 60) + 1
+ElseIf a = 36 And b = ((50 / 60) + 12) * 6 Then
+c = (42 / 60) + 1
+ElseIf a = 38 And b = ((50 / 60) + 12) * 6 Then
+c = (39 / 60) + 1
+ElseIf a = 40 And b = ((50 / 60) + 12) * 6 Then
+c = (36 / 60) + 1
+ElseIf a = 42 And b = ((50 / 60) + 12) * 6 Then
+c = (33 / 60) + 1
+ElseIf a = 44 And b = ((50 / 60) + 12) * 6 Then
+c = (29 / 60) + 1
+ElseIf a = 46 And b = ((50 / 60) + 12) * 6 Then
+c = (24 / 60) + 1
+ElseIf a = 48 And b = ((50 / 60) + 12) * 6 Then
+c = (20 / 60) + 1
+ElseIf a = 50 And b = ((50 / 60) + 12) * 6 Then
+c = (15 / 60) + 1
+ElseIf a = 52 And b = ((50 / 60) + 12) * 6 Then
+c = (11 / 60) + 1
+ElseIf a = 54 And b = ((50 / 60) + 12) * 6 Then
+c = (5 / 60) + 1
+ElseIf a = 56 And b = ((50 / 60) + 12) * 6 Then
+c = (58 / 60) + 0
+ElseIf a = 58 And b = ((50 / 60) + 12) * 6 Then
+c = (50 / 60) + 0
+ElseIf a = 60 And b = ((50 / 60) + 12) * 6 Then
+c = (45 / 60) + 0
+ElseIf a = 62 And b = ((50 / 60) + 12) * 6 Then
+c = (39 / 60) + 0
+ElseIf a = 64 And b = ((50 / 60) + 12) * 6 Then
+c = (31 / 60) + 0
+ElseIf a = 66 And b = ((50 / 60) + 12) * 6 Then
+c = (22 / 60) + 0
+ElseIf a = 68 And b = ((50 / 60) + 12) * 6 Then
+c = (12 / 60) + 0
+ElseIf a = 70 And b = ((50 / 60) + 12) * 6 Then
+c = (0 / 60) + 0
+
+ElseIf a = 0 And b = ((10 / 60) + 13) * 6 Then
+c = (59 / 60) + 1
+ElseIf a = 2 And b = ((10 / 60) + 13) * 6 Then
+c = (59 / 60) + 1
+ElseIf a = 4 And b = ((10 / 60) + 13) * 6 Then
+c = (59 / 60) + 1
+ElseIf a = 6 And b = ((10 / 60) + 13) * 6 Then
+c = (58 / 60) + 1
+ElseIf a = 8 And b = ((10 / 60) + 13) * 6 Then
+c = (58 / 60) + 1
+ElseIf a = 10 And b = ((10 / 60) + 13) * 6 Then
+c = (57 / 60) + 1
+ElseIf a = 12 And b = ((10 / 60) + 13) * 6 Then
+c = (57 / 60) + 1
+ElseIf a = 14 And b = ((10 / 60) + 13) * 6 Then
+c = (56 / 60) + 1
+ElseIf a = 16 And b = ((10 / 60) + 13) * 6 Then
+c = (55 / 60) + 1
+ElseIf a = 18 And b = ((10 / 60) + 13) * 6 Then
+c = (54 / 60) + 1
+ElseIf a = 20 And b = ((10 / 60) + 13) * 6 Then
+c = (53 / 60) + 1
+ElseIf a = 22 And b = ((10 / 60) + 13) * 6 Then
+c = (52 / 60) + 1
+ElseIf a = 24 And b = ((10 / 60) + 13) * 6 Then
+c = (50 / 60) + 1
+ElseIf a = 26 And b = ((10 / 60) + 13) * 6 Then
+c = (49 / 60) + 1
+ElseIf a = 28 And b = ((10 / 60) + 13) * 6 Then
+c = (48 / 60) + 1
+ElseIf a = 30 And b = ((10 / 60) + 13) * 6 Then
+c = (47 / 60) + 1
+ElseIf a = 32 And b = ((10 / 60) + 13) * 6 Then
+c = (46 / 60) + 1
+ElseIf a = 34 And b = ((10 / 60) + 13) * 6 Then
+c = (44 / 60) + 1
+ElseIf a = 36 And b = ((10 / 60) + 13) * 6 Then
+c = (41 / 60) + 1
+ElseIf a = 38 And b = ((10 / 60) + 13) * 6 Then
+c = (38 / 60) + 1
+ElseIf a = 40 And b = ((10 / 60) + 13) * 6 Then
+c = (35 / 60) + 1
+ElseIf a = 42 And b = ((10 / 60) + 13) * 6 Then
+c = (32 / 60) + 1
+ElseIf a = 44 And b = ((10 / 60) + 13) * 6 Then
+c = (29 / 60) + 1
+ElseIf a = 46 And b = ((10 / 60) + 13) * 6 Then
+c = (25 / 60) + 1
+ElseIf a = 48 And b = ((10 / 60) + 13) * 6 Then
+c = (21 / 60) + 1
+ElseIf a = 50 And b = ((10 / 60) + 13) * 6 Then
+c = (17 / 60) + 1
+ElseIf a = 52 And b = ((10 / 60) + 13) * 6 Then
+c = (13 / 60) + 1
+ElseIf a = 54 And b = ((10 / 60) + 13) * 6 Then
+c = (7 / 60) + 1
+ElseIf a = 56 And b = ((10 / 60) + 13) * 6 Then
+c = (1 / 60) + 1
+ElseIf a = 58 And b = ((10 / 60) + 13) * 6 Then
+c = (54 / 60) + 0
+ElseIf a = 60 And b = ((10 / 60) + 13) * 6 Then
+c = (50 / 60) + 0
+ElseIf a = 62 And b = ((10 / 60) + 13) * 6 Then
+c = (45 / 60) + 0
+ElseIf a = 64 And b = ((10 / 60) + 13) * 6 Then
+c = (38 / 60) + 0
+ElseIf a = 66 And b = ((10 / 60) + 13) * 6 Then
+c = (31 / 60) + 0
+ElseIf a = 68 And b = ((10 / 60) + 13) * 6 Then
+c = (23 / 60) + 0
+ElseIf a = 70 And b = ((10 / 60) + 13) * 6 Then
+c = (13 / 60) + 0
+ElseIf a = 0 And b = ((30 / 60) + 13) * 6 Then
+c = (58 / 60) + 1
+ElseIf a = 2 And b = ((30 / 60) + 13) * 6 Then
+c = (58 / 60) + 1
+ElseIf a = 4 And b = ((30 / 60) + 13) * 6 Then
+c = (58 / 60) + 1
+ElseIf a = 6 And b = ((30 / 60) + 13) * 6 Then
+c = (57 / 60) + 1
+ElseIf a = 8 And b = ((30 / 60) + 13) * 6 Then
+c = (57 / 60) + 1
+ElseIf a = 10 And b = ((30 / 60) + 13) * 6 Then
+c = (56 / 60) + 1
+ElseIf a = 12 And b = ((30 / 60) + 13) * 6 Then
+c = (56 / 60) + 1
+ElseIf a = 14 And b = ((30 / 60) + 13) * 6 Then
+c = (55 / 60) + 1
+ElseIf a = 16 And b = ((30 / 60) + 13) * 6 Then
+c = (54 / 60) + 1
+ElseIf a = 18 And b = ((30 / 60) + 13) * 6 Then
+c = (53 / 60) + 1
+ElseIf a = 20 And b = ((30 / 60) + 13) * 6 Then
+c = (51 / 60) + 1
+ElseIf a = 22 And b = ((30 / 60) + 13) * 6 Then
+c = (50 / 60) + 1
+ElseIf a = 24 And b = ((30 / 60) + 13) * 6 Then
+c = (49 / 60) + 1
+ElseIf a = 26 And b = ((30 / 60) + 13) * 6 Then
+c = (47 / 60) + 1
+ElseIf a = 28 And b = ((30 / 60) + 13) * 6 Then
+c = (46 / 60) + 1
+ElseIf a = 30 And b = ((30 / 60) + 13) * 6 Then
+c = (45 / 60) + 1
+ElseIf a = 32 And b = ((30 / 60) + 13) * 6 Then
+c = (44 / 60) + 1
+ElseIf a = 34 And b = ((30 / 60) + 13) * 6 Then
+c = (43 / 60) + 1
+ElseIf a = 36 And b = ((30 / 60) + 13) * 6 Then
+c = (40 / 60) + 1
+ElseIf a = 38 And b = ((30 / 60) + 13) * 6 Then
+c = (37 / 60) + 1
+ElseIf a = 40 And b = ((30 / 60) + 13) * 6 Then
+c = (35 / 60) + 1
+ElseIf a = 42 And b = ((30 / 60) + 13) * 6 Then
+c = (35 / 60) + 1
+ElseIf a = 44 And b = ((30 / 60) + 13) * 6 Then
+c = (29 / 60) + 1
+ElseIf a = 46 And b = ((30 / 60) + 13) * 6 Then
+c = (25 / 60) + 1
+ElseIf a = 48 And b = ((30 / 60) + 13) * 6 Then
+c = (21 / 60) + 1
+ElseIf a = 50 And b = ((30 / 60) + 13) * 6 Then
+c = (17 / 60) + 1
+ElseIf a = 52 And b = ((30 / 60) + 13) * 6 Then
+c = (13 / 60) + 1
+ElseIf a = 54 And b = ((30 / 60) + 13) * 6 Then
+c = (8 / 60) + 1
+ElseIf a = 56 And b = ((30 / 60) + 13) * 6 Then
+c = (2 / 60) + 1
+ElseIf a = 58 And b = ((30 / 60) + 13) * 6 Then
+c = (57 / 60) + 0
+ElseIf a = 60 And b = ((30 / 60) + 13) * 6 Then
+c = (55 / 60) + 0
+ElseIf a = 62 And b = ((30 / 60) + 13) * 6 Then
+c = (52 / 60) + 0
+ElseIf a = 64 And b = ((30 / 60) + 13) * 6 Then
+c = (48 / 60) + 0
+ElseIf a = 66 And b = ((30 / 60) + 13) * 6 Then
+c = (42 / 60) + 0
+ElseIf a = 68 And b = ((30 / 60) + 13) * 6 Then
+c = (34 / 60) + 0
+ElseIf a = 70 And b = ((30 / 60) + 13) * 6 Then
+c = (24 / 60) + 0
+ElseIf a = 72 And b = ((30 / 60) + 13) * 6 Then
+c = (11 / 60) + 0
+ElseIf a = 74 And b = ((30 / 60) + 13) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 76 And b = ((30 / 60) + 13) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 78 And b = ((30 / 60) + 13) * 6 Then
+c = (0 / 60) + 0
+
+ElseIf a = 0 And b = ((50 / 60) + 13) * 6 Then
+c = (56 / 60) + 1
+ElseIf a = 2 And b = ((50 / 60) + 13) * 6 Then
+c = (56 / 60) + 1
+ElseIf a = 4 And b = ((50 / 60) + 13) * 6 Then
+c = (56 / 60) + 1
+ElseIf a = 6 And b = ((50 / 60) + 13) * 6 Then
+c = (55 / 60) + 1
+ElseIf a = 8 And b = ((50 / 60) + 13) * 6 Then
+c = (55 / 60) + 1
+ElseIf a = 10 And b = ((50 / 60) + 13) * 6 Then
+c = (55 / 60) + 1
+ElseIf a = 12 And b = ((50 / 60) + 13) * 6 Then
+c = (54 / 60) + 1
+ElseIf a = 14 And b = ((50 / 60) + 13) * 6 Then
+c = (54 / 60) + 1
+ElseIf a = 16 And b = ((50 / 60) + 13) * 6 Then
+c = (53 / 60) + 1
+ElseIf a = 18 And b = ((50 / 60) + 13) * 6 Then
+c = (52 / 60) + 1
+ElseIf a = 20 And b = ((50 / 60) + 13) * 6 Then
+c = (51 / 60) + 1
+ElseIf a = 22 And b = ((50 / 60) + 13) * 6 Then
+c = (50 / 60) + 1
+ElseIf a = 24 And b = ((50 / 60) + 13) * 6 Then
+c = (48 / 60) + 1
+ElseIf a = 26 And b = ((50 / 60) + 13) * 6 Then
+c = (46 / 60) + 1
+ElseIf a = 28 And b = ((50 / 60) + 13) * 6 Then
+c = (45 / 60) + 1
+ElseIf a = 30 And b = ((50 / 60) + 13) * 6 Then
+c = (44 / 60) + 1
+ElseIf a = 32 And b = ((50 / 60) + 13) * 6 Then
+c = (43 / 60) + 1
+ElseIf a = 34 And b = ((50 / 60) + 13) * 6 Then
+c = (42 / 60) + 1
+ElseIf a = 36 And b = ((50 / 60) + 13) * 6 Then
+c = (40 / 60) + 1
+ElseIf a = 38 And b = ((50 / 60) + 13) * 6 Then
+c = (38 / 60) + 1
+ElseIf a = 40 And b = ((50 / 60) + 13) * 6 Then
+c = (35 / 60) + 1
+ElseIf a = 42 And b = ((50 / 60) + 13) * 6 Then
+c = (33 / 60) + 1
+ElseIf a = 44 And b = ((50 / 60) + 13) * 6 Then
+c = (29 / 60) + 1
+ElseIf a = 46 And b = ((50 / 60) + 13) * 6 Then
+c = (25 / 60) + 1
+ElseIf a = 48 And b = ((50 / 60) + 13) * 6 Then
+c = (21 / 60) + 1
+ElseIf a = 50 And b = ((50 / 60) + 13) * 6 Then
+c = (17 / 60) + 1
+ElseIf a = 52 And b = ((50 / 60) + 13) * 6 Then
+c = (13 / 60) + 1
+ElseIf a = 54 And b = ((50 / 60) + 13) * 6 Then
+c = (9 / 60) + 1
+ElseIf a = 56 And b = ((50 / 60) + 13) * 6 Then
+c = (4 / 60) + 1
+ElseIf a = 58 And b = ((50 / 60) + 13) * 6 Then
+c = (58 / 60) + 0
+ElseIf a = 60 And b = ((50 / 60) + 13) * 6 Then
+c = (55 / 60) + 0
+ElseIf a = 62 And b = ((50 / 60) + 13) * 6 Then
+c = (51 / 60) + 0
+ElseIf a = 64 And b = ((50 / 60) + 13) * 6 Then
+c = (47 / 60) + 0
+ElseIf a = 66 And b = ((50 / 60) + 13) * 6 Then
+c = (42 / 60) + 0
+ElseIf a = 68 And b = ((50 / 60) + 13) * 6 Then
+c = (37 / 60) + 0
+ElseIf a = 70 And b = ((50 / 60) + 13) * 6 Then
+c = (31 / 60) + 0
+ElseIf a = 72 And b = ((50 / 60) + 13) * 6 Then
+c = (22 / 60) + 0
+ElseIf a = 74 And b = ((50 / 60) + 13) * 6 Then
+c = (9 / 60) + 0
+ElseIf a = 76 And b = ((50 / 60) + 13) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 78 And b = ((50 / 60) + 13) * 6 Then
+c = (0 / 60) + 0
+
+ElseIf a = 0 And b = ((10 / 60) + 14) * 6 Then
+c = (55 / 60) + 1
+ElseIf a = 2 And b = ((10 / 60) + 14) * 6 Then
+c = (55 / 60) + 1
+ElseIf a = 4 And b = ((10 / 60) + 14) * 6 Then
+c = (55 / 60) + 1
+ElseIf a = 6 And b = ((10 / 60) + 14) * 6 Then
+c = (54 / 60) + 1
+ElseIf a = 8 And b = ((10 / 60) + 14) * 6 Then
+c = (54 / 60) + 1
+ElseIf a = 10 And b = ((10 / 60) + 14) * 6 Then
+c = (54 / 60) + 1
+ElseIf a = 12 And b = ((10 / 60) + 14) * 6 Then
+c = (53 / 60) + 1
+ElseIf a = 14 And b = ((10 / 60) + 14) * 6 Then
+c = (52 / 60) + 1
+ElseIf a = 16 And b = ((10 / 60) + 14) * 6 Then
+c = (51 / 60) + 1
+ElseIf a = 18 And b = ((10 / 60) + 14) * 6 Then
+c = (50 / 60) + 1
+ElseIf a = 20 And b = ((10 / 60) + 14) * 6 Then
+c = (49 / 60) + 1
+ElseIf a = 22 And b = ((10 / 60) + 14) * 6 Then
+c = (48 / 60) + 1
+ElseIf a = 24 And b = ((10 / 60) + 14) * 6 Then
+c = (47 / 60) + 1
+ElseIf a = 26 And b = ((10 / 60) + 14) * 6 Then
+c = (46 / 60) + 1
+ElseIf a = 28 And b = ((10 / 60) + 14) * 6 Then
+c = (44 / 60) + 1
+ElseIf a = 30 And b = ((10 / 60) + 14) * 6 Then
+c = (43 / 60) + 1
+ElseIf a = 32 And b = ((10 / 60) + 14) * 6 Then
+c = (42 / 60) + 1
+ElseIf a = 34 And b = ((10 / 60) + 14) * 6 Then
+c = (41 / 60) + 1
+ElseIf a = 36 And b = ((10 / 60) + 14) * 6 Then
+c = (39 / 60) + 1
+ElseIf a = 38 And b = ((10 / 60) + 14) * 6 Then
+c = (36 / 60) + 1
+ElseIf a = 40 And b = ((10 / 60) + 14) * 6 Then
+c = (34 / 60) + 1
+ElseIf a = 42 And b = ((10 / 60) + 14) * 6 Then
+c = (32 / 60) + 1
+ElseIf a = 44 And b = ((10 / 60) + 14) * 6 Then
+c = (29 / 60) + 1
+ElseIf a = 46 And b = ((10 / 60) + 14) * 6 Then
+c = (26 / 60) + 1
+ElseIf a = 48 And b = ((10 / 60) + 14) * 6 Then
+c = (22 / 60) + 1
+ElseIf a = 50 And b = ((10 / 60) + 14) * 6 Then
+c = (18 / 60) + 1
+ElseIf a = 52 And b = ((10 / 60) + 14) * 6 Then
+c = (14 / 60) + 1
+ElseIf a = 54 And b = ((10 / 60) + 14) * 6 Then
+c = (10 / 60) + 1
+ElseIf a = 56 And b = ((10 / 60) + 14) * 6 Then
+c = (5 / 60) + 1
+ElseIf a = 58 And b = ((10 / 60) + 14) * 6 Then
+c = (0 / 60) + 1
+ElseIf a = 60 And b = ((10 / 60) + 14) * 6 Then
+c = (57 / 60) + 0
+ElseIf a = 62 And b = ((10 / 60) + 14) * 6 Then
+c = (54 / 60) + 0
+ElseIf a = 64 And b = ((10 / 60) + 14) * 6 Then
+c = (50 / 60) + 0
+ElseIf a = 66 And b = ((10 / 60) + 14) * 6 Then
+c = (46 / 60) + 0
+ElseIf a = 68 And b = ((10 / 60) + 14) * 6 Then
+c = (41 / 60) + 0
+ElseIf a = 70 And b = ((10 / 60) + 14) * 6 Then
+c = (36 / 60) + 0
+ElseIf a = 72 And b = ((10 / 60) + 14) * 6 Then
+c = (29 / 60) + 0
+ElseIf a = 74 And b = ((10 / 60) + 14) * 6 Then
+c = (20 / 60) + 0
+ElseIf a = 76 And b = ((10 / 60) + 14) * 6 Then
+c = (10 / 60) + 0
+ElseIf a = 78 And b = ((10 / 60) + 14) * 6 Then
+c = (0 / 60) + 0
+
+ElseIf a = 0 And b = ((30 / 60) + 14) * 6 Then
+c = (54 / 60) + 1
+ElseIf a = 2 And b = ((30 / 60) + 14) * 6 Then
+c = (54 / 60) + 1
+ElseIf a = 4 And b = ((30 / 60) + 14) * 6 Then
+c = (54 / 60) + 1
+ElseIf a = 6 And b = ((30 / 60) + 14) * 6 Then
+c = (53 / 60) + 1
+ElseIf a = 8 And b = ((30 / 60) + 14) * 6 Then
+c = (53 / 60) + 1
+ElseIf a = 10 And b = ((30 / 60) + 14) * 6 Then
+c = (53 / 60) + 1
+ElseIf a = 12 And b = ((30 / 60) + 14) * 6 Then
+c = (52 / 60) + 1
+ElseIf a = 14 And b = ((30 / 60) + 14) * 6 Then
+c = (51 / 60) + 1
+ElseIf a = 16 And b = ((30 / 60) + 14) * 6 Then
+c = (50 / 60) + 1
+ElseIf a = 18 And b = ((30 / 60) + 14) * 6 Then
+c = (49 / 60) + 1
+ElseIf a = 20 And b = ((30 / 60) + 14) * 6 Then
+c = (48 / 60) + 1
+ElseIf a = 22 And b = ((30 / 60) + 14) * 6 Then
+c = (47 / 60) + 1
+ElseIf a = 24 And b = ((30 / 60) + 14) * 6 Then
+c = (46 / 60) + 1
+ElseIf a = 26 And b = ((30 / 60) + 14) * 6 Then
+c = (45 / 60) + 1
+ElseIf a = 28 And b = ((30 / 60) + 14) * 6 Then
+c = (44 / 60) + 1
+ElseIf a = 30 And b = ((30 / 60) + 14) * 6 Then
+c = (43 / 60) + 1
+ElseIf a = 32 And b = ((30 / 60) + 14) * 6 Then
+c = (42 / 60) + 1
+ElseIf a = 34 And b = ((30 / 60) + 14) * 6 Then
+c = (41 / 60) + 1
+ElseIf a = 36 And b = ((30 / 60) + 14) * 6 Then
+c = (39 / 60) + 1
+ElseIf a = 38 And b = ((30 / 60) + 14) * 6 Then
+c = (37 / 60) + 1
+ElseIf a = 40 And b = ((30 / 60) + 14) * 6 Then
+c = (34 / 60) + 1
+ElseIf a = 42 And b = ((30 / 60) + 14) * 6 Then
+c = (32 / 60) + 1
+ElseIf a = 44 And b = ((30 / 60) + 14) * 6 Then
+c = (29 / 60) + 1
+ElseIf a = 46 And b = ((30 / 60) + 14) * 6 Then
+c = (26 / 60) + 1
+ElseIf a = 48 And b = ((30 / 60) + 14) * 6 Then
+c = (22 / 60) + 1
+ElseIf a = 50 And b = ((30 / 60) + 14) * 6 Then
+c = (18 / 60) + 1
+ElseIf a = 52 And b = ((30 / 60) + 14) * 6 Then
+c = (14 / 60) + 1
+ElseIf a = 54 And b = ((30 / 60) + 14) * 6 Then
+c = (10 / 60) + 1
+ElseIf a = 56 And b = ((30 / 60) + 14) * 6 Then
+c = (5 / 60) + 1
+ElseIf a = 58 And b = ((30 / 60) + 14) * 6 Then
+c = (0 / 60) + 1
+ElseIf a = 60 And b = ((30 / 60) + 14) * 6 Then
+c = (57 / 60) + 0
+ElseIf a = 62 And b = ((30 / 60) + 14) * 6 Then
+c = (54 / 60) + 0
+ElseIf a = 64 And b = ((30 / 60) + 14) * 6 Then
+c = (50 / 60) + 0
+ElseIf a = 66 And b = ((30 / 60) + 14) * 6 Then
+c = (46 / 60) + 0
+ElseIf a = 68 And b = ((30 / 60) + 14) * 6 Then
+c = (41 / 60) + 0
+ElseIf a = 70 And b = ((30 / 60) + 14) * 6 Then
+c = (36 / 60) + 0
+ElseIf a = 72 And b = ((30 / 60) + 14) * 6 Then
+c = (29 / 60) + 0
+ElseIf a = 74 And b = ((30 / 60) + 14) * 6 Then
+c = (20 / 60) + 0
+ElseIf a = 76 And b = ((30 / 60) + 14) * 6 Then
+c = (10 / 60) + 0
+ElseIf a = 78 And b = ((30 / 60) + 14) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 0 And b = ((50 / 60) + 14) * 6 Then
+c = (53 / 60) + 1
+ElseIf a = 2 And b = ((50 / 60) + 14) * 6 Then
+c = (53 / 60) + 1
+ElseIf a = 4 And b = ((50 / 60) + 14) * 6 Then
+c = (53 / 60) + 1
+ElseIf a = 6 And b = ((50 / 60) + 14) * 6 Then
+c = (52 / 60) + 1
+ElseIf a = 8 And b = ((50 / 60) + 14) * 6 Then
+c = (52 / 60) + 1
+ElseIf a = 10 And b = ((50 / 60) + 14) * 6 Then
+c = (51 / 60) + 1
+ElseIf a = 12 And b = ((50 / 60) + 14) * 6 Then
+c = (51 / 60) + 1
+ElseIf a = 14 And b = ((50 / 60) + 14) * 6 Then
+c = (50 / 60) + 1
+ElseIf a = 16 And b = ((50 / 60) + 14) * 6 Then
+c = (49 / 60) + 1
+ElseIf a = 18 And b = ((50 / 60) + 14) * 6 Then
+c = (48 / 60) + 1
+ElseIf a = 20 And b = ((50 / 60) + 14) * 6 Then
+c = (47 / 60) + 1
+ElseIf a = 22 And b = ((50 / 60) + 14) * 6 Then
+c = (46 / 60) + 1
+ElseIf a = 24 And b = ((50 / 60) + 14) * 6 Then
+c = (45 / 60) + 1
+ElseIf a = 26 And b = ((50 / 60) + 14) * 6 Then
+c = (44 / 60) + 1
+ElseIf a = 28 And b = ((50 / 60) + 14) * 6 Then
+c = (42 / 60) + 1
+ElseIf a = 30 And b = ((50 / 60) + 14) * 6 Then
+c = (41 / 60) + 1
+ElseIf a = 32 And b = ((50 / 60) + 14) * 6 Then
+c = (40 / 60) + 1
+ElseIf a = 34 And b = ((50 / 60) + 14) * 6 Then
+c = (39 / 60) + 1
+ElseIf a = 36 And b = ((50 / 60) + 13) * 6 Then
+c = (37 / 60) + 1
+ElseIf a = 38 And b = ((50 / 60) + 14) * 6 Then
+c = (35 / 60) + 1
+ElseIf a = 40 And b = ((50 / 60) + 14) * 6 Then
+c = (33 / 60) + 1
+ElseIf a = 42 And b = ((50 / 60) + 14) * 6 Then
+c = (31 / 60) + 1
+ElseIf a = 44 And b = ((50 / 60) + 14) * 6 Then
+c = (28 / 60) + 1
+ElseIf a = 46 And b = ((50 / 60) + 14) * 6 Then
+c = (25 / 60) + 1
+ElseIf a = 48 And b = ((50 / 60) + 14) * 6 Then
+c = (22 / 60) + 1
+ElseIf a = 50 And b = ((50 / 60) + 14) * 6 Then
+c = (19 / 60) + 1
+ElseIf a = 52 And b = ((50 / 60) + 14) * 6 Then
+c = (15 / 60) + 1
+ElseIf a = 54 And b = ((50 / 60) + 14) * 6 Then
+c = (11 / 60) + 1
+ElseIf a = 56 And b = ((50 / 60) + 14) * 6 Then
+c = (6 / 60) + 1
+ElseIf a = 58 And b = ((50 / 60) + 14) * 6 Then
+c = (3 / 60) + 1
+ElseIf a = 60 And b = ((50 / 60) + 14) * 6 Then
+c = (59 / 60) + 0
+ElseIf a = 62 And b = ((50 / 60) + 14) * 6 Then
+c = (56 / 60) + 0
+ElseIf a = 64 And b = ((50 / 60) + 14) * 6 Then
+c = (52 / 60) + 0
+ElseIf a = 66 And b = ((50 / 60) + 14) * 6 Then
+c = (49 / 60) + 0
+ElseIf a = 68 And b = ((50 / 60) + 14) * 6 Then
+c = (46 / 60) + 0
+ElseIf a = 70 And b = ((50 / 60) + 14) * 6 Then
+c = (42 / 60) + 0
+ElseIf a = 72 And b = ((50 / 60) + 14) * 6 Then
+c = (36 / 60) + 0
+ElseIf a = 74 And b = ((50 / 60) + 14) * 6 Then
+c = (31 / 60) + 0
+ElseIf a = 76 And b = ((50 / 60) + 14) * 6 Then
+c = (24 / 60) + 0
+ElseIf a = 78 And b = ((50 / 60) + 14) * 6 Then
+c = (16 / 60) + 0
+End If
+sasoqoott = c
+End Function
+
+
+Public Function sasoqoot(arz As Double, boht As Double)
+Dim y As Double
+y = arz * 60
+Dim z As Double
+z = boht * 6
+Dim a As Double
+a = Int(y / 2) * 2
+Dim a1 As Double
+a1 = Int(z)
+Dim a2 As Double
+a2 = a1 / 2
+Dim a3 As Double
+a3 = Int(a2)
+Dim b As Double
+If a2 = a3 Then
+b = a1 - 1
+Else
+b = a1
+End If
+Dim aa As Double
+aa = a + 2
+Dim bb As Double
+bb = b + 2
+Dim c As Double
+c = sasoqoott(a / 60, b / 6)
+Dim d As Double
+d = sasoqoott(a / 60, bb / 6)
+Dim e As Double
+e = sasoqoott(aa / 60, b / 6)
+Dim f As Double
+f = sasoqoott(aa / 60, bb / 6)
+Dim g As Double
+g = d - c
+Dim h As Double
+h = e - c
+Dim j As Double
+j = ((y - a) * h) / 2
+Dim k As Double
+k = ((z - b) * g) / 2
+Dim m As Double
+m = c + j
+Dim n As Double
+n = c + k
+Dim o As Double
+o = f - e
+Dim p As Double
+p = z - b
+Dim q As Double
+q = aa - a
+Dim r As Double
+r = p * o / q
+Dim s As Double
+s = e + r
+Dim t As Double
+t = s - n
+Dim u As Double
+u = aa - a
+Dim v As Double
+v = y - a
+Dim w As Double
+w = t * v / u
+Dim x As Double
+x = n + w
+Dim xx As Double
+If arz = a Then
+xx = 1
+Else
+xx = 2
+End If
+Dim xy As Double
+If boht = b Then
+xy = 1
+Else
+xy = 2
+End If
+If xy = 1 And xx = 1 Then
+sasoqoot = c
+ElseIf xx = 2 And xy = 1 Then
+sasoqoot = m
+ElseIf xx = 1 And xy = 2 Then
+sasoqoot = n
+Else
+sasoqoot = x
+End If
+
+End Function
+
+
+
+
+Public Function samakss(arz As Double, boht As Double)
+Dim a As Double
+a = arz * 60
+Dim b As Double
+b = boht * 6
+Dim c As Double
+
+If a = 0 And b = ((50 / 60) + 11) * 6 Then
+c = (56 / 60) + 0
+ElseIf a = 2 And b = ((50 / 60) + 11) * 6 Then
+c = (56 / 60) + 0
+ElseIf a = 4 And b = ((50 / 60) + 11) * 6 Then
+c = (55 / 60) + 0
+ElseIf a = 6 And b = ((50 / 60) + 11) * 6 Then
+c = (54 / 60) + 0
+ElseIf a = 8 And b = ((50 / 60) + 11) * 6 Then
+c = (53 / 60) + 0
+ElseIf a = 10 And b = ((50 / 60) + 11) * 6 Then
+c = (51 / 60) + 0
+ElseIf a = 12 And b = ((50 / 60) + 11) * 6 Then
+c = (49 / 60) + 0
+ElseIf a = 14 And b = ((50 / 60) + 11) * 6 Then
+c = (47 / 60) + 0
+ElseIf a = 16 And b = ((50 / 60) + 11) * 6 Then
+c = (43 / 60) + 0
+ElseIf a = 18 And b = ((50 / 60) + 11) * 6 Then
+c = (39 / 60) + 0
+ElseIf a = 20 And b = ((50 / 60) + 11) * 6 Then
+c = (34 / 60) + 0
+ElseIf a = 22 And b = ((50 / 60) + 11) * 6 Then
+c = (27 / 60) + 0
+ElseIf a = 24 And b = ((50 / 60) + 11) * 6 Then
+c = (16 / 60) + 0
+ElseIf a = 26 And b = ((50 / 60) + 11) * 6 Then
+c = (8 / 60) + 0
+ElseIf a = 28 And b = ((50 / 60) + 11) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 30 And b = ((50 / 60) + 11) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 32 And b = ((50 / 60) + 11) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 34 And b = ((50 / 60) + 11) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 36 And b = ((50 / 60) + 11) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 38 And b = ((50 / 60) + 11) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 40 And b = ((50 / 60) + 11) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 42 And b = ((50 / 60) + 11) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 44 And b = ((50 / 60) + 11) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 46 And b = ((50 / 60) + 11) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 48 And b = ((50 / 60) + 11) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 50 And b = ((50 / 60) + 11) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 52 And b = ((50 / 60) + 11) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 54 And b = ((50 / 60) + 11) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 56 And b = ((50 / 60) + 11) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 58 And b = ((50 / 60) + 11) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 60 And b = ((50 / 60) + 11) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 62 And b = ((50 / 60) + 11) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 64 And b = ((50 / 60) + 11) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 66 And b = ((50 / 60) + 11) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 68 And b = ((50 / 60) + 11) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 70 And b = ((50 / 60) + 11) * 6 Then
+c = (0 / 60) + 0
+
+ElseIf a = 0 And b = ((10 / 60) + 12) * 6 Then
+c = (55 / 60) + 0
+ElseIf a = 2 And b = ((10 / 60) + 12) * 6 Then
+c = (55 / 60) + 0
+ElseIf a = 4 And b = ((10 / 60) + 12) * 6 Then
+c = (54 / 60) + 0
+ElseIf a = 6 And b = ((10 / 60) + 12) * 6 Then
+c = (53 / 60) + 0
+ElseIf a = 8 And b = ((10 / 60) + 12) * 6 Then
+c = (52 / 60) + 0
+ElseIf a = 10 And b = ((10 / 60) + 12) * 6 Then
+c = (50 / 60) + 0
+ElseIf a = 12 And b = ((10 / 60) + 12) * 6 Then
+c = (48 / 60) + 0
+ElseIf a = 14 And b = ((10 / 60) + 12) * 6 Then
+c = (45 / 60) + 0
+ElseIf a = 16 And b = ((10 / 60) + 12) * 6 Then
+c = (42 / 60) + 0
+ElseIf a = 18 And b = ((10 / 60) + 12) * 6 Then
+c = (39 / 60) + 0
+ElseIf a = 20 And b = ((10 / 60) + 12) * 6 Then
+c = (34 / 60) + 0
+ElseIf a = 22 And b = ((10 / 60) + 12) * 6 Then
+c = (27 / 60) + 0
+ElseIf a = 24 And b = ((10 / 60) + 12) * 6 Then
+c = (17 / 60) + 0
+ElseIf a = 26 And b = ((10 / 60) + 12) * 6 Then
+c = (12 / 60) + 0
+ElseIf a = 28 And b = ((10 / 60) + 12) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 30 And b = ((10 / 60) + 12) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 32 And b = ((10 / 60) + 12) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 34 And b = ((10 / 60) + 12) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 36 And b = ((10 / 60) + 12) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 38 And b = ((10 / 60) + 12) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 40 And b = ((10 / 60) + 12) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 42 And b = ((10 / 60) + 12) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 44 And b = ((10 / 60) + 12) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 46 And b = ((10 / 60) + 12) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 48 And b = ((10 / 60) + 12) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 50 And b = ((10 / 60) + 12) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 52 And b = ((10 / 60) + 12) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 54 And b = ((10 / 60) + 12) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 56 And b = ((10 / 60) + 12) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 58 And b = ((10 / 60) + 12) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 60 And b = ((10 / 60) + 12) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 62 And b = ((10 / 60) + 12) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 64 And b = ((10 / 60) + 12) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 66 And b = ((10 / 60) + 12) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 68 And b = ((10 / 60) + 12) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 70 And b = ((10 / 60) + 12) * 6 Then
+c = (0 / 60) + 0
+
+
+
+
+
+
+
+
+
+ElseIf a = 0 And b = ((30 / 60) + 12) * 6 Then
+c = (54 / 60) + 0
+ElseIf a = 2 And b = ((30 / 60) + 12) * 6 Then
+c = (54 / 60) + 0
+ElseIf a = 4 And b = ((30 / 60) + 12) * 6 Then
+c = (53 / 60) + 0
+ElseIf a = 6 And b = ((30 / 60) + 12) * 6 Then
+c = (52 / 60) + 0
+ElseIf a = 8 And b = ((30 / 60) + 12) * 6 Then
+c = (51 / 60) + 0
+ElseIf a = 10 And b = ((30 / 60) + 12) * 6 Then
+c = (50 / 60) + 0
+ElseIf a = 12 And b = ((30 / 60) + 12) * 6 Then
+c = (48 / 60) + 0
+ElseIf a = 14 And b = ((30 / 60) + 12) * 6 Then
+c = (45 / 60) + 0
+ElseIf a = 16 And b = ((30 / 60) + 12) * 6 Then
+c = (41 / 60) + 0
+ElseIf a = 18 And b = ((30 / 60) + 12) * 6 Then
+c = (39 / 60) + 0
+ElseIf a = 20 And b = ((30 / 60) + 12) * 6 Then
+c = (39 / 60) + 0
+ElseIf a = 22 And b = ((30 / 60) + 12) * 6 Then
+c = (28 / 60) + 0
+ElseIf a = 24 And b = ((30 / 60) + 12) * 6 Then
+c = (17 / 60) + 0
+ElseIf a = 26 And b = ((30 / 60) + 12) * 6 Then
+c = (11 / 60) + 0
+ElseIf a = 28 And b = ((30 / 60) + 12) * 6 Then
+c = (3 / 60) + 0
+ElseIf a = 30 And b = ((30 / 60) + 12) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 32 And b = ((30 / 60) + 12) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 34 And b = ((30 / 60) + 12) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 36 And b = ((30 / 60) + 12) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 38 And b = ((30 / 60) + 12) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 40 And b = ((30 / 60) + 12) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 42 And b = ((30 / 60) + 12) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 44 And b = ((30 / 60) + 12) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 46 And b = ((30 / 60) + 12) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 48 And b = ((30 / 60) + 12) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 50 And b = ((30 / 60) + 12) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 52 And b = ((30 / 60) + 12) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 54 And b = ((30 / 60) + 12) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 56 And b = ((30 / 60) + 12) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 58 And b = ((30 / 60) + 12) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 60 And b = ((30 / 60) + 12) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 62 And b = ((30 / 60) + 12) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 64 And b = ((30 / 60) + 12) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 66 And b = ((30 / 60) + 12) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 68 And b = ((30 / 60) + 12) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 70 And b = ((30 / 60) + 12) * 6 Then
+c = (0 / 60) + 0
+
+
+
+
+
+
+ElseIf a = 0 And b = ((50 / 60) + 12) * 6 Then
+c = (53 / 60) + 0
+ElseIf a = 2 And b = ((50 / 60) + 12) * 6 Then
+c = (53 / 60) + 0
+ElseIf a = 4 And b = ((50 / 60) + 12) * 6 Then
+c = (52 / 60) + 0
+ElseIf a = 6 And b = ((50 / 60) + 12) * 6 Then
+c = (51 / 60) + 0
+ElseIf a = 8 And b = ((50 / 60) + 12) * 6 Then
+c = (50 / 60) + 0
+ElseIf a = 10 And b = ((50 / 60) + 12) * 6 Then
+c = (49 / 60) + 0
+ElseIf a = 12 And b = ((50 / 60) + 12) * 6 Then
+c = (48 / 60) + 0
+ElseIf a = 14 And b = ((50 / 60) + 12) * 6 Then
+c = (44 / 60) + 0
+ElseIf a = 16 And b = ((50 / 60) + 12) * 6 Then
+c = (41 / 60) + 0
+ElseIf a = 18 And b = ((50 / 60) + 12) * 6 Then
+c = (33 / 60) + 0
+ElseIf a = 20 And b = ((50 / 60) + 12) * 6 Then
+c = (35 / 60) + 0
+ElseIf a = 22 And b = ((50 / 60) + 12) * 6 Then
+c = (29 / 60) + 0
+ElseIf a = 24 And b = ((50 / 60) + 12) * 6 Then
+c = (20 / 60) + 0
+ElseIf a = 26 And b = ((50 / 60) + 12) * 6 Then
+c = (15 / 60) + 0
+ElseIf a = 28 And b = ((50 / 60) + 12) * 6 Then
+c = (9 / 60) + 0
+ElseIf a = 30 And b = ((50 / 60) + 12) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 32 And b = ((50 / 60) + 12) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 34 And b = ((50 / 60) + 12) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 36 And b = ((50 / 60) + 12) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 38 And b = ((50 / 60) + 12) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 40 And b = ((50 / 60) + 12) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 42 And b = ((50 / 60) + 12) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 44 And b = ((50 / 60) + 12) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 46 And b = ((50 / 60) + 12) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 48 And b = ((50 / 60) + 12) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 50 And b = ((50 / 60) + 12) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 52 And b = ((50 / 60) + 12) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 54 And b = ((50 / 60) + 12) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 56 And b = ((50 / 60) + 12) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 58 And b = ((50 / 60) + 12) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 60 And b = ((50 / 60) + 12) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 62 And b = ((50 / 60) + 12) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 64 And b = ((50 / 60) + 12) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 66 And b = ((50 / 60) + 12) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 68 And b = ((50 / 60) + 12) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 70 And b = ((50 / 60) + 12) * 6 Then
+c = (0 / 60) + 0
+
+
+
+
+ElseIf a = 0 And b = ((10 / 60) + 13) * 6 Then
+c = (53 / 60) + 0
+ElseIf a = 2 And b = ((10 / 60) + 13) * 6 Then
+c = (53 / 60) + 0
+ElseIf a = 4 And b = ((10 / 60) + 13) * 6 Then
+c = (52 / 60) + 0
+ElseIf a = 6 And b = ((10 / 60) + 13) * 6 Then
+c = (51 / 60) + 0
+ElseIf a = 8 And b = ((10 / 60) + 13) * 6 Then
+c = (50 / 60) + 0
+ElseIf a = 10 And b = ((10 / 60) + 13) * 6 Then
+c = (49 / 60) + 0
+ElseIf a = 12 And b = ((10 / 60) + 13) * 6 Then
+c = (47 / 60) + 0
+ElseIf a = 14 And b = ((10 / 60) + 13) * 6 Then
+c = (45 / 60) + 0
+ElseIf a = 16 And b = ((10 / 60) + 13) * 6 Then
+c = (43 / 60) + 0
+ElseIf a = 18 And b = ((10 / 60) + 13) * 6 Then
+c = (41 / 60) + 0
+ElseIf a = 20 And b = ((10 / 60) + 13) * 6 Then
+c = (38 / 60) + 0
+ElseIf a = 22 And b = ((10 / 60) + 13) * 6 Then
+c = (33 / 60) + 0
+ElseIf a = 24 And b = ((10 / 60) + 13) * 6 Then
+c = (26 / 60) + 0
+ElseIf a = 26 And b = ((10 / 60) + 13) * 6 Then
+c = (22 / 60) + 0
+ElseIf a = 28 And b = ((10 / 60) + 13) * 6 Then
+c = (13 / 60) + 0
+ElseIf a = 30 And b = ((10 / 60) + 13) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 32 And b = ((10 / 60) + 13) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 34 And b = ((10 / 60) + 13) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 36 And b = ((10 / 60) + 13) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 38 And b = ((10 / 60) + 13) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 40 And b = ((10 / 60) + 13) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 42 And b = ((10 / 60) + 13) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 44 And b = ((10 / 60) + 13) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 46 And b = ((10 / 60) + 13) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 48 And b = ((10 / 60) + 13) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 50 And b = ((10 / 60) + 13) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 52 And b = ((10 / 60) + 13) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 54 And b = ((10 / 60) + 13) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 56 And b = ((10 / 60) + 13) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 58 And b = ((10 / 60) + 13) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 60 And b = ((10 / 60) + 13) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 62 And b = ((10 / 60) + 13) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 64 And b = ((10 / 60) + 13) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 66 And b = ((10 / 60) + 13) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 68 And b = ((10 / 60) + 13) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 70 And b = ((10 / 60) + 13) * 6 Then
+c = (0 / 60) + 0
+
+
+
+ElseIf a = 0 And b = ((30 / 60) + 13) * 6 Then
+c = (52 / 60) + 0
+ElseIf a = 2 And b = ((30 / 60) + 13) * 6 Then
+c = (52 / 60) + 0
+ElseIf a = 4 And b = ((30 / 60) + 13) * 6 Then
+c = (51 / 60) + 0
+ElseIf a = 6 And b = ((30 / 60) + 13) * 6 Then
+c = (50 / 60) + 0
+ElseIf a = 8 And b = ((30 / 60) + 13) * 6 Then
+c = (49 / 60) + 0
+ElseIf a = 10 And b = ((30 / 60) + 13) * 6 Then
+c = (48 / 60) + 0
+ElseIf a = 12 And b = ((30 / 60) + 13) * 6 Then
+c = (46 / 60) + 0
+ElseIf a = 14 And b = ((30 / 60) + 13) * 6 Then
+c = (44 / 60) + 0
+ElseIf a = 16 And b = ((30 / 60) + 13) * 6 Then
+c = (42 / 60) + 0
+ElseIf a = 18 And b = ((30 / 60) + 13) * 6 Then
+c = (39 / 60) + 0
+ElseIf a = 20 And b = ((30 / 60) + 13) * 6 Then
+c = (36 / 60) + 0
+ElseIf a = 22 And b = ((30 / 60) + 13) * 6 Then
+c = (29 / 60) + 0
+ElseIf a = 24 And b = ((30 / 60) + 13) * 6 Then
+c = (21 / 60) + 0
+ElseIf a = 26 And b = ((30 / 60) + 13) * 6 Then
+c = (12 / 60) + 0
+ElseIf a = 28 And b = ((30 / 60) + 13) * 6 Then
+c = (6 / 60) + 0
+ElseIf a = 30 And b = ((30 / 60) + 13) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 32 And b = ((30 / 60) + 13) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 34 And b = ((30 / 60) + 13) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 36 And b = ((30 / 60) + 13) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 38 And b = ((30 / 60) + 13) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 40 And b = ((30 / 60) + 13) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 42 And b = ((30 / 60) + 13) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 44 And b = ((30 / 60) + 13) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 46 And b = ((30 / 60) + 13) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 48 And b = ((30 / 60) + 13) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 50 And b = ((30 / 60) + 13) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 52 And b = ((30 / 60) + 13) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 54 And b = ((30 / 60) + 13) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 56 And b = ((30 / 60) + 13) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 58 And b = ((30 / 60) + 13) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 60 And b = ((30 / 60) + 13) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 62 And b = ((30 / 60) + 13) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 64 And b = ((30 / 60) + 13) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 66 And b = ((30 / 60) + 13) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 68 And b = ((30 / 60) + 13) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 70 And b = ((30 / 60) + 13) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 72 And b = ((30 / 60) + 13) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 74 And b = ((30 / 60) + 13) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 76 And b = ((30 / 60) + 13) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 78 And b = ((30 / 60) + 13) * 6 Then
+c = (0 / 60) + 0
+
+
+
+ElseIf a = 0 And b = ((50 / 60) + 13) * 6 Then
+c = (52 / 60) + 0
+ElseIf a = 2 And b = ((50 / 60) + 13) * 6 Then
+c = (52 / 60) + 0
+ElseIf a = 4 And b = ((50 / 60) + 13) * 6 Then
+c = (51 / 60) + 0
+ElseIf a = 6 And b = ((50 / 60) + 13) * 6 Then
+c = (50 / 60) + 0
+ElseIf a = 8 And b = ((50 / 60) + 13) * 6 Then
+c = (49 / 60) + 0
+ElseIf a = 10 And b = ((50 / 60) + 13) * 6 Then
+c = (48 / 60) + 0
+ElseIf a = 12 And b = ((50 / 60) + 13) * 6 Then
+c = (46 / 60) + 0
+ElseIf a = 14 And b = ((50 / 60) + 13) * 6 Then
+c = (44 / 60) + 0
+ElseIf a = 16 And b = ((50 / 60) + 13) * 6 Then
+c = (42 / 60) + 0
+ElseIf a = 18 And b = ((50 / 60) + 13) * 6 Then
+c = (39 / 60) + 0
+ElseIf a = 20 And b = ((50 / 60) + 13) * 6 Then
+c = (36 / 60) + 0
+ElseIf a = 22 And b = ((50 / 60) + 13) * 6 Then
+c = (31 / 60) + 0
+ElseIf a = 24 And b = ((50 / 60) + 13) * 6 Then
+c = (24 / 60) + 0
+ElseIf a = 26 And b = ((50 / 60) + 13) * 6 Then
+c = (16 / 60) + 0
+ElseIf a = 28 And b = ((50 / 60) + 13) * 6 Then
+c = (11 / 60) + 0
+ElseIf a = 30 And b = ((50 / 60) + 13) * 6 Then
+c = (7 / 60) + 0
+ElseIf a = 32 And b = ((50 / 60) + 13) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 34 And b = ((50 / 60) + 13) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 36 And b = ((50 / 60) + 13) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 38 And b = ((50 / 60) + 13) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 40 And b = ((50 / 60) + 13) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 42 And b = ((50 / 60) + 13) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 44 And b = ((50 / 60) + 13) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 46 And b = ((50 / 60) + 13) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 48 And b = ((50 / 60) + 13) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 50 And b = ((50 / 60) + 13) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 52 And b = ((50 / 60) + 13) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 54 And b = ((50 / 60) + 13) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 56 And b = ((50 / 60) + 13) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 58 And b = ((50 / 60) + 13) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 60 And b = ((50 / 60) + 13) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 62 And b = ((50 / 60) + 13) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 64 And b = ((50 / 60) + 13) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 66 And b = ((50 / 60) + 13) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 68 And b = ((50 / 60) + 13) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 70 And b = ((50 / 60) + 13) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 72 And b = ((50 / 60) + 13) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 74 And b = ((50 / 60) + 13) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 76 And b = ((50 / 60) + 13) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 78 And b = ((50 / 60) + 13) * 6 Then
+c = (0 / 60) + 0
+
+
+ElseIf a = 0 And b = ((10 / 60) + 14) * 6 Then
+c = (51 / 60) + 0
+ElseIf a = 2 And b = ((10 / 60) + 14) * 6 Then
+c = (51 / 60) + 0
+ElseIf a = 4 And b = ((10 / 60) + 14) * 6 Then
+c = (50 / 60) + 0
+ElseIf a = 6 And b = ((10 / 60) + 14) * 6 Then
+c = (49 / 60) + 0
+ElseIf a = 8 And b = ((10 / 60) + 14) * 6 Then
+c = (48 / 60) + 0
+ElseIf a = 10 And b = ((10 / 60) + 14) * 6 Then
+c = (47 / 60) + 0
+ElseIf a = 12 And b = ((10 / 60) + 14) * 6 Then
+c = (46 / 60) + 0
+ElseIf a = 14 And b = ((10 / 60) + 14) * 6 Then
+c = (44 / 60) + 0
+ElseIf a = 16 And b = ((10 / 60) + 14) * 6 Then
+c = (42 / 60) + 0
+ElseIf a = 18 And b = ((10 / 60) + 14) * 6 Then
+c = (40 / 60) + 0
+ElseIf a = 20 And b = ((10 / 60) + 14) * 6 Then
+c = (37 / 60) + 0
+ElseIf a = 22 And b = ((10 / 60) + 14) * 6 Then
+c = (33 / 60) + 0
+ElseIf a = 24 And b = ((10 / 60) + 14) * 6 Then
+c = (28 / 60) + 0
+ElseIf a = 26 And b = ((10 / 60) + 14) * 6 Then
+c = (21 / 60) + 0
+ElseIf a = 28 And b = ((10 / 60) + 14) * 6 Then
+c = (16 / 60) + 0
+ElseIf a = 30 And b = ((10 / 60) + 14) * 6 Then
+c = (11 / 60) + 0
+ElseIf a = 32 And b = ((10 / 60) + 14) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 34 And b = ((10 / 60) + 14) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 36 And b = ((10 / 60) + 14) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 38 And b = ((10 / 60) + 14) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 40 And b = ((10 / 60) + 14) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 42 And b = ((10 / 60) + 14) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 44 And b = ((10 / 60) + 14) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 46 And b = ((10 / 60) + 14) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 48 And b = ((10 / 60) + 14) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 50 And b = ((10 / 60) + 14) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 52 And b = ((10 / 60) + 14) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 54 And b = ((10 / 60) + 14) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 56 And b = ((10 / 60) + 14) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 58 And b = ((10 / 60) + 14) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 60 And b = ((10 / 60) + 14) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 62 And b = ((10 / 60) + 14) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 64 And b = ((10 / 60) + 14) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 66 And b = ((10 / 60) + 14) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 68 And b = ((10 / 60) + 14) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 70 And b = ((10 / 60) + 14) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 72 And b = ((10 / 60) + 14) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 74 And b = ((10 / 60) + 14) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 76 And b = ((10 / 60) + 14) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 78 And b = ((10 / 60) + 14) * 6 Then
+c = (0 / 60) + 0
+
+
+
+
+
+
+
+ElseIf a = 0 And b = ((30 / 60) + 14) * 6 Then
+c = (50 / 60) + 0
+ElseIf a = 2 And b = ((30 / 60) + 14) * 6 Then
+c = (50 / 60) + 0
+ElseIf a = 4 And b = ((30 / 60) + 14) * 6 Then
+c = (49 / 60) + 0
+ElseIf a = 6 And b = ((30 / 60) + 14) * 6 Then
+c = (49 / 60) + 0
+ElseIf a = 8 And b = ((30 / 60) + 14) * 6 Then
+c = (48 / 60) + 0
+ElseIf a = 10 And b = ((30 / 60) + 14) * 6 Then
+c = (47 / 60) + 0
+ElseIf a = 12 And b = ((30 / 60) + 14) * 6 Then
+c = (45 / 60) + 0
+ElseIf a = 14 And b = ((30 / 60) + 14) * 6 Then
+c = (43 / 60) + 0
+ElseIf a = 16 And b = ((30 / 60) + 14) * 6 Then
+c = (40 / 60) + 0
+ElseIf a = 18 And b = ((30 / 60) + 14) * 6 Then
+c = (38 / 60) + 0
+ElseIf a = 20 And b = ((30 / 60) + 14) * 6 Then
+c = (34 / 60) + 0
+ElseIf a = 22 And b = ((30 / 60) + 14) * 6 Then
+c = (29 / 60) + 0
+ElseIf a = 24 And b = ((30 / 60) + 14) * 6 Then
+c = (23 / 60) + 0
+ElseIf a = 26 And b = ((30 / 60) + 14) * 6 Then
+c = (15 / 60) + 0
+ElseIf a = 28 And b = ((30 / 60) + 14) * 6 Then
+c = (11 / 60) + 0
+ElseIf a = 30 And b = ((30 / 60) + 14) * 6 Then
+c = (7 / 60) + 0
+ElseIf a = 32 And b = ((30 / 60) + 14) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 34 And b = ((30 / 60) + 14) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 36 And b = ((30 / 60) + 14) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 38 And b = ((30 / 60) + 14) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 40 And b = ((30 / 60) + 14) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 42 And b = ((30 / 60) + 14) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 44 And b = ((30 / 60) + 14) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 46 And b = ((30 / 60) + 14) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 48 And b = ((30 / 60) + 14) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 50 And b = ((30 / 60) + 14) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 52 And b = ((30 / 60) + 14) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 54 And b = ((30 / 60) + 14) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 56 And b = ((30 / 60) + 14) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 58 And b = ((30 / 60) + 14) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 60 And b = ((30 / 60) + 14) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 62 And b = ((30 / 60) + 14) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 64 And b = ((30 / 60) + 14) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 66 And b = ((30 / 60) + 14) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 68 And b = ((30 / 60) + 14) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 70 And b = ((30 / 60) + 14) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 72 And b = ((30 / 60) + 14) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 74 And b = ((30 / 60) + 14) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 76 And b = ((30 / 60) + 14) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 78 And b = ((30 / 60) + 14) * 6 Then
+c = (0 / 60) + 0
+
+
+
+ElseIf a = 0 And b = ((50 / 60) + 14) * 6 Then
+c = (49 / 60) + 0
+ElseIf a = 2 And b = ((50 / 60) + 14) * 6 Then
+c = (49 / 60) + 0
+ElseIf a = 4 And b = ((50 / 60) + 14) * 6 Then
+c = (48 / 60) + 0
+ElseIf a = 6 And b = ((50 / 60) + 14) * 6 Then
+c = (47 / 60) + 0
+ElseIf a = 8 And b = ((50 / 60) + 14) * 6 Then
+c = (47 / 60) + 0
+ElseIf a = 10 And b = ((50 / 60) + 14) * 6 Then
+c = (46 / 60) + 0
+ElseIf a = 12 And b = ((50 / 60) + 14) * 6 Then
+c = (45 / 60) + 0
+ElseIf a = 14 And b = ((50 / 60) + 14) * 6 Then
+c = (43 / 60) + 0
+ElseIf a = 16 And b = ((50 / 60) + 14) * 6 Then
+c = (41 / 60) + 0
+ElseIf a = 18 And b = ((50 / 60) + 14) * 6 Then
+c = (39 / 60) + 0
+ElseIf a = 20 And b = ((50 / 60) + 14) * 6 Then
+c = (35 / 60) + 0
+ElseIf a = 22 And b = ((50 / 60) + 14) * 6 Then
+c = (30 / 60) + 0
+ElseIf a = 24 And b = ((50 / 60) + 14) * 6 Then
+c = (24 / 60) + 0
+ElseIf a = 26 And b = ((50 / 60) + 14) * 6 Then
+c = (16 / 60) + 0
+ElseIf a = 28 And b = ((50 / 60) + 14) * 6 Then
+c = (13 / 60) + 0
+ElseIf a = 30 And b = ((50 / 60) + 14) * 6 Then
+c = (9 / 60) + 0
+ElseIf a = 32 And b = ((50 / 60) + 14) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 34 And b = ((50 / 60) + 14) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 36 And b = ((50 / 60) + 14) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 38 And b = ((50 / 60) + 14) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 40 And b = ((50 / 60) + 14) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 42 And b = ((50 / 60) + 14) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 44 And b = ((50 / 60) + 14) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 46 And b = ((50 / 60) + 14) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 48 And b = ((50 / 60) + 14) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 50 And b = ((50 / 60) + 14) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 52 And b = ((50 / 60) + 14) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 54 And b = ((50 / 60) + 14) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 56 And b = ((50 / 60) + 14) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 58 And b = ((50 / 60) + 14) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 60 And b = ((50 / 60) + 14) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 62 And b = ((50 / 60) + 14) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 64 And b = ((50 / 60) + 14) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 66 And b = ((50 / 60) + 14) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 68 And b = ((50 / 60) + 14) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 70 And b = ((50 / 60) + 14) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 72 And b = ((50 / 60) + 14) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 74 And b = ((50 / 60) + 14) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 76 And b = ((50 / 60) + 14) * 6 Then
+c = (0 / 60) + 0
+ElseIf a = 78 And b = ((50 / 60) + 14) * 6 Then
+c = (0 / 60) + 0
+End If
+samakss = c
+End Function
+
+
+
+Public Function samaks(arz As Double, boht As Double)
+Dim y As Double
+y = arz * 60
+Dim z As Double
+z = boht * 6
+Dim a As Double
+a = Int(y / 2) * 2
+Dim a1 As Double
+a1 = Int(z)
+Dim a2 As Double
+a2 = a1 / 2
+Dim a3 As Double
+a3 = Int(a2)
+Dim b As Double
+If a2 = a3 Then
+b = a1 - 1
+Else
+b = a1
+End If
+Dim aa As Double
+aa = a + 2
+Dim bb As Double
+bb = b + 2
+Dim c As Double
+c = samakss(a / 60, b / 6)
+Dim d As Double
+d = samakss(a / 60, bb / 6)
+Dim e As Double
+e = samakss(aa / 60, b / 6)
+Dim f As Double
+f = samakss(aa / 60, bb / 6)
+Dim g As Double
+g = d - c
+Dim h As Double
+h = e - c
+Dim j As Double
+j = ((y - a) * h) / 2
+Dim k As Double
+k = ((z - b) * g) / 2
+Dim m As Double
+m = c + j
+Dim n As Double
+n = c + k
+Dim o As Double
+o = f - e
+Dim p As Double
+p = z - b
+Dim q As Double
+q = aa - a
+Dim r As Double
+r = p * o / q
+Dim s As Double
+s = e + r
+Dim t As Double
+t = s - n
+Dim u As Double
+u = aa - a
+Dim v As Double
+v = y - a
+Dim w As Double
+w = t * v / u
+Dim x As Double
+x = n + w
+Dim xx As Double
+If arz = a Then
+xx = 1
+Else
+xx = 2
+End If
+Dim xy As Double
+If boht = b Then
+xy = 1
+Else
+xy = 2
+End If
+If xy = 1 And xx = 1 Then
+samaks = c
+ElseIf xx = 2 And xy = 1 Then
+samaks = m
+ElseIf xx = 1 And xy = 2 Then
+samaks = n
+Else
+samaks = x
+End If
+
+End Function
+
+
+Public Function rangkh(arzqamar As Double, majmookh As Double)
+Dim a As Double
+If arzqamar < 10 / 60 Then
+a = majmookh / 7
+ElseIf arzqamar >= 10 / 60 And arzqmar < 48 / 60 Then
+a = majmookh / 3
+Else
+a = 1
+End If
+Dim b As Double
+If arzqamar < 10 / 60 And a <= 1 / 7 Then
+rangkh = "siah"
+ElseIf arzqamar < 10 / 60 And a <= 2 / 7 Then
+rangkh = "nohasi"
+ElseIf arzqamar < 10 / 60 And a <= 3 / 7 Then
+rangkh = "sabz"
+ElseIf arzqamar < 10 / 60 And a <= 4 / 7 Then
+rangkh = "lajevardi"
+ElseIf arzqamar < 10 / 60 And a <= 5 / 7 Then
+rangkh = "sabz"
+ElseIf arzqamar < 10 / 60 And a <= 6 / 7 Then
+rangkh = "nohasi"
+ElseIf arzqamar < 10 / 60 And a <= 7 / 7 Then
+rangkh = "siah"
+ElseIf (arzqamar >= 10 / 60 And arzqmar < 48 / 60) And a <= 1 / 3 Then
+rangkh = "siah"
+ElseIf (arzqamar >= 10 / 60 And arzqmar < 48 / 60) And a <= 2 / 3 Then
+rangkh = "nohasi"
+ElseIf (arzqamar >= 10 / 60 And arzqmar < 48 / 60) And a <= 3 / 3 Then
+rangkh = "sabz"
+Else
+rangkh = "siah"
+End If
+End Function
+
+Public Function bodowtasir(ztale As Double)
+Dim a As Double
+a = ztale * ztale / 12
+bodowtasir = a / (2 / 60)
+End Function
+
+
+
